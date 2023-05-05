@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Card from './card';
 
+export const databaseId = process.env.NOTION_DATABASE_ID;
+
 const cardList = [
   {
     title: 'Card Title 1',

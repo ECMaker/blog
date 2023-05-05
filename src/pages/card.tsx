@@ -1,5 +1,5 @@
 
-// components/Card.tsx
+import Image from "next/image";
 
 interface Props {
     title: string;
@@ -10,7 +10,7 @@ interface Props {
   const Card: React.FC<Props> = ({ title, description, image }) => {
     return (
       <div className="max-w-sm mx-auto rounded overflow-hidden shadow-lg">
-        <img className="w-full" src={image} alt={title} />
+        <Image className="w-full" src={image} alt={title} />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{title}</div>
           <p className="text-gray-700 text-base">{description}</p>
