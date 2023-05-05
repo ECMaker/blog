@@ -1,4 +1,23 @@
 import Head from 'next/head'
+import Card from './card';
+
+const cardList = [
+  {
+    title: 'Card Title 1',
+    description: 'This is a description for card 1',
+    image: 'https://source.unsplash.com/random/400x300',
+  },
+  {
+    title: 'Card Title 2',
+    description: 'This is a description for card 2',
+    image: 'https://source.unsplash.com/random/400x300',
+  },
+  {
+    title: 'Card Title 3',
+    description: 'This is a description for card 3',
+    image: 'https://source.unsplash.com/random/400x300',
+  },
+];
 
 export default function Home() {
   return (
@@ -13,7 +32,14 @@ export default function Home() {
         <div className="text-3xl font-bold underline">
           Hello
         </div>
+        <div className="container mx-auto py-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {cardList.map((card, index) => (
+          <Card key={index} {...card} />
+        ))}
+      </div>
+    </div>
       </main>
-    </>
-  )
+      </>
+    )
 }
