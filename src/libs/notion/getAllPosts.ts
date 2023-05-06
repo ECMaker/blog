@@ -10,7 +10,6 @@ export const getAllPosts = async (): Promise<Post[]> => {
   const allResults: (PageObjectResponse | PartialPageObjectResponse)[] = [];
   let hasMore = true;
   while (hasMore) {
-    console.log(process.env.NOTION_DATABASE)
     const res = await notion.databases.query({
       database_id: process.env.NOTION_DATABASE,
       filter: {

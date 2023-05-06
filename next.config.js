@@ -2,8 +2,6 @@
 const nextConfig = {
   images: {
     domains: [
-      "notion-blog.kanaru.jp",
-      "kanaru.jp",
       "s3.us-west-2.amazonaws.com",
       "picsum.photos",
     ],
