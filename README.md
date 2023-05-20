@@ -1,4 +1,4 @@
-this line is added for deploy commit.
+this line is added for deploy commit2.
 
 # Blog Application using Notion API, Next.js, TypeScript, and Tailwind CSS
 
