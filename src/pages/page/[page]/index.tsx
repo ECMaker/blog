@@ -45,6 +45,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       posts,
       page: { pageIndex, numPages },
     },
+    revalidate: 1, //[s] added ISR.
   };
 };
 

@@ -62,6 +62,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       nextPost,
       blocks,
     },
+    revalidate: 1, //[s] added ISR.
   };
 };
 
