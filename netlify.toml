@@ -1,3 +1,0 @@
-[build]
-  Command = "CI= yarn generate"
-  publish = "dist/"
