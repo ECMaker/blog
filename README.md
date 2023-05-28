@@ -1,6 +1,9 @@
-## 本物
-https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js
 
+## notion-blog-nextjs (shinさんの解説つき)
+JavaScript x CSS
+https://github.com/samuelkraft/notion-blog-nextjs
+notionを更新するとデプロイ環境でも自動的に反映される。
+**解説** [Youtube: プログラミングチュートリアル shin さん](https://www.youtube.com/watch?v=My9rXHRn8zc)
 ##
 This is a [Next.js](https://nextjs.org/) blog using [Notions Public API](https://developers.notion.com).
 
