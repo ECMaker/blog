@@ -1,75 +1,42 @@
-this line is added for deploy commit4.
+## 本物
+https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js
 
-# Blog Application using Notion API, Next.js, TypeScript, and Tailwind CSS
+##
+This is a [Next.js](https://nextjs.org/) blog using [Notions Public API](https://developers.notion.com).
 
-This is a simple blog application built with Next.js, TypeScript, Notion API, and Tailwind CSS. The application fetches data from a Notion database using the Notion API and displays the data on the frontend. It is designed to be easily customizable and extendable, so you can use it as a starting point for your own blog or website.
+__Demo:__ [https://notion-blog-nextjs-coral.vercel.app](https://notion-blog-nextjs-coral.vercel.app)
 
-## Demo Page
-
-https://notion-blog.kanaru.jp/
+__How-it-works/Documentation:__ [https://samuelkraft.com/blog/building-a-notion-blog-with-public-api](https://samuelkraft.com/blog/building-a-notion-blog-with-public-api)
 
 ## Getting Started
 
-To get started with the project, you will need to follow these steps:
+First, follow Notions [getting started guide](https://developers.notion.com/docs/getting-started) to get a `NOTION_TOKEN` and a `NOTION_DATABASE`, then add them to a file called `.env.local`.
 
-1. Clone the repository:
-
-```
-git clone https://github.com/kanaru-ssk/notion-blog.git
-```
-
-2. Install dependencies:
+As a reference here's the Notion table I am using: https://www.notion.so/5b53abc87b284beab0c169c9fb695b4d?v=e4ed5b1a8f2e4e12b6d1ef68fa66e518
 
 ```
-cd notion-blog
-pnpm install
+NOTION_TOKEN=
+NOTION_DATABASE=
 ```
 
-3. Set up Notion API:
+Install dependencies
 
-   1. Create a new Notion account if you don't have one already.
-   2. Get your Notion API key by following the [official guide](https://developers.notion.com/docs/create-a-notion-integration).
-   3. Create a new database and add the following properties: Title, Slug, Description, Image, Date, and Published.
-      ![screenshot](public/screenshots/database.webp)
-   4. Share the database with your integration.
-      ![screenshot](public/screenshots/integrations.webp)
-
-4. Set environment variables
-
-```
-// .env.local
-NEXT_PUBLIC_DOMAIN="http://localhost:3000"
-NOTION_TOKEN="your-notion-api-key"
-NOTION_DATABASE="your-notion-database-id"
+```bash
+npm install
+# or
+yarn
 ```
 
-5. Start the development server:
+Start the server with
 
-```
-pnpm dev
-```
-
-6. Open the application in your browser:
-
-```
-http://localhost:3000
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-## Features
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The application comes with the following features:
+#### Deploy to vercel
 
-- Display list of blog posts fetched from a Notion database.
-- Single blog post page.
-
-## Customization
-
-You can customize the application to fit your own needs by:
-
-- Updating the styling with Tailwind CSS.
-- Changing the Notion database schema to fit your own content.
-- Adding new pages and components to the application.
-
-## License
-
-This project is licensed under the MIT License. See [the LICENSE file](LICENSE) for more information.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fsamuelkraft%2Fnotion-blog-nextjs&env=NOTION_TOKEN,NOTION_DATABASE&envDescription=Please%20add%20NOTION_TOKEN%20and%20NOTION_DATABASE%20that%20is%20required%20to%20connect%20the%20blog%20to%20your%20notion%20account.&envLink=https%3A%2F%2Fdevelopers.notion.com%2Fdocs%2Fgetting-started&project-name=notion-blog-nextjs&repo-name=notion-blog-nextjs&demo-title=Notion%20Blog%20Next%20JS&demo-description=%20This%20is%20a%20Next.js%20blog%20using%20Notions%20Public%20API.&demo-url=notion-blog-nextjs-coral.vercel.app)
