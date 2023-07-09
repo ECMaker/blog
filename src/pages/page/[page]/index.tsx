@@ -1,9 +1,11 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
+import GoogleTagManager, { GtmId } from '@/components/GoogleTagManager'
 import { Head } from "@/components/Head";
 import { PageNation } from "@/components/PageNation";
 import { PostCards } from "@/components/PostCards";
 import { postsPerPage } from "@/constants/postsPerPage";
 import { getAllPosts } from "@/libs/notion";
+import { gtmId } from "@/libs/utils/gtm";
 import type { Post } from "@/types/notion";
 
 type Props = {
@@ -18,6 +20,7 @@ const Page: NextPage<Props> = ({ posts, page }) => {
   return (
     <>
       <Head />
+      <GoogleTagManager gtmId={gtmId as GtmId} />
       <div className="bg-gray-200">
         <div className="mx-auto max-w-3xl py-20 px-4">
           <PostCards posts={posts} />
