@@ -1,10 +1,8 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import { FooterNav } from "@/components/FooterNav";
-import GoogleTagManager, { GtmId } from '@/components/GoogleTagManager'
 import { Head } from "@/components/Head";
 import { NotionBlock } from "@/components/NotionBlock";
 import { getAllBlocks, getAllPosts } from "@/libs/notion";
-import { gtmId } from "@/libs/utils/gtm";
 import type { ExpandedBlockObjectResponse, Post } from "@/types/notion";
 
 type Props = {
@@ -23,7 +21,6 @@ const PostPage: NextPage<Props> = ({ post, prevPost, nextPost, blocks }) => {
         image={post.image}
         path={post.slug}
       />
-      <GoogleTagManager gtmId={gtmId as GtmId} />
       <div className="bg-gray-200">
         <div className="mx-auto max-w-3xl md:py-20 md:px-4">
           <article className="rounded-md bg-white px-4 py-12 md:px-12">
