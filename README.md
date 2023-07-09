@@ -1,75 +1,62 @@
-this line is added for deploy commit4.
-
-# Blog Application using Notion API, Next.js, TypeScript, and Tailwind CSS
-
-This is a simple blog application built with Next.js, TypeScript, Notion API, and Tailwind CSS. The application fetches data from a Notion database using the Notion API and displays the data on the frontend. It is designed to be easily customizable and extendable, so you can use it as a starting point for your own blog or website.
-
-## Demo Page
-
-https://notion-blog.kanaru.jp/
-
-## Getting Started
-
-To get started with the project, you will need to follow these steps:
-
-1. Clone the repository:
-
-```
-git clone https://github.com/kanaru-ssk/notion-blog.git
-```
-
-2. Install dependencies:
-
-```
-cd notion-blog
-pnpm install
-```
-
-3. Set up Notion API:
-
-   1. Create a new Notion account if you don't have one already.
-   2. Get your Notion API key by following the [official guide](https://developers.notion.com/docs/create-a-notion-integration).
-   3. Create a new database and add the following properties: Title, Slug, Description, Image, Date, and Published.
-      ![screenshot](public/screenshots/database.webp)
-   4. Share the database with your integration.
-      ![screenshot](public/screenshots/integrations.webp)
-
-4. Set environment variables
-
-```
-// .env.local
-NEXT_PUBLIC_DOMAIN="http://localhost:3000"
-NOTION_TOKEN="your-notion-api-key"
-NOTION_DATABASE="your-notion-database-id"
-```
-
-5. Start the development server:
-
-```
-pnpm dev
-```
-
-6. Open the application in your browser:
-
-```
-http://localhost:3000
-```
+# noblog
 
 ## Features
 
-The application comes with the following features:
+- Notion の Database を Blog の記事として表示
+- Table of contents がだいぶいい感じ
+- 記事ごとのいいね・コメント機能（連投防止も）
+- Zenn の記事一覧
+- Admin 画面
+- Google Analytics の追加
 
-- Display list of blog posts fetched from a Notion database.
-- Single blog post page.
+### Todo
 
-## Customization
+- Comments 表示の Loading を表示してみる
+- エラーハンドリング周りの実装
+- `__tests__`の追加
+- ログイン機能（tw,gh,ggl）
+- Routing の Object を作る（titleEnum を作る）
+- meta と json-ld を整理したい
+- OGP 画像をおしゃれにする
+  - https://zenn.dev/hiromu617/articles/c03fef6f4d6c6e
+  - https://www.newt.so/docs/tutorials/vercel-og-image-generation
+- Tweets list の追加
+- 謎解きギミックの追加
+- カルーセル作ってみる
+- Index のコンテンツを Notion にしてみる
+- NavMenu の上部だけを紺にしたい
+- SSR やりたい
+- 便利なメソッドを Utils UI としてを実装し, 謎解きのギミックに使う
+- トグル Block の対応
+- Oura Ring API の追加
 
-You can customize the application to fit your own needs by:
+## Used
 
-- Updating the styling with Tailwind CSS.
-- Changing the Notion database schema to fit your own content.
-- Adding new pages and components to the application.
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Mantine](https://mantine.dev/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Husky](https://typicode.github.io/husky/#/)
+- [Storybook](https://storybook.js.org/)
+- [Notion](https://www.notion.so/)
+- [Notion API](https://developers.notion.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Vercel](https://vercel.com/)
+- [@vercel/og](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation)
+- [Recoil](https://recoiljs.org/)
+- [SWR](https://swr.vercel.app/)
+- [axios](https://axios-http.com/)
+- [tiptap](https://tiptap.dev/)
+- [next-seo](https://github.com/garmeeh/next-seo)
+- [Algolia](https://www.algolia.com/)
+- [github-contributions-api](https://github.com/kawarimidoll/deno-github-contributions-api)
 
-## License
+## ESlint
 
-This project is licensed under the MIT License. See [the LICENSE file](LICENSE) for more information.
+### plugins
+
+```sh
+yarn add -D prettier eslint-config-prettier eslint-plugin-import eslint-plugin-unused-imports @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```
