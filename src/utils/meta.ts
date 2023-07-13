@@ -24,7 +24,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     name: 'カテゴリなし',
     color: 'default',
   };
-  const date = properties.Date.date?.start || '日付なし';
+  //const date = properties.Date.date?.start || '日付なし';
   const updatedAt = last_edited_time.substring(0, 10);
   const tags = properties.Tags.multi_select;
   const likes = properties.Likes.number || 0;
@@ -34,7 +34,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     icon: icon?.emoji || '📄',
     title,
     category,
-    date,
+//    date,
     updatedAt,
     tags,
     likes,
