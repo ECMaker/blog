@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
   }
 
   const { results } = await getDatabaseContents({
-    database_id: process.env.NOTION_BLOG_DATABASE || '',
+    database_id: process.env.NOTION_DATABASE || '',
     page_size: 5,
     filter: {
       property: "Published",
