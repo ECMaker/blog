@@ -12,7 +12,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
   if (properties.Title.type !== 'title') throw new Error('Title is not title');
   if (properties.Category.type !== 'select')
     throw new Error('Category is not select');
-  if (properties.Date.type !== 'date') throw new Error('Date is not date');
+  //if (properties.Date.type !== 'date') throw new Error('Date is not date');
   if (properties.Tags.type !== 'multi_select')
     throw new Error('Tags is not multi_select');
   if (properties.Likes.type !== 'number')
