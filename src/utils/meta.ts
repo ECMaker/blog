@@ -12,7 +12,6 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
   if (properties.Title.type !== 'title') throw new Error('Title is not title');
   if (properties.Category.type !== 'select')
     throw new Error('Category is not select');
-  if (properties.Date.type !== 'date') throw new Error('Date is not date');
   if (properties.Tags.type !== 'multi_select')
     throw new Error('Tags is not multi_select');
   if (properties.Likes.type !== 'number')
@@ -24,7 +23,6 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     name: 'カテゴリなし',
     color: 'default',
   };
-  const date = properties.Date.date?.start || '日付なし';
   const updatedAt = last_edited_time.substring(0, 10);
   const tags = properties.Tags.multi_select;
   const likes = properties.Likes.number || 0;
@@ -34,7 +32,6 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     icon: icon?.emoji || '📄',
     title,
     category,
-    date,
     updatedAt,
     tags,
     likes,
