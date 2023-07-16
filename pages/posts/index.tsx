@@ -26,28 +26,18 @@ export const getStaticProps = async () => {
   const postsArray = (await getDatabaseContentsAll({
     database_id: blogDatabaseId,
     page_size: 12,
+    filter: {
+      property: "Published",
+      checkbox: {
+        equals: true,
+      },
+    },
     sorts: [
       {
-        property: 'Date',
-        direction: 'descending',
+        property: "UpdatedAt",
+        direction: "descending",
       },
-    ],
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          select: {
-            equals: 'PUBLISH',
-          },
-        },
-        {
-          property: 'Date',
-          date: {
-            is_not_empty: true,
-          },
-        },
-      ],
-    },
+    ]
   })) as NotionPageObjectResponse[][];
 
   return {
