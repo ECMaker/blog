@@ -1,8 +1,8 @@
 {
-  "name": "noblog",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
+    "name": "noblog",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -14,7 +14,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "dependencies": {
+    "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
     "@hookform/resolvers": "^2.9.10",
@@ -30,11 +30,11 @@
     "@rive-app/react-canvas": "^3.0.35",
     "@supabase/supabase-js": "^2.5.0",
     "@tabler/icons": "1.119.0",
-    "@tiptap/extension-link": "^2.0.0-beta.209",
-    "@tiptap/extension-placeholder": "^2.0.0-beta.209",
-    "@tiptap/extension-underline": "^2.0.0-beta.209",
-    "@tiptap/react": "^2.0.0-beta.209",
-    "@tiptap/starter-kit": "^2.0.0-beta.209",
+    "@tiptap/extension-link":        "^2.0.4",
+    "@tiptap/extension-placeholder": "^2.0.4",
+    "@tiptap/extension-underline":   "^2.0.4",
+    "@tiptap/react":                 "^2.0.4",
+    "@tiptap/starter-kit":           "^2.0.4",
     "@vercel/og": "^0.0.27",
     "algoliasearch": "^4.14.3",
     "axios": "^1.2.6",
@@ -61,7 +61,7 @@
     "typescript": "4.9.4",
     "zod": "^3.20.2"
   },
-  "devDependencies": {
+    "devDependencies": {
     "@storybook/addon-essentials": "^7.0.0-beta.15",
     "@storybook/addon-interactions": "^7.0.0-beta.15",
     "@storybook/addon-links": "^7.0.0-beta.15",
