@@ -1,6 +1,8 @@
 import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { NotionPostMeta, NotionBlockObjectResponse } from '~/types/notion';
 
+import { richTextToString } from "./richTextToString";
+
 /**
  * NotionのPageObjectResponseをPostMetaに変換
  */
@@ -27,7 +29,11 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
   const updatedAt = last_edited_time.substring(0, 10);
   const tags = properties.Tags.multi_select;
   const likes = properties.Likes.number || 0;
-
+  const slug =  properties.Slug?.type === "rich_text" &&
+                properties.Slug.rich_text.length !== 0
+                 ? richTextToString(properties.Slug.rich_text)
+                 : "0";
+  
   return {
     id,
     icon: icon?.emoji || '📄',
@@ -37,6 +43,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     updatedAt,
     tags,
     likes,
+    slug,
   };
 };
 
