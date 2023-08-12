@@ -23,6 +23,7 @@ export const PostMeta: FC<Props> = ({ meta, commentCount }) => {
         <div className="space-y-1">
           <div>公開: {meta.createdAt}</div>
           <div>更新: {meta.updatedAt}</div>
+          <div>Slug for debug: {meta.slug}</div>
         </div>
         <div className="space-y-1 text-right">
           <div>いいね: {likes.count} 件</div>

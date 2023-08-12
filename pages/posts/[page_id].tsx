@@ -52,7 +52,7 @@ export const getStaticProps = async (context: { params: Params }) => {
     props: {
       post,
     },
-    revalidate: 60 * 60 * 3, // 3時間
+    revalidate: 1, //[s] added ISR.
   };
 };
 
@@ -67,7 +67,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     };
   }
 
-  const postsArray = await getDatabaseContentsAll({
+  const postsArray = await getDatabaseContentsAll({ //atabaseの中身をすべて取得
     database_id: blogDatabaseId,
     filter: {
       property: "Published",
@@ -82,10 +82,12 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
       },
     ],
   });
-  const posts = postsArray.flat() as NotionPageObjectResponse[];
+  const posts = postsArray.flat() as NotionPageObjectResponse[]; // 入れ子の配列を一次元配列に平坦化
   const paths = posts.map(({ id }) => ({ params: { page_id: id } }));
+  // eslint-disable-next-line no-console
+  console.log('count: ',posts);
 
-  return {
+  return { // slugのリストをリターンしたい。
     paths,
     fallback: 'blocking', // HTMLを生成しない
   };

@@ -45,7 +45,7 @@ export const getStaticProps = async () => {
       postsArray,
       properties,
     },
-    revalidate: 60 * 60 * 24, // 1日
+    revalidate:  1, //[s] added ISR.
   };
 };
 
