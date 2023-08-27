@@ -13,6 +13,7 @@ import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
 import dummy_notion_post from '~/mocks/notion_post.json';
 import { getChildrenAllInBlock } from '~/server/notion/blocks';
 import { getDatabaseContentsAll } from '~/server/notion/databases';
+import { getAllPosts } from '~/server/notion/getAllPosts';
 import { blogDatabaseId } from '~/server/notion/ids';
 import { getPage } from '~/server/notion/pages';
 import { saveToAlgolia } from '~/server/utils/algolia';
@@ -67,7 +68,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     };
   }
 
-  const postsArray = await getDatabaseContentsAll({ //atabaseの中身をすべて取得
+  const postsArray = await getDatabaseContentsAll({ //databaseの中身をすべて取得
     database_id: blogDatabaseId,
     filter: {
       property: "Published",
@@ -85,10 +86,15 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const posts = postsArray.flat() as NotionPageObjectResponse[]; // 入れ子の配列を一次元配列に平坦化
   const paths = posts.map(({ id }) => ({ params: { page_id: id } }));
   // eslint-disable-next-line no-console
-  console.log('count: ',posts);
+  console.log('paths !U: ',paths);
 
-  return { // slugのリストをリターンしたい。
-    paths,
+  const posts2 = await getAllPosts();
+  const slugs = posts2.map(({ slug }) => ({ params: {page_id: slug}})); // slug プロパティの配列を取得  
+  // eslint-disable-next-line no-console
+  console.log('slugs !U: ',slugs);
+
+  return {
+    paths, // slugのリストに変えたい。
     fallback: 'blocking', // HTMLを生成しない
   };
 };
