@@ -20,8 +20,10 @@ import { PostDetailTemplate } from '~/templates/PostDetailTemplate';
 import { toMetaDescription, toPostMeta } from '~/utils/meta';
 
 type Params = {
+  slug: string;
   page_id: string;
 };
+
 export const getStaticProps = async (context: { params: Params }) => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
@@ -31,7 +33,11 @@ export const getStaticProps = async (context: { params: Params }) => {
     };
   }
 
-  const page_id = context.params?.page_id as string;
+  const allPosts = await getAllPosts();
+  const targetPost = allPosts.find((v) => v.slug === context.params.page_id);
+  if (!targetPost) return { notFound: true };
+  const page_id = targetPost.id;
+
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
   const children = (await getChildrenAllInBlock(
     page_id
@@ -55,7 +61,11 @@ export const getStaticProps = async (context: { params: Params }) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
+type Params2 = {
+  page_id: string;
+};
+
+export const getStaticPaths: GetStaticPaths<Params2> = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     const posts = dummy_notion_pages_array.flat() as NotionPageObjectResponse[];
     const paths = posts.map(({ id }) => ({ params: { page_id: id } }));
@@ -66,7 +76,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     };
   }
   const posts = await getAllPosts();
-  const paths = posts.map(({ slug }) => ({ params: {page_id: slug}}));
+  const paths = posts.map(({ slug }) => ({ params: {page_id: slug}})); // !U page_idではなく slug にするべき。
 
   return {
     paths,
