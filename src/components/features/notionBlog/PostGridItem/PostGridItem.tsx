@@ -13,11 +13,12 @@ type Props = {
 export const PostGridItem: FC<Props> = ({ post }) => {
   const router = useRouter();
   const meta = useMemo(() => toPostMeta(post), [post]);
+  const expandPost = {...toPostMeta(post)};
 
   return (
     <div
       className="h-64 w-64 cursor-pointer rounded bg-orange-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-80"
-      onClick={() => router.push(`/posts/${post.id}`)}
+      onClick={() => router.push(`/posts/${expandPost.slug}`)}
     >
       <div className="space-y-3">
         <div className="flex justify-between">

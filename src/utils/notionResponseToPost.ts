@@ -1,13 +1,16 @@
-import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { NotionPostMeta, NotionBlockObjectResponse } from '~/types/notion';
+import type {PartialPageObjectResponse,PageObjectResponse} from '@notionhq/client/build/src/api-endpoints';
+import type { NotionPostMeta} from '~/types/notion';
 
 import { richTextToString } from "./richTextToString";
 
 /**
  * NotionのPageObjectResponseをPostMetaに変換
  */
-export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
-  const { id, icon, properties, created_time, last_edited_time } = page;
+export const notionResponseToPost = (page: PageObjectResponse | PartialPageObjectResponse): NotionPostMeta | null=> {
+  
+    if (!("properties" in page)) return null;
+  
+    const { id, icon, properties, created_time, last_edited_time } = page;
 
   if (icon !== null && icon.type !== 'emoji')
     throw new Error('Icon is not emoji');
@@ -47,33 +50,4 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
   };
 };
 
-/**
- * NotionのPageのchildrenをMeta description用のテキストに変換
- */
 
-export const toMetaDescription = (
-  children: NotionBlockObjectResponse[]
-): string => {
-  let allText = '';
-  let i = 0;
-  do {
-    const child = children[i];
-    const type = child.type;
-    if (type === 'code' || type === 'unsupported') {
-      i++;
-      continue;
-    }
-    // @ts-expect-error ignore
-    const rich_text = child[type]?.rich_text;
-    if (rich_text && rich_text.length > 0) {
-      const plainText = rich_text
-        .map((text: { plain_text: string }) => text.plain_text)
-        .join('');
-
-      allText = allText + plainText;
-    }
-    i++;
-  } while (i < children.length && allText.length < 70);
-
-  return `${allText}...`;
-};

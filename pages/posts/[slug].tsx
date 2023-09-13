@@ -12,8 +12,7 @@ import { useComments } from '~/hooks/apiHooks/useComments';
 import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
 import dummy_notion_post from '~/mocks/notion_post.json';
 import { getChildrenAllInBlock } from '~/server/notion/blocks';
-import { getDatabaseContentsAll } from '~/server/notion/databases';
-import { blogDatabaseId } from '~/server/notion/ids';
+import { getAllPosts } from '~/server/notion/getAllPosts';
 import { getPage } from '~/server/notion/pages';
 import { saveToAlgolia } from '~/server/utils/algolia';
 import { setOgp } from '~/server/utils/ogp';
@@ -21,7 +20,7 @@ import { PostDetailTemplate } from '~/templates/PostDetailTemplate';
 import { toMetaDescription, toPostMeta } from '~/utils/meta';
 
 type Params = {
-  page_id: string;
+  slug: string;
 };
 export const getStaticProps = async (context: { params: Params }) => {
   if (process.env.ENVIRONMENT === 'local') {
@@ -32,7 +31,11 @@ export const getStaticProps = async (context: { params: Params }) => {
     };
   }
 
-  const page_id = context.params?.page_id as string;
+  const allPosts = await getAllPosts();
+  const targetPost = allPosts.find((v) => v.slug === context.params.slug);
+  if (!targetPost) return { notFound: true };
+  const page_id = targetPost.id;
+
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
   const children = (await getChildrenAllInBlock(
     page_id
@@ -52,38 +55,23 @@ export const getStaticProps = async (context: { params: Params }) => {
     props: {
       post,
     },
-    revalidate: 60 * 60 * 3, // 3時間
+    revalidate: 1, //[s] added ISR.
   };
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (process.env.ENVIRONMENT === 'local') {
+    //本番環境はslugに変更したが、local環境はidのまま変更していない。
     const posts = dummy_notion_pages_array.flat() as NotionPageObjectResponse[];
-    const paths = posts.map(({ id }) => ({ params: { page_id: id } }));
+    const paths = posts.map(({ id }) => ({ params: { slug: id } }));
 
     return {
       paths,
       fallback: 'blocking', // HTMLを生成しない
     };
   }
-
-  const postsArray = await getDatabaseContentsAll({
-    database_id: blogDatabaseId,
-    filter: {
-      property: "Published",
-      checkbox: {
-        equals: true,
-      },
-    },
-    sorts: [
-      {
-        property: "UpdatedAt",
-        direction: "descending",
-      },
-    ],
-  });
-  const posts = postsArray.flat() as NotionPageObjectResponse[];
-  const paths = posts.map(({ id }) => ({ params: { page_id: id } }));
+  const posts = await getAllPosts();
+  const paths = posts.map(({ slug }) => ({ params: {slug: slug}}));
 
   return {
     paths,
@@ -94,14 +82,14 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => {
-  const { data: comments, trigger } = useComments(post.id);
+  const { data: comments, trigger } = useComments(post.slug); // !U slug? .id #36
 
   const handleCommentSubmit = async (
     rich_text: NotionRichTextItemRequest[]
   ) => {
     await trigger({
       parent: {
-        page_id: post.id,
+        page_id: post.slug,
       },
       rich_text,
     });
@@ -116,11 +104,11 @@ const Post: NextPage<Props> = ({ post }) => {
       />
 
       {/* meta seo */}
-      <NextSeo
+      <NextSeo //!U #31
         title={`${post.title} | noblog`}
         description={post.description}
         openGraph={{
-          url: `https://www.nbr41.com/posts/${post.id}`,
+          url: `https://www.nbr41.com/posts/${post.slug}`,
           title: `${post.title} | noblog`,
           description: post.description,
           images: [
@@ -134,9 +122,9 @@ const Post: NextPage<Props> = ({ post }) => {
           ],
         }}
       />
-      <ArticleJsonLd
+      <ArticleJsonLd //!U #31
         type="BlogPosting"
-        url={`https://www.nbr41.com/posts/${post.id}`}
+        url={`https://www.nbr41.com/posts/${post.slug}`}
         title={`${post.title} | noblog`}
         images={[
           `https://www.nbr41.com/api/notion-blog/og?title=${post.title}`,
