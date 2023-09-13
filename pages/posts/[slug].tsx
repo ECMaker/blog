@@ -20,9 +20,8 @@ import { PostDetailTemplate } from '~/templates/PostDetailTemplate';
 import { toMetaDescription, toPostMeta } from '~/utils/meta';
 
 type Params = {
-  page_id: string;
+  slug: string;
 };
-
 export const getStaticProps = async (context: { params: Params }) => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
@@ -33,9 +32,9 @@ export const getStaticProps = async (context: { params: Params }) => {
   }
 
   const allPosts = await getAllPosts();
-  const targetPost = allPosts.find((v) => v.slug === context.params.page_id);
-  if (!targetPost) return { notFound: true };
-  const page_id = targetPost.id;
+  const targetId = allPosts.find((v) => v.slug === context.params.slug);
+  if (!targetId) return { notFound: true };
+  const page_id = targetId.id;
 
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
   const children = (await getChildrenAllInBlock(
@@ -60,18 +59,19 @@ export const getStaticProps = async (context: { params: Params }) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   if (process.env.ENVIRONMENT === 'local') {
+    //本番環境はslugに変更したが、local環境はidのまま変更していない。
     const posts = dummy_notion_pages_array.flat() as NotionPageObjectResponse[];
     const paths = posts.map(({ id }) => ({ params: { page_id: id } }));
 
     return {
-      paths,//本番環境はslugに変更したが、local環境はidのまま変更していない。
+      paths,
       fallback: 'blocking', // HTMLを生成しない
     };
   }
   const posts = await getAllPosts();
-  const paths = posts.map(({ slug }) => ({ params: {page_id: slug}})); // !U page_idではなく slug にするべき。
+  const paths = posts.map(({ slug }) => ({ params: {slug: slug}}));
 
   return {
     paths,
@@ -82,14 +82,14 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => {
-  const { data: comments, trigger } = useComments(post.id);
+  const { data: comments, trigger } = useComments(post.slug); // !U slug? .id #36
 
   const handleCommentSubmit = async (
     rich_text: NotionRichTextItemRequest[]
   ) => {
     await trigger({
       parent: {
-        page_id: post.id,
+        page_id: post.slug,
       },
       rich_text,
     });
@@ -104,11 +104,11 @@ const Post: NextPage<Props> = ({ post }) => {
       />
 
       {/* meta seo */}
-      <NextSeo
+      <NextSeo //!U #31
         title={`${post.title} | noblog`}
         description={post.description}
         openGraph={{
-          url: `https://www.nbr41.com/posts/${post.id}`,
+          url: `https://www.nbr41.com/posts/${post.slug}`,
           title: `${post.title} | noblog`,
           description: post.description,
           images: [
@@ -122,9 +122,9 @@ const Post: NextPage<Props> = ({ post }) => {
           ],
         }}
       />
-      <ArticleJsonLd
+      <ArticleJsonLd //!U #31
         type="BlogPosting"
-        url={`https://www.nbr41.com/posts/${post.id}`}
+        url={`https://www.nbr41.com/posts/${post.slug}`}
         title={`${post.title} | noblog`}
         images={[
           `https://www.nbr41.com/api/notion-blog/og?title=${post.title}`,
