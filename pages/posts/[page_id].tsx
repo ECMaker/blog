@@ -20,7 +20,6 @@ import { PostDetailTemplate } from '~/templates/PostDetailTemplate';
 import { toMetaDescription, toPostMeta } from '~/utils/meta';
 
 type Params = {
-  slug: string;
   page_id: string;
 };
 
@@ -61,11 +60,7 @@ export const getStaticProps = async (context: { params: Params }) => {
   };
 };
 
-type Params2 = {
-  page_id: string;
-};
-
-export const getStaticPaths: GetStaticPaths<Params2> = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     const posts = dummy_notion_pages_array.flat() as NotionPageObjectResponse[];
     const paths = posts.map(({ id }) => ({ params: { page_id: id } }));

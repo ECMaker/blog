@@ -13,11 +13,12 @@ type Props = {
 export const PostListItem: FC<Props> = ({ post }) => {
   const router = useRouter();
   const meta = useMemo(() => toPostMeta(post), [post]);
-
+  const expandPost = {...toPostMeta(post)};
+ 
   return (
     <div
       className="flex h-24 cursor-pointer items-center gap-5 rounded bg-orange-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:relative"
-      onClick={() => router.push(`/posts/${post.id}`)}
+      onClick={() => router.push(`/posts/${expandPost.slug}`)}
     >
       <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-white shadow sp:absolute sp:-top-2 sp:-left-2 sp:h-9 sp:w-9">
         <div className="pb-1 text-3xl sp:text-base">{meta.icon}</div>
