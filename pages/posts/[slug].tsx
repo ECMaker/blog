@@ -32,9 +32,9 @@ export const getStaticProps = async (context: { params: Params }) => {
   }
 
   const allPosts = await getAllPosts();
-  const targetId = allPosts.find((v) => v.slug === context.params.slug);
-  if (!targetId) return { notFound: true };
-  const page_id = targetId.id;
+  const targetPost = allPosts.find((v) => v.slug === context.params.slug);
+  if (!targetPost) return { notFound: true };
+  const page_id = targetPost.id;
 
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
   const children = (await getChildrenAllInBlock(
