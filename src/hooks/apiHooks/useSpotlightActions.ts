@@ -23,7 +23,7 @@ export const useSpotlightActions = (query: string) => {
           description: hit.category + ', ' + hit.tags.join(', '),
           onTrigger: () =>
             router.push({
-              pathname: '/posts/[page_id]',
+              pathname: '/posts/[slug]',
               query: { page_id: hit.objectID },
             }),
         }));

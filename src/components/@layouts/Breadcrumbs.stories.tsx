@@ -20,9 +20,9 @@ export const Default: StoryObj<typeof Component> = {
 };
 export const UseTitleEnum: StoryObj<typeof Component> = {
   args: {
-    currentPath: '/posts/[page_id]',
+    currentPath: '/posts/[slug]',
     titleEnum: {
-      '[page_id]': '記事タイトル',
+      '[slug]': '記事タイトル',
     },
   },
 };

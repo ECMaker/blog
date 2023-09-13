@@ -59,11 +59,11 @@ export const getStaticProps = async (context: { params: Params }) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     //本番環境はslugに変更したが、local環境はidのまま変更していない。
     const posts = dummy_notion_pages_array.flat() as NotionPageObjectResponse[];
-    const paths = posts.map(({ id }) => ({ params: { page_id: id } }));
+    const paths = posts.map(({ id }) => ({ params: { slug: id } }));
 
     return {
       paths,
