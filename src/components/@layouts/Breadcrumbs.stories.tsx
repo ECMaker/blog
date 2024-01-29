@@ -13,11 +13,6 @@ export default {
   },
 } as Meta<typeof Component>;
 
-export const Default: StoryObj<typeof Component> = {
-  args: {
-    currentPath: '/posts/zenn',
-  },
-};
 export const UseTitleEnum: StoryObj<typeof Component> = {
   args: {
     currentPath: '/posts/[slug]',

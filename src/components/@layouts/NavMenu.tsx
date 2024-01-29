@@ -9,7 +9,6 @@ import {
   HomeIcon,
   ProfileIcon,
   TwitterIcon,
-  ZennIcon,
   YouTubeIcon,
   QrCodeIcon,
   MailIcon,
@@ -84,11 +83,6 @@ export const NavMenu: FC = () => {
               icon={<GitHubOctocatIcon size={18} />}
               href="https://github.com/nbr41to"
               label="GitHub"
-            />
-            <NavMenuExternalLink
-              icon={<ZennIcon size={18} />}
-              href="https://zenn.dev/nbr41to"
-              label="Zenn"
             />
             <NavMenuExternalLink
               icon={<YouTubeIcon size={18} />}

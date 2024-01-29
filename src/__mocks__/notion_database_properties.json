@@ -179,11 +179,6 @@
           "color": "yellow"
         },
         {
-          "id": "dd1b981c-3b23-4bfa-aaff-d50feb143511",
-          "name": "Zenn",
-          "color": "blue"
-        },
-        {
           "id": "e25f84c4-46d5-418d-9ab1-8358e6b54a86",
           "name": "Slack",
           "color": "green"
@@ -562,12 +557,6 @@
     "name": "Created",
     "type": "created_time",
     "created_time": {}
-  },
-  "Zenn": {
-    "id": "vt%3E%5C",
-    "name": "Zenn",
-    "type": "checkbox",
-    "checkbox": {}
   },
   "Likes": {
     "id": "whoR",
