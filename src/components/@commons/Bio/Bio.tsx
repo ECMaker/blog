@@ -44,13 +44,14 @@ export const Bio: FC = () => {
       </div>
 
       <div className="mt-3 text-sm leading-relaxed">
-        電機・自動車メーカ系 エンジニア
+        電機/自動車メーカ系 エンジニア
         <br />
         → フロントエンド エンジニア
         <br />
-        - Flutter / スマホアプリ 作成中。
+        - Flutter / スマホアプリ 開発中。
         <br />
-        - Next.js / TypeScript / TailwindCSS / Notion を学習中。
+        - Next.js / TypeScript /
+         <br /> <span className="ml-2">TailwindCSS を学習中。</span>
       </div>
     </div>
   );
