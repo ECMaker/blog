@@ -25,10 +25,10 @@ export default async function handler(req: NextRequest) {
             {title}
           </div>
         ) : (
-          <div tw="text-[140px]">noblog</div>
+          <div tw="text-[140px]">EC maker</div>
         )}
         {title ? (
-          <div tw="absolute bottom-2 right-6 text-[72px]">noblog</div>
+          <div tw="absolute bottom-2 right-6 text-[72px]">EC maker</div>
         ) : (
           <div tw="h-2 w-60 rounded-full bg-slate-800" />
         )}

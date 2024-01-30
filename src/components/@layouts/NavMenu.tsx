@@ -10,7 +10,6 @@ import {
   ProfileIcon,
   TwitterIcon,
   YouTubeIcon,
-  QrCodeIcon,
   MailIcon,
   BookIcon,
   CowIcon,
@@ -76,26 +75,26 @@ export const NavMenu: FC = () => {
             {/* External */}
             <NavMenuExternalLink
               icon={<TwitterIcon size={18} />}
-              href="https://twitter.com/Knob_nbr41to"
+              href="https://twitter.com/u_ecmaker"
               label="Twitter"
             />
             <NavMenuExternalLink
               icon={<GitHubOctocatIcon size={18} />}
-              href="https://github.com/nbr41to"
+              href="https://github.com/orgs/ECMaker/people"
               label="GitHub"
             />
             <NavMenuExternalLink
               icon={<YouTubeIcon size={18} />}
-              href="https://www.youtube.com/channel/UCPcjWvYIfvqGPP4x30kEkMA"
+              href="https://www.youtube.com/channel/hoge"
               label="YouTube"
             />
 
             <div className="pt-8" />
 
             <NavMenuLink
-              rightIcon={<QrCodeIcon size={18} />}
-              href="/qrcode.png"
-              label="QR Code"
+              //rightIcon={<QrCodeIcon size={18} />}
+              href="/900^2_black.gif"
+              label="logo"
             />
           </div>
         )}
