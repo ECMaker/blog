@@ -26,11 +26,10 @@ import { Layout } from '~/layouts/Layout';
 import { googleTagManagerId } from '~/types/gtm';
 
 const meta = {
-  title: 'noblog',
-  description:
-    'Notion API と Next.js / Tailwind CSS で本格ブログを作ってみました。',
-  url: 'https://www.nbr41.com/',
-  image: 'https://www.nbr41.com/noblog.png',
+  title: 'EC maker',
+  description: 'Notion API と Next.js / Tailwind CSS による本格ブログ',
+  url: 'https://blog.ecmaker00.com/',
+  image: 'https://blog.ecmaker00.com/ECmaker.png',
 };
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -98,8 +97,8 @@ export default function App({ Component, pageProps }: AppProps) {
           ],
         }}
         twitter={{
-          handle: '@Knob_nbr41to',
-          site: '@Knob_nbr41to',
+          handle: '@u_ecmaker',
+          site: '@u_ecmaker',
           cardType: 'summary_large_image',
         }}
       />

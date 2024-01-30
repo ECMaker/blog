@@ -9,7 +9,7 @@ export const ContactBySns: FC = () => {
     <div className="flex justify-center gap-8">
       <a
         className="relative"
-        href="https://lin.ee/iTzRHQR"
+        //href="https://nolink"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -52,7 +52,7 @@ export const ContactBySns: FC = () => {
       {/* Twitter */}
       <a
         className="relative"
-        href="https://twitter.com/Knob_nbr41to"
+        href="https://twitter.com/u_ecmaker"
         target="_blank"
         rel="noopener noreferrer"
       >

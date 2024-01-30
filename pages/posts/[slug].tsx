@@ -106,16 +106,16 @@ const Post: NextPage<Props> = ({ post }) => {
       />
 
       {/* meta seo */}
-      <NextSeo //!U #31
-        title={`${post.title} | noblog`}
+      <NextSeo
+        title={`${post.title} | EC maker`}
         description={post.description}
         openGraph={{
-          url: `https://www.nbr41.com/posts/${post.slug}`,
-          title: `${post.title} | noblog`,
+          url: `https://blog.ecmaker00.com/posts/${post.slug}`,
+          title: `${post.title} | EC maker`,
           description: post.description,
           images: [
             {
-              url: `https://www.nbr41.com/api/notion-blog/og?title=${post.title}`,
+              url: `https://blog.ecmaker00.com/api/notion-blog/og?title=${post.title}`,
               width: 1200,
               height: 630,
               alt: 'Site Image',
@@ -124,19 +124,19 @@ const Post: NextPage<Props> = ({ post }) => {
           ],
         }}
       />
-      <ArticleJsonLd //!U #31
+      <ArticleJsonLd
         type="BlogPosting"
-        url={`https://www.nbr41.com/posts/${post.slug}`}
-        title={`${post.title} | noblog`}
+        url={`https://blog.ecmaker00.com/posts/${post.slug}`}
+        title={`${post.title} | EC maker`}
         images={[
-          `https://www.nbr41.com/api/notion-blog/og?title=${post.title}`,
+          `https://blog.ecmaker00.com/api/notion-blog/og?title=${post.title}`,
         ]}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={post.updatedAt}
         authorName={[
           {
-            name: 'Nobuyuki Kobayashi',
-            url: 'https://www.nbr41.com',
+            name: 'EC maker',
+            url: 'https://blog.ecmaker00.com',
           },
         ]}
         description={post?.description || ''}

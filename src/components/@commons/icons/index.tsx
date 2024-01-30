@@ -40,11 +40,7 @@ import {
   MdTouchApp as TouchIcon,
 } from 'react-icons/md';
 import { RxUpdate as UpdateIcon } from 'react-icons/rx';
-import {
-  SiLine as LineIcon,
-  SiMaildotru as AtIcon,
-  SiZenn as ZennIcon,
-} from 'react-icons/si';
+import { SiLine as LineIcon, SiMaildotru as AtIcon } from 'react-icons/si';
 import {
   TbExternalLink as TbExternalLinkIcon,
   TbLogout as LogoutIcon,
@@ -87,5 +83,4 @@ export {
   UnCheckedBoxIcon,
   UpdateIcon,
   YouTubeIcon,
-  ZennIcon,
 };

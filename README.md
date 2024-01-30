@@ -5,7 +5,6 @@
 - Notion の Database を Blog の記事として表示
 - Table of contents がだいぶいい感じ
 - 記事ごとのいいね・コメント機能（連投防止も）
-- Zenn の記事一覧
 - Admin 画面
 - Google Analytics の追加
 

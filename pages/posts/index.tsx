@@ -59,16 +59,16 @@ const PostIndex: NextPage<Props> = ({ postsArray, properties }) => {
       <PostsTemplate postsArray={postsArray} properties={properties} />
       {/* meta seo */}
       <NextSeo
-        title="Blog | noblog"
+        title="Blog | EC maker"
         openGraph={{
-          url: 'https://www.nbr41.com/posts/',
+          url: 'https://blog.ecmaker00.com/posts/',
         }}
       />
       <ArticleJsonLd
         type="BlogPosting"
-        title="Blog | noblog"
-        url="https://www.nbr41.com/posts/"
-        images={['https://www.nbr41.com/noblog.png']}
+        title="Blog | EC maker"
+        url="https://blog.ecmaker00.com/posts/"
+        images={['https://blog.ecmaker00.com/ECmaker.png']}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={postsArray[0][0].last_edited_time}
         authorName="Nobuyuki Kobayashi"

@@ -35,7 +35,6 @@ import {
   UnCheckedBoxIcon,
   UpdateIcon,
   YouTubeIcon,
-  ZennIcon,
 } from '.';
 
 export default {
@@ -89,7 +88,6 @@ export const Default: StoryObj<{ size: number }> = {
       <UnCheckedBoxIcon size={args.size} />
       <UpdateIcon size={args.size} />
       <YouTubeIcon size={args.size} />
-      <ZennIcon size={args.size} />
     </div>
   ),
   args: {

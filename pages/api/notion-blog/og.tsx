@@ -21,10 +21,10 @@ export default async function handler(req: NextRequest) {
               {title}
             </div>
           ) : (
-            <div tw="text-[140px]">のぶろぐ</div>
+            <div tw="text-[140px]">EC maker</div>
           )}
           {title ? (
-            <div tw="absolute bottom-2 right-6 text-[72px]">のぶろぐ</div>
+            <div tw="absolute bottom-2 right-6 text-[72px]">EC maker</div>
           ) : (
             <div tw="h-2 w-60 rounded-full bg-slate-800" />
           )}
@@ -38,7 +38,7 @@ export default async function handler(req: NextRequest) {
     );
   } catch (error) {
     const imageData = await fetch(
-      new URL('../../../public/noblog_og.png', import.meta.url),
+      new URL('/public/ECmaker.png', import.meta.url),
     );
     const buffer = await imageData.arrayBuffer();
 
