@@ -46,7 +46,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           )}
           onClick={() => router.push('/')}
         >
-          <h1 className="font-baloo text-[42px] leading-none">noblog</h1>
+          <h1 className="font-baloo text-[42px] leading-none">EC maker</h1>
         </div>
       </header>
       <main className="relative z-10 mb-40 min-h-[calc(100vh-102px)] w-full bg-orange-100">
@@ -62,25 +62,25 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
       </main>
       <footer className="fixed bottom-0 left-0 flex h-40 w-full flex-col justify-between bg-slate-800 px-8 text-white">
         <div className="mt-6">
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <Image
-              src="/logo_circle.png"
+              src="/400^2inside600^2_tomei.gif"
               alt="site logo"
-              width={32}
-              height={32}
+              width={80}
+              height={80}
               sizes="265px"
               priority
             />
             <Link href="/" className="font-baloo text-3xl text-white">
-              noblog
+              EC maker
             </Link>
           </div>
-          <div className="mt-2 text-xs">
+          {/*<div className="mt-2 text-xs">
             Notion API と Next.js / Tailwind CSS で本格ブログを作ってみました。
-          </div>
+          </div>*/}
         </div>
         <div className="py-2 text-center text-xs font-bold text-slate-200">
-          Made with Notion by nobuyuki @2023
+          Made with Notion by EC maker @2024
         </div>
       </footer>
     </div>

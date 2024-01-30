@@ -8,7 +8,6 @@ import type {
 
 import { Pagination } from '@mantine/core';
 import { usePagination } from '@mantine/hooks';
-import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
 import { PageTitle } from '~/commons/PageTitle';
@@ -110,9 +109,6 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
         />
       </div>
 
-      <div className="text-center underline">
-        <Link href="/posts/zenn-list">Zennの記事一覧はこちら</Link>
-      </div>
     </div>
   );
 };

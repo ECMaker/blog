@@ -11,13 +11,11 @@ import { getFileNames } from '~/server/utils/getFileNames';
 
 export const getStaticProps = async () => {
   const paths = getFileNames('./pages/sandbox', ['index']);
-  const appPaths = getFileNames('./app/sandbox', ['layout']);
 
   return {
     props: {
       paths: {
         pages: paths,
-        app: appPaths,
       },
     },
   };
@@ -55,10 +53,6 @@ const SandboxIndex: NextPage<Props> = ({ paths }) => {
           searchable
           data={[
             ...paths.pages.map((path) => ({ value: path, label: path })),
-            ...paths.app.map((path) => ({
-              value: path,
-              label: path + ' (app)',
-            })),
           ]}
           onChange={onChange}
         />
@@ -78,20 +72,6 @@ const SandboxIndex: NextPage<Props> = ({ paths }) => {
           </div>
         </div>
 
-        <div>
-          <h3 className="font-baloo text-2xl">app -</h3>
-          <div className="w-main mx-auto mt-8 space-y-2">
-            {paths.app.map((path) => (
-              <Link
-                key={path}
-                href={`/sandbox/${path}`}
-                className="block w-fit rounded-full py-2 px-4 font-baloo text-xl text-slate-800 transition-transform duration-300 hover:scale-105 hover:bg-orange-200"
-              >
-                {path}
-              </Link>
-            ))}
-          </div>
-        </div>
       </div>
     </>
   );
