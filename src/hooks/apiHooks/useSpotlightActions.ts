@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { searchAlgolia } from '~/utils/algolia';
 
 /**
- * Algoliaの検索結果を取得し、Spotlightのactionsに変換して返す
+ * Algoliaの検索結果を取得し、Spotlightのactionsに変換して返す。
  */
 export const useSpotlightActions = (query: string) => {
   const router = useRouter();
