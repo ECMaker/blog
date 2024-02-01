@@ -24,7 +24,7 @@ export const useSpotlightActions = (query: string) => {
           onTrigger: () =>
             router.push({
               pathname: '/posts/[slug]',
-              query: { page_id: hit.objectID },
+              query: { slug: hit.objectID }, // !U 検索が機能しない。
             }),
         }));
 
