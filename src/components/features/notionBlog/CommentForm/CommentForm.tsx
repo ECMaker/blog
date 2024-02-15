@@ -79,7 +79,7 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
       {!session ? (
         <div className="sp:px-4">
           <Button fullWidth onClick={toLoginPage}>
-            ログインしてコメントをする
+            ⚙準備中⚙ (ログインしてコメントをする) {/* !U #36 */}
           </Button>
         </div>
       ) : (
