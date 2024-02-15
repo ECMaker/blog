@@ -17,7 +17,7 @@ export const PostGridItem: FC<Props> = ({ post }) => {
 
   return (
     <div
-      className="h-64 w-64 cursor-pointer rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-80"
+      className="h-64 w-64 cursor-pointer rounded bg-orange-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-80"
       onClick={() => router.push(`/posts/${expandPost.slug}`)}
     >
       <div className="space-y-3">

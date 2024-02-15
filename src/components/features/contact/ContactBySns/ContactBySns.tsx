@@ -119,7 +119,7 @@ export const ContactBySns: FC = () => {
         {/* label cover */}
         <div
           className={clsx(
-            'relative h-20 w-20 cursor-pointer rounded-full bg-gray-500 text-white',
+            'relative h-20 w-20 cursor-pointer rounded-full bg-orange-500 text-white',
             'flex items-center justify-center',
             'origin-[40px_6px] transition-transform duration-300 hover:rotate-12 active:rotate-[120deg]'
           )}

@@ -8,7 +8,7 @@ type Props = {
 };
 
 const codeAnnotationClasses =
-  'bg-gray-50 rounded px-2 py-1 mx-0.5 font-mono text-red-500';
+  'bg-orange-50 rounded px-2 py-1 mx-0.5 font-mono text-red-500';
 
 /* Notion の Block Object内のrich_textの配列をいい感じに変換する */
 export const RichText: FC<Props> = ({ text }) => {

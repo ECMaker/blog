@@ -92,7 +92,7 @@ export const TableOfContents: FC<Props> = ({ blocks, isAll = false }) => {
                   : 'before:top-[7px] before:-left-[19px] before:h-[6px] before:w-[6px] before:border-[1px]',
                 activeIndex < index
                   ? 'before:bg-orange-200'
-                  : 'before:border-orange-100 before:bg-gray-500'
+                  : 'before:border-orange-100 before:bg-orange-500'
               )}
             >
               {item.title}
