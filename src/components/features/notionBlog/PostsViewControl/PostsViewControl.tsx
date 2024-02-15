@@ -30,7 +30,7 @@ export const PostsViewControl: FC<Props> = ({
   return (
     <div className="space-y-3">
       <SegmentedControl
-        className="bg-orange-50"
+        className="bg-gray-50"
         value={value.type}
         onChange={(v: ViewType) => onChange((prev) => ({ ...prev, type: v }))}
         data={[
