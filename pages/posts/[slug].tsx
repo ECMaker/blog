@@ -82,7 +82,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => {
-  const { data: comments, trigger } = useComments(post.slug); // !U slug? .id #36
+  const { data: comments, trigger } = useComments(post.id);
 
   const handleCommentSubmit = async (
     rich_text: NotionRichTextItemRequest[]
@@ -108,12 +108,12 @@ const Post: NextPage<Props> = ({ post }) => {
         title={`${post.title} | EC maker`}
         description={post.description}
         openGraph={{
-          url: `https://blog.ecmaker00.com/posts/${post.slug}`,
+          url: `https://blog.ec-maker.com/posts/${post.slug}`,
           title: `${post.title} | EC maker`,
           description: post.description,
           images: [
             {
-              url: `https://blog.ecmaker00.com/api/notion-blog/og?title=${post.title}`,
+              url: `https://blog.ec-maker.com/api/notion-blog/og?title=${post.title}`,
               width: 1200,
               height: 630,
               alt: 'Site Image',
@@ -124,10 +124,10 @@ const Post: NextPage<Props> = ({ post }) => {
       />
       <ArticleJsonLd
         type="BlogPosting"
-        url={`https://blog.ecmaker00.com/posts/${post.slug}`}
+        url={`https://blog.ec-maker.com/posts/${post.slug}`}
         title={`${post.title} | EC maker`}
         images={[
-          `https://blog.ecmaker00.com/api/notion-blog/og?title=${post.title}`,
+          `https://blog.ec-maker.com/api/notion-blog/og?title=${post.title}`,
         ]}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={post.updatedAt}
