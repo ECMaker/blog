@@ -46,7 +46,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           )}
           onClick={() => router.push('/')}
         >
-          <h1 className="font-baloo text-[42px] leading-none">EC maker</h1>
+          <h1 className="font-CutiveMono text-[42px] leading-none">EC maker</h1>
         </div>
       </header>
       <main className="relative z-10 mb-40 min-h-[calc(100vh-102px)] w-full bg-gray-200">
@@ -71,7 +71,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
               sizes="265px"
               priority
             />
-            <Link href="/" className="font-baloo text-3xl text-white">
+            <Link href="/" className="font-CutiveMono text-3xl text-white">
               EC maker
             </Link>
           </div>

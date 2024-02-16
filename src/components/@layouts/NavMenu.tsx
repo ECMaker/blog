@@ -30,7 +30,7 @@ export const NavMenu: FC = () => {
         )}
       >
         <CowIcon size={36} />
-        <div className=" font-bold sp:text-sm">MENU</div>
+        <div className="font-CutiveMono font-bold sp:text-sm">MENU</div>
       </div>
 
       <Transition

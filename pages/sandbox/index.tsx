@@ -58,13 +58,13 @@ const SandboxIndex: NextPage<Props> = ({ paths }) => {
         />
 
         <div>
-          <h3 className="font-baloo text-2xl">pages -</h3>
+          <h3 className="font-CutiveMono text-2xl">pages -</h3>
           <div className="w-main mx-auto mt-8 space-y-2">
             {paths.pages.map((path) => (
               <Link
                 key={path}
                 href={`/sandbox/${path}`}
-                className="block w-fit rounded-full py-2 px-4 font-baloo text-xl text-slate-800 transition-transform duration-300 hover:scale-105 hover:bg-gray-300"
+                className="block w-fit rounded-full py-2 px-4 font-CutiveMono text-xl text-slate-800 transition-transform duration-300 hover:scale-105 hover:bg-gray-300"
               >
                 {path}
               </Link>

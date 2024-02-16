@@ -10,8 +10,8 @@ export const Bio: FC = () => {
     <div className="rounded bg-white p-6">
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-xs">Create by</div>
-          <div className="text-lg font-bold leading-tight">EC maker</div>
+          <div className="text-xs">Created by</div>
+          <div className="text-lg font-Cutive font-bold leading-tight">EC maker</div>
           <div className="mt-2 space-x-2 text-slate-800">
             <a
               className="text-slate-800"

@@ -24,10 +24,17 @@
 }
 @font-face {
   /* 英語の見出しなどに使用 */
-  font-family: 'Baloo';
+  font-family: 'baloo';
   font-weight: 400;
   src: url(./Baloo-Regular.ttf);
   /* https://fonts.google.com/specimen/Baloo+2 */
+}
+@font-face {
+  /* タイトル・ロゴ見出しなどに使用 */
+  font-family: 'CutiveMono';
+  font-weight: 400;
+  src: url(./CutiveMono-Regular.ttf);
+  /* https://fontmeme.com/jfont/cutive-mono-font/ */
 }
 @font-face {
   /* 等幅 Codeに使用 */
