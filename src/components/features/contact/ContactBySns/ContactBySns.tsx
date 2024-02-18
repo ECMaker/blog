@@ -49,7 +49,7 @@ export const ContactBySns: FC = () => {
         <div className="absolute top-1 right-1/2 h-1.5 w-1.5 translate-x-1/2 rounded-full bg-slate-300 shadow-sm" />
       </a>
 
-      {/* Twitter !U Xに変更する*/}
+      {/* X (twitter) */}
       <a
         className="relative"
         href="https://twitter.com/u_ecmaker"

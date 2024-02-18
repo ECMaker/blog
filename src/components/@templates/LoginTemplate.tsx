@@ -52,7 +52,7 @@ export const LoginTemplate: FC = () => {
                 signIn('google', { callbackUrl: 'http://localhost:3000/login' })
               }
             >
-              Twitter
+              X (twitter)
             </Button>
             <Button
               leftIcon={<GitHubIcon size={18} />}

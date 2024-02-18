@@ -80,7 +80,7 @@ export const NavMenu: FC = () => {
             <NavMenuExternalLink
               icon={<TwitterIcon size={18} />}
               href="https://twitter.com/u_ecmaker"
-              label="Twitter"
+              label="X (twitter)"
             />
             <NavMenuExternalLink
               icon={<GitHubOctocatIcon size={18} />}

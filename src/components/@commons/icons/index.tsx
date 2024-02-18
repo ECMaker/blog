@@ -10,7 +10,7 @@ import {
   BsGrid as GridIcon,
   BsHeartFill as HeartIcon,
   BsListUl as ListIcon,
-  BsTwitter as TwitterIcon,
+  BsTwitterX as TwitterIcon,
   BsYoutube as YouTubeIcon,
   BsChatText as ChatTextIcon,
   BsMenuButtonWideFill as MenuIcon,
