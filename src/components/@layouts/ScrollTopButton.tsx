@@ -13,7 +13,7 @@ export const ScrollTopButton: FC = () => {
       {(transitionStyles) => (
         <Button
           className="shadow"
-          color="orange"
+          color="dark"
           leftIcon={<ArrowCircleUpIcon size={24} />}
           style={transitionStyles}
           onClick={() => scrollTo({ y: 0 })}
