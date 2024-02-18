@@ -8,6 +8,7 @@ import {
   CheckedBoxIcon,
   ColorGoogleIcon,
   CowIcon,
+  MenuIcon,
   DangerIcon,
   DummyIcon,
   ExperimentIcon,
@@ -61,6 +62,7 @@ export const Default: StoryObj<{ size: number }> = {
       <CheckedBoxIcon size={args.size} />
       <ColorGoogleIcon size={args.size} />
       <CowIcon size={args.size} />
+      <MenuIcon size={args.size} />
       <DangerIcon size={args.size} />
       <DummyIcon size={args.size} />
       <ExperimentIcon size={args.size} />

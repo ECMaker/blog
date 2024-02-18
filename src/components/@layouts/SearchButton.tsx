@@ -12,13 +12,13 @@ export const SearchButton: FC = () => {
 
   return (
     <button
-      className="flex cursor-pointer items-center gap-2 rounded-full border-none bg-slate-800 px-4 py-1.5 font-CutiveMono font-bold text-base text-white shadow hover:brightness-125"
+      className="flex cursor-pointer items-center gap-2 rounded-md border-none bg-gray-700 px-2 py-1.5 font-CutiveMono font-bold text-base text-white shadow hover:brightness-125"
       onClick={() => spotlight.openSpotlight()}
     >
       <SearchIcon size={18} />
       Search
       <Kbd
-        className="border-slate-400 bg-slate-800 py-0.5 text-xs text-white"
+        className="border-gray-400 bg-gray-700 py-0.5 text-xs text-white"
         color="dark"
       >
         {os === 'windows' ? 'Ctrl' : '⌘'} + K

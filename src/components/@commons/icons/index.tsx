@@ -13,6 +13,7 @@ import {
   BsTwitter as TwitterIcon,
   BsYoutube as YouTubeIcon,
   BsChatText as ChatTextIcon,
+  BsMenuButtonWideFill as MenuIcon,
 } from 'react-icons/bs';
 import { CgDanger as DangerIcon } from 'react-icons/cg';
 import {
@@ -59,6 +60,7 @@ export {
   CheckedBoxIcon,
   ColorGoogleIcon,
   CowIcon,
+  MenuIcon,
   DangerIcon,
   DummyIcon,
   ExperimentIcon,
