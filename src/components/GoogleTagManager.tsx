@@ -1,5 +1,6 @@
+import type { FC } from 'react'
+
 import Script from 'next/script'
-import { FC } from 'react'
 
 export type GtmId = `GTM-${string}`
 
