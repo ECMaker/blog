@@ -1,0 +1,134 @@
+allPosts:  [
+  {
+    id: '07f6ad7a-70df-4733-9beb-e706c5f4bc98',
+    icon: '📄',
+    title: '引っ越しのときにやるべきこと',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-08-22',
+    updatedAt: '2023-08-22',
+    tags: [ [Object] ],
+    likes: 0,
+    slug: 'relocation'
+  },
+  {
+    id: '5e66c39a-d4c5-4b1d-a59b-380bd446532b',
+    icon: '📄',
+    title: 'Win Homeでリモートデスクトップアクセスする=RDP',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-07-12',
+    updatedAt: '2023-08-06',
+    tags: [ [Object] ],
+    likes: 0,
+    slug: 'RDP_remote-desktop'
+  },
+  {
+    id: '97b36352-dea4-44f7-b9b4-5558687fbe6b',
+    icon: '📄',
+    title: 'notion-blogをはじめる',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-05-05',
+    updatedAt: '2023-07-19',
+    tags: [ [Object], [Object] ],
+    likes: 0,
+    slug: 'notion-blog_getting-started'
+  },
+  {
+    id: 'cee30700-bbca-40ea-b07c-3eee7c9eeb56',
+    icon: '📄',
+    title: 'next.js TipTap/pm プラグインのバグ',
+    category: { id: 't>bO', name: 'program', color: 'blue' },
+    createdAt: '2023-07-19',
+    updatedAt: '2023-07-19',
+    tags: [ [Object] ],
+    likes: 0,
+    slug: 'next.js_TipTap_plugin'
+  },
+  {
+    id: 'a6c4a38b-6238-40f6-a578-afc64a2fbc17',
+    icon: '📄',
+    title: 'next.js 脆弱性の問題の解決: npm audit fix が効かない',
+    category: { id: 't>bO', name: 'program', color: 'blue' },
+    createdAt: '2023-07-17',
+    updatedAt: '2023-07-19',
+    tags: [ [Object] ],
+    likes: 0,
+    slug: 'nodejs_npm-audit-fix'
+  },
+  {
+    id: 'd11e9abe-d26e-483f-ab9a-4e07fd8441f3',
+    icon: '📄',
+    title: 'Notionの更新でNetlifyに自動デプロイする方法',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-06-22',
+    updatedAt: '2023-07-19',
+    tags: [ [Object] ],
+    likes: 0,
+    slug: 'notion-blog_netlify-deploy-methods'
+  },
+  {
+    id: '4abde7eb-5a31-433b-b887-0ef912bbe55d',
+    icon: '📄',
+    title: 'notion-blogにGoogle Analyticsを導入してpv数を表示する',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-06-24',
+    updatedAt: '2023-07-11',
+    tags: [ [Object] ],
+    likes: 0,
+    slug: 'notion-blog_google-analytics'
+  },
+  {
+    id: '18940220-ab82-4b4a-b8f1-6e1c0eff5d75',
+    icon: '📄',
+    title: '二次元プロフ画像作成 アイコン作成',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-04-02',
+    updatedAt: '2023-06-22',
+    tags: [ [Object], [Object] ],
+    likes: 0,
+    slug: 'icon'
+  },
+  {
+    id: 'f49b9baf-b668-41b2-b99c-adb8db49c18c',
+    icon: '📄',
+    title: 'ロゴ作成',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-04-02',
+    updatedAt: '2023-06-22',
+    tags: [ [Object], [Object], [Object], [Object] ],
+    likes: 0,
+    slug: 'logo'
+  },
+  {
+    id: '4f131a8a-e0f3-4fae-9479-f19f11b4abc3',
+    icon: '📄',
+    title: 'githubでスケジュール管理',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-05-24',
+    updatedAt: '2023-06-22',
+    tags: [ [Object] ],
+    likes: 0,
+    slug: 'schedule-git'
+  },
+  {
+    id: 'c963ed27-6276-4b57-92cb-53352c0d6e24',
+    icon: '📄',
+    title: 'GitHub Actionsでプルリクマージしたら自動ブランチ作成',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-04-09',
+    updatedAt: '2023-05-20',
+    tags: [ [Object] ],
+    likes: 0,
+    slug: 'github-pr-auto-branch'
+  },
+  {
+    id: 'b785b3ac-b553-452a-ba79-899a784d5db4',
+    icon: '📄',
+    title: 'OpenAI API',
+    category: { id: '', name: 'カテゴリなし', color: 'default' },
+    createdAt: '2023-04-08',
+    updatedAt: '2023-05-20',
+    tags: [ [Object] ],
+    likes: 0,
+    slug: 'openAI-API'
+  }
+]
