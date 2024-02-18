@@ -12,12 +12,16 @@ import {
   YouTubeIcon,
   MailIcon,
   BookIcon,
-  CowIcon,
+  MenuIcon,
 } from '~/commons/icons';
+
 
 import { NavMenuExternalLink } from './NavMenuExternalLink';
 import { NavMenuLink } from './NavMenuLink';
 
+
+export const EcmakerIcon =  '/icon.svg';
+ 
 export const NavMenu: FC = () => {
   const { hovered, ref } = useHover();
 
@@ -29,8 +33,8 @@ export const NavMenu: FC = () => {
           hovered && 'text-white'
         )}
       >
-        <CowIcon size={36} />
-        <div className=" font-bold sp:text-sm">MENU</div>
+        <MenuIcon size={36} />
+        <div className="font-CutiveMono font-bold sp:text-sm">MENU</div>
       </div>
 
       <Transition
@@ -76,7 +80,7 @@ export const NavMenu: FC = () => {
             <NavMenuExternalLink
               icon={<TwitterIcon size={18} />}
               href="https://twitter.com/u_ecmaker"
-              label="Twitter"
+              label="X (twitter)"
             />
             <NavMenuExternalLink
               icon={<GitHubOctocatIcon size={18} />}
@@ -90,9 +94,14 @@ export const NavMenu: FC = () => {
             />
 
             <div className="pt-8" />
-
             <NavMenuLink
-              //rightIcon={<QrCodeIcon size={18} />}
+              /* !U 自作したlogoを読み込む
+                <link rel="icon" href="/favicon.ico" />
+                https://zenn.dev/toono_f/articles/6c8ef6e4e771b9
+                import type { IconType } from 'react-icons/lib/cjs/iconBase';
+                export const EcmakerIcon: IconType =  '/icon.svg';
+                rightIcon={<EcmakerIcon size={18} />}
+              */
               href="/900^2_black.gif"
               label="logo"
             />

@@ -10,7 +10,7 @@ type Props = {
 export const Comments: FC<Props> = ({ comments }) => {
   return (
     <div>
-      <h3 className="text-center font-baloo">- Comments -</h3>
+      <h3 className="text-center font-CutiveMono">- Comments -</h3>
       <div className="mt-3 space-y-2 rounded bg-white p-6">
         {comments.map((comment) => (
           <div key={comment.id} className="">
