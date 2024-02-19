@@ -134,7 +134,7 @@ const Post: NextPage<Props> = ({ post }) => {
         authorName={[
           {
             name: 'EC maker',
-            url: 'https://blog.ecmaker00.com',
+            url: 'https://blog.ec-maker.com',
           },
         ]}
         description={post?.description || ''}
