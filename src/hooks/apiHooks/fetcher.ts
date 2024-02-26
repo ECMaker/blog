@@ -29,8 +29,6 @@ axios.interceptors.request.use(
 
 export const getFetcher = async (url: string) => {
   const response = await axios.get(url);
-  // eslint-disable-next-line no-console
-  console.debug(`!U getFetcher URL: ${url}` );
 
   return response.data;
 };
@@ -44,8 +42,6 @@ type PostFetcher = <T, U = any>(
 
 export const postFetcher: PostFetcher = async (url, { arg }) => {
   const response = await axios.post(url, arg);
-  // eslint-disable-next-line no-console
-  console.debug(`!U axios.post url: ${url}` );
 
   return response.data;
 };

@@ -53,8 +53,6 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
     });
   };
 
-  // ここにconsole.debugしても無意味。
-  // コメント送信時は[slug]のhandleCommentSubmitにいく。
   const handleSubmit = async () => {
     if (disabled) return;
     if (session?.user?.name && session?.user?.email) {
@@ -85,7 +83,7 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
             onClick={toLoginPage}
             color = 'dark'
           >
-            ⚙準備中⚙ (ログインしてコメントをする) {/* !U #36 */}
+            ログインしてコメントをする
           </Button>
         </div>
       ) : (
