@@ -53,6 +53,8 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
     });
   };
 
+  // ここにconsole.debugしても無意味。
+  // コメント送信時は[slug]のhandleCommentSubmitにいく。
   const handleSubmit = async () => {
     if (disabled) return;
     if (session?.user?.name && session?.user?.email) {
@@ -123,7 +125,7 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
               transition="pop-top-right"
               transitionDuration={300}
               withArrow
-              color="orange"
+              color="dark"
               label={
                 <div className="space-y-3 p-2 text-center text-sm">
                   <Kbd>{os === 'windows' ? 'Ctrl' : '⌘'} + Enter</Kbd>

@@ -13,6 +13,8 @@ import { getFetcher, postFetcher } from './fetcher';
 const url = '/api/notion-blog/comments';
 
 export const useComments = (page_id: string) => {
+  // eslint-disable-next-line no-console
+  console.debug(`!U useComments page_id URL: ${url}?page_id=${page_id}` );
   const { data, isLoading, error, mutate } = useSWR<NotionListCommentsResponse>(
     `${url}?page_id=${page_id}`,
     page_id && page_id !== '[page_id]' ? getFetcher : null

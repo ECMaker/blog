@@ -8,6 +8,8 @@ const url = '/api/notion-blog/likes';
 const initialData = { count: 0 };
 
 export const useLikes = (page_id: string) => {
+  // eslint-disable-next-line no-console
+  // console.debug(`!U useLikes page_id: ${url}/${page_id}` );
   const { data, isLoading, error, mutate } = useSWR<{ count: number }>(
     page_id ? `${url}/${page_id}` : null,
     getFetcher

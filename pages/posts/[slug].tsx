@@ -87,9 +87,11 @@ const Post: NextPage<Props> = ({ post }) => {
   const handleCommentSubmit = async (
     rich_text: NotionRichTextItemRequest[]
   ) => {
+      // eslint-disable-next-line no-console
+      console.debug('!U 足跡 handleSubmit');
     await trigger({
       parent: {
-        page_id: post.slug,
+        page_id: post.id,
       },
       rich_text,
     });
