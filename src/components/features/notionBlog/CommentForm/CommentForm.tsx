@@ -83,7 +83,7 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
             onClick={toLoginPage}
             color = 'dark'
           >
-            ⚙準備中⚙ (ログインしてコメントをする) {/* !U #36 */}
+            ログインしてコメントをする
           </Button>
         </div>
       ) : (
@@ -123,7 +123,7 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
               transition="pop-top-right"
               transitionDuration={300}
               withArrow
-              color="orange"
+              color="dark"
               label={
                 <div className="space-y-3 p-2 text-center text-sm">
                   <Kbd>{os === 'windows' ? 'Ctrl' : '⌘'} + Enter</Kbd>

@@ -89,7 +89,7 @@ const Post: NextPage<Props> = ({ post }) => {
   ) => {
     await trigger({
       parent: {
-        page_id: post.slug,
+        page_id: post.id,
       },
       rich_text,
     });

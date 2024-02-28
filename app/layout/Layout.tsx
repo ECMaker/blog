@@ -29,7 +29,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
     }
   }, [pageProps]);
 
-  // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx を変更する !U
+  // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx も変更する !U
 
   return (
     <div className="bg-gray-200">
