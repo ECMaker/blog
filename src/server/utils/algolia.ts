@@ -32,6 +32,6 @@ export const saveToAlgolia = async (post: NotionPost) => {
     await index.saveObjects([records]);
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error(error);
+    console.error(post.slug, error);
   }
 };
