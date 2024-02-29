@@ -35,7 +35,7 @@ export const getStaticProps = async () => {
     props: {
       posts: results as NotionPageObjectResponse[],
     },
-    revalidate: 1, //[s] added ISR.
+    revalidate: 60, //[s] added ISR.
   };
 };
 
