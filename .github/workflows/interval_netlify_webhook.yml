@@ -1,5 +1,5 @@
 # GitHub Actions 上での名前
-name: IntervalNetlifyWebHook_09
+name: IntervalNetlifyWebHook
 
 # 起動条件
 on:
