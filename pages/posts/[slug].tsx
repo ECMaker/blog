@@ -55,7 +55,7 @@ export const getStaticProps = async (context: { params: Params }) => {
     props: {
       post,
     },
-    revalidate: 60, //[s] added ISR.
+    revalidate: 1, //[s] added ISR.
   };
 };
 

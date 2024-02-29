@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: [
       's3.us-west-2.amazonaws.com',
+      "prod-files-secure.s3.us-west-2.amazonaws.com",
       'res.cloudinary.com',
       'github-contributions-api.deno.dev',
     ],
