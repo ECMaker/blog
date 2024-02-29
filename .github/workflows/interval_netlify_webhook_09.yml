@@ -5,7 +5,10 @@ name: IntervalNetlifyWebHook_09
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # UTCのため0:0で9:0 日本時間午前9時に毎日実行
+    # https://crontab.guru/#*/59_*_*_*_*
+    # https://takusan.negitoro.dev/posts/github_actions/
+    # https://enu23456.hatenablog.com/entry/2022/11/17/201001
+    - cron: '*/59 * * * *' # 59分毎に実行
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
