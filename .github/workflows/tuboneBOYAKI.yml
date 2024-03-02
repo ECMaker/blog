@@ -21,8 +21,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build --if-present
+      - name: npm install and build
         env:
           NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
           NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
@@ -38,11 +37,12 @@ jobs:
           GOOGLE_CLIENT_ID                       : ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
           NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
-      - name: Publish
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy --dir=public
-          env:
+        run: |
+          npm install
+          npm run build
+      - name: Deploy to netlify
+        run: npx netlify-cli deploy --dir=./public > cli.txt
+        env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       - name: Cat cli.txt
