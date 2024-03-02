@@ -1,42 +1,60 @@
-name: DeployToNetlifyPRD
+# GitHub Actions 上での名前
+name: BuildActionToNetlify_forPR
+
+# 起動条件
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+  pull_request:
+    branches: [main-previous]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-      - name: Cache node_modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}
       - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
-      - name: npm install and build
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build --if-present
         env:
-          GATSBY_GITHUB_CLIENT_SECRET: ${{secrets.GATSBY_GITHUB_CLIENT_SECRET}}
-          GATSBY_GITHUB_CLIENT_ID: ${{secrets.GATSBY_GITHUB_CLIENT_ID}}
-          GATSBY_ALGOLIA_SEARCH_API_KEY: ${{secrets.GATSBY_ALGOLIA_SEARCH_API_KEY}}
-          GATSBY_ALGOLIA_INDEX_NAME: ${{secrets.GATSBY_ALGOLIA_INDEX_NAME}}
-          GATSBY_ALGOLIA_APP_ID: ${{secrets.GATSBY_ALGOLIA_APP_ID}}
-          GATSBY_ALGOLIA_ADMIN_API_KEY: ${{secrets.GATSBY_ALGOLIA_ADMIN_API_KEY}}
-          FAUNADB_SERVER_SECRET: ${{secrets.FAUNADB_SERVER_SECRET}}
-        run: |
-          npm install
-          npm run build
+          NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL                           : ${{ secrets.NEXTAUTH_URL }}
+          NOTION_TOKEN                           : ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE                        : ${{ secrets.NOTION_DATABASE }}
+          NOTION_PROFILE_PAGE_ID                 : ${{ secrets.NOTION_PROFILE_PAGE_ID }}
+          NEXT_PUBLIC_ALGOLIA_APPLICATION_ID     : ${{ secrets.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
+          NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY: ${{ secrets.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY }}
+          ALGOLIA_APPLICATION_ID                 : ${{ secrets.ALGOLIA_APPLICATION_ID }}
+          ALGOLIA_ADMIN_API_KEY                  : ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+          NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID      : ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+          GOOGLE_CLIENT_ID                       : ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+      - name: Publish
+        uses: netlify/actions/cli@master
       - name: Deploy to netlify
-        run: npx netlify-cli deploy --prod --dir=./public
+        run: npx netlify-cli deploy --dir=./public > cli.txt
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: Cat cli.txt
+        run: |
+          cat cli.txt
+          sed -i -z 's/\n/\\n/g' cli.txt
+      - name: Post Netlify CLI Comment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.comments_url }}
+        run: |
+          curl -X POST \
+               -H "Authorization: token ${GITHUB_TOKEN}" \
+               -d "{\"body\": \"$(cat cli.txt)\"}" \
+               ${URL}
