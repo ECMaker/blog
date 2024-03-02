@@ -1,0 +1,38 @@
+# GitHub Actions 上での名前
+name: BuildActionToNetlify
+
+# 起動条件
+on:
+  workflow_dispatch:
+  schedule:
+    # https://crontab.guru/#*/59_*_*_*_*
+    # https://takusan.negitoro.dev/posts/github_actions/
+    # https://enu23456.hatenablog.com/entry/2022/11/17/201001
+    - cron: '*/59 * * * *' # 59分毎に実行
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: 13.x
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      - name: Publish
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=public --prod
+          env:
+            NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+            NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
