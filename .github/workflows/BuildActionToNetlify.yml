@@ -30,6 +30,21 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build --if-present
+        env:
+          NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL                           : ${{ secrets.NEXTAUTH_URL }}
+          NOTION_TOKEN                           : ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE                        : ${{ secrets.NOTION_DATABASE }}
+          NOTION_PROFILE_PAGE_ID                 : ${{ secrets.NOTION_PROFILE_PAGE_ID }}
+          NEXT_PUBLIC_ALGOLIA_APPLICATION_ID     : ${{ secrets.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
+          NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY: ${{ secrets.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY }}
+          ALGOLIA_APPLICATION_ID                 : ${{ secrets.ALGOLIA_APPLICATION_ID }}
+          ALGOLIA_ADMIN_API_KEY                  : ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+          NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID      : ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+          GOOGLE_CLIENT_ID                       : ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
       - run: npm test
       - name: Publish
         uses: netlify/actions/cli@master
