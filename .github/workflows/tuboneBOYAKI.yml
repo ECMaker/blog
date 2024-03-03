@@ -41,7 +41,7 @@ jobs:
           npm ci
           npm run build
       - name: Deploy to netlify
-        run: netlify-cli deploy --build > cli.txt
+        run: netlify deploy --build > cli.txt
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
