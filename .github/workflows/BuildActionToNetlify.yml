@@ -9,10 +9,14 @@ on:
     # https://takusan.negitoro.dev/posts/github_actions/
     # https://enu23456.hatenablog.com/entry/2022/11/17/201001
     - cron: '*/59 * * * *' # 59分毎に実行
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Setup Node
         uses: actions/setup-node@v4
