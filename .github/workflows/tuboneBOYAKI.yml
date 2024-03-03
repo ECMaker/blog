@@ -1,15 +1,29 @@
 # GitHub Actions 上での名前
-name: BuildActionToNetlify_forPR
+name: BuildActionToNetlify
 
 # 起動条件
 on:
   workflow_dispatch:
-  pull_request:
+  schedule:
+    # https://crontab.guru/#*/59_*_*_*_*
+    # https://takusan.negitoro.dev/posts/github_actions/
+    # https://enu23456.hatenablog.com/entry/2022/11/17/201001
+    - cron: '*/59 * * * *' # 59分毎に実行
+  #push:           # 本番環境へデプロイのときはこっち。
+  pull_request:    # プレビューのときはこっち。
     branches: [main-previous]
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+  deployments: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
     steps:
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -58,3 +72,4 @@ jobs:
                -H "Authorization: token ${GITHUB_TOKEN}" \
                -d "{\"body\": \"$(cat cli.txt)\"}" \
                ${URL}
+          
