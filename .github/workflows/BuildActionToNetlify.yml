@@ -34,7 +34,7 @@ jobs:
           node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - run: npm ci
-      - run: npm build:prd
+      - run: npm run build
         env:
           NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
           NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
