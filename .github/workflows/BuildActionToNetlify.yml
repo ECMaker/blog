@@ -10,26 +10,31 @@ on:
     # https://enu23456.hatenablog.com/entry/2022/11/17/201001
     - cron: '*/59 * * * *' # 59分毎に実行
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+  deployments: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-
+    timeout-minutes: 10
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run build --if-present
+      - run: npm build:prd
         env:
           NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
           NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
@@ -45,11 +50,24 @@ jobs:
           GOOGLE_CLIENT_ID                       : ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
           NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
-      - name: Publish
-        uses: netlify/actions/cli@master
+      - name: Set GitHub Deployment Environment
+        id: github_deployment_environment
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            echo "GITHUB_DEPLOYMENT_ENVIRONMENT=Netlify prd" >> "${GITHUB_OUTPUT}"
+          else
+            echo "GITHUB_DEPLOYMENT_ENVIRONMENT=Netlify Preview" >> "${GITHUB_OUTPUT}"
+          fi
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
         with:
-          args: deploy --dir=public --prod
-          env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          publish-dir: './dist'
+          production-branch: main
+          github-deployment-environment: ${{ steps.github_deployment_environment.outputs.GITHUB_DEPLOYMENT_ENVIRONMENT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: ${{ github.event.head_commit.message || github.event.pull_request.title }}
+          alias: deploy-preview-${{ github.event.number }}
+          fails-without-credentials: true
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
