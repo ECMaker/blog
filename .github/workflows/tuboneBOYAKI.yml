@@ -64,12 +64,12 @@ jobs:
           cat cli.txt
           sed -i -z 's/\n/\\n/g' cli.txt
       - name: Post Netlify CLI Comment
+        run: |
+         curl -X POST \
+              -H "Authorization: token ${GITHUB_TOKEN}" \
+              -d "{\"body\": \"$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\"}" \
+              ${URL}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.comments_url }}
-        run: |
-          curl -X POST \
-               -H "Authorization: token ${GITHUB_TOKEN}" \
-               -d "{\"body\": \"$(cat cli.txt)\"}" \
-               ${URL}
           
