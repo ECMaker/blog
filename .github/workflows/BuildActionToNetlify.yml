@@ -1,5 +1,5 @@
 # GitHub Actions 上での名前
-name: IntervalNetlifyWebHook
+name: BuildActionToNetlify_forPR
 
 # 起動条件
 on:
@@ -10,18 +10,54 @@ on:
     # https://enu23456.hatenablog.com/entry/2022/11/17/201001
     - cron: '*/59 * * * *' # 59分毎に実行
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # こっから書いていく
     steps:
-      
-    # NetlifyのWebHook
-      - name: Netlify WebHook
-        uses: wei/curl@v1.1.1
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          args: -X POST -d {} ${{ secrets.WEBHOOK_URL }}
+          node-version: "18"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and build
+        env:
+          NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL                           : ${{ secrets.NEXTAUTH_URL }}
+          NOTION_TOKEN                           : ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE                        : ${{ secrets.NOTION_DATABASE }}
+          NOTION_PROFILE_PAGE_ID                 : ${{ secrets.NOTION_PROFILE_PAGE_ID }}
+          NEXT_PUBLIC_ALGOLIA_APPLICATION_ID     : ${{ secrets.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
+          NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY: ${{ secrets.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY }}
+          ALGOLIA_APPLICATION_ID                 : ${{ secrets.ALGOLIA_APPLICATION_ID }}
+          ALGOLIA_ADMIN_API_KEY                  : ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+          NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID      : ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+          GOOGLE_CLIENT_ID                       : ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy to netlify
+        run: netlify deploy --build --prod > cli.txt
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: Cat cli.txt
+        run: |
+          cat cli.txt
+          sed -i -z 's/\n/\\n/g' cli.txt
+      - name: Post Netlify CLI Comment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.comments_url }}
+        run: |
+          curl -X POST \
+               -H "Authorization: token ${GITHUB_TOKEN}" \
+               -d "{\"body\": \"$(cat cli.txt)\"}" \
+               ${URL}
