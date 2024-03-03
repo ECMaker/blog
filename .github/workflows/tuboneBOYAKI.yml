@@ -38,10 +38,10 @@ jobs:
           GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
           NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
         run: |
-          npm install
+          npm ci
           npm run build
-      - name: Deploy to netlify
-        run: npx netlify-cli deploy  > cli.txt
+      - name: Deploy
+        run: netlify deploy --build > cli.txt
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
