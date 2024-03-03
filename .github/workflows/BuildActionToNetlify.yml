@@ -1,5 +1,5 @@
 # GitHub Actions 上での名前
-name: BuildActionToNetlify
+name: IntervalNetlifyWebHook
 
 # 起動条件
 on:
@@ -9,57 +9,19 @@ on:
     # https://takusan.negitoro.dev/posts/github_actions/
     # https://enu23456.hatenablog.com/entry/2022/11/17/201001
     - cron: '*/59 * * * *' # 59分毎に実行
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-permissions:
-  contents: write
-  pull-requests: write
-  statuses: write
-  deployments: write
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build-and-deploy:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+
+    # こっから書いていく
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      
+    # NetlifyのWebHook
+      - name: Netlify WebHook
+        uses: wei/curl@v1.1.1
         with:
-          node-version: "18"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - run: npm ci
-      - run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
-          NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
-          NEXTAUTH_URL                           : ${{ secrets.NEXTAUTH_URL }}
-          NOTION_TOKEN                           : ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE                        : ${{ secrets.NOTION_DATABASE }}
-          NOTION_PROFILE_PAGE_ID                 : ${{ secrets.NOTION_PROFILE_PAGE_ID }}
-          NEXT_PUBLIC_ALGOLIA_APPLICATION_ID     : ${{ secrets.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
-          NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY: ${{ secrets.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY }}
-          ALGOLIA_APPLICATION_ID                 : ${{ secrets.ALGOLIA_APPLICATION_ID }}
-          ALGOLIA_ADMIN_API_KEY                  : ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
-          NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID      : ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
-          GOOGLE_CLIENT_ID                       : ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
-      - name: Set GitHub Deployment Environment
-        id: github_deployment_environment
-        run: |
-          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
-            echo "GITHUB_DEPLOYMENT_ENVIRONMENT=Netlify prd" >> "${GITHUB_OUTPUT}"
-          else
-            echo "GITHUB_DEPLOYMENT_ENVIRONMENT=Netlify Preview" >> "${GITHUB_OUTPUT}"
-          fi
-      - name: Deploy to netlify
-        run: npx netlify-cli deploy --prod --dir=./public
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          args: -X POST -d {} ${{ secrets.WEBHOOK_URL }}
