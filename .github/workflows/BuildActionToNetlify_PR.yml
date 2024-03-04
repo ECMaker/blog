@@ -1,0 +1,64 @@
+# GitHub Actions 上での名前
+name: BuildActionToNetlify
+
+# 起動条件
+on:
+  workflow_dispatch: # GithubActions上で実行ボタンを表示
+  pull_request:
+#    branches:
+#      - main        # すべてのブランチで走らせるためコメントアウト
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and build
+        env:
+          NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL                           : ${{ secrets.NEXTAUTH_URL }}
+          NOTION_TOKEN                           : ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE                        : ${{ secrets.NOTION_DATABASE }}
+          NOTION_PROFILE_PAGE_ID                 : ${{ secrets.NOTION_PROFILE_PAGE_ID }}
+          NEXT_PUBLIC_ALGOLIA_APPLICATION_ID     : ${{ secrets.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
+          NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY: ${{ secrets.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY }}
+          ALGOLIA_APPLICATION_ID                 : ${{ secrets.ALGOLIA_APPLICATION_ID }}
+          ALGOLIA_ADMIN_API_KEY                  : ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+          NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID      : ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
+          GOOGLE_CLIENT_ID                       : ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy to netlify
+        run: netlify deploy --build > cli.txt
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: Cat cli.txt
+        run: |
+          cat cli.txt
+          sed -i -z 's/\n/\\n/g' cli.txt
+      - name: Post Netlify CLI Comment
+        run: |
+         curl -X POST \
+              -H "Authorization: token ${GITHUB_TOKEN}" \
+              -d "{\"body\": \"$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\"}" \
+              ${URL}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.comments_url }}
+          
