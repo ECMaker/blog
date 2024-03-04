@@ -3,21 +3,10 @@ name: BuildActionToNetlify
 
 # 起動条件
 on:
-  workflow_dispatch:
-  schedule:
-    # https://crontab.guru/#*/59_*_*_*_*
-    # https://takusan.negitoro.dev/posts/github_actions/
-    # https://enu23456.hatenablog.com/entry/2022/11/17/201001
-    - cron: '*/59 * * * *' # 59分毎に実行
-  #push:           # 本番環境へデプロイのときはこっち。
-  pull_request:    # プレビューのときはこっち。
-    branches: [main-previous]
-
-permissions:
-  contents: write
-  pull-requests: write
-  statuses: write
-  deployments: write
+  workflow_dispatch: # GithubActions上で実行ボタンを表示
+  pull_request:
+#    branches:
+#      - main        # すべてのブランチで走らせるためコメントアウト
 
 jobs:
   build:

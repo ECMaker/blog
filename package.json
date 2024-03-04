@@ -42,7 +42,6 @@
     "browserify-sign": "^4.2.2",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
-    "netlify-cli": "^17.17.1",
     "next": "13.1.6",
     "next-auth": "^4.19.0",
     "next-seo": "^5.15.0",
