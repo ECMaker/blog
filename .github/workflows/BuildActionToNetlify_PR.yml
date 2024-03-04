@@ -1,5 +1,5 @@
 # GitHub Actions 上での名前
-name: BuildActionToNetlify
+name: BuildActionToNetlify_PR
 
 # 起動条件
 on:
