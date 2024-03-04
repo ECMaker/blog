@@ -10,13 +10,13 @@ on:
     # https://enu23456.hatenablog.com/entry/2022/11/17/201001
     - cron: '*/59 * * * *' # 59分毎に実行
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-
+    timeout-minutes: 10
     steps:
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -28,8 +28,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build --if-present
+      - name: npm install and build
         env:
           NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
           NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
@@ -45,11 +44,24 @@ jobs:
           GOOGLE_CLIENT_ID                       : ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
           NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
-      - name: Publish
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy --dir=./.out --prod
-          env:
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy to netlify
+        run: netlify deploy --build --prod > cli.txt
+        env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          
+      - name: Cat cli.txt
+        run: |
+          cat cli.txt
+          sed -i -z 's/\n/\\n/g' cli.txt
+      - name: Post Netlify CLI Comment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.comments_url }}
+        run: |
+          curl -X POST \
+               -H "Authorization: token ${GITHUB_TOKEN}" \
+               -d "{\"body\": \"$(cat cli.txt)\"}" \
+               ${URL}
