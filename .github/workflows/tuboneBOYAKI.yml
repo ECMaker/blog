@@ -9,14 +9,21 @@ on:
     # https://takusan.negitoro.dev/posts/github_actions/
     # https://enu23456.hatenablog.com/entry/2022/11/17/201001
     - cron: '*/59 * * * *' # 59分毎に実行
-  push:
-    branches:
-      - main
+  #push:           # 本番環境へデプロイのときはこっち。
+  pull_request:    # プレビューのときはこっち。
+    branches: [main-previous]
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+  deployments: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+
     steps:
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -48,7 +55,7 @@ jobs:
           npm ci
           npm run build
       - name: Deploy to netlify
-        run: netlify deploy --build --prod > cli.txt
+        run: netlify deploy --build > cli.txt
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -57,11 +64,12 @@ jobs:
           cat cli.txt
           sed -i -z 's/\n/\\n/g' cli.txt
       - name: Post Netlify CLI Comment
+        run: |
+         curl -X POST \
+              -H "Authorization: token ${GITHUB_TOKEN}" \
+              -d "{\"body\": \"$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\"}" \
+              ${URL}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.comments_url }}
-        run: |
-          curl -X POST \
-               -H "Authorization: token ${GITHUB_TOKEN}" \
-               -d "{\"body\": \"$(cat cli.txt)\"}" \
-               ${URL}
+          
