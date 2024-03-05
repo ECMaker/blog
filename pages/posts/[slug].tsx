@@ -51,6 +51,13 @@ export const getStaticProps = async (context: { params: Params }) => {
 
   await saveToAlgolia(post);
 
+  // eslint-disable-next-line no-console
+  console.log('!U:props:post',JSON.stringify( {
+    props: {
+      ...post,
+    },
+  }, null, 2));
+
   return {
     props: {
       post,
