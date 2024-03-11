@@ -25,6 +25,7 @@ import {
   LogoutIcon,
   MailIcon,
   OutlineBlockIcon,
+  OutlineCheckIcon,
   ProfileIcon,
   QrCodeIcon,
   SearchIcon,
@@ -79,6 +80,7 @@ export const Default: StoryObj<{ size: number }> = {
       <LogoutIcon size={args.size} />
       <MailIcon size={args.size} />
       <OutlineBlockIcon size={args.size} />
+      <OutlineCheckIcon size={args.size} />
       <ProfileIcon size={args.size} />
       <QrCodeIcon size={args.size} />
       <SearchIcon size={args.size} />
