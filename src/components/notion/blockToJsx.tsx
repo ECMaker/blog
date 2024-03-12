@@ -1,7 +1,5 @@
 import type { NotionBlockObjectResponse } from '~/types/notion';
 
-import { StopIcon } from '~/commons/icons';
-import { LinkPreview } from '~/components/notion/blocks/LinkPreview';
 
 import { Bookmark } from './blocks/Bookmark';
 import { BulletedListItem } from './blocks/BulletedListItem';
@@ -17,10 +15,14 @@ import { Paragraph } from './blocks/Paragraph';
 import { Quote } from './blocks/Quote';
 import { ToDo } from './blocks/ToDo';
 
+import { StopIcon } from '~/commons/icons';
+import { LinkPreview } from '~/components/notion/blocks/LinkPreview';
+
 export const blockToJsx = (block: NotionBlockObjectResponse) => {
   const blockType = block.type;
 
   switch (blockType) {
+    // case 'audio': #59 !U
     case 'paragraph':
       return <Paragraph block={block} />;
     case 'heading_1':
@@ -31,8 +33,14 @@ export const blockToJsx = (block: NotionBlockObjectResponse) => {
       return <Heading3 block={block} />;
     case 'callout':
       return <Callout block={block} />;
+    // case 'column': #59
+    // case 'column_list': #59
+    // case 'embed': #59
+    // case 'file': #59
+    // case 'bulleted_list': #59
     case 'bulleted_list_item':
       return <BulletedListItem block={block} />;
+    // case 'numberd_list': #59
     case 'numbered_list_item':
       return <NumberedListItem block={block} />;
     case 'to_do':
@@ -50,6 +58,13 @@ export const blockToJsx = (block: NotionBlockObjectResponse) => {
       return <Image block={block} />;
     case 'divider':
       return <Divider />;
+    // case 'pdf': #59
+    // case 'qoute': #59
+    // case 'table': #59
+    // case 'ToDo': #59
+    // case 'ToDoList': #59
+    // case 'Togle': #59
+    // case 'video': #59
     case 'table_of_contents':
       return null;
     default:
