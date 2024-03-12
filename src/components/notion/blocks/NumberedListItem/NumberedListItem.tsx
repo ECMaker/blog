@@ -9,7 +9,7 @@ type Props = {
 
 export const NumberedListItem: FC<Props> = ({ block }) => {
   return (
-    <li className="sp:text-sm">
+    <li className="pl-2 list-decimal sp:text-sm">
       <RichText text={block.numbered_list_item.rich_text} />
     </li>
   );
