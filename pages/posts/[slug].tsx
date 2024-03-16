@@ -1,5 +1,6 @@
 import type { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next';
 import type {
+  ExpandedBlockObjectResponse,
   NotionBlockObjectResponse,
   NotionPageObjectResponse,
   NotionPost,
@@ -8,10 +9,12 @@ import type {
 
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 
+import { NotionBlock } from '~/components/notion';
 import { useComments } from '~/hooks/apiHooks/useComments';
 import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
 import dummy_notion_post from '~/mocks/notion_post.json';
 import { getChildrenAllInBlock } from '~/server/notion/blocks';
+import { getAllBlocks } from '~/server/notion/getAllBlocks';
 import { getAllPosts } from '~/server/notion/getAllPosts';
 import { getPage } from '~/server/notion/pages';
 import { saveToAlgolia } from '~/server/utils/algolia';
@@ -48,12 +51,15 @@ export const getStaticProps = async (context: { params: Params }) => {
     description: toMetaDescription(children),
     children: childrenWithOgp,
   };
-
+  
+  const blocks = await getAllBlocks(post.id);
+  
   await saveToAlgolia(post);
 
   return {
     props: {
       post,
+      blocks,
     },
     revalidate: 1, //[s] added ISR.
   };
@@ -79,9 +85,11 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   };
 };
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type Props = InferGetStaticPropsType<typeof getStaticProps> & {
+  blocks: ExpandedBlockObjectResponse[];
+};
 
-const Post: NextPage<Props> = ({ post }) => {
+const Post: NextPage<Props> = ({ post, blocks }) => {
   const { data: comments, trigger } = useComments(post.id);
 
   const handleCommentSubmit = async (
@@ -97,11 +105,16 @@ const Post: NextPage<Props> = ({ post }) => {
 
   return (
     <>
+      <div className="mt-3 text-lg leading-relaxed"> のぶsタイプ !U </div>
       <PostDetailTemplate
         post={post}
         comments={comments}
         onSubmit={handleCommentSubmit}
       />
+      <div className="mt-3 text-lg leading-relaxed"> かなるsタイプ !U </div>
+      {blocks.map((block) => (
+        <NotionBlock block={block} key={block.id} />
+      ))}
 
       {/* meta seo */}
       <NextSeo

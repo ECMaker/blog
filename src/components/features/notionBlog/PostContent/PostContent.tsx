@@ -15,6 +15,9 @@ export const PostContent: FC<Props> = ({ blocks }) => {
         {blocks.map((block) => (
           <div key={block.id}>{blockToJsx(block)}</div>
         ))}
+        {blocks.map((block) => (
+          <div key={block.id}>{blockToJsx(block)}</div>
+        ))}
       </div>
     </div>
   );

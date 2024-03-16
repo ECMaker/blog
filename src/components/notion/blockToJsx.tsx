@@ -1,5 +1,7 @@
 import type { NotionBlockObjectResponse } from '~/types/notion';
 
+import { StopIcon } from '~/commons/icons';
+import { LinkPreview } from '~/components/notion/blocks/LinkPreview';
 
 import { Bookmark } from './blocks/Bookmark';
 import { BulletedListItem } from './blocks/BulletedListItem';
@@ -14,9 +16,6 @@ import { NumberedListItem } from './blocks/NumberedListItem';
 import { Paragraph } from './blocks/Paragraph';
 import { Quote } from './blocks/Quote';
 import { ToDo } from './blocks/ToDo';
-
-import { StopIcon } from '~/commons/icons';
-import { LinkPreview } from '~/components/notion/blocks/LinkPreview';
 
 export const blockToJsx = (block: NotionBlockObjectResponse) => {
   const blockType = block.type;

@@ -30,7 +30,7 @@ export const PostDetailTemplate: FC<Props> = ({ post, comments, onSubmit }) => {
           <div className="hidden sp:block">
             <PostMeta meta={post} commentCount={comments.length} />
           </div>
-          <PostContent title={post.title} blocks={post.children} />
+          <PostContent title={post.title} blocks={post.children} key={post.id} />
           {comments.length > 0 && <Comments comments={comments} />}
           <div className="hidden sp:block">
             <Bio />
