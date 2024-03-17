@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { NotionBlockObjectResponse } from '~/types/notion';
+import type { ExpandedBlockObjectResponse } from '~/types/notion';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,7 +10,7 @@ import { blockToJsx } from '~/components/notion/blockToJsx';
 
 
 type Props = {
-  blocks: NotionBlockObjectResponse[];
+  blocks: ExpandedBlockObjectResponse[];
 };
 
 export const ProfileTemplate: FC<Props> = ({ blocks }) => {

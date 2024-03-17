@@ -1,21 +1,38 @@
 import type { CalloutBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { FC } from 'react';
+import type { BlockWithChildren } from '~/types/notion';
 
 import { useMemo } from 'react';
 
+import { SpeechBubble } from '~/components/notion/blocks/SpeechBubble';
 import { RichText } from '~/components/notion/RichText';
 
 type Props = {
-  block: CalloutBlockObjectResponse;
+  block: BlockWithChildren<CalloutBlockObjectResponse>;
 };
 
-export const Callout: FC<Props> = ({ block }) => {
+export const Callout = ({ block }: Props) => {
   const emoji = useMemo(() => {
     if (!!block.callout.icon && block.callout.icon.type === 'emoji')
       return block.callout.icon.emoji;
 
     return '📣';
   }, [block.callout.icon]);
+
+  if (block.callout.icon?.type === "emoji") {
+    const isRam = block.callout.icon.emoji === "🐏";
+    const isGorilla = block.callout.icon.emoji === "🦍";
+    if (isRam || isGorilla)
+      return (
+        <div className="my-4">
+          <SpeechBubble
+            iconImageSrc={isRam ? "/images/ram.png" : "/images/gorilla.png"}
+            isReverse={isGorilla}
+          >
+            <RichText text={block.callout.rich_text} />
+          </SpeechBubble>
+        </div>
+      );
+  }
 
   return (
     <div className="flex items-center gap-4 rounded border border-solid border-slate-300 p-4 shadow">

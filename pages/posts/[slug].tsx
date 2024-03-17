@@ -1,6 +1,6 @@
 import type { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next';
 import type {
-  NotionBlockObjectResponse,
+  ExpandedBlockObjectResponse,
   NotionPageObjectResponse,
   NotionPost,
   NotionRichTextItemRequest,
@@ -11,7 +11,7 @@ import { ArticleJsonLd, NextSeo } from 'next-seo';
 import { useComments } from '~/hooks/apiHooks/useComments';
 import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
 import dummy_notion_post from '~/mocks/notion_post.json';
-import { getChildrenAllInBlock } from '~/server/notion/blocks';
+import { getAllBlocks } from '~/server/notion/getAllBlocks';
 import { getAllPosts } from '~/server/notion/getAllPosts';
 import { getPage } from '~/server/notion/pages';
 import { saveToAlgolia } from '~/server/utils/algolia';
@@ -37,9 +37,10 @@ export const getStaticProps = async (context: { params: Params }) => {
   const page_id = targetPost.id;
 
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
-  const children = (await getChildrenAllInBlock(
+
+  const children = (await /*かなるs方式*/ getAllBlocks( /*のぶs方式 getChildrenAllInBlock( */
     page_id
-  )) as NotionBlockObjectResponse[];
+  )) as ExpandedBlockObjectResponse[];
 
   const childrenWithOgp = await setOgp(children);
 
@@ -48,7 +49,7 @@ export const getStaticProps = async (context: { params: Params }) => {
     description: toMetaDescription(children),
     children: childrenWithOgp,
   };
-
+  
   await saveToAlgolia(post);
 
   return {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import type { NotionBlockObjectResponse } from '~/types/notion';
+import type { ExpandedBlockObjectResponse } from '~/types/notion';
 
 import exampleBlocks from '~/mocks/notion_blocks.json';
 
@@ -11,6 +11,6 @@ export default {
 
 export const Default: StoryObj<typeof Component> = {
   args: {
-    blocks: exampleBlocks as NotionBlockObjectResponse[],
+    blocks: exampleBlocks as ExpandedBlockObjectResponse[],
   },
 };

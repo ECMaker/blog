@@ -1,5 +1,5 @@
 import type { BookmarkBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { NotionBlockObjectResponse } from '~/types/notion';
+import type { ExpandedBlockObjectResponse } from '~/types/notion';
 import type { Ogp } from '~/types/ogp';
 
 import ogpParser from 'ogp-parser';
@@ -35,8 +35,8 @@ export const getOgp = async (url: string): Promise<Ogp> => {
 
 /* NotionBlockObjectのBookmarkにOPG情報を差し込む */
 export const setOgp = async (
-  children: NotionBlockObjectResponse[]
-): Promise<NotionBlockObjectResponse[]> => {
+  children: ExpandedBlockObjectResponse[]
+): Promise<ExpandedBlockObjectResponse[]> => {
   const results = await Promise.all(
     children.map(async (child) => {
       if (child.type !== 'bookmark') return child;

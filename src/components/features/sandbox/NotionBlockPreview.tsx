@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { NotionBlockObjectResponse } from '~/types/notion';
+import type { ExpandedBlockObjectResponse } from '~/types/notion';
 
 import { ActionIcon, Collapse } from '@mantine/core';
 import { Prism } from '@mantine/prism';
@@ -9,7 +9,7 @@ import { JsonIcon } from '~/commons/icons';
 import { blockToJsx } from '~/components/notion/blockToJsx';
 
 type Props = {
-  blocks: NotionBlockObjectResponse[];
+  blocks: ExpandedBlockObjectResponse[];
 };
 
 export const NotionBlockPreview: FC<Props> = ({ blocks }) => {
