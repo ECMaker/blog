@@ -14,7 +14,7 @@ import type {
 /* Replace */
 export type NotionDatabaseObjectResponse = DatabaseObjectResponse;
 export type NotionPageObjectResponse = PageObjectResponse;
-export type NotionBlockObjectResponse = BlockObjectResponse;
+export type NotionBlockObjectResponse = BlockObjectResponse | BulletedListBlockObjectResponse | NumberedListBlockObjectResponse | ToDoListBlockObjectResponse;
 export type NotionListCommentsResponse = ListCommentsResponse;
 export type NotionCommentObjectResponse = CommentObjectResponse;
 export type NotionRichTextItemResponse = RichTextItemResponse;
