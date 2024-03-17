@@ -8,12 +8,9 @@ import type {
 
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 
-import { PostContent } from '~/components/features/notionBlog/PostContent';
-import { blockToJsx } from '~/components/notion/blockToJsx';
 import { useComments } from '~/hooks/apiHooks/useComments';
 import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
 import dummy_notion_post from '~/mocks/notion_post.json';
-import { getChildrenAllInBlock } from '~/server/notion/blocks';
 import { getAllBlocks } from '~/server/notion/getAllBlocks';
 import { getAllPosts } from '~/server/notion/getAllPosts';
 import { getPage } from '~/server/notion/pages';
@@ -40,16 +37,12 @@ export const getStaticProps = async (context: { params: Params }) => {
   const page_id = targetPost.id;
 
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
-  const children = (await getChildrenAllInBlock(
-    page_id
-  )) as ExpandedBlockObjectResponse[];
 
-  const blocks = (await getAllBlocks(
+  const children = (await /*かなるs方式*/ getAllBlocks( /*のぶs方式 getChildrenAllInBlock( */
     page_id
   )) as ExpandedBlockObjectResponse[];
 
   const childrenWithOgp = await setOgp(children);
-  const blocksWithOgp = await setOgp(blocks);
   const post = {
     ...toPostMeta(page),
     description: toMetaDescription(children),
@@ -62,7 +55,6 @@ export const getStaticProps = async (context: { params: Params }) => {
   return {
     props: {
       post,
-      blocksWithOgp,
     },
     revalidate: 1, //[s] added ISR.
   };
@@ -92,7 +84,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps> & {
   blocksWithOgp: ExpandedBlockObjectResponse[];
 };
 
-const Post: NextPage<Props> = ({ post, blocksWithOgp }) => {
+const Post: NextPage<Props> = ({ post }) => {
   const { data: comments, trigger } = useComments(post.id);
 
   const handleCommentSubmit = async (
@@ -108,20 +100,11 @@ const Post: NextPage<Props> = ({ post, blocksWithOgp }) => {
 
   return (
     <>
-      <div className="mt-3 text-lg leading-relaxed"> のぶsタイプ !U </div>
       <PostDetailTemplate
         post={post}
         comments={comments}
         onSubmit={handleCommentSubmit}
       />
-      <div className="mt-3 text-lg leading-relaxed"> かなるsタイプ ネストogpCant !U </div>
-      {blocksWithOgp.map((post) => (
-          <div key={post.id}>{blockToJsx(post)}</div>
-      ))}
-      <div className="mt-3 text-lg leading-relaxed"> かなるsタイプ ネストCant!U </div>
-        <PostContent title={post.title} blocks={post.children} key={post.id} />
-
-
       {/* meta seo */}
       <NextSeo
         title={`${post.title} | EC maker`}
