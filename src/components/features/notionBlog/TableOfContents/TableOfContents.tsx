@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { NotionBlockObjectResponse } from '~/types/notion';
+import type { ExpandedBlockObjectResponse } from '~/types/notion';
 
 import { clsx } from '@mantine/core';
 import { useState, useEffect, useMemo } from 'react';
@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 import { inViewHeadingIdsAtom } from '~/recoil/atoms';
 
 type Props = {
-  blocks: NotionBlockObjectResponse[];
+  blocks: ExpandedBlockObjectResponse[];
   isAll?: boolean;
 };
 

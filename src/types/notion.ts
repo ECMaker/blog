@@ -14,7 +14,6 @@ import type {
 /* Replace */
 export type NotionDatabaseObjectResponse = DatabaseObjectResponse;
 export type NotionPageObjectResponse = PageObjectResponse;
-export type NotionBlockObjectResponse = BlockObjectResponse | BulletedListBlockObjectResponse | NumberedListBlockObjectResponse | ToDoListBlockObjectResponse;
 export type NotionListCommentsResponse = ListCommentsResponse;
 export type NotionCommentObjectResponse = CommentObjectResponse;
 export type NotionRichTextItemResponse = RichTextItemResponse;
@@ -46,7 +45,7 @@ export type NotionPostMeta = {
   slug: string;
 };
 export type NotionPost = NotionPostMeta & {
-  children: NotionBlockObjectResponse[];
+  children: ExpandedBlockObjectResponse[];
 };
 export type NotionBlogProperties = {
   categories: NotionSelectPropertyResponse[];

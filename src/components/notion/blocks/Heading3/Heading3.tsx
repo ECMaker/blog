@@ -1,6 +1,6 @@
 import type { Heading3BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
-import type { BlockWithChildren } from "~/types/notion";
+import type { BlockWithChildren } from '~/types/notion';
 
 import { useIntersection } from '@mantine/hooks';
 import { useEffect } from 'react';

@@ -1,7 +1,7 @@
 import type { PrismProps } from '@mantine/prism';
 import type { CodeBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
-import type { BlockWithChildren } from "~/types/notion";
+import type { BlockWithChildren } from '~/types/notion';
 
 import { Prism } from '@mantine/prism';
 

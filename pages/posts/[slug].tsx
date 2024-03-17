@@ -43,6 +43,7 @@ export const getStaticProps = async (context: { params: Params }) => {
   )) as ExpandedBlockObjectResponse[];
 
   const childrenWithOgp = await setOgp(children);
+
   const post = {
     ...toPostMeta(page),
     description: toMetaDescription(children),
@@ -50,7 +51,6 @@ export const getStaticProps = async (context: { params: Params }) => {
   };
   
   await saveToAlgolia(post);
-
 
   return {
     props: {
@@ -80,9 +80,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   };
 };
 
-type Props = InferGetStaticPropsType<typeof getStaticProps> & {
-  blocksWithOgp: ExpandedBlockObjectResponse[];
-};
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => {
   const { data: comments, trigger } = useComments(post.id);
@@ -105,6 +103,7 @@ const Post: NextPage<Props> = ({ post }) => {
         comments={comments}
         onSubmit={handleCommentSubmit}
       />
+
       {/* meta seo */}
       <NextSeo
         title={`${post.title} | EC maker`}

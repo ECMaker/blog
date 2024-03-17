@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
-import type { BlockWithChildren } from "~/types/notion";
+import type { BlockWithChildren } from '~/types/notion';
 
 import { Button } from '@mantine/core';
 import NextImage from 'next/image';

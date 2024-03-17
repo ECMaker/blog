@@ -1,6 +1,6 @@
 import type { NumberedListItemBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
-import type { BlockWithChildren } from "~/types/notion";
+import type { BlockWithChildren } from '~/types/notion';
 
 import { blockToJsx } from '~/components/notion/blockToJsx';
 import { RichText } from '~/components/notion/RichText';

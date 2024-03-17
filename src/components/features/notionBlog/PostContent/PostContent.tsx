@@ -1,11 +1,11 @@
 import type { FC } from 'react';
-import type { NotionBlockObjectResponse } from '~/types/notion';
+import type { ExpandedBlockObjectResponse } from '~/types/notion';
 
 import { blockToJsx } from '~/components/notion/blockToJsx';
 
 type Props = {
   title: string;
-  blocks: NotionBlockObjectResponse[];
+  blocks: ExpandedBlockObjectResponse[];
 };
 
 export const PostContent: FC<Props> = ({ blocks }: Props) => {

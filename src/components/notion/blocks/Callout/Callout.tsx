@@ -1,5 +1,5 @@
 import type { CalloutBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { BlockWithChildren } from "~/types/notion";
+import type { BlockWithChildren } from '~/types/notion';
 
 import { useMemo } from 'react';
 

@@ -29,8 +29,6 @@ import { ToDoList } from './blocks/ToDoList';
 import { Toggle } from './blocks/Toggle';
 import { Video } from './blocks/Video';
 
-
-
 export const blockToJsx = (block: ExpandedBlockObjectResponse) => {
   const blockType = block.type;
 
@@ -80,8 +78,6 @@ export const blockToJsx = (block: ExpandedBlockObjectResponse) => {
       return <Divider />;
     case 'pdf':
       return <Pdf block={block} />;
-    case 'quote':
-      return <Quote block={block} />;
     case 'table':
       return <Table block={block} />;
     case 'to_do':
@@ -96,11 +92,11 @@ export const blockToJsx = (block: ExpandedBlockObjectResponse) => {
       return null;
     default:
       return (
-        <div className='my-6 flex items-center justify-center gap-4 rounded-lg bg-slate-200 p-4 sp:flex-col sp:text-center'>
+        <div className="my-6 flex items-center justify-center gap-4 rounded-lg bg-slate-200 p-4 sp:flex-col sp:text-center">
           <StopIcon size={40} />
-          <div className='sp:text-sm'>
+          <div className="sp:text-sm">
             <div>ここで、対応していない NotionのBlockが使用されています。</div>
-            <div className='mt-2 font-firaCode'>
+            <div className="mt-2 font-firaCode">
               Not supported:
               {blockType
                 ? ` '${blockType}' type is not supported.`

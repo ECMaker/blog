@@ -1,6 +1,6 @@
 import type { Heading1BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
-import type { BlockWithChildren } from "~/types/notion";
+import type { BlockWithChildren } from '~/types/notion';
 
 import { OutlineBlockIcon } from '~/components/@commons/icons';
 import { RichText } from '~/components/notion/RichText';
