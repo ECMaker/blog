@@ -3,7 +3,7 @@ import type { BlockWithChildren } from '~/types/notion';
 
 import { Fragment } from "react";
 
-import { RichText } from "../RichText";
+import { RichText } from '~/components/notion/RichText';
 
 type Props = {
   block: BlockWithChildren<TableBlockObjectResponse>;

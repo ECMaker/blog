@@ -1,5 +1,6 @@
 import type { Heading3BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
+import type { BlockWithChildren } from "~/types/notion";
 
 import { useIntersection } from '@mantine/hooks';
 import { useEffect } from 'react';
@@ -10,10 +11,10 @@ import { RichText } from '~/components/notion/RichText';
 import { inViewHeadingIdsAtom } from '~/recoil/atoms';
 
 type Props = {
-  block: Heading3BlockObjectResponse;
+  block: BlockWithChildren<Heading3BlockObjectResponse>;
 };
 
-export const Heading3: FC<Props> = ({ block }) => {
+export const Heading3: FC<Props> = ({ block }: Props) => {
   const setInViewHeading = useSetRecoilState(inViewHeadingIdsAtom);
   const { ref, entry } = useIntersection({
     threshold: 1,

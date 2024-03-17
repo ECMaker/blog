@@ -1,15 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import type { BookmarkBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
+import type { BlockWithChildren } from '~/types/notion';
 import type { Ogp } from '~/types/ogp';
 
 import { Skeleton } from '@mantine/core';
 
 type Props = {
-  block: BookmarkBlockObjectResponse & { ogp?: Ogp };
+  block: BlockWithChildren<BookmarkBlockObjectResponse> & { ogp?: Ogp };
 };
 
-export const Bookmark: FC<Props> = ({ block }) => {
+export const Bookmark: FC<Props> = ({ block }: Props) => {
   const ogp = block.ogp
     ? block.ogp
     : {

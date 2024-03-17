@@ -1,13 +1,14 @@
 import type { LinkPreviewBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
+import type { BlockWithChildren } from "~/types/notion";
 
 import { TbExternalLinkIcon } from '~/commons/icons';
 
 type Props = {
-  block: LinkPreviewBlockObjectResponse;
+  block: BlockWithChildren<LinkPreviewBlockObjectResponse>;
 };
 
-export const LinkPreview: FC<Props> = ({ block }) => {
+export const LinkPreview: FC<Props> = ({ block }: Props) => {
   return (
     <div className="">
       <a

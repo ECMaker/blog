@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
+import type { BlockWithChildren } from "~/types/notion";
 
 import { Button } from '@mantine/core';
 import NextImage from 'next/image';
@@ -9,10 +10,10 @@ import { useState } from 'react';
 import { DangerIcon, UpdateIcon } from '~/commons/icons';
 
 type Props = {
-  block: ImageBlockObjectResponse;
+  block: BlockWithChildren<ImageBlockObjectResponse>;
 };
 
-export const Image: FC<Props> = ({ block }) => {
+export const Image: FC<Props> = ({ block }: Props) => {
   const url = block.image.type === 'file' ? block.image.file.url : '';
   const caption =
     block.image.caption.length > 0 ? block.image.caption[0].plain_text : '';
