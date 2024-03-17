@@ -1,7 +1,6 @@
 import type { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next';
 import type {
   ExpandedBlockObjectResponse,
-  NotionBlockObjectResponse,
   NotionPageObjectResponse,
   NotionPost,
   NotionRichTextItemRequest,
@@ -9,7 +8,8 @@ import type {
 
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 
-import { NotionBlock } from '~/components/notion';
+import { PostContent } from '~/components/features/notionBlog/PostContent';
+import { blockToJsx } from '~/components/notion/blockToJsx';
 import { useComments } from '~/hooks/apiHooks/useComments';
 import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
 import dummy_notion_post from '~/mocks/notion_post.json';
@@ -42,24 +42,27 @@ export const getStaticProps = async (context: { params: Params }) => {
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
   const children = (await getChildrenAllInBlock(
     page_id
-  )) as NotionBlockObjectResponse[];
+  )) as ExpandedBlockObjectResponse[];
+
+  const blocks = (await getAllBlocks(
+    page_id
+  )) as ExpandedBlockObjectResponse[];
 
   const childrenWithOgp = await setOgp(children);
-
+  const blocksWithOgp = await setOgp(blocks);
   const post = {
     ...toPostMeta(page),
     description: toMetaDescription(children),
     children: childrenWithOgp,
   };
   
-  const blocks = await getAllBlocks(post.id);
-  
   await saveToAlgolia(post);
+
 
   return {
     props: {
       post,
-      blocks,
+      blocksWithOgp,
     },
     revalidate: 1, //[s] added ISR.
   };
@@ -86,10 +89,10 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 };
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & {
-  blocks: ExpandedBlockObjectResponse[];
+  blocksWithOgp: ExpandedBlockObjectResponse[];
 };
 
-const Post: NextPage<Props> = ({ post, blocks }) => {
+const Post: NextPage<Props> = ({ post, blocksWithOgp }) => {
   const { data: comments, trigger } = useComments(post.id);
 
   const handleCommentSubmit = async (
@@ -111,10 +114,13 @@ const Post: NextPage<Props> = ({ post, blocks }) => {
         comments={comments}
         onSubmit={handleCommentSubmit}
       />
-      <div className="mt-3 text-lg leading-relaxed"> かなるsタイプ !U </div>
-      {blocks.map((block) => (
-        <NotionBlock block={block} key={block.id} />
+      <div className="mt-3 text-lg leading-relaxed"> かなるsタイプ ネストogpCant !U </div>
+      {blocksWithOgp.map((post) => (
+          <div key={post.id}>{blockToJsx(post)}</div>
       ))}
+      <div className="mt-3 text-lg leading-relaxed"> かなるsタイプ ネストCant!U </div>
+        <PostContent title={post.title} blocks={post.children} key={post.id} />
+
 
       {/* meta seo */}
       <NextSeo

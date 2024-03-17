@@ -2,7 +2,7 @@ import type { ParagraphBlockObjectResponse } from '@notionhq/client/build/src/ap
 import type { FC } from 'react';
 import type { BlockWithChildren } from '~/types/notion';
 
-import { NotionBlock } from '~/components/notion';
+import { blockToJsx } from '~/components/notion/blockToJsx';
 import { RichText } from '~/components/notion/RichText';
 
 type Props = {
@@ -18,7 +18,7 @@ export const Paragraph: FC<Props> = ({ block }: Props) => {
       {block.children && (
         <div className="ml-4">
           {block.children.map((child) => (
-            <NotionBlock block={child} key={child.id} />
+            <div key={block.id}>{blockToJsx(child)}</div>
           ))}
         </div>
       )}
