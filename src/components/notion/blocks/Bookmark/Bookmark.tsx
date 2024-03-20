@@ -1,38 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import type { BookmarkBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import type { FC } from 'react';
 import type { BlockWithChildren } from '~/types/notion';
 import type { Ogp } from '~/types/ogp';
 
 import { Skeleton } from '@mantine/core';
-import { useEffect, type FC, useState } from 'react';
-
-import { setOgp } from '~/server/utils/ogp';
 
 type Props = {
   block: BlockWithChildren<BookmarkBlockObjectResponse> & { ogp?: Ogp };
 };
 
 export const Bookmark: FC<Props> = ({ block }: Props) => {
-
-  const [blockWithOgp, setBlockWithOgp] = useState<BookmarkBlockObjectResponse & { ogp: Ogp } | null>(null);
-
-  useEffect(() => {
-    const fetchOgp = async () => {
-      const blockWithOgp = await setOgp(block);
-      setBlockWithOgp(blockWithOgp);
-    };
-
-    fetchOgp();
-  }, [block]);
-
-  if (!blockWithOgp) {
-    return <div>Loading...</div>;
-  }
-
-  const ogp = blockWithOgp.ogp
-    ? blockWithOgp.ogp
+  const ogp = block.ogp
+    ? block.ogp
     : {
-        url: blockWithOgp.bookmark.url,
+        url: block.bookmark.url,
         title: '',
         description: '',
         imageUrl: '',
