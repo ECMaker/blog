@@ -15,7 +15,6 @@ import { getAllBlocks } from '~/server/notion/getAllBlocks';
 import { getAllPosts } from '~/server/notion/getAllPosts';
 import { getPage } from '~/server/notion/pages';
 import { saveToAlgolia } from '~/server/utils/algolia';
-import { setOgp } from '~/server/utils/ogp';
 import { PostDetailTemplate } from '~/templates/PostDetailTemplate';
 import { toMetaDescription, toPostMeta } from '~/utils/meta';
 
@@ -42,7 +41,7 @@ export const getStaticProps = async (context: { params: Params }) => {
     page_id
   )) as ExpandedBlockObjectResponse[];
 
-  const childrenWithOgp = await setOgp(children);
+  const childrenWithOgp = /*await setOgp*/(children);
 
   const post = {
     ...toPostMeta(page),
