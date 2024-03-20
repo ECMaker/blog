@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @next/next/no-img-element */
 import type { BookmarkBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { BlockWithChildren } from '~/types/notion';
@@ -13,16 +14,13 @@ type Props = {
 };
 
 export const Bookmark: FC<Props> = ({ block }: Props) => {
-
-  const [blockWithOgp, setBlockWithOgp] = useState<BookmarkBlockObjectResponse & { ogp: Ogp } | null>(null);
+  const [blockWithOgp, setState] = useState<BookmarkBlockObjectResponse & { ogp?: Ogp } | null>();
 
   useEffect(() => {
-    const fetchOgp = async () => {
+    (async () => {
       const blockWithOgp = await setOgp(block);
-      setBlockWithOgp(blockWithOgp);
-    };
-
-    fetchOgp();
+      setState(blockWithOgp);
+    })();
   }, [block]);
 
   if (!blockWithOgp) {

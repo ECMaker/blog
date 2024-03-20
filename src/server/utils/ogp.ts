@@ -32,15 +32,22 @@ export const getOgp = async (url: string): Promise<Ogp> => {
   }
 };
 
-/* NotionBlockObjectのBookmarkにOPG情報を差し込む */
+/* NotionBlockObjectのBookmarkにOGP情報を差し込む */
 export const setOgp = async (
   child: BookmarkBlockObjectResponse
-): Promise<BookmarkBlockObjectResponse & { ogp: Ogp }> => {
-  const url = child.bookmark.url;
-  const ogp = await getOgp(url);
+): Promise<BookmarkBlockObjectResponse & { ogp?: Ogp }| null> => {
+  try {
+    const url = child.bookmark.url;
+    const ogp = await getOgp(url);
 
-  return {
-    ...child,
-    ogp,
-  } as BookmarkBlockObjectResponse & { ogp: Ogp };
+    return {
+      ...child,
+      ogp,
+    } as BookmarkBlockObjectResponse & { ogp: Ogp };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('!U Error in setOgp:', error);
+    
+    return null;
+  }
 };
