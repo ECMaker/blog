@@ -73,7 +73,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   }
   const posts = await getAllPosts();
   const paths = posts.map(({ slug }) => ({ params: {slug: slug}}));
-
+  
   return {
     paths,
     fallback: 'blocking', // HTMLを生成しない
