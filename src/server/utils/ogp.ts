@@ -5,7 +5,6 @@ import type { Ogp } from '~/types/ogp';
 import ogpParser from 'ogp-parser';
 
 /* OGPを取得する（Node.jsで使用を想定） */
-
 export const getOgp = async (url: string): Promise<Ogp> => {
   try {
     const encodeURL = encodeURI(url);
@@ -33,33 +32,32 @@ export const getOgp = async (url: string): Promise<Ogp> => {
   }
 };
 
-/* NotionBlockObjectのBookmarkにOPG情報を差し込む */
+/* ブックマークデータを再帰的に検索し、各ブックマークに OGP を設定する */
+const findeBookmark = async (
+  data: ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]
+): Promise<ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]> => {
+  if (Array.isArray(data)) return await Promise.all(data.map(findeBookmark)) as ExpandedBlockObjectResponse[];
+  if (typeof data !== 'object' || data === null) return data;
+  for (const key in data) {
+    if (data.type !== 'bookmark') {
+      (data as any)[key] = await findeBookmark((data as any)[key]);
+      continue;
+    }
+    const url = (data as ExpandedBlockObjectResponse & { bookmark: { url: string } }).bookmark.url;
+    const ogp = await getOgp(url);
+    
+    return {
+      ...data,
+      ogp,
+    } as BookmarkBlockObjectResponse & { ogp: Ogp };
+  }
+
+  return data;
+};
+
+/* NotionBlockObjectのBookmarkにOGP情報を差し込む */
 export const setOgp = async (
   children: ExpandedBlockObjectResponse[]
 ): Promise<ExpandedBlockObjectResponse[]> => {
-  const applySetOgpToBookmarks = async (
-    data: ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]
-  ): Promise<ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]> => {
-    if (Array.isArray(data)) {
-      return await Promise.all(data.map(applySetOgpToBookmarks)) as ExpandedBlockObjectResponse[];
-    } else if (typeof data === 'object' && data !== null) {
-      for (const key in data) {
-        if (key === 'type' && data[key] === 'bookmark') {
-          const url = (data as ExpandedBlockObjectResponse & { bookmark: { url: string } }).bookmark.url;
-          const ogp = await getOgp(url);
-
-          return {
-            ...data,
-            ogp,
-          } as BookmarkBlockObjectResponse & { ogp: Ogp };
-        } else {
-          (data as any)[key] = await applySetOgpToBookmarks((data as any)[key]);
-        }
-      }
-    }
-    
-    return data;
-  };
-
-  return (await Promise.all(children.map(applySetOgpToBookmarks))) as ExpandedBlockObjectResponse[];
+  return (await Promise.all(children.map(findeBookmark))) as ExpandedBlockObjectResponse[];
 };
