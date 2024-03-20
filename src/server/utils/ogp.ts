@@ -37,19 +37,29 @@ export const getOgp = async (url: string): Promise<Ogp> => {
 export const setOgp = async (
   children: ExpandedBlockObjectResponse[]
 ): Promise<ExpandedBlockObjectResponse[]> => {
-  const results = await Promise.all(
-    children.map(async (child) => {
-      if (child.type !== 'bookmark') return child;
+  const applySetOgpToBookmarks = async (
+    data: ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]
+  ): Promise<ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]> => {
+    if (Array.isArray(data)) {
+      return await Promise.all(data.map(applySetOgpToBookmarks)) as ExpandedBlockObjectResponse[];
+    } else if (typeof data === 'object' && data !== null) {
+      for (const key in data) {
+        if (key === 'type' && data[key] === 'bookmark') {
+          const url = (data as ExpandedBlockObjectResponse & { bookmark: { url: string } }).bookmark.url;
+          const ogp = await getOgp(url);
 
-      const url = child.bookmark.url;
-      const ogp = await getOgp(url);
+          return {
+            ...data,
+            ogp,
+          } as BookmarkBlockObjectResponse & { ogp: Ogp };
+        } else {
+          (data as any)[key] = await applySetOgpToBookmarks((data as any)[key]);
+        }
+      }
+    }
+    
+    return data;
+  };
 
-      return {
-        ...child,
-        ogp,
-      } as BookmarkBlockObjectResponse & { ogp: Ogp };
-    })
-  );
-
-  return results;
+  return (await Promise.all(children.map(applySetOgpToBookmarks))) as ExpandedBlockObjectResponse[];
 };
