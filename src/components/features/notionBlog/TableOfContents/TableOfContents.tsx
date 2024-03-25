@@ -16,43 +16,50 @@ export const TableOfContents: FC<Props> = ({ blocks, isAll = false }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const inViewHeadingIds = useRecoilValue(inViewHeadingIdsAtom);
 
-  const headingList = useMemo(
-    () =>
-      blocks.flatMap((block) => {
-        if (isAll) {
-          const type = block.type;
-          const title =
-            // @ts-expect-error ignore
-            block[type]?.rich_text
-              ? // @ts-expect-error ignore
-                block[type]?.rich_text[0]?.plain_text
-              : `empty: ${type}`;
+const headingList = useMemo(
+  () =>
+    blocks.flatMap((block) => {
+      if (isAll) {
+        const type = block.type;
+        const title =
+          // @ts-expect-error ignore
+          block[type]?.rich_text
+            ? // @ts-expect-error ignore
+              block[type]?.rich_text[0]?.plain_text
+            : `empty: ${type}`;
 
-          return {
-            id: block.id,
-            type,
-            title,
-          };
-        }
-        if (block.type === 'heading_2') {
-          return {
-            id: block.id,
-            type: block.type,
-            title: block.heading_2.rich_text[0].plain_text,
-          };
-        }
-        if (block.type === 'heading_3') {
-          return {
-            id: block.id,
-            type: block.type,
-            title: block.heading_3.rich_text[0].plain_text,
-          };
-        }
+        return {
+          id: block.id,
+          type,
+          title,
+        };
+      }
+      if (block.type === 'heading_1') {
+        return {
+          id: block.id,
+          type: block.type,
+          title: block.heading_1.rich_text[0].plain_text,
+        };
+      }
+      if (block.type === 'heading_2') {
+        return {
+          id: block.id,
+          type: block.type,
+          title: /*"└ " +*/ block.heading_2.rich_text[0].plain_text,
+        };
+      }
+      if (block.type === 'heading_3') {
+        return {
+          id: block.id,
+          type: block.type,
+          title: /*" └ " +*/block.heading_3.rich_text[0].plain_text,
+        };
+      }
 
-        return [];
-      }),
-    [blocks, isAll]
-  );
+      return [];
+    }),
+  [blocks, isAll]
+);
 
   useEffect(() => {
     const index = headingList.findIndex((item) =>
@@ -72,7 +79,7 @@ export const TableOfContents: FC<Props> = ({ blocks, isAll = false }) => {
         <div
           className={clsx(
             'relative flex flex-col gap-2 py-2 pl-6 text-sm',
-            'before:absolute before:top-4 before:left-2 before:h-[calc(100%-36px)] before:w-0.5 before:bg-slate-200 before:content-[""]'
+            'before:absolute before:top-4 before:left-2 before:h-[calc(100%-36px)] before:w-0.5 before:bg-slate-300 before:content-[""]'
           )}
         >
           {headingList.map((item, index) => (
@@ -84,15 +91,24 @@ export const TableOfContents: FC<Props> = ({ blocks, isAll = false }) => {
                 activeIndex === index
                   ? 'font-bold text-gray-900'
                   : 'text-slate-400',
+                item.type === 'heading_1' && 'font-bold',
+                item.type === 'heading_1' && 'underline',
+                item.type === 'heading_1' && 'text-lg',
+              //item.type === 'heading_1' && 'thick-underline',
+                item.type === 'heading_2' && 'pl-0',
                 item.type === 'heading_2' && 'font-bold',
-                item.type === 'heading_3' && 'pl-2',
+                item.type === 'heading_2' && 'text-base',
+                item.type === 'heading_3' && 'pl-0',
                 'before:absolute before:rounded-full before:border-solid before:border-white before:content-[""]',
-                item.type === 'heading_2'
-                  ? 'before:top-[5px] before:-left-[21px] before:h-[8px] before:w-[8px] before:border-[2px]'
-                  : 'before:top-[7px] before:-left-[19px] before:h-[6px] before:w-[6px] before:border-[1px]',
-                activeIndex < index
-                  ? 'before:bg-slate-200'
-                  : 'before:border-slate-100 before:bg-slate-500'
+                item.type === 'heading_1'
+                  ? 'before:top-[8px] before:-left-[21px] before:h-[9px] before:w-[9px] before:border-[2px]'
+                  : item.type === 'heading_2'
+                    ? 'before:top-[7px] before:-left-[21px] before:h-[8px] before:w-[8px] before:border-[2px]'
+                    : 'before:top-[5px] before:-left-[19px] before:h-[7px] before:w-[7px] before:border-[1px]',
+                'before:border-slate-100',
+                activeIndex === index
+                  ? 'before:bg-slate-600'
+                  : 'before:bg-slate-400'
               )}
             >
               {item.title}

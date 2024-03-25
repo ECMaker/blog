@@ -124,4 +124,8 @@ body::before {
     @apply py-3;
     @apply rounded;
   }
+  .thick-underline {
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+  }
 }
