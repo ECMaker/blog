@@ -7,7 +7,7 @@ const client = algoliasearch(
   `${process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY}`
 );
 
-const index = client.initIndex('noblog');
+const index = client.initIndex('ECmaker');
 
 export const searchAlgolia = async (query: string) => {
   const res = await index.search(query, {
