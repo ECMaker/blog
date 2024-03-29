@@ -11106,6 +11106,11 @@ react-is@18.1.0:
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.1.0.tgz"
   integrity sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==
 
+react-medium-image-zoom@^5.1.11:
+  version "5.1.11"
+  resolved "https://registry.npmjs.org/react-medium-image-zoom/-/react-medium-image-zoom-5.1.11.tgz"
+  integrity sha512-7rHECk0nRY+Uwmd02HKPt0L0Lxv2/km24ztcxgUaGR8TD0ikK+OOJyGZAMg/SeQzJDzmNv0yW6U1K8jqnta5MQ==
+
 react-property@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/react-property/-/react-property-2.0.0.tgz"

@@ -6,6 +6,7 @@ import type { BlockWithChildren } from '~/types/notion';
 import { Button } from '@mantine/core';
 import NextImage from 'next/image';
 import { useState } from 'react';
+import MediumZoom from 'react-medium-image-zoom'; // Import react-medium-image-zoom
 
 import { DangerIcon, UpdateIcon } from '~/commons/icons';
 import { richTextToString } from '~/utils/richTextToString';
@@ -28,20 +29,24 @@ export const Image: FC<Props> = ({ block }: Props) => {
 
   return (
     <div className="relative mx-auto">
-        <NextImage
-          className="object-contain h-auto w-full"
-          src={url}
-          alt={caption || ''}
-          width={700}
-          height={475}
-          sizes="(max-width: 700px) 100vw, 700px"
-          title={caption}
-          priority
-          onError={(e) => {
-            console.error(e);
-            setIsError(true);
-          }}
-    />
+        <MediumZoom // Wrap NextImage with MediumZoom
+          zoomMargin={40}
+        >
+          <NextImage
+            className="object-contain h-auto w-full"
+            src={url}
+            alt={caption || ''}
+            width={700}
+            height={475}
+            sizes="(max-width: 700px) 100vw, 700px"
+            title={caption}
+            priority
+            onError={(e) => {
+              console.error(e);
+              setIsError(true);
+            }}
+          />
+        </MediumZoom>
       {caption && (
         <figcaption className="text-xs text-gray-400">{caption}</figcaption>
       )}
