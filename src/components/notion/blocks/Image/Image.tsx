@@ -29,16 +29,15 @@ export const Image: FC<Props> = ({ block }: Props) => {
 
   return (
     <div className="relative mx-auto">
-        <MediumZoom // Wrap NextImage with MediumZoom
+        <MediumZoom
           zoomMargin={40}
         >
           <NextImage
             className="object-contain h-auto w-full"
             src={url}
             alt={caption || ''}
-            width={700}
-            height={475}
-            sizes="(max-width: 700px) 100vw, 700px"
+            width={999}
+            height={999}
             title={caption}
             priority
             onError={(e) => {
