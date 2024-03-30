@@ -36,8 +36,8 @@ export const Image: FC<Props> = ({ block }: Props) => {
             className="object-contain h-auto w-full"
             src={url}
             alt={caption || ''}
-            width={999}
-            height={999}
+            width={3840}
+            height={2160}
             title={caption}
             priority
             onError={(e) => {
