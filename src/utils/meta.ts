@@ -36,7 +36,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
   const image =  properties.Image?.type === "files" &&
                  properties.Image.files[0]?.type === "file"
                    ? properties.Image.files[0].file.url
-                   : "/ogp.webp";
+                   : "/900^2_tomei_textBlack.gif";
                  
   
   return {
