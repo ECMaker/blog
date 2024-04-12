@@ -43,6 +43,7 @@ export type NotionPostMeta = {
   tags: NotionSelectPropertyResponse[];
   likes: number;
   slug: string;
+  image: string;
 };
 export type NotionPost = NotionPostMeta & {
   children: ExpandedBlockObjectResponse[];

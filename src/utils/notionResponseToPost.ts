@@ -36,6 +36,10 @@ export const notionResponseToPost = (page: PageObjectResponse | PartialPageObjec
                 properties.Slug.rich_text.length !== 0
                  ? richTextToString(properties.Slug.rich_text)
                  : "0";
+  const image =  properties.Image?.type === "files" &&
+                 properties.Image.files[0]?.type === "file"
+                   ? properties.Image.files[0].file.url
+                   : "/ogp.webp";
   
   return {
     id,
@@ -47,6 +51,7 @@ export const notionResponseToPost = (page: PageObjectResponse | PartialPageObjec
     tags,
     likes,
     slug,
+    image,
   };
 };
 
