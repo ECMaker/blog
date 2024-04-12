@@ -96,6 +96,13 @@ const Post: NextPage<Props> = ({ post }) => {
     });
   };
 
+  let imageUrl;
+  if (post.image === "/900^2_tomei_textBlack.gif") {
+    imageUrl = `https://blog.ec-maker.com/api/notion-blog/og?title=${post.title}`;
+  } else {
+    imageUrl = post.image;
+  }
+
   return (
     <>
       <PostDetailTemplate
@@ -114,7 +121,7 @@ const Post: NextPage<Props> = ({ post }) => {
           description: post.description,
           images: [
             {
-              url: `https://blog.ec-maker.com/api/notion-blog/og?title=${post.title}`,
+              url: imageUrl,
               width: 1200,
               height: 630,
               alt: 'Site Image',
@@ -128,7 +135,7 @@ const Post: NextPage<Props> = ({ post }) => {
         url={`https://blog.ec-maker.com/posts/${post.slug}`}
         title={`${post.title} | EC maker`}
         images={[
-          `https://blog.ec-maker.com/api/notion-blog/og?title=${post.title}`,
+          imageUrl,
         ]}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={post.updatedAt}
