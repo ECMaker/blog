@@ -36,6 +36,11 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     properties.Slug.rich_text.length !== 0
       ? richTextToString(properties.Slug.rich_text)
       : '0';
+  const image =
+    properties.Image?.type === 'files' &&
+    properties.Image.files[0]?.type === 'file'
+      ? properties.Image.files[0].file.url
+      : '/900^2_tomei_textBlack.gif';
 
   return {
     id,
@@ -48,6 +53,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     tags,
     likes,
     slug,
+    image,
   };
 };
 

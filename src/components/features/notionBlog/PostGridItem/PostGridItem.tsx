@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import type { NotionPageObjectResponse } from '~/types/notion';
 
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
@@ -17,7 +18,7 @@ export const PostGridItem: FC<Props> = ({ post }) => {
 
   return (
     <div
-      className="h-64 w-64 cursor-pointer rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-80"
+      className="flex flex-col h-auto w-64 cursor-pointer rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-80 justify-between"
       onClick={() => router.push(`/posts/${expandPost.slug}`)}
     >
       <div className="space-y-3">
@@ -31,23 +32,30 @@ export const PostGridItem: FC<Props> = ({ post }) => {
           </div>
         </div>
 
-        <div className="flex h-20 items-center">
+        <div className="flex items-center">
           <h3 className="overflow-hidden font-bold line-clamp-3">
             {meta.title}
           </h3>
         </div>
-
         <div className="flex flex-wrap gap-1">
           {meta.tags.map((tag, index) => (
             <span
               key={index}
-              className="rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold text-gray-800"
+              className="rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold text-gray-800 mb-4"
             >
               {tag.name}
             </span>
           ))}
         </div>
       </div>
+      <Image
+        src={expandPost.image}
+        alt="cover-image"
+        width={256}
+        height={192}
+        priority
+        className="h-hull w-full rounded-l-md object-cover"
+      />
     </div>
   );
 };

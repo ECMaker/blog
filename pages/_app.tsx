@@ -29,7 +29,7 @@ const meta = {
   title: 'EC maker',
   description: 'Notion API と Next.js / Tailwind CSS による本格ブログ',
   url: 'https://blog.ec-maker.com/',
-  image: 'https://blog.ec-maker.com/ECmaker.png',
+  image: 'https://blog.ec-maker.com/300%5E2_black.gif',
 };
 
 export default function App({ Component, pageProps }: AppProps) {
