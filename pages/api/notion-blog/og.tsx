@@ -5,7 +5,7 @@ import { ImageResponse } from '@vercel/og';
 export const config = {
   runtime: 'edge',
 };
-const fontBallo = fetch(
+const fontBallo = fetch( // !U font #45
   new URL('../../../src/styles/Baloo-Regular.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
@@ -21,14 +21,15 @@ export default async function handler(req: NextRequest) {
     (
       <div tw="relative flex h-full w-full flex-col flex-wrap items-center justify-center bg-gray-200 text-slate-800">
         {title ? (
-          <div tw="w-[1000px] whitespace-pre-wrap text-[72px] font-bold mx-auto">
+          <div tw="absolute top-50 left-15 tw-[1000px] whitespace-pre-wrap text-[72px] font-bold mx-auto">
             {title}
           </div>
         ) : (
           <div tw="text-[140px]">EC maker</div>
         )}
         {title ? (
-          <div tw="absolute bottom-2 right-6 text-[72px]">EC maker</div>
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src="https://blog.ec-maker.com/1333x500_yoko_tomei.png" alt="EC Maker Logo" tw="absolute bottom-15 right-25  h-[200px]" />
         ) : (
           <div tw="h-2 w-60 rounded-full bg-slate-800" />
         )}

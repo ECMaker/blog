@@ -66,7 +66,7 @@ const PostIndex: NextPage<Props> = ({ postsArray, properties }) => {
         type="BlogPosting"
         title="Blog | EC maker"
         url="https://blog.ec-maker.com/posts/"
-        images={['https://blog.ec-maker.com/ECmaker.png']} //#9 アイキャッチ bug
+        images={['https://blog.ec-maker.com/300%5E2_black.gif']}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={postsArray[0][0].last_edited_time}
         authorName="Nobuyuki Kobayashi"
