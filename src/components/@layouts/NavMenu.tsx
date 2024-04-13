@@ -1,5 +1,6 @@
 import { clsx, Transition } from '@mantine/core';
 import { useHover, useMergedRef } from '@mantine/hooks';
+import Image from 'next/image';
 import { useState, type FC, useEffect, useRef } from 'react';
 
 import {
@@ -54,7 +55,7 @@ export const NavMenu: FC = () => {
         )}
       >
         <MenuIcon size={36} />
-        <div className="font-CutiveMono font-bold sp:text-sm">MENU</div>
+        <div className="font-Baloo font-bold sp:text-sm">MENU</div>
       </div>
 
       <Transition
@@ -115,14 +116,17 @@ export const NavMenu: FC = () => {
             />
 
             <div className="pt-8" />
+
             <NavMenuLink
-              /* !U 自作したlogoを読み込む #45
-                <link rel="icon" href="/favicon.ico" />
-                https://zenn.dev/toono_f/articles/6c8ef6e4e771b9
-                import type { IconType } from 'react-icons/lib/cjs/iconBase';
-                export const EcmakerIcon: IconType =  '/icon.svg';
-                rightIcon={<EcmakerIcon size={18} />}
-              */
+              leftIcon={
+                <Image
+                  src="/icon.svg"
+                  alt="site logo"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              }
               href="/900^2_black.gif"
               label="logo"
             />

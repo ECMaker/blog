@@ -6,7 +6,6 @@ export const config = {
   runtime: 'edge',
 };
 const fontBallo = fetch(
-  // !U font #45
   new URL('../../../src/styles/Baloo-Regular.ttf', import.meta.url),
 ).then((res) => res.arrayBuffer());
 

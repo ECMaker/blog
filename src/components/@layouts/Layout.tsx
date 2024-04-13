@@ -55,11 +55,21 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           href="/"
           tabIndex={0}
           className={clsx(
-            'mx-auto w-fit cursor-pointer py-4 block',
+            'mx-auto w-fit cursor-pointer text-slate-800 py-4',
             'hover:title-drop-shadow transition duration-1000 ease-in hover:text-white',
           )}
         >
-          <h1 className="font-CutiveMono text-[42px] leading-none">EC maker</h1>
+          <h1 className="flex -ml-20 gap-3 items-center font-CutiveMono text-5xl leading-none">
+            <Image
+              src="/400^2inside600^2_tomei.gif"
+              alt="site logo"
+              width={80}
+              height={80}
+              priority
+              className="-mt-2"
+            />
+            EC maker
+          </h1>
         </Link>
       </header>
       <main className="relative z-10 mb-40 min-h-[calc(100vh-102px)] w-full bg-gray-200">
@@ -79,12 +89,13 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
             <Image
               src="/400^2inside600^2_tomei.gif"
               alt="site logo"
-              width={80}
-              height={80}
+              width={100}
+              height={100}
               sizes="265px"
               priority
+              className="-mt-1"
             />
-            <Link href="/" className="font-CutiveMono text-3xl text-white">
+            <Link href="/" className="font-CutiveMono text-4xl text-slate-200">
               EC maker
             </Link>
           </div>
@@ -92,7 +103,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
             Notion API と Next.js / Tailwind CSS で本格ブログを作ってみました。
           </div>*/}
         </div>
-        <div className="py-2 text-center text-xs font-bold text-slate-200">
+        <div className="py-2 text-center text-xs text-slate-400">
           Made with Notion by EC maker @2024
         </div>
       </footer>
