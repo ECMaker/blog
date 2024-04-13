@@ -2,6 +2,7 @@ import type { FC } from 'react';
 
 import { clsx, Transition } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
+import Image from 'next/image';
 
 import {
   ExperimentIcon,
@@ -93,18 +94,23 @@ export const NavMenu: FC = () => {
               label="YouTube"
             />
 
-            <div className="pt-8" />
-            <NavMenuLink
-              /* !U 自作したlogoを読み込む #45
-                <link rel="icon" href="/favicon.ico" />
-                https://zenn.dev/toono_f/articles/6c8ef6e4e771b9
-                import type { IconType } from 'react-icons/lib/cjs/iconBase';
-                export const EcmakerIcon: IconType =  '/icon.svg';
-                rightIcon={<EcmakerIcon size={18} />}
-              */
-              href="/900^2_black.gif"
-              label="logo"
-            />
+            <div className="flex-center pt-8" />
+
+            <div className="flex items-center">
+              <Image
+                src="/favicon.ico"
+                alt="site logo"
+                width={20}
+                height={20}
+                sizes="265px"
+                priority
+                className="mr-2"
+              />
+              <NavMenuLink
+                href="/900^2_black.gif"
+                label="logo"
+              />
+            </div>
           </div>
         )}
       </Transition>
