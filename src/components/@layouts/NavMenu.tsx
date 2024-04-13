@@ -34,7 +34,7 @@ export const NavMenu: FC = () => {
         )}
       >
         <MenuIcon size={36} />
-        <div className="font-CutiveMono font-bold sp:text-sm">MENU</div>
+        <div className="font-Baloo font-bold sp:text-sm">MENU</div>
       </div>
 
       <Transition

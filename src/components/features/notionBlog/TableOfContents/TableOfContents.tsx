@@ -71,7 +71,7 @@ const headingList = useMemo(
 
   return (
     <div className="rounded bg-white p-4">
-      <div className="text-center font-CutiveMono font-bold text-lg">
+      <div className="text-center font-Baloo font-bold text-lg">
         - Contents -
       </div>
       <div className="mx-auto mt-0.5 h-0.5 w-20 rounded-full bg-slate-800" />

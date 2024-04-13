@@ -7,8 +7,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        baloo: 'Baloo',
-        firaCode: 'FiraCode VariableFont',
+        CutiveMono: ['CutiveMono', 'monospace'],
+        baloo: ['Baloo', 'sans-serif'],
+        firaCode: ['FiraCode VariableFont', 'sans-serif'],
       },
     },
     screens: {
