@@ -94,7 +94,7 @@ export const NavMenu: FC = () => {
               label="YouTube"
             />
 
-            <div className="flex-center pt-8" />
+            <div className="pt-8" />
 
             <div className="flex items-center">
               <Image
@@ -102,7 +102,6 @@ export const NavMenu: FC = () => {
                 alt="site logo"
                 width={20}
                 height={20}
-                sizes="265px"
                 priority
                 className="mr-2"
               />
