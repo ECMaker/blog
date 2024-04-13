@@ -99,7 +99,7 @@ export const NavMenu: FC = () => {
             <NavMenuLink
               leftIcon={
                 <Image
-                  src="/favicon.ico"
+                  src="/icon.svg"
                   alt="site logo"
                   width={18}
                   height={18}
