@@ -54,7 +54,7 @@ export const PostsViewControl: FC<Props> = ({
       />
       <div className="flex items-center justify-center gap-2">
         <FilterIcon size={24} />
-        <div className="font-CutiveMono text-2xl">Filter</div>
+        <div className="font-Baloo text-2xl">Filter</div>
       </div>
       <Select
         label="Article Category"

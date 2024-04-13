@@ -12,7 +12,7 @@ export const SearchButton: FC = () => {
 
   return (
     <button
-      className="flex cursor-pointer items-center gap-2 rounded-md border-none bg-gray-700 px-2 py-1.5 font-CutiveMono font-bold text-base text-white shadow hover:brightness-125"
+      className="flex cursor-pointer items-center gap-2 rounded-md border-none bg-gray-700 px-2 py-1.5 font-Baloo text-base text-white shadow hover:brightness-125"
       onClick={() => spotlight.openSpotlight()}
     >
       <SearchIcon size={18} />
