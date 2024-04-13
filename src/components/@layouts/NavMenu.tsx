@@ -96,20 +96,19 @@ export const NavMenu: FC = () => {
 
             <div className="pt-8" />
 
-            <div className="flex items-center">
-              <Image
-                src="/favicon.ico"
-                alt="site logo"
-                width={20}
-                height={20}
-                priority
-                className="mr-2"
-              />
-              <NavMenuLink
-                href="/900^2_black.gif"
-                label="logo"
-              />
-            </div>
+            <NavMenuLink
+              leftIcon={
+                <Image
+                  src="/favicon.ico"
+                  alt="site logo"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              }
+              href="/900^2_black.gif"
+              label="logo"
+            />
           </div>
         )}
       </Transition>
