@@ -53,7 +53,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
               width={80}
               height={80}
               priority
-              className="-mt-2"
+              className="-mt-2 responsive-image"
             />
             EC maker
           </h1>
