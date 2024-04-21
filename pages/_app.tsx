@@ -20,10 +20,12 @@ import {
   ProfileIcon,
   SearchIcon,
 } from '~/commons/icons';
+import { TableOfContentsProvider } from '~/components/features/notionBlog/TableOfContentsContext';
 import { useSpotlightActions } from '~/hooks/apiHooks/useSpotlightActions';
 import { GoogleTagManager } from '~/layouts/GoogleTagManager';
 import { Layout } from '~/layouts/Layout';
 import { googleTagManagerId } from '~/types/gtm';
+
 
 const meta = {
   title: 'EC maker',
@@ -139,9 +141,11 @@ export default function App({ Component, pageProps }: AppProps) {
             }}
           >
             <NotificationsProvider position="top-center">
-              <Layout {...pageProps}>
-                <Component {...pageProps} />
-              </Layout>
+              <TableOfContentsProvider>
+                <Layout {...pageProps}>
+                  <Component {...pageProps} />
+                </Layout>
+              </TableOfContentsProvider>
             </NotificationsProvider>
           </SpotlightProvider>
         </RecoilRoot>

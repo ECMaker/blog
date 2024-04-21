@@ -5,10 +5,8 @@ import type {
   NotionRichTextItemRequest,
 } from '~/types/notion';
 
-import { useState  } from 'react';
-
 import { Bio } from '~/commons/Bio';
-import { ContentsButton } from '~/components/@layouts/ContentsButton';
+import { useTableOfContentsContext } from '~/components/features/notionBlog/TableOfContentsContext';
 import { CommentForm } from '~/features/notionBlog/CommentForm';
 import { Comments } from '~/features/notionBlog/Comments';
 import { PostContent } from '~/features/notionBlog/PostContent';
@@ -24,7 +22,7 @@ type Props = {
 
 
 export const PostDetailTemplate: FC<Props> = ({ post, comments, onSubmit }) => {
-  const [showTableOfContents, setShowTableOfContents] = useState(false);
+  const { showTableOfContents } = useTableOfContentsContext();
   
   return (
     <div className="px-6 sp:px-0">
@@ -42,9 +40,6 @@ export const PostDetailTemplate: FC<Props> = ({ post, comments, onSubmit }) => {
           <CommentForm onSubmit={onSubmit} />
         </div>
 
-      <div className="">
-        <ContentsButton onClick={() => setShowTableOfContents(prev => !prev)} />
-      </div>
         <div className="w-aside">
           <Bio />
           <div className="sticky top-[52px] mt-4 space-y-4">
