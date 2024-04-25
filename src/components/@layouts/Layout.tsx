@@ -37,7 +37,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
 
   return (
     <div className="bg-gray-200">
-      <div className="flex items-center justify-between bg-gray-200 sticky-topbar">
+      <div className="flex items-center justify-between bg-gradient-to-b from-gray-200 from-50% via-gray-200 to-transparent sticky-topbar">
         <div className="flex items-center w-fit justify-between">
           <NavMenu />
         </div>
@@ -62,11 +62,11 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
             </h1>
           </div>
         </header>
-        <div className="">
-          <div className="flex items-center mb-2 mr-4 w-fit md:block">
+        <div className="flex flex-col items-end mr-2">
+          <div className="flex items-center mb-2 sb-2 sm:mb-1 sp:mb-1">
             <SearchButton />
           </div>
-          <div className="hidden sp:block">
+          <div className="md:hidden">
             <ContentsButton onClick={() => setShowTableOfContents(prev => !prev)} />
           </div>
         </div>
