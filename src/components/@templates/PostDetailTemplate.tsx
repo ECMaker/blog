@@ -20,12 +20,10 @@ type Props = {
   onSubmit: (rich_text: NotionRichTextItemRequest[]) => Promise<void>;
 };
 
-
 export const PostDetailTemplate: FC<Props> = ({ post, comments, onSubmit }) => {
   const { showTableOfContents } = useTableOfContentsContext();
   
   return (
-  
     <div className=" sp:bg-gray-200">
       <h1 className="py-8 text-center text-3xl sp:p-4 sp:text-xl">
         {post.title}

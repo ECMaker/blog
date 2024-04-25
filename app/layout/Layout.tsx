@@ -7,14 +7,12 @@ import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import {  useMemo } from 'react';
 
-
 import { ContentsButton } from '~/components/@layouts/ContentsButton';
 import { NavMenu } from '~/components/@layouts/NavMenu';
 import { ScrollTopButton } from '~/components/@layouts/ScrollTopButton';
 import { SearchButton } from '~/components/@layouts/SearchButton';
 import { useTableOfContentsContext } from '~/components/features/notionBlog/TableOfContentsContext';
 import { Breadcrumbs } from '~/layouts/Breadcrumbs';
-
 
 type Props = {
   children: ReactNode;
@@ -63,6 +61,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
             </h1>
           </div>
         </header>
+        
         <div className="flex flex-col items-end mr-2">
           <div className="flex items-center mb-2 sb-2 sm:mb-1 sp:mb-1">
             <SearchButton />

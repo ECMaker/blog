@@ -26,7 +26,6 @@ import { GoogleTagManager } from '~/layouts/GoogleTagManager';
 import { Layout } from '~/layouts/Layout';
 import { googleTagManagerId } from '~/types/gtm';
 
-
 const meta = {
   title: 'EC maker',
   description:
