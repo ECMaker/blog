@@ -13,7 +13,7 @@ const codeAnnotationClasses =
 /* Notion の Block Object内のrich_textの配列をいい感じに変換する */
 export const RichText: FC<Props> = ({ text }) => {
   return (
-    <div className="inline whitespace-pre-wrap break-words leading-loose">
+    <p className="inline whitespace-pre-wrap break-words leading-loose">
       {text.length === 0 ? (
         /* textがない場合が空白の改行を入れる */
         <span className="block h-6" />
@@ -73,6 +73,6 @@ export const RichText: FC<Props> = ({ text }) => {
           })}
         </>
       )}
-    </div>
+    </p>
   );
 };
