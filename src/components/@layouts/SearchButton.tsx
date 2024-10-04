@@ -1,14 +1,20 @@
 import type { FC } from 'react';
 
 import { Kbd } from '@mantine/core';
-import { useOs } from '@mantine/hooks';
 import { useSpotlight } from '@mantine/spotlight';
+import { useEffect, useState } from 'react';
 
 import { SearchIcon } from '~/commons/icons';
 
 export const SearchButton: FC = () => {
   const spotlight = useSpotlight();
-  const os = useOs();
+  const [key, setKey] = useState('⌘');
+
+  useEffect(() => {
+    if (navigator.userAgent.includes('Win')) {
+      setKey('Ctrl');
+    }
+  }, []);
 
   return (
     <button
@@ -21,7 +27,7 @@ export const SearchButton: FC = () => {
         className="border-gray-400 bg-gray-700 py-0.5 text-xs text-white hidden md:block"
         color="dark"
       >
-        {os === 'windows' ? 'Ctrl' : '⌘'} + K
+        {key} + K
       </Kbd>
     </button>
   );
