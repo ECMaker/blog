@@ -6,11 +6,13 @@ import type {
 } from '~/types/notion';
 
 import { Bio } from '~/commons/Bio';
+import { useTableOfContentsContext } from '~/components/features/notionBlog/TableOfContentsContext';
 import { CommentForm } from '~/features/notionBlog/CommentForm';
 import { Comments } from '~/features/notionBlog/Comments';
 import { PostContent } from '~/features/notionBlog/PostContent';
 import { PostMeta } from '~/features/notionBlog/PostMeta/PostMeta';
 import { TableOfContents } from '~/features/notionBlog/TableOfContents';
+
 
 type Props = {
   post: NotionPost;
@@ -19,32 +21,34 @@ type Props = {
 };
 
 export const PostDetailTemplate: FC<Props> = ({ post, comments, onSubmit }) => {
+  const { showTableOfContents } = useTableOfContentsContext();
+  
   return (
-    <div className="px-6 sp:px-0">
+    <div className=" sp:bg-gray-200">
       <h1 className="py-8 text-center text-3xl sp:p-4 sp:text-xl">
         {post.title}
       </h1>
 
       <div className="flex justify-center gap-6">
         <div className="w-main flex flex-col gap-6 sp:gap-4">
-          <div className="hidden sp:block">
-            <PostMeta meta={post} commentCount={comments.length} />
-          </div>
           <PostContent title={post.title} blocks={post.children} />
           {comments.length > 0 && <Comments comments={comments} />}
-          <div className="hidden sp:block">
+          <div className="md:hidden">
             <Bio />
           </div>
           <CommentForm onSubmit={onSubmit} />
         </div>
 
         <div className="w-aside">
-          <Bio />
-          <div className="sticky top-[52px] mt-4 space-y-4">
+          <div className="sticky top-[112px] space-y-4">
             <TableOfContents blocks={post.children} />
             <PostMeta meta={post} commentCount={comments.length} />
+            <Bio />
           </div>
         </div>
+      </div>
+      <div className="md:hidden fixed top-[114px] right-2 rounded-md border-solid border-2  border-gray-700 ">
+        {showTableOfContents && <TableOfContents blocks={post.children} />}
       </div>
     </div>
   );
