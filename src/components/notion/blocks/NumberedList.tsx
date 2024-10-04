@@ -9,8 +9,10 @@ type Props = {
 export const NumberedList = ({ block }: Props) => {
   return (
     <ol className="my-5 list-decimal pl-7">
-      {block.numbered_list.children.map((child) => (
-        <div key={block.id}>{blockToJsx(child)}</div>
+      {block.numbered_list.children.map((child, index) => (
+        <li key={index}>
+          {blockToJsx(child)}
+        </li>
       ))}
     </ol>
   );
