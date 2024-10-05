@@ -5,7 +5,7 @@ import type { NotionPostMeta, NotionBlockObjectResponse } from '~/types/notion';
  * NotionのPageObjectResponseをPostMetaに変換
  */
 export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
-  const { id, icon, properties, last_edited_time } = page;
+  const { id, icon, properties, created_time, last_edited_time } = page;
 
   if (icon !== null && icon.type !== 'emoji')
     throw new Error('Icon is not emoji');
@@ -23,6 +23,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     name: 'カテゴリなし',
     color: 'default',
   };
+  const createdAt = created_time.substring(0, 10);
   const updatedAt = last_edited_time.substring(0, 10);
   const tags = properties.Tags.multi_select;
   const likes = properties.Likes.number || 0;
@@ -32,6 +33,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     icon: icon?.emoji || '📄',
     title,
     category,
+    createdAt,
     updatedAt,
     tags,
     likes,
