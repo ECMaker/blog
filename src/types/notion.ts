@@ -6,14 +6,12 @@ import type {
   ListCommentsResponse,
   PageObjectResponse,
   RichTextItemResponse,
-  BulletedListItemBlockObjectResponse,
-  NumberedListItemBlockObjectResponse,
-  ToDoBlockObjectResponse
 } from '@notionhq/client/build/src/api-endpoints';
 
 /* Replace */
 export type NotionDatabaseObjectResponse = DatabaseObjectResponse;
 export type NotionPageObjectResponse = PageObjectResponse;
+export type NotionBlockObjectResponse = BlockObjectResponse;
 export type NotionListCommentsResponse = ListCommentsResponse;
 export type NotionCommentObjectResponse = CommentObjectResponse;
 export type NotionRichTextItemResponse = RichTextItemResponse;
@@ -38,15 +36,12 @@ export type NotionPostMeta = {
   title: string;
   description?: string;
   category: NotionSelectPropertyResponse;
-  createdAt: string;
   updatedAt: string;
   tags: NotionSelectPropertyResponse[];
   likes: number;
-  slug: string;
-  image: string;
 };
 export type NotionPost = NotionPostMeta & {
-  children: ExpandedBlockObjectResponse[];
+  children: NotionBlockObjectResponse[];
 };
 export type NotionBlogProperties = {
   categories: NotionSelectPropertyResponse[];
@@ -55,40 +50,4 @@ export type NotionBlogProperties = {
 export type NotionBlogPropertiesWithCount = {
   categories: (NotionSelectPropertyResponse & { count: number })[];
   tags: (NotionSelectPropertyResponse & { count: number })[];
-};
-
-export type BulletedListBlockObjectResponse = {
-  id: string;
-  type: "bulleted_list";
-  bulleted_list: {
-    children: Array<BulletedListItemBlockObjectResponse>;
-  };
-};
-
-export type NumberedListBlockObjectResponse = {
-  id: string;
-  type: "numbered_list";
-  numbered_list: {
-    children: Array<NumberedListItemBlockObjectResponse>;
-  };
-};
-
-export type ToDoListBlockObjectResponse = {
-  id: string;
-  type: "to_do_list";
-  to_do_list: {
-    children: Array<ToDoBlockObjectResponse>;
-  };
-};
-
-export type ExpandedBlockObjectResponse =
-  | ({
-      children?: ExpandedBlockObjectResponse[];
-    } & BlockObjectResponse)
-  | BulletedListBlockObjectResponse
-  | NumberedListBlockObjectResponse
-  | ToDoListBlockObjectResponse;
-
-export type BlockWithChildren<P = unknown> = P & {
-  children?: ExpandedBlockObjectResponse[];
 };

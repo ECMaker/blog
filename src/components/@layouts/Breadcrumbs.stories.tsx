@@ -13,11 +13,16 @@ export default {
   },
 } as Meta<typeof Component>;
 
+export const Default: StoryObj<typeof Component> = {
+  args: {
+    currentPath: '/posts/zenn',
+  },
+};
 export const UseTitleEnum: StoryObj<typeof Component> = {
   args: {
-    currentPath: '/posts/[slug]',
+    currentPath: '/posts/[page_id]',
     titleEnum: {
-      '[slug]': '記事タイトル',
+      '[page_id]': '記事タイトル',
     },
   },
 };

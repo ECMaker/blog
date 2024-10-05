@@ -11,7 +11,7 @@ import { PageTitle } from '~/commons/PageTitle';
 const Rive: NextPage = () => {
   /* Masao */
   const { rive, RiveComponent } = useRive({
-    src: '/sandbox/lesson-masao.riv',
+    src: '/lesson-masao.riv',
     stateMachines: 'State Machine 1',
     autoplay: true,
     animations: ['stay'],
@@ -19,13 +19,13 @@ const Rive: NextPage = () => {
   const onClickInputMasaoPressed = useStateMachineInput(
     rive,
     'State Machine 1',
-    'Pressed'
+    'Pressed',
   );
   const onPressed = () => onClickInputMasaoPressed?.fire();
 
   /* Slime */
   const { rive: slimeRive, RiveComponent: SlimeRiveComponent } = useRive({
-    src: '/sandbox/slime.riv',
+    src: '/slime.riv',
     stateMachines: 'State Machine',
     autoplay: true,
     animations: ['stay'],
@@ -33,7 +33,7 @@ const Rive: NextPage = () => {
   const onClickInput = useStateMachineInput(
     slimeRive,
     'State Machine',
-    'Shivering'
+    'Shivering',
   );
   const onToggle = () => {
     if (!onClickInput) return;

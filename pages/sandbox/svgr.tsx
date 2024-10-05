@@ -7,7 +7,7 @@ import Head from 'next/head';
 
 import { PageTitle } from '~/commons/PageTitle';
 
-import SvgComponent from '../../public/sandbox/makoto.svg';
+import SvgComponent from '../../public/makoto.svg';
 
 const Svgr: NextPage = () => {
   return (
@@ -36,7 +36,7 @@ module.exports = {
     return config
   },
 }`}</Prism>
-        <Prism language="javascript">{`import SvgComponent from '../../public/sandbox/makoto.svg';
+        <Prism language="javascript">{`import SvgComponent from '../../public/makoto.svg';
   ...
   <SvgComponent />`}</Prism>
         <SvgComponent />

@@ -9,7 +9,6 @@ export default {
   parameters: {
     backgrounds: {
       default: 'slate',
-      values: [{ name: 'slate', value: '#1e293b' }],
     },
   },
 } as Meta<typeof Component>;
@@ -23,7 +22,7 @@ export const Default: StoryObj<typeof Component> = {
 export const WithIcon: StoryObj<typeof Component> = {
   args: {
     href: '/',
-    label: 'X (twitter)',
+    label: 'Twitter',
     icon: <TwitterIcon size={18} />,
   },
 };

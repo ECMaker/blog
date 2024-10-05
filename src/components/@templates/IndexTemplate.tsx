@@ -1,6 +1,8 @@
 import type { FC } from 'react';
 import type { NotionPageObjectResponse } from '~/types/notion';
 
+import Image from 'next/image';
+import Link from 'next/link';
 import { BsChatText } from 'react-icons/bs';
 
 import { BookIcon, GitHubIcon } from '~/commons/icons';
@@ -14,19 +16,19 @@ type Props = {
 export const IndexTemplate: FC<Props> = ({ posts }) => {
   return (
     <div>
-      {/* <div className="mt-2 w-full bg-slate-800 py-8 text-orange-100">
+      <div className="mt-2 w-full bg-slate-800 py-8 text-orange-100">
         <div className="mx-auto w-fit text-right">
           <div className="font-sans text-4xl font-bold sp:text-3xl">
-            sub title
+            Obedience to Curiosity
           </div>
-          <div className="mt-1 font-sans text-sm">sub sub title</div>
+          <div className="mt-1 font-sans text-sm">好奇心に従順に生きる</div>
         </div>
-      </div>*/}
+      </div>
 
       <div className="w-main mx-auto mt-4 space-y-4 px-4 pb-10">
         <div>
           <h2 className="flex items-center gap-1 text-lg font-bold">
-            最近の記事
+            最新の記事5件
             <BookIcon size={20} />
           </h2>
           <div className="mt-3">
@@ -35,6 +37,29 @@ export const IndexTemplate: FC<Props> = ({ posts }) => {
           <div className="ml-auto mt-4 w-fit">
             <ReadMoreButton href="/posts" />
           </div>
+        </div>
+
+        <div>
+          <h2 className="flex items-center gap-1 text-lg font-bold">
+            <GitHubIcon size={20} />
+            GitHubの草w
+          </h2>
+          <Link
+            href="https://github.com/nbr41to"
+            target="_blank"
+            rel="noreferrer"
+            className="relative mx-auto block h-32 w-full cursor-pointer transition-transform duration-300 hover:scale-105 sp:h-20"
+          >
+            <Image
+              className="h-full w-full object-contain"
+              src="https://github-contributions-api.deno.dev/nbr41to.svg?no-legend=true&no-total=true&scheme=blue"
+              alt="GitHub Contributions"
+              fill
+              sizes="800px"
+              priority
+              unoptimized
+            />
+          </Link>
         </div>
 
         {/* <div>
@@ -48,11 +73,12 @@ export const IndexTemplate: FC<Props> = ({ posts }) => {
             <BsChatText size={20} />
           </h2>
           <p className="px-4 py-2 leading-loose">
-          Knobさんの”noblog”を参考にさせていただき、作成しました。
-          <br />
-          素敵な記事をありがとうございます。この場をお借りして御礼申し上げます。
-          <br />
-          Keywords: Next.js, TypeScript, Tailwind CSS, Notion API ...
+            Next.js, TypeScript, Tailwind CSS, Mantine UI, SWR, Next Auth
+            などのモダンな技術をふんだんに使って構築した Webアプリに Notion API
+            を使って Notion の Database に追加した記事を SSG
+            して表示しています。手軽に node.js のランタイムを利用できる Next.js
+            は本当に便利です。 また、自分の趣味の開発が手軽にできる Sandbox
+            としての役割も担えるようにカスタマイズしています。
           </p>
           <div className="ml-auto w-fit">
             <ReadMoreButton

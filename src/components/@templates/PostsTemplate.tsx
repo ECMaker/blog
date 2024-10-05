@@ -8,6 +8,7 @@ import type {
 
 import { Pagination } from '@mantine/core';
 import { usePagination } from '@mantine/hooks';
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
 import { PageTitle } from '~/commons/PageTitle';
@@ -50,7 +51,7 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
   const totalPage = useMemo(
     () => controlledPostsArray.length,
-    [controlledPostsArray]
+    [controlledPostsArray],
   );
 
   const pagination = usePagination({
@@ -60,12 +61,12 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
   const controlledCurrentPosts = useMemo(
     () => controlledPostsArray[pagination.active - 1],
-    [controlledPostsArray, pagination.active]
+    [controlledPostsArray, pagination.active],
   );
 
   const blogPropertiesWithCount: NotionBlogPropertiesWithCount = useMemo(
     () => getPropertiesWithCount(properties, flatPosts),
-    [flatPosts, properties]
+    [flatPosts, properties],
   );
 
   return (
@@ -74,7 +75,7 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
       <div className="mx-auto w-fit py-4">
         <Pagination
-          page={pagination.active}
+          value={pagination.active}
           total={totalPage}
           onChange={pagination.setPage}
         />
@@ -103,12 +104,15 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
       <div className="mx-auto w-fit py-4">
         <Pagination
-          page={pagination.active}
+          value={pagination.active}
           total={totalPage}
           onChange={pagination.setPage}
         />
       </div>
 
+      <div className="text-center underline">
+        <Link href="/posts/zenn-list">Zennの記事一覧はこちら</Link>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import type { Heading2BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
-import type { BlockWithChildren } from '~/types/notion';
 
 import { useIntersection } from '@mantine/hooks';
 import { useEffect } from 'react';
@@ -11,10 +10,10 @@ import { RichText } from '~/components/notion/RichText';
 import { inViewHeadingIdsAtom } from '~/recoil/atoms';
 
 type Props = {
-  block: BlockWithChildren<Heading2BlockObjectResponse>;
+  block: Heading2BlockObjectResponse;
 };
 
-export const Heading2: FC<Props> = ({ block }: Props) => {
+export const Heading2: FC<Props> = ({ block }) => {
   const setInViewHeading = useSetRecoilState(inViewHeadingIdsAtom);
   const { ref, entry } = useIntersection({
     threshold: 1,
@@ -34,7 +33,7 @@ export const Heading2: FC<Props> = ({ block }: Props) => {
   return (
     <h2
       id={block.id}
-      className="my-6 flex items-center gap-2 px-3 border-0 border-b-2 border-solid border-slate-800 pl-2 text-xl font-bold sp:border-slate-500 sp:text-base"
+      className="my-6 flex items-center gap-2 px-3 text-xl shadow-[-1px_-1px_6px_#ccc,4px_4px_1px_#1E293B] sp:text-base"
       ref={ref}
     >
       <OutlineBlockIcon size={24} />
