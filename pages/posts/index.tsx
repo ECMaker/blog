@@ -16,8 +16,10 @@ export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        postsArray: dummy_notion_pages_array as NotionPageObjectResponse[][],
-        properties: dummy_notion_database_properties as NotionDatabaseProperty,
+        postsArray:
+          dummy_notion_pages_array.flat() as unknown as NotionPageObjectResponse[][],
+        properties:
+          dummy_notion_database_properties as unknown as NotionDatabaseProperty,
       },
     };
   }

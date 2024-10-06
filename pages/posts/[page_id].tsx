@@ -27,7 +27,7 @@ export const getStaticProps = async (context: { params: Params }) => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        post: dummy_notion_post as NotionPost,
+        post: dummy_notion_post as unknown as NotionPost,
       },
     };
   }
@@ -58,7 +58,8 @@ export const getStaticProps = async (context: { params: Params }) => {
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (process.env.ENVIRONMENT === 'local') {
-    const posts = dummy_notion_pages_array.flat() as NotionPageObjectResponse[];
+    const posts =
+      dummy_notion_pages_array.flat() as unknown as NotionPageObjectResponse[];
     const paths = posts.map(({ id }) => ({ params: { page_id: id } }));
 
     return {
@@ -112,6 +113,7 @@ const Post: NextPage<Props> = ({ post }) => {
       <PostDetailTemplate
         post={post}
         comments={comments}
+        // @ts-expect-error: 型が合わない
         onSubmit={handleCommentSubmit}
       />
 

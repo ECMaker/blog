@@ -9,7 +9,7 @@ export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        blocks: notion_profile_blocks as NotionBlockObjectResponse[],
+        blocks: notion_profile_blocks as unknown as NotionBlockObjectResponse[],
       },
     };
   }
