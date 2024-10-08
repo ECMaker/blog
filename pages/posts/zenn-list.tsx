@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
     props: {
       articles,
     },
-    revalidate: 60 * 60 * 24 * 7, // 1週間
+    revalidate: 1, //[s] added ISR.
   };
 };
 

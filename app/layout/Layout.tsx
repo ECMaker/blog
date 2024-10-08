@@ -23,7 +23,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
   const titleEnum = useMemo(() => {
     if ('post' in pageProps) {
       return {
-        ['[page_id]']: (pageProps.post as NotionPost).title,
+        ['[slug]']: (pageProps.post as NotionPost).title,
       };
     } else {
       return undefined;
