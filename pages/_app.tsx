@@ -28,8 +28,8 @@ import { googleTagManagerId } from '~/types/gtm';
 const meta = {
   title: 'EC maker',
   description: 'Notion API と Next.js / Tailwind CSS による本格ブログ',
-  url: 'https://blog.ecmaker00.com/',
-  image: 'https://blog.ecmaker00.com/ECmaker.png',
+  url: 'https://blog.ec-maker.com/',
+  image: 'https://blog.ec-maker.com/ECmaker.png',
 };
 
 export default function App({ Component, pageProps }: AppProps) {

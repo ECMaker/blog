@@ -18,7 +18,7 @@ export const PostMeta: FC<Props> = ({ meta, commentCount }) => {
   const { data: likes, trigger, isMutating } = useLikes(meta.id);
 
   return (
-    <div className="space-y-2 bg-white py-4 px-6 text-sm">
+    <div className="rounded space-y-2 bg-white py-4 px-6 text-sm">
       <div className="flex justify-between">
         <div className="space-y-1">
           <div>公開: {meta.updatedAt}</div>
@@ -32,7 +32,7 @@ export const PostMeta: FC<Props> = ({ meta, commentCount }) => {
 
       <div className="py-2">
         <Button
-          color="orange"
+          color="dark"
           fullWidth
           disabled={liked}
           loading={isMutating}

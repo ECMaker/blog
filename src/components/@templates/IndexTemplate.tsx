@@ -26,7 +26,7 @@ export const IndexTemplate: FC<Props> = ({ posts }) => {
       <div className="w-main mx-auto mt-4 space-y-4 px-4 pb-10">
         <div>
           <h2 className="flex items-center gap-1 text-lg font-bold">
-            最新の記事5件
+            最近の記事
             <BookIcon size={20} />
           </h2>
           <div className="mt-3">

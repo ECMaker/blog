@@ -15,7 +15,7 @@ export default async function handler(req: NextRequest) {
 
     return new ImageResponse(
       (
-        <div tw="relative flex h-full w-full flex-col flex-wrap items-center justify-center bg-orange-100 text-slate-800">
+        <div tw="relative flex h-full w-full flex-col flex-wrap items-center justify-center bg-gray-200 text-slate-800">
           {title ? (
             <div tw="w-[1000px] whitespace-pre-wrap text-[72px] font-bold mx-auto">
               {title}

@@ -61,14 +61,14 @@ const PostIndex: NextPage<Props> = ({ postsArray, properties }) => {
       <NextSeo
         title="Blog | EC maker"
         openGraph={{
-          url: 'https://blog.ecmaker00.com/posts/',
+          url: 'https://blog.ec-maker.com/posts/',
         }}
       />
       <ArticleJsonLd
         type="BlogPosting"
         title="Blog | EC maker"
-        url="https://blog.ecmaker00.com/posts/"
-        images={['https://blog.ecmaker00.com/ECmaker.png']}
+        url="https://blog.ec-maker.com/posts/"
+        images={['https://blog.ec-maker.com/ECmaker.png']}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={postsArray[0][0].last_edited_time}
         authorName="Nobuyuki Kobayashi"

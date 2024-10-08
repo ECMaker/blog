@@ -21,7 +21,7 @@ export const ReadMoreButton: FC<Props> = ({
   return (
     <Link
       className={clsx(
-        'w-fit font-baloo leading-none text-slate-800',
+        'w-fit font-CutiveMono leading-none text-slate-800',
         'flex items-end gap-1',
         'transition-transform duration-300 hover:scale-110',
       )}

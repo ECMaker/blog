@@ -30,11 +30,13 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
     }
   }, [pageProps]);
 
+  // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx を変更する !U
+
   const spotlight = useSpotlight();
   const handleClickSearchButton = () => spotlight.openSpotlight();
 
   return (
-    <div className="bg-orange-100">
+    <div className="bg-gray-200">
       <div className="fixed z-50 flex w-fit items-start justify-between">
         <NavMenu />
       </div>
@@ -50,10 +52,10 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           )}
           onClick={() => router.push('/')}
         >
-          <h1 className="font-baloo text-[42px] leading-none">EC maker</h1>
+          <h1 className="font-CutiveMono text-[42px] leading-none">EC maker</h1>
         </div>
       </header>
-      <main className="relative z-10 mb-40 min-h-[calc(100vh-102px)] w-full bg-orange-100">
+      <main className="relative z-10 mb-40 min-h-[calc(100vh-102px)] w-full bg-gray-200">
         <div className=" mx-auto max-w-[1280px]">
           <div className="ml-auto w-fit max-w-full overflow-x-scroll pr-8 sp:ml-0 sp:pr-0 sp:pl-4">
             <Breadcrumbs currentPath={pathname || '/'} titleEnum={titleEnum} />
@@ -75,7 +77,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
               sizes="265px"
               priority
             />
-            <Link href="/" className="font-baloo text-3xl text-white">
+            <Link href="/" className="font-CutiveMono text-3xl text-white">
               EC maker
             </Link>
           </div>
