@@ -116,7 +116,7 @@ export const NavMenu: FC = () => {
 
             <div className="pt-8" />
             <NavMenuLink
-              /* !U 自作したlogoを読み込む
+              /* !U 自作したlogoを読み込む #45
                 <link rel="icon" href="/favicon.ico" />
                 https://zenn.dev/toono_f/articles/6c8ef6e4e771b9
                 import type { IconType } from 'react-icons/lib/cjs/iconBase';

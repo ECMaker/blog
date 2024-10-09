@@ -84,6 +84,7 @@ body::before {
     text-decoration: none;
   }
 
+  /* !U ./tailwind.config.js でtext-primaryなどを定義しないと無意味かも */
   .text-primary {
     /* text-orange-400; */
     color: #f97316;

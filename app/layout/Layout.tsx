@@ -30,7 +30,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
     }
   }, [pageProps]);
 
-  // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx を変更する !U
+  // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx も変更する !U
 
   const spotlight = useSpotlight();
   const handleClickSearchButton = () => spotlight.openSpotlight();

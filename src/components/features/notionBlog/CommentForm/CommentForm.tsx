@@ -61,8 +61,17 @@ export const CommentForm: FC<Props> = () => {
       />
       {!session ? (
         <div className="sp:px-4">
-          <Button fullWidth onClick={toLoginPage} color="dark">
-            ⚙準備中⚙ (ログインしてコメントをする) {/* !U #36 */}
+          <Button
+            fullWidth
+            onClick={toLoginPage}
+            color="dark"
+            className="h-auto py-2"
+          >
+            <span className="text-center font-normal">
+              ⚙準備中⚙　(ログインしてコメントする)
+              <span className="block mt-2"></span>
+              コメントは X (twitter) へお願いします🙏
+            </span>
           </Button>
         </div>
       ) : (
@@ -100,7 +109,7 @@ export const CommentForm: FC<Props> = () => {
               position="top-end"
               arrowPosition="center"
               withArrow
-              color="orange"
+              color="dark"
               label={
                 <div className="space-y-3 p-2 text-center text-sm">
                   <Kbd>{os === 'windows' ? 'Ctrl' : '⌘'} + Enter</Kbd>

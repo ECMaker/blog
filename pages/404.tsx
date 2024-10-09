@@ -11,7 +11,7 @@ const NotFoundPage: NextPage = () => {
       <div className="mt-8 flex h-80 flex-col items-center justify-center gap-4 bg-slate-800 text-white">
         <h1 className="text-center text-2xl">Not found... (404)</h1>
         <div className="mx-auto w-fit">
-          <Button color="orange" onClick={() => router.push('/')}>
+          <Button color="dark" onClick={() => router.push('/')}>
             トップに戻る
           </Button>
         </div>
