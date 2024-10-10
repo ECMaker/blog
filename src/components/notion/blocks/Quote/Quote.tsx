@@ -1,15 +1,16 @@
 import type { QuoteBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
+import type { BlockWithChildren } from '~/types/notion';
 
 import { clsx } from '@mantine/core';
 
 import { RichText } from '~/components/notion/RichText';
 
 type Props = {
-  block: QuoteBlockObjectResponse;
+  block: BlockWithChildren<QuoteBlockObjectResponse>;
 };
 
-export const Quote: FC<Props> = ({ block }) => {
+export const Quote: FC<Props> = ({ block }: Props) => {
   return (
     <blockquote
       className={clsx(

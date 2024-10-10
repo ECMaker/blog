@@ -1,18 +1,20 @@
 import type { Heading3BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
+import type { BlockWithChildren } from '~/types/notion';
 
 import { useIntersection } from '@mantine/hooks';
 import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 
+import { OutlineCheckIcon } from '~/components/@commons/icons';
 import { RichText } from '~/components/notion/RichText';
 import { inViewHeadingIdsAtom } from '~/recoil/atoms';
 
 type Props = {
-  block: Heading3BlockObjectResponse;
+  block: BlockWithChildren<Heading3BlockObjectResponse>;
 };
 
-export const Heading3: FC<Props> = ({ block }) => {
+export const Heading3: FC<Props> = ({ block }: Props) => {
   const setInViewHeading = useSetRecoilState(inViewHeadingIdsAtom);
   const { ref, entry } = useIntersection({
     threshold: 1,
@@ -32,9 +34,10 @@ export const Heading3: FC<Props> = ({ block }) => {
   return (
     <h3
       id={block.id}
-      className="my-4 border-0 border-b-2 border-solid border-slate-800 pl-2 text-lg font-bold sp:border-slate-500 sp:text-base"
+      className="my-4 flex items-center gap-2 px-3 border-0 border-b border-solid border-slate-800 pl-2 text-lg font-bold sp:border-slate-500 sp:text-base"
       ref={ref}
     >
+      <OutlineCheckIcon size={22} />
       <RichText text={block.heading_3.rich_text} />
     </h3>
   );

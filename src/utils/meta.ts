@@ -1,5 +1,8 @@
 import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { NotionPostMeta, NotionBlockObjectResponse } from '~/types/notion';
+import type {
+  NotionPostMeta,
+  ExpandedBlockObjectResponse,
+} from '~/types/notion';
 
 import { richTextToString } from './richTextToString';
 
@@ -53,7 +56,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
  */
 
 export const toMetaDescription = (
-  children: NotionBlockObjectResponse[],
+  children: ExpandedBlockObjectResponse[],
 ): string => {
   let allText = '';
   let i = 0;

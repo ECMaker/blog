@@ -31,6 +31,7 @@ import {
   ImCheckboxChecked as CheckedBoxIcon,
   ImCheckboxUnchecked as UnCheckedBoxIcon,
 } from 'react-icons/im';
+import { IoMdCheckboxOutline as OutlineCheckIcon } from 'react-icons/io';
 import {
   IoInformationCircleSharp as InformationIcon,
   IoQrCode as QrCodeIcon,
@@ -74,6 +75,7 @@ export {
   LogoutIcon,
   MailIcon,
   OutlineBlockIcon,
+  OutlineCheckIcon,
   ProfileIcon,
   QrCodeIcon,
   SearchIcon,

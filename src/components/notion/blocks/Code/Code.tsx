@@ -1,13 +1,14 @@
 import type { PrismProps } from '@mantine/prism';
 import type { CodeBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
+import type { BlockWithChildren } from '~/types/notion';
 
 import { Prism } from '@mantine/prism';
 
 import { RichText } from '~/components/notion/RichText';
 
 type Props = {
-  block: CodeBlockObjectResponse;
+  block: BlockWithChildren<CodeBlockObjectResponse>;
 };
 
 /* Notion の language を Prism の language に変換 */
@@ -21,7 +22,7 @@ const languageCompiled = (
 };
 
 /* type code */
-export const Code: FC<Props> = ({ block }) => {
+export const Code: FC<Props> = ({ block }: Props) => {
   const language = languageCompiled(block.code.language) as Extract<
     PrismProps['language'],
     string
