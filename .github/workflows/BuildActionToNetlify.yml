@@ -5,7 +5,7 @@ name: BuildActionToNetlify
 on:
   workflow_dispatch:       # GithubActions上で実行ボタンを表示
   schedule:
-    - cron: '*/30 * * * *' # 30分毎に実行：https://crontab.guru/#*/55_*_*_*_*
+    - cron: '*/30 * * * *' # 30分毎に実行：https://crontab.guru/#*/30_*_*_*_*
   push:
     branches:
       - main
