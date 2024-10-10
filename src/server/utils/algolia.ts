@@ -7,7 +7,7 @@ const client = algoliasearch(
   `${process.env.ALGOLIA_APPLICATION_ID}`,
   `${process.env.ALGOLIA_ADMIN_API_KEY}`,
 );
-const index = client.initIndex('noblog');
+const index = client.initIndex('ECmaker');
 
 export const saveToAlgolia = async (post: NotionPost) => {
   try {
@@ -23,7 +23,7 @@ export const saveToAlgolia = async (post: NotionPost) => {
       .join('');
 
     const records: AlgoliaSearchObjectRequest = {
-      objectID: post.id,
+      objectID: post.slug,
       title: post.title,
       category: post.category.name,
       tags: post.tags.map((tag) => tag.name),
