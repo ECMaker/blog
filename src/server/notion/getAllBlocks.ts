@@ -1,16 +1,15 @@
 import type {
   BlockObjectResponse,
   PartialBlockObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
-import type { ExpandedBlockObjectResponse } from "~/types/notion";
+} from '@notionhq/client/build/src/api-endpoints';
+import type { ExpandedBlockObjectResponse } from '~/types/notion';
 
-import { unsupportedBlocks } from "~/server/notion/unsupportedBlocks";
+import { unsupportedBlocks } from '~/server/notion/unsupportedBlocks';
 
-import { notion } from "./client";
-
+import { notion } from './client';
 
 export const getAllBlocks = async (
-  blockId: string
+  blockId: string,
 ): Promise<ExpandedBlockObjectResponse[]> => {
   const allResults: (BlockObjectResponse | PartialBlockObjectResponse)[] = [];
 
@@ -27,7 +26,7 @@ export const getAllBlocks = async (
   // Fetches all child blocks recursively - be mindful of rate limits if you have large amounts of nested blocks
   // See https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
   const childBlocks = allResults
-    .filter((result): result is BlockObjectResponse => "type" in result)
+    .filter((result): result is BlockObjectResponse => 'type' in result)
     .map(async (block) => {
       if (!unsupportedBlocks.includes(block.type) && block.has_children) {
         const children = await getAllBlocks(block.id);
@@ -43,33 +42,33 @@ export const getAllBlocks = async (
       (result: ExpandedBlockObjectResponse[], currentBlock) => {
         const previousBlock =
           0 <= result.length - 1 ? result[result.length - 1] : null;
-        if (currentBlock.type === "bulleted_list_item") {
-          if (previousBlock && previousBlock.type === "bulleted_list") {
+        if (currentBlock.type === 'bulleted_list_item') {
+          if (previousBlock && previousBlock.type === 'bulleted_list') {
             previousBlock.bulleted_list.children?.push(currentBlock);
           } else {
             result.push({
               id: Math.random().toString(),
-              type: "bulleted_list",
+              type: 'bulleted_list',
               bulleted_list: { children: [currentBlock] },
             });
           }
-        } else if (currentBlock.type === "numbered_list_item") {
-          if (previousBlock && previousBlock.type === "numbered_list") {
+        } else if (currentBlock.type === 'numbered_list_item') {
+          if (previousBlock && previousBlock.type === 'numbered_list') {
             previousBlock.numbered_list.children?.push(currentBlock);
           } else {
             result.push({
               id: Math.random().toString(),
-              type: "numbered_list",
+              type: 'numbered_list',
               numbered_list: { children: [currentBlock] },
             });
           }
-        } else if (currentBlock.type === "to_do") {
-          if (previousBlock && previousBlock.type === "to_do_list") {
+        } else if (currentBlock.type === 'to_do') {
+          if (previousBlock && previousBlock.type === 'to_do_list') {
             previousBlock.to_do_list.children?.push(currentBlock);
           } else {
             result.push({
               id: Math.random().toString(),
-              type: "to_do_list",
+              type: 'to_do_list',
               to_do_list: { children: [currentBlock] },
             });
           }
@@ -79,7 +78,7 @@ export const getAllBlocks = async (
 
         return result;
       },
-      []
+      [],
     );
   });
 };

@@ -16,8 +16,10 @@ export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        postsArray: dummy_notion_pages_array as NotionPageObjectResponse[][],
-        properties: dummy_notion_database_properties as NotionDatabaseProperty,
+        postsArray:
+          dummy_notion_pages_array.flat() as unknown as NotionPageObjectResponse[][],
+        properties:
+          dummy_notion_database_properties as unknown as NotionDatabaseProperty,
       },
     };
   }
@@ -27,17 +29,17 @@ export const getStaticProps = async () => {
     database_id: blogDatabaseId,
     page_size: 12,
     filter: {
-      property: "Published",
+      property: 'Published',
       checkbox: {
         equals: true,
       },
     },
     sorts: [
       {
-        property: "UpdatedAt",
-        direction: "descending",
+        property: 'UpdatedAt',
+        direction: 'descending',
       },
-    ]
+    ],
   })) as NotionPageObjectResponse[][];
 
   return {
@@ -66,7 +68,7 @@ const PostIndex: NextPage<Props> = ({ postsArray, properties }) => {
         type="BlogPosting"
         title="Blog | EC maker"
         url="https://blog.ec-maker.com/posts/"
-        images={['https://blog.ec-maker.com/300%5E2_black.gif']}
+        images={['https://blog.ec-maker.com/ECmaker.png']}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={postsArray[0][0].last_edited_time}
         authorName="Nobuyuki Kobayashi"

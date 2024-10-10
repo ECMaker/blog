@@ -1,9 +1,9 @@
 import '~/styles/globals.css';
-import 'react-medium-image-zoom/dist/styles.css'
+import '~/styles/body-before.css';
 
 import type { AppProps } from 'next/app';
 
-import { NotificationsProvider } from '@mantine/notifications';
+import { Notifications } from '@mantine/notifications';
 import { SpotlightProvider } from '@mantine/spotlight';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -20,7 +20,6 @@ import {
   ProfileIcon,
   SearchIcon,
 } from '~/commons/icons';
-import { TableOfContentsProvider } from '~/components/features/notionBlog/TableOfContentsContext';
 import { useSpotlightActions } from '~/hooks/apiHooks/useSpotlightActions';
 import { GoogleTagManager } from '~/layouts/GoogleTagManager';
 import { Layout } from '~/layouts/Layout';
@@ -28,10 +27,9 @@ import { googleTagManagerId } from '~/types/gtm';
 
 const meta = {
   title: 'EC maker',
-  description:
-    'Notion API と Next.js / Tailwind CSS による本格ブログ',
+  description: 'Notion API と Next.js / Tailwind CSS による本格ブログ',
   url: 'https://blog.ec-maker.com/',
-  image: 'https://blog.ec-maker.com/300%5E2_black.gif',
+  image: 'https://blog.ec-maker.com/ECmaker.png',
 };
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -70,7 +68,7 @@ export default function App({ Component, pageProps }: AppProps) {
         onTrigger: () => router.push('/sandbox'),
       },
     ],
-    [router]
+    [router],
   );
   const [query, setQuery] = useState('');
   const actions = useSpotlightActions(query);
@@ -120,7 +118,7 @@ export default function App({ Component, pageProps }: AppProps) {
             filter={(q, actions) => {
               const filteredDefaultActions = defaultActions.filter(
                 (action) =>
-                  action.title.toLowerCase().indexOf(q.toLowerCase()) !== -1
+                  action.title.toLowerCase().indexOf(q.toLowerCase()) !== -1,
               );
 
               return [...filteredDefaultActions, ...actions];
@@ -131,21 +129,12 @@ export default function App({ Component, pageProps }: AppProps) {
             nothingFoundMessage="Nothing found..."
             withinPortal
             highlightQuery
-            overlayOpacity={0.3}
             onQueryChange={(query) => setQuery(query)}
-            styles={{
-              spotlight: {
-                maxHeight: '60vh',
-              },
-            }}
           >
-            <NotificationsProvider position="top-center">
-              <TableOfContentsProvider>
-                <Layout {...pageProps}>
-                  <Component {...pageProps} />
-                </Layout>
-              </TableOfContentsProvider>
-            </NotificationsProvider>
+            <Layout {...pageProps}>
+              <Component {...pageProps} />
+            </Layout>
+            <Notifications position="top-center" />
           </SpotlightProvider>
         </RecoilRoot>
       </SessionProvider>

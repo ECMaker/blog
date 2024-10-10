@@ -1,18 +1,17 @@
 import type { FC, ReactNode } from 'react';
 import type { NotionPost } from '~/types/notion';
 
-
 import { clsx } from '@mantine/core';
+import { useSpotlight } from '@mantine/spotlight';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import { ContentsButton } from '~/components/@layouts/ContentsButton';
 import { ScrollTopButton } from '~/components/@layouts/ScrollTopButton';
 import { SearchButton } from '~/components/@layouts/SearchButton';
-import { useTableOfContentsContext } from '~/components/features/notionBlog/TableOfContentsContext';
 import { Breadcrumbs } from '~/layouts/Breadcrumbs';
+import { baloo2, firaCode, notoSansJP } from '~/styles/fontFamilies';
 
 import { NavMenu } from './NavMenu';
 
@@ -21,7 +20,6 @@ type Props = {
 };
 
 export const Layout: FC<Props> = ({ children, ...pageProps }) => {
-  const { setShowTableOfContents } = useTableOfContentsContext();
   const router = useRouter();
   const titleEnum = useMemo(() => {
     if ('post' in pageProps) {
@@ -33,42 +31,37 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
     }
   }, [pageProps]);
 
+  const spotlight = useSpotlight();
+  const handleClickSearchButton = () => spotlight.openSpotlight();
+
   return (
-    <div className="bg-gray-200">
-      <div className="flex items-center justify-between bg-gradient-to-b from-gray-200 from-50% via-gray-200 to-transparent sticky-topbar">
-        <div className="flex items-center w-fit justify-between">
-          <NavMenu />
-        </div>
-        <header className="py-1">
-          <div
-            className={clsx(
-              'mx-auto w-fit cursor-pointer text-slate-800 py-4',
-              'hover:title-drop-shadow transition duration-1000 ease-in hover:text-white'
-            )}
-            onClick={() => router.push('/')}
-          >
-            <h1 className="flex gap-3 items-center font-CutiveMono text-5xl leading-none">
-              <Image
-                src="/400^2inside600^2_tomei.gif"
-                alt="site logo"
-                width={80}
-                height={80}
-                priority
-                className="-mt-2 responsive-image"
-              />
-              EC maker
-            </h1>
-          </div>
-        </header>
-        <div className="flex flex-col items-end mr-2">
-          <div className="flex items-center mb-2 sb-2 sm:mb-1 sp:mb-1">
-            <SearchButton />
-          </div>
-          <div className="md:hidden">
-            <ContentsButton onClick={() => setShowTableOfContents(prev => !prev)} />
-          </div>
-        </div>
+    <div
+      className={clsx([
+        notoSansJP.variable,
+        firaCode.variable,
+        baloo2.variable,
+        'bg-gray-200',
+      ])}
+    >
+      <div className="fixed z-50 flex w-fit items-start justify-between">
+        <NavMenu />
       </div>
+      <div className="fixed right-2 top-2 z-50 hidden w-fit md:block">
+        <SearchButton onClick={handleClickSearchButton} />
+      </div>
+
+      <header className="py-1">
+        <Link
+          href="/"
+          tabIndex={0}
+          className={clsx(
+            'mx-auto w-fit cursor-pointer py-4 block',
+            'hover:title-drop-shadow transition duration-1000 ease-in hover:text-white',
+          )}
+        >
+          <h1 className="font-CutiveMono text-[42px] leading-none">EC maker</h1>
+        </Link>
+      </header>
       <main className="relative z-10 mb-40 min-h-[calc(100vh-102px)] w-full bg-gray-200">
         <div className=" mx-auto max-w-[1280px]">
           <div className="ml-auto w-fit max-w-full overflow-x-scroll pr-8 sp:ml-0 sp:pr-0 sp:pl-4">
@@ -86,13 +79,12 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
             <Image
               src="/400^2inside600^2_tomei.gif"
               alt="site logo"
-              width={100}
-              height={100}
+              width={80}
+              height={80}
               sizes="265px"
               priority
-              className="-mt-1"
             />
-            <Link href="/" className="font-CutiveMono text-4xl text-slate-200">
+            <Link href="/" className="font-CutiveMono text-3xl text-white">
               EC maker
             </Link>
           </div>
@@ -100,7 +92,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
             Notion API と Next.js / Tailwind CSS で本格ブログを作ってみました。
           </div>*/}
         </div>
-        <div className="py-2 text-center text-xs text-slate-400">
+        <div className="py-2 text-center text-xs font-bold text-slate-200">
           Made with Notion by EC maker @2024
         </div>
       </footer>

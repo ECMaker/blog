@@ -1,48 +1,31 @@
 import type { FC } from 'react';
-import type { NotionRichTextItemRequest } from '~/types/notion';
 
-import {
-  ActionIcon,
-  Button,
-  Kbd,
-  LoadingOverlay,
-  Tooltip,
-} from '@mantine/core';
-import { useOs } from '@mantine/hooks';
-import { showNotification } from '@mantine/notifications';
-import { Link } from '@mantine/tiptap';
-import Placeholder from '@tiptap/extension-placeholder';
-import Underline from '@tiptap/extension-underline';
-import { useEditor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
+import { ActionIcon, Button, LoadingOverlay, Tooltip } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useSession, signOut } from 'next-auth/react';
-import { useState } from 'react';
 
-import { LogoutIcon, SendIcon } from '~/commons/icons';
-import { RichTextEditor } from '~/components/@commons/RichTextEditor';
-import { toRichText } from '~/utils/toRichText';
+import { LogoutIcon } from '~/commons/icons';
 import { baseUrl } from '~/utils/url';
 
 type Props = {
-  onSubmit: (rich_text: NotionRichTextItemRequest[]) => Promise<void>;
+  // onSubmit: (rich_text: NotionRichTextItemRequest[]) => Promise<void>;
 };
 
-export const CommentForm: FC<Props> = ({ onSubmit }) => {
+export const CommentForm: FC<Props> = () => {
   const router = useRouter();
   const { data: session } = useSession();
-  const [isLoading, setIsLoading] = useState(false);
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      Underline,
-      Link,
-      Placeholder.configure({ placeholder: 'コメントを入力してください。' }),
-    ],
-    content: '',
-  });
-  const disabled = isLoading || !editor || !editor.getText();
-  const os = useOs();
+  // const [isLoading, setIsLoading] = useState(false);
+  // const editor = useEditor({
+  //   extensions: [
+  //     StarterKit,
+  //     Underline,
+  //     Link,
+  //     Placeholder.configure({ placeholder: 'コメントを入力してください。' }),
+  //   ],
+  //   content: '',
+  // });
+  // const disabled = isLoading || !editor || !editor.getText();
+  // const os = useOs();
 
   const toLoginPage = () => {
     router.push({
@@ -53,22 +36,22 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
     });
   };
 
-  const handleSubmit = async () => {
-    if (disabled) return;
-    if (session?.user?.name && session?.user?.email) {
-      setIsLoading(true);
-      const rich_text = toRichText(editor.getJSON());
-      await onSubmit(rich_text);
-      editor.commands.setContent('');
-      setIsLoading(false);
-    } else {
-      showNotification({
-        title: 'Error',
-        message: 'アカウントに名前もしくはメールアドレスがありません。',
-        color: 'red',
-      });
-    }
-  };
+  // const handleSubmit = async () => {
+  //   if (disabled) return;
+  //   if (session?.user?.name && session?.user?.email) {
+  //     setIsLoading(true);
+  //     const rich_text = toRichText(editor.getJSON());
+  //     await onSubmit(rich_text);
+  //     editor.commands.setContent('');
+  //     setIsLoading(false);
+  //   } else {
+  //     showNotification({
+  //       title: 'Error',
+  //       message: 'アカウントに名前もしくはメールアドレスがありません。',
+  //       color: 'red',
+  //     });
+  //   }
+  // };
 
   return (
     <div className="relative">
@@ -81,18 +64,24 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
           <Button
             fullWidth
             onClick={toLoginPage}
-            color = 'dark'
+            color="dark"
+            className="h-auto py-2"
           >
-            ログインしてコメントをする
+            <span className="text-center font-normal">
+              ⚙準備中⚙　(ログインしてコメントする)
+              <span className="block mt-2"></span>
+              コメントは X (twitter) へお願いします🙏
+            </span>
           </Button>
         </div>
       ) : (
         <div>
-          <RichTextEditor
+          {/* <RichTextEditor
             editor={editor}
             onSubmit={handleSubmit}
             hotkey="mod+Enter"
-          />
+          /> */}
+          <div>RichTextEditorの保守性悪すぎてEditor使えません</div>
 
           <div className="mt-2 flex items-center justify-end gap-3">
             <div className="pl-2 text-sm font-bold text-slate-400">
@@ -101,7 +90,6 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
             <Tooltip
               position="bottom-end"
               arrowPosition="center"
-              transitionDuration={300}
               withArrow
               label={<div className="text-xs">ログアウトする</div>}
             >
@@ -117,11 +105,9 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
                 <LogoutIcon size={18} />
               </ActionIcon>
             </Tooltip>
-            <Tooltip
+            {/* <Tooltip
               position="top-end"
               arrowPosition="center"
-              transition="pop-top-right"
-              transitionDuration={300}
               withArrow
               color="dark"
               label={
@@ -139,7 +125,7 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
               >
                 送 信
               </Button>
-            </Tooltip>
+            </Tooltip> */}
           </div>
         </div>
       )}

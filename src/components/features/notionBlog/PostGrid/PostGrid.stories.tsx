@@ -11,6 +11,6 @@ export default {
 
 export const Default: StoryObj<typeof Component> = {
   args: {
-    posts: examplePosts as NotionPageObjectResponse[],
+    posts: examplePosts as unknown as NotionPageObjectResponse[],
   },
 };

@@ -1,7 +1,7 @@
-import type { TableBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { TableBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { BlockWithChildren } from '~/types/notion';
 
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
 import { RichText } from '~/components/notion/RichText';
 
@@ -16,7 +16,7 @@ export const Table = ({ block }: Props) => {
         {block.children?.map((child, childIndex) => {
           return (
             <tr key={child.id}>
-              {child.type === "table_row" &&
+              {child.type === 'table_row' &&
                 child.table_row?.cells?.map((cell, cellIndex) => {
                   return (
                     <Fragment key={`${cell[0].plain_text}-${cellIndex}`}>
