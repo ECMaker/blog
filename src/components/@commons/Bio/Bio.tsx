@@ -11,9 +11,7 @@ export const Bio: FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <div className="text-xs">Created by</div>
-          <div className="text-xl font-CutiveMono font-bold leading-tight">
-            EC maker
-          </div>
+          <div className="text-xl font-CutiveMono font-bold leading-tight">EC maker</div>
           <div className="mt-2 space-x-2 text-slate-800">
             <a
               className="text-slate-800"
@@ -53,7 +51,7 @@ export const Bio: FC = () => {
         - Flutter / スマホアプリ 開発中。
         <br />
         - Next.js / TypeScript /
-        <br /> <span className="ml-2">TailwindCSS を学習中。</span>
+         <br /> <span className="ml-2">TailwindCSS を学習中。</span>
       </div>
     </div>
   );

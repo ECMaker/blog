@@ -50,7 +50,7 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
   const totalPage = useMemo(
     () => controlledPostsArray.length,
-    [controlledPostsArray],
+    [controlledPostsArray]
   );
 
   const pagination = usePagination({
@@ -60,12 +60,12 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
   const controlledCurrentPosts = useMemo(
     () => controlledPostsArray[pagination.active - 1],
-    [controlledPostsArray, pagination.active],
+    [controlledPostsArray, pagination.active]
   );
 
   const blogPropertiesWithCount: NotionBlogPropertiesWithCount = useMemo(
     () => getPropertiesWithCount(properties, flatPosts),
-    [flatPosts, properties],
+    [flatPosts, properties]
   );
 
   return (
@@ -74,7 +74,7 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
       <div className="mx-auto w-fit py-4">
         <Pagination
-          value={pagination.active}
+          page={pagination.active}
           total={totalPage}
           onChange={pagination.setPage}
         />
@@ -103,11 +103,12 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
       <div className="mx-auto w-fit py-4">
         <Pagination
-          value={pagination.active}
+          page={pagination.active}
           total={totalPage}
           onChange={pagination.setPage}
         />
       </div>
+
     </div>
   );
 };

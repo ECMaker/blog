@@ -14,7 +14,7 @@ export const NumberedListItem: FC<Props> = ({ block }: Props) => {
     <li className="pl-2 list-decimal sp:text-sm">
       <RichText text={block.numbered_list_item.rich_text} />
       {block.children?.map((child) => (
-        <div key={child.id}>{blockToJsx(child)}</div>
+        <div key={block.id}>{blockToJsx(child)}</div>
       ))}
     </li>
   );

@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { SpotlightProvider } from '@mantine/spotlight';
-
 import { Layout as Component } from './Layout';
 
 export default {
@@ -9,13 +7,6 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-  decorators: [
-    (Story) => (
-      <SpotlightProvider actions={[]}>
-        <Story />
-      </SpotlightProvider>
-    ),
-  ],
 } as Meta<typeof Component>;
 
 export const Default: StoryObj<typeof Component> = {

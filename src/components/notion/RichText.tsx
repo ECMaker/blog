@@ -24,8 +24,7 @@ export const RichText: FC<Props> = ({ text }) => {
             const { color } = textItem.annotations; // アノテーションの色を取得
             const { href } = textItem; // リンクを取得
             const annotationClasses = Object.keys(annotations).filter(
-              (param) =>
-                annotations[param as keyof typeof annotations] === true,
+              (param) => annotations[param as keyof typeof annotations] === true
             );
             const key = `${index}`;
 
@@ -44,7 +43,7 @@ export const RichText: FC<Props> = ({ text }) => {
                     annotationClasses.includes('underline') && 'underline',
                     annotationClasses.includes('strikethrough') &&
                       'line-through',
-                    annotationClasses.includes('code') && codeAnnotationClasses,
+                    annotationClasses.includes('code') && codeAnnotationClasses
                   )}
                 >
                   {textItem.plain_text}
@@ -63,7 +62,7 @@ export const RichText: FC<Props> = ({ text }) => {
                     annotationClasses.includes('underline') && 'underline',
                     annotationClasses.includes('strikethrough') &&
                       'line-through',
-                    annotationClasses.includes('code') && codeAnnotationClasses,
+                    annotationClasses.includes('code') && codeAnnotationClasses
                   )}
                 >
                   {textItem.plain_text}

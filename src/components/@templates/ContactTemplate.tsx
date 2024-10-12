@@ -4,13 +4,17 @@ import { PageTitle } from '~/commons/PageTitle';
 import { ContactBySns } from '~/components/features/contact/ContactBySns';
 import { ContactForm } from '~/components/features/contact/ContactForm';
 
-export const ContactTemplate: FC = () => {
+type Props = {
+  onSubmit: () => Promise<void>;
+};
+
+export const ContactTemplate: FC<Props> = ({ onSubmit }) => {
   return (
     <div>
       <PageTitle title="Contact" />
       <div className="w-main mx-auto mt-6 space-y-8">
         <ContactBySns />
-        <ContactForm />
+        <ContactForm onSubmit={onSubmit} />
       </div>
     </div>
   );

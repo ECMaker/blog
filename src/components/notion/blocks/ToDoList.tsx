@@ -10,7 +10,7 @@ export const ToDoList = ({ block }: Props) => {
   return (
     <ul className="my-5 pl-7">
       {block.to_do_list.children.map((child) => (
-        <div key={child.id}>{blockToJsx(child)}</div>
+        <div key={block.id}>{blockToJsx(child)}</div>
       ))}
     </ul>
   );

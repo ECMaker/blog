@@ -11,7 +11,7 @@ export default {
 
 export const Default: StoryObj<typeof Component> = {
   args: {
-    meta: examplePost as unknown as NotionPostMeta,
+    meta: examplePost as NotionPostMeta,
     commentCount: 4,
   },
 };
