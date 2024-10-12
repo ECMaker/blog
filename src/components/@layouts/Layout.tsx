@@ -46,7 +46,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
         'bg-gray-200',
       ])}
     >
-      <div className="lex items-center justify-between bg-gradient-to-b from-gray-200 from-50% via-gray-200 to-transparent sticky-topbar">
+      <div className="flex items-center justify-between bg-gradient-to-b from-gray-200 from-50% via-gray-200 to-transparent sticky-topbar">
         <div className="flex items-center w-fit justify-between">
           <NavMenu />
         </div>

@@ -88,16 +88,12 @@ const ViewTransitionsAPI: NextPage = () => {
         </TransitionLink>
         <div className="flex items-center gap-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="w-60"
-            src="/logo_circle.png"
-            alt="logo_circle image"
-          />
+          <img className="h-60" src="/300^2_black.gif" alt="EC Maker Logo" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="w-60"
-            src="/nob_lego.png"
-            alt="nob_lego image"
+            className="h-60"
+            src="/1333x500_yoko_black.gif"
+            alt="EC Maker yoko Logo"
             style={
               {
                 viewTransitionName: 'photo-example',
