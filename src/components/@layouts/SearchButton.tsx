@@ -13,14 +13,14 @@ export const SearchButton: FC<Props> = ({ onClick }) => {
 
   return (
     <button
-      className="flex cursor-pointer items-center gap-2 rounded-md border-none bg-gray-700 px-2 py-1.5 font-Baloo text-base text-white shadow hover:brightness-125"
+      className="flex cursor-pointer items-center gap-2 sp:gap-1 rounded-md border-none bg-gray-700 px-2 py-1 md:py-1.5 sp:pr-5 sm:pr-5 md:pr-1 font-Baloo text-base text-white shadow hover:brightness-125"
       tabIndex={0}
       onClick={onClick}
     >
       <SearchIcon size={18} />
       Search
       <Kbd
-        className="border-gray-400 bg-gray-700 py-0.5 text-xs text-white"
+        className="border-gray-400 bg-gray-700 py-0.5 text-xs text-white hidden md:block"
         color="dark"
       >
         {os === 'windows' ? 'Ctrl' : '⌘'} + K

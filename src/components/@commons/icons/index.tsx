@@ -28,6 +28,7 @@ import {
   HiMail as MailIcon,
 } from 'react-icons/hi';
 import {
+  ImCircleDown as CircleDownIcon,
   ImCheckboxChecked as CheckedBoxIcon,
   ImCheckboxUnchecked as UnCheckedBoxIcon,
 } from 'react-icons/im';
@@ -79,6 +80,7 @@ export {
   ProfileIcon,
   QrCodeIcon,
   SearchIcon,
+  CircleDownIcon,
   SendIcon,
   StopIcon,
   TbExternalLinkIcon,

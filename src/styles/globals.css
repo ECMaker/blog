@@ -129,6 +129,17 @@ body::before {
     text-decoration: none;
     border-bottom: 2px solid currentColor;
   }
+  .sticky-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-image {
+    display: none;
+  }
 }
 
 /* Use Sandbox/ViewTransitionsAPI */
