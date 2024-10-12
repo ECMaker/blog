@@ -44,6 +44,8 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
       - name: Deploy to netlify
         run: netlify deploy --build > cli.txt
         env:
@@ -55,11 +57,12 @@ jobs:
           sed -i -z 's/\n/\\n/g' cli.txt
       - name: Post Netlify CLI Comment
         run: |
-         curl -X POST \
-              -H "Authorization: token ${GITHUB_TOKEN}" \
-              -d "{\"body\": \"$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\"}" \
-              ${URL}
+         for i in {1..3}; do
+           curl -X POST \
+                -H "Authorization: token ${GITHUB_TOKEN}" \
+                -d "{\"body\": \"$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\"}" \
+                ${URL} && break || echo "Retrying... ($i)"
+         done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.comments_url }}
-          
