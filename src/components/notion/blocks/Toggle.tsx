@@ -1,4 +1,4 @@
-import type { ToggleBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { ToggleBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { BlockWithChildren } from '~/types/notion';
 
 import { blockToJsx } from '~/components/notion/blockToJsx';
@@ -19,7 +19,7 @@ export const Toggle = ({ block }: Props) => {
       {block.children && (
         <div className="ml-4">
           {block.children.map((child) => (
-            <div key={block.id}>{blockToJsx(child)}</div>
+            <div key={child.id}>{blockToJsx(child)}</div>
           ))}
         </div>
       )}

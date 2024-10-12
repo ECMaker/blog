@@ -1,8 +1,8 @@
 import type { FC, ReactNode } from 'react';
 import type { NotionPost } from '~/types/notion';
 
-
 import { clsx } from '@mantine/core';
+import { useSpotlight } from '@mantine/spotlight';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -13,6 +13,7 @@ import { ScrollTopButton } from '~/components/@layouts/ScrollTopButton';
 import { SearchButton } from '~/components/@layouts/SearchButton';
 import { useTableOfContentsContext } from '~/components/features/notionBlog/TableOfContentsContext';
 import { Breadcrumbs } from '~/layouts/Breadcrumbs';
+import { baloo2, firaCode, notoSansJP } from '~/styles/fontFamilies';
 
 import { NavMenu } from './NavMenu';
 
@@ -33,19 +34,30 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
     }
   }, [pageProps]);
 
+  const spotlight = useSpotlight();
+  const handleClickSearchButton = () => spotlight.openSpotlight();
+
   return (
-    <div className="bg-gray-200">
+    <div
+      className={clsx([
+        notoSansJP.variable,
+        firaCode.variable,
+        baloo2.variable,
+        'bg-gray-200',
+      ])}
+    >
       <div className="flex items-center justify-between bg-gradient-to-b from-gray-200 from-50% via-gray-200 to-transparent sticky-topbar">
         <div className="flex items-center w-fit justify-between">
           <NavMenu />
         </div>
         <header className="py-1">
-          <div
+          <Link
+            href="/"
+            tabIndex={0}
             className={clsx(
               'mx-auto w-fit cursor-pointer text-slate-800 py-4',
-              'hover:title-drop-shadow transition duration-1000 ease-in hover:text-white'
+              'hover:title-drop-shadow transition duration-1000 ease-in hover:text-white',
             )}
-            onClick={() => router.push('/')}
           >
             <h1 className="flex gap-3 items-center font-CutiveMono text-5xl leading-none">
               <Image
@@ -58,14 +70,16 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
               />
               EC maker
             </h1>
-          </div>
+          </Link>
         </header>
         <div className="flex flex-col items-end mr-2">
           <div className="flex items-center mb-2 sb-2 sm:mb-1 sp:mb-1">
-            <SearchButton />
+            <SearchButton onClick={handleClickSearchButton} />
           </div>
           <div className="md:hidden">
-            <ContentsButton onClick={() => setShowTableOfContents(prev => !prev)} />
+            <ContentsButton
+              onClick={() => setShowTableOfContents((prev) => !prev)}
+            />
           </div>
         </div>
       </div>

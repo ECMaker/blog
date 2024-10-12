@@ -16,8 +16,10 @@ export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        postsArray: dummy_notion_pages_array as NotionPageObjectResponse[][],
-        properties: dummy_notion_database_properties as NotionDatabaseProperty,
+        postsArray:
+          dummy_notion_pages_array.flat() as unknown as NotionPageObjectResponse[][],
+        properties:
+          dummy_notion_database_properties as unknown as NotionDatabaseProperty,
       },
     };
   }
@@ -27,17 +29,17 @@ export const getStaticProps = async () => {
     database_id: blogDatabaseId,
     page_size: 12,
     filter: {
-      property: "Published",
+      property: 'Published',
       checkbox: {
         equals: true,
       },
     },
     sorts: [
       {
-        property: "UpdatedAt",
-        direction: "descending",
+        property: 'UpdatedAt',
+        direction: 'descending',
       },
-    ]
+    ],
   })) as NotionPageObjectResponse[][];
 
   return {

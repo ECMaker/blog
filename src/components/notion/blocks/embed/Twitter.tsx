@@ -1,16 +1,15 @@
-import Link from "next/link";
-import Script from "next/script";
-import { useReducer, useRef } from "react";
+import Link from 'next/link';
+import Script from 'next/script';
+import { useReducer, useRef } from 'react';
 
-import { useMutationObserver } from "~/hooks/useMutationObserver";
-
+import { useMutationObserver } from '~/hooks/useMutationObserver';
 
 type Props = {
   url: string;
 };
 
 export const Twitter = ({ url }: Props) => {
-  const isTweet = url.includes("/status/");
+  const isTweet = url.includes('/status/');
   if (isTweet) return <Tweet url={url} />;
 
   return <Timeline url={url} />;
@@ -34,8 +33,8 @@ const Timeline = ({ url }: Props) => {
     ref: ref,
     callback: () =>
       ref.current
-        ?.getElementsByTagName("iframe")[0]
-        .addEventListener("load", onLoaded),
+        ?.getElementsByTagName('iframe')[0]
+        .addEventListener('load', onLoaded),
     options: { childList: true },
   });
 

@@ -1,7 +1,6 @@
-import type { RefObject } from "react";
+import type { RefObject } from 'react';
 
-import { useEffect } from "react";
-
+import { useEffect } from 'react';
 
 type Props<T> = {
   ref: RefObject<T>;
