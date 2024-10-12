@@ -16,7 +16,7 @@ export const Pdf = ({ block: { pdf } }: Props) => {
         className="h-auto w-full"
         aria-labelledby="PDF document"
       >
-        <p>Your browser does not support PDFs.</p>
+        <div>Your browser does not support PDFs.</div>
         <Link
           href={pdf.type === "file" ? pdf.file.url : pdf.external.url}
           className="font-medium text-blue-600 hover:underline dark:text-blue-500"
