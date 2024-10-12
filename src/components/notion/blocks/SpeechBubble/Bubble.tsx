@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
@@ -7,12 +7,12 @@ type Props = {
 
 export const Bubble = ({ children, isReverse }: Props) => {
   return (
-    <p
+    <div
       className={`${
-        isReverse ? "rounded-br-sm" : "rounded-bl-sm"
+        isReverse ? 'rounded-br-sm' : 'rounded-bl-sm'
       } rounded-xl bg-slate-100 p-4`}
     >
       {children}
-    </p>
+    </div>
   );
 };

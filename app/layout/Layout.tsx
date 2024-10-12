@@ -2,10 +2,11 @@ import type { FC, ReactNode } from 'react';
 import type { NotionPost } from '~/types/notion';
 
 import { clsx } from '@mantine/core';
+import { useSpotlight } from '@mantine/spotlight';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import {  useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { ContentsButton } from '~/components/@layouts/ContentsButton';
 import { NavMenu } from '~/components/@layouts/NavMenu';
@@ -34,6 +35,9 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
 
   // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx も変更する !U
 
+  const spotlight = useSpotlight();
+  const handleClickSearchButton = () => spotlight.openSpotlight();
+
   return (
     <div className="bg-gray-200">
       <div className="flex items-center justify-between bg-gradient-to-b from-gray-200 from-50% via-gray-200 to-transparent sticky-topbar">
@@ -44,11 +48,11 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           <div
             className={clsx(
               'mx-auto w-fit cursor-pointer text-slate-800 py-4',
-              'hover:title-drop-shadow transition duration-1000 ease-in hover:text-white'
+              'hover:title-drop-shadow transition duration-1000 ease-in hover:text-white',
             )}
             onClick={() => router.push('/')}
           >
-            <h1 className="flex gap-3 items-center font-CutiveMono text-5xl leading-none">
+          <h1 className="flex gap-3 items-center font-CutiveMono text-5xl leading-none">
               <Image
                 src="/400^2inside600^2_tomei.gif"
                 alt="site logo"
@@ -61,10 +65,9 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
             </h1>
           </div>
         </header>
-        
         <div className="flex flex-col items-end mr-2">
           <div className="flex items-center mb-2 sb-2 sm:mb-1 sp:mb-1">
-            <SearchButton />
+            <SearchButton onClick={handleClickSearchButton} />
           </div>
           <div className="md:hidden">
             <ContentsButton onClick={() => setShowTableOfContents(prev => !prev)} />

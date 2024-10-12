@@ -28,13 +28,11 @@ import {
   HiMail as MailIcon,
 } from 'react-icons/hi';
 import {
-  ImCircleDown  as CircleDownIcon ,
+  ImCircleDown as CircleDownIcon,
   ImCheckboxChecked as CheckedBoxIcon,
   ImCheckboxUnchecked as UnCheckedBoxIcon,
 } from 'react-icons/im';
-import {
-  IoMdCheckboxOutline as OutlineCheckIcon
-} from 'react-icons/io';
+import { IoMdCheckboxOutline as OutlineCheckIcon } from 'react-icons/io';
 import {
   IoInformationCircleSharp as InformationIcon,
   IoQrCode as QrCodeIcon,
@@ -45,10 +43,7 @@ import {
   MdTouchApp as TouchIcon,
 } from 'react-icons/md';
 import { RxUpdate as UpdateIcon } from 'react-icons/rx';
-import {
-  SiLine as LineIcon,
-  SiMaildotru as AtIcon,
-} from 'react-icons/si';
+import { SiLine as LineIcon, SiMaildotru as AtIcon } from 'react-icons/si';
 import {
   TbExternalLink as TbExternalLinkIcon,
   TbLogout as LogoutIcon,

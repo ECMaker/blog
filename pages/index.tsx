@@ -9,7 +9,8 @@ export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        posts: dummy_notion_pages_latest as NotionPageObjectResponse[],
+        posts:
+          dummy_notion_pages_latest as unknown as NotionPageObjectResponse[],
       },
     };
   }
@@ -18,15 +19,15 @@ export const getStaticProps = async () => {
     database_id: process.env.NOTION_DATABASE || '',
     page_size: 5,
     filter: {
-      property: "Published",
+      property: 'Published',
       checkbox: {
         equals: true,
       },
     },
     sorts: [
       {
-        property: "UpdatedAt",
-        direction: "descending",
+        property: 'UpdatedAt',
+        direction: 'descending',
       },
     ],
   });
