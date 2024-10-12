@@ -52,7 +52,7 @@ export const SpotlightProvider = ({ children }: { children: ReactNode }) => {
         onTrigger: () => router.push('/sandbox'),
       },
     ],
-    [router]
+    [router],
   );
 
   return (

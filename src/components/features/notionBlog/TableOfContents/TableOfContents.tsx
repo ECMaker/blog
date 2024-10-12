@@ -58,12 +58,12 @@ const headingList = useMemo(
 
       return [];
     }),
-  [blocks, isAll]
+    [blocks, isAll],
 );
 
   useEffect(() => {
     const index = headingList.findIndex((item) =>
-      inViewHeadingIds.includes(item.id)
+      inViewHeadingIds.includes(item.id),
     );
     if (index < 0) return;
     setActiveIndex(index);
@@ -79,7 +79,7 @@ const headingList = useMemo(
         <div
           className={clsx(
             'relative flex flex-col gap-2 py-2 pl-6 text-sm',
-            'before:absolute before:top-4 before:left-2 before:h-[calc(100%-36px)] before:w-0.5 before:bg-slate-300 before:content-[""]'
+            'before:absolute before:top-4 before:left-2 before:h-[calc(100%-36px)] before:w-0.5 before:bg-slate-300 before:content-[""]',
           )}
         >
           {headingList.map((item, index) => (
@@ -108,7 +108,7 @@ const headingList = useMemo(
                 'before:border-slate-100',
                 activeIndex === index
                   ? 'before:bg-slate-600'
-                  : 'before:bg-slate-400'
+                  : 'before:bg-slate-400',
               )}
             >
               {item.title}

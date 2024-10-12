@@ -28,13 +28,11 @@ import {
   HiMail as MailIcon,
 } from 'react-icons/hi';
 import {
-  ImCircleDown  as CircleDownIcon ,
+  ImCircleDown as CircleDownIcon,
   ImCheckboxChecked as CheckedBoxIcon,
   ImCheckboxUnchecked as UnCheckedBoxIcon,
 } from 'react-icons/im';
-import {
-  IoMdCheckboxOutline as OutlineCheckIcon
-} from 'react-icons/io';
+import { IoMdCheckboxOutline as OutlineCheckIcon } from 'react-icons/io';
 import {
   IoInformationCircleSharp as InformationIcon,
   IoQrCode as QrCodeIcon,

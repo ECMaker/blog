@@ -8,7 +8,6 @@ import { GitHubIcon } from '~/commons/icons';
 import { PageTitle } from '~/commons/PageTitle';
 import { blockToJsx } from '~/components/notion/blockToJsx';
 
-
 type Props = {
   blocks: ExpandedBlockObjectResponse[];
 };

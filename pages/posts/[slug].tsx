@@ -39,7 +39,7 @@ export const getStaticProps = async (context: { params: Params }) => {
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
 
   const children = (await /*かなるs方式*/ getAllBlocks( /*のぶs方式 getChildrenAllInBlock( */
-    page_id
+    page_id,
   )) as ExpandedBlockObjectResponse[];
 
   const childrenWithOgp = await setOgp(children);
@@ -86,7 +86,7 @@ const Post: NextPage<Props> = ({ post }) => {
   const { data: comments, trigger } = useComments(post.id);
 
   const handleCommentSubmit = async (
-    rich_text: NotionRichTextItemRequest[]
+    rich_text: NotionRichTextItemRequest[],
   ) => {
     await trigger({
       parent: {
@@ -97,7 +97,7 @@ const Post: NextPage<Props> = ({ post }) => {
   };
 
   let imageUrl;
-  if (post.image === "/900^2_tomei_textBlack.gif") {
+  if (post.image === '/900^2_tomei_textBlack.gif') {
     imageUrl = `https://blog.ec-maker.com/api/notion-blog/og?title=${post.title}`;
   } else {
     imageUrl = post.image;
@@ -134,9 +134,7 @@ const Post: NextPage<Props> = ({ post }) => {
         type="BlogPosting"
         url={`https://blog.ec-maker.com/posts/${post.slug}`}
         title={`${post.title} | EC maker`}
-        images={[
-          imageUrl,
-        ]}
+        images={[imageUrl]}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={post.updatedAt}
         authorName={[

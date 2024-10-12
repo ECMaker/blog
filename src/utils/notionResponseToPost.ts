@@ -1,14 +1,18 @@
-import type {PartialPageObjectResponse,PageObjectResponse} from '@notionhq/client/build/src/api-endpoints';
-import type { NotionPostMeta} from '~/types/notion';
+import type {
+  PartialPageObjectResponse,
+  PageObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints';
+import type { NotionPostMeta } from '~/types/notion';
 
-import { richTextToString } from "./richTextToString";
+import { richTextToString } from './richTextToString';
 
 /**
  * NotionのPageObjectResponseをPostMetaに変換
  */
-export const notionResponseToPost = (page: PageObjectResponse | PartialPageObjectResponse): NotionPostMeta | null=> {
-  
-    if (!("properties" in page)) return null;
+export const notionResponseToPost = (
+  page: PageObjectResponse | PartialPageObjectResponse,
+): NotionPostMeta | null => {
+    if (!('properties' in page)) return null;
   
     const { id, icon, properties, created_time, last_edited_time } = page;
 
@@ -32,14 +36,14 @@ export const notionResponseToPost = (page: PageObjectResponse | PartialPageObjec
   const updatedAt = last_edited_time.substring(0, 10);
   const tags = properties.Tags.multi_select;
   const likes = properties.Likes.number || 0;
-  const slug =  properties.Slug?.type === "rich_text" &&
+  const slug =  properties.Slug?.type === 'rich_text' &&
                 properties.Slug.rich_text.length !== 0
                  ? richTextToString(properties.Slug.rich_text)
-                 : "0";
-  const image =  properties.Image?.type === "files" &&
-                 properties.Image.files[0]?.type === "file"
+                 : '0';
+  const image =  properties.Image?.type === 'files' &&
+                 properties.Image.files[0]?.type === 'file'
                    ? properties.Image.files[0].file.url
-                   : "/900^2_tomei_textBlack.gif";
+                   : '/900^2_tomei_textBlack.gif';
   
   return {
     id,

@@ -17,21 +17,17 @@ type Props = {
 
 export const Image: FC<Props> = ({ block }: Props) => {
   const url = 
-    block.image.type === "external"
+    block.image.type === 'external'
       ? block.image.external.url
       : block.image.file.url;
   const caption =
    block.image.caption.length > 0 ? block.image.caption[0].plain_text : '';
-   block.image.caption
-    ? richTextToString(block.image.caption)
-    : "";
+  block.image.caption ? richTextToString(block.image.caption) : '';
   const [isError, setIsError] = useState(false);
 
   return (
     <div className="relative mx-auto">
-        <MediumZoom
-          zoomMargin={40}
-        >
+      <MediumZoom zoomMargin={40}>
           <NextImage
             className="object-contain h-auto w-full"
             src={url}

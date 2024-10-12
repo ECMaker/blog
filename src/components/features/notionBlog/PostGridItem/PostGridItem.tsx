@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import type { NotionPageObjectResponse } from '~/types/notion';
 
-import Image from "next/image";
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 

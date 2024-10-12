@@ -11,7 +11,7 @@ axios.interceptors.response.use(
       message: JSON.stringify(error),
       color: 'red',
     });
-  }
+  },
 );
 
 axios.interceptors.request.use(
@@ -24,7 +24,7 @@ axios.interceptors.request.use(
       message: JSON.stringify(error),
       color: 'pink',
     });
-  }
+  },
 );
 
 export const getFetcher = async (url: string) => {

@@ -1,13 +1,12 @@
 import type {
   PageObjectResponse,
   PartialPageObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
-import type { NotionPostMeta } from "~/types/notion";
+} from '@notionhq/client/build/src/api-endpoints';
+import type { NotionPostMeta } from '~/types/notion';
 
 import { notionResponseToPost } from '~/utils/notionResponseToPost';
 
-import { notion } from "./client";
-
+import { notion } from './client';
 
 /**
  * slug取得用
@@ -20,15 +19,15 @@ export const getAllPosts = async (): Promise<NotionPostMeta[]> => {
     const res = await notion.databases.query({
       database_id: process.env.NOTION_DATABASE,
       filter: {
-        property: "Published",
+        property: 'Published',
         checkbox: {
           equals: true,
         },
       },
       sorts: [
         {
-          property: "UpdatedAt",
-          direction: "descending",
+          property: 'UpdatedAt',
+          direction: 'descending',
         },
       ],
       page_size: 100,

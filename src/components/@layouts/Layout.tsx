@@ -16,7 +16,6 @@ import { Breadcrumbs } from '~/layouts/Breadcrumbs';
 
 import { NavMenu } from './NavMenu';
 
-
 type Props = {
   children: ReactNode;
 };

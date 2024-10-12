@@ -13,7 +13,6 @@ import { PostContent } from '~/features/notionBlog/PostContent';
 import { PostMeta } from '~/features/notionBlog/PostMeta/PostMeta';
 import { TableOfContents } from '~/features/notionBlog/TableOfContents';
 
-
 type Props = {
   post: NotionPost;
   comments: NotionCommentObjectResponse[];

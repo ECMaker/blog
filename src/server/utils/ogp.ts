@@ -20,7 +20,7 @@ export const getOgp = async (url: string): Promise<Ogp> => {
     };
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error(url,'OPGの取得に失敗しました');
+    console.error(url, 'OPGの取得に失敗しました');
 
     return {
       url: url,
@@ -34,7 +34,7 @@ export const getOgp = async (url: string): Promise<Ogp> => {
 
 /* ブックマークデータを再帰的に検索し、各ブックマークに OGP を設定する */
 const findeBookmark = async (
-  data: ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]
+  data: ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[],
 ): Promise<ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]> => {
   if (Array.isArray(data)) return await Promise.all(data.map(findeBookmark)) as ExpandedBlockObjectResponse[];
   if (typeof data !== 'object' || data === null) return data;

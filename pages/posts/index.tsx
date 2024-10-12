@@ -27,17 +27,17 @@ export const getStaticProps = async () => {
     database_id: blogDatabaseId,
     page_size: 12,
     filter: {
-      property: "Published",
+      property: 'Published',
       checkbox: {
         equals: true,
       },
     },
     sorts: [
       {
-        property: "UpdatedAt",
-        direction: "descending",
+        property: 'UpdatedAt',
+        direction: 'descending',
       },
-    ]
+    ],
   })) as NotionPageObjectResponse[][];
 
   return {

@@ -5,7 +5,7 @@ name: BuildActionToNetlify
 on:
   workflow_dispatch:       # GithubActions上で実行ボタンを表示
   schedule:
-    - cron: '*/30 * * * *' # 30分毎に実行：https://crontab.guru/#*/55_*_*_*_*
+    - cron: '*/30 * * * *' # 30分毎に実行：https://crontab.guru/#*/30_*_*_*_*
   push:
     branches:
       - main
@@ -45,6 +45,8 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
       - name: Deploy to netlify
         run: | # netlify deployコマンドを最大3回まで試行し、失敗した場合は60秒待機して再試行します。breakステートメントにより、成功した場合はループを抜けます。
           for i in {1..3}; do
@@ -53,4 +55,3 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-

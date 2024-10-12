@@ -27,7 +27,10 @@ export const ContactForm: FC<Props> = ({ onSubmit }) => {
       StarterKit,
       Underline,
       Link,
-      Placeholder.configure({ placeholder: 'フォーム機能は現在準備中です。X(twitter)からお願いします。' }),//コメントを入力してください。
+      Placeholder.configure({
+        placeholder:
+          'フォーム機能は現在準備中です。X(twitter)からお願いします。',
+      }), //コメントを入力してください。
     ],
     content: '',
   });
