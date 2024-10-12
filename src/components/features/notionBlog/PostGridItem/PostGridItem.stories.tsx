@@ -11,7 +11,7 @@ export default {
 
 export const Default: StoryObj<typeof Component> = {
   args: {
-    post: examplePost as NotionPageObjectResponse,
+    post: examplePost as unknown as NotionPageObjectResponse,
   },
 };
 export const LongTitle: StoryObj<typeof Component> = {
@@ -47,6 +47,7 @@ export const LongTitle: StoryObj<typeof Component> = {
           ],
         },
       },
+      in_trash: false, // ここ
     } as NotionPageObjectResponse,
   },
 };

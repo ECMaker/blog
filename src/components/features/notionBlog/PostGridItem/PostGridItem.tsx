@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import type { NotionPageObjectResponse } from '~/types/notion';
 
-import Image from "next/image";
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
@@ -14,12 +14,12 @@ type Props = {
 export const PostGridItem: FC<Props> = ({ post }) => {
   const router = useRouter();
   const meta = useMemo(() => toPostMeta(post), [post]);
-  const expandPost = {...toPostMeta(post)};
+  const expandPost = { ...toPostMeta(post) };
 
   return (
     <div
-    className="flex flex-col h-auto w-64 cursor-pointer rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-80 justify-between"
-    onClick={() => router.push(`/posts/${expandPost.slug}`)}
+      className="flex flex-col h-auto w-64 cursor-pointer rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-80 justify-between"
+      onClick={() => router.push(`/posts/${expandPost.slug}`)}
     >
       <div className="space-y-3">
         <div className="flex justify-between">
