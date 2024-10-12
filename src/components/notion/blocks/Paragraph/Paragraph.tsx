@@ -12,13 +12,13 @@ type Props = {
 export const Paragraph: FC<Props> = ({ block }: Props) => {
   return (
     <>
-      <div className="mt-1 min-h-[18px]">
+      <p className="mt-1 min-h-[18px]">
         <RichText text={block.paragraph.rich_text} />
-      </div>
+      </p>
       {block.children && (
         <div className="ml-4">
           {block.children.map((child) => (
-            <div key={child.id}>{blockToJsx(child)}</div>
+            <div key={block.id}>{blockToJsx(child)}</div>
           ))}
         </div>
       )}

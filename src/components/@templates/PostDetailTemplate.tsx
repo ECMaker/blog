@@ -1,5 +1,9 @@
 import type { FC } from 'react';
-import type { NotionCommentObjectResponse, NotionPost } from '~/types/notion';
+import type {
+  NotionCommentObjectResponse,
+  NotionPost,
+  NotionRichTextItemRequest,
+} from '~/types/notion';
 
 import { Bio } from '~/commons/Bio';
 import { useTableOfContentsContext } from '~/components/features/notionBlog/TableOfContentsContext';
@@ -9,15 +13,16 @@ import { PostContent } from '~/features/notionBlog/PostContent';
 import { PostMeta } from '~/features/notionBlog/PostMeta/PostMeta';
 import { TableOfContents } from '~/features/notionBlog/TableOfContents';
 
+
 type Props = {
   post: NotionPost;
   comments: NotionCommentObjectResponse[];
-  // onSubmit: (rich_text: NotionRichTextItemRequest[]) => Promise<void>;
+  onSubmit: (rich_text: NotionRichTextItemRequest[]) => Promise<void>;
 };
 
-export const PostDetailTemplate: FC<Props> = ({ post, comments }) => {
+export const PostDetailTemplate: FC<Props> = ({ post, comments, onSubmit }) => {
   const { showTableOfContents } = useTableOfContentsContext();
-
+  
   return (
     <div className=" sp:bg-gray-200">
       <h1 className="py-8 text-center text-3xl sp:p-4 sp:text-xl">
@@ -31,7 +36,7 @@ export const PostDetailTemplate: FC<Props> = ({ post, comments }) => {
           <div className="md:hidden">
             <Bio />
           </div>
-          <CommentForm />
+          <CommentForm onSubmit={onSubmit} />
         </div>
 
         <div className="w-aside">

@@ -18,14 +18,14 @@ export const Callout = ({ block }: Props) => {
     return '📣';
   }, [block.callout.icon]);
 
-  if (block.callout.icon?.type === 'emoji') {
-    const isRam = block.callout.icon.emoji === '🐏';
-    const isGorilla = block.callout.icon.emoji === '🦍';
+  if (block.callout.icon?.type === "emoji") {
+    const isRam = block.callout.icon.emoji === "🐏";
+    const isGorilla = block.callout.icon.emoji === "🦍";
     if (isRam || isGorilla)
       return (
         <div className="my-4">
           <SpeechBubble
-            iconImageSrc={isRam ? '/images/ram.png' : '/images/gorilla.png'}
+            iconImageSrc={isRam ? "/images/ram.png" : "/images/gorilla.png"}
             isReverse={isGorilla}
           >
             <RichText text={block.callout.rich_text} />

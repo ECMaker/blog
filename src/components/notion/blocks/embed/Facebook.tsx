@@ -1,7 +1,7 @@
-import Script from 'next/script';
-import { useReducer, useRef } from 'react';
+import Script from "next/script";
+import { useReducer, useRef  } from "react";
 
-import { useMutationObserver } from '~/hooks/useMutationObserver';
+import { useMutationObserver } from "~/hooks/useMutationObserver";
 
 type Props = {
   url: string;
@@ -14,8 +14,8 @@ export const Facebook = ({ url }: Props) => {
     ref: ref,
     callback: () =>
       ref.current
-        ?.getElementsByTagName('iframe')[0]
-        .addEventListener('load', onLoaded),
+        ?.getElementsByTagName("iframe")[0]
+        .addEventListener("load", onLoaded),
     options: { childList: true },
   });
 

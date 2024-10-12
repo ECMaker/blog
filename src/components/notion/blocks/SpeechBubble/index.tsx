@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
-import { Bubble } from './Bubble';
-import { SpeechIcon } from './SpeechIcon';
+import { Bubble } from "./Bubble";
+import { SpeechIcon } from "./SpeechIcon";
 
 type Props = {
   children: ReactNode;
@@ -12,7 +12,7 @@ type Props = {
 export const SpeechBubble = ({ children, iconImageSrc, isReverse }: Props) => {
   return (
     <div
-      className={`${isReverse ? 'flex-row-reverse' : ''} flex items-end gap-4`}
+      className={`${isReverse ? "flex-row-reverse" : ""} flex items-end gap-4`}
     >
       <SpeechIcon src={iconImageSrc} />
       <Bubble isReverse={isReverse}>{children}</Bubble>

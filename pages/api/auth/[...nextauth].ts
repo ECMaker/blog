@@ -1,5 +1,3 @@
-import type { NextApiHandler } from 'next';
-
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
@@ -15,7 +13,4 @@ export const authOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
-
-const authHandler: NextApiHandler = (req, res) =>
-  NextAuth(req, res, authOptions);
-export default authHandler;
+export default NextAuth(authOptions);

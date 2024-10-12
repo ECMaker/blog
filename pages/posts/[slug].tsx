@@ -26,7 +26,7 @@ export const getStaticProps = async (context: { params: Params }) => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        post: dummy_notion_post as unknown as NotionPost,
+        post: dummy_notion_post as NotionPost,
       },
     };
   }
@@ -38,9 +38,8 @@ export const getStaticProps = async (context: { params: Params }) => {
 
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
 
-  const children = (await /*かなるs方式*/ getAllBlocks(
-    /*のぶs方式 getChildrenAllInBlock( */
-    page_id,
+  const children = (await /*かなるs方式*/ getAllBlocks( /*のぶs方式 getChildrenAllInBlock( */
+    page_id
   )) as ExpandedBlockObjectResponse[];
 
   const childrenWithOgp = await setOgp(children);
@@ -50,7 +49,7 @@ export const getStaticProps = async (context: { params: Params }) => {
     description: toMetaDescription(children),
     children: childrenWithOgp,
   };
-
+  
   await saveToAlgolia(post);
 
   return {
@@ -64,8 +63,7 @@ export const getStaticProps = async (context: { params: Params }) => {
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     //本番環境はslugに変更したが、local環境はidのまま変更していない。
-    const posts =
-      dummy_notion_pages_array.flat() as unknown as NotionPageObjectResponse[];
+    const posts = dummy_notion_pages_array.flat() as NotionPageObjectResponse[];
     const paths = posts.map(({ id }) => ({ params: { slug: id } }));
 
     return {
@@ -74,8 +72,8 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     };
   }
   const posts = await getAllPosts();
-  const paths = posts.map(({ slug }) => ({ params: { slug: slug } }));
-
+  const paths = posts.map(({ slug }) => ({ params: {slug: slug}}));
+  
   return {
     paths,
     fallback: 'blocking', // HTMLを生成しない
@@ -88,7 +86,7 @@ const Post: NextPage<Props> = ({ post }) => {
   const { data: comments, trigger } = useComments(post.id);
 
   const handleCommentSubmit = async (
-    rich_text: NotionRichTextItemRequest[],
+    rich_text: NotionRichTextItemRequest[]
   ) => {
     await trigger({
       parent: {
@@ -99,7 +97,7 @@ const Post: NextPage<Props> = ({ post }) => {
   };
 
   let imageUrl;
-  if (post.image === '/900^2_tomei_textBlack.gif') {
+  if (post.image === "/900^2_tomei_textBlack.gif") {
     imageUrl = `https://blog.ec-maker.com/api/notion-blog/og?title=${post.title}`;
   } else {
     imageUrl = post.image;
@@ -110,7 +108,6 @@ const Post: NextPage<Props> = ({ post }) => {
       <PostDetailTemplate
         post={post}
         comments={comments}
-        // @ts-expect-error: 型が合わない
         onSubmit={handleCommentSubmit}
       />
 
@@ -137,7 +134,9 @@ const Post: NextPage<Props> = ({ post }) => {
         type="BlogPosting"
         url={`https://blog.ec-maker.com/posts/${post.slug}`}
         title={`${post.title} | EC maker`}
-        images={[imageUrl]}
+        images={[
+          imageUrl,
+        ]}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={post.updatedAt}
         authorName={[

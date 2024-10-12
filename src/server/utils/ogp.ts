@@ -20,7 +20,7 @@ export const getOgp = async (url: string): Promise<Ogp> => {
     };
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error(url, 'OPGの取得に失敗しました');
+    console.error(url,'OPGの取得に失敗しました');
 
     return {
       url: url,
@@ -34,23 +34,18 @@ export const getOgp = async (url: string): Promise<Ogp> => {
 
 /* ブックマークデータを再帰的に検索し、各ブックマークに OGP を設定する */
 const findeBookmark = async (
-  data: ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[],
+  data: ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]
 ): Promise<ExpandedBlockObjectResponse | ExpandedBlockObjectResponse[]> => {
-  if (Array.isArray(data))
-    return (await Promise.all(
-      data.map(findeBookmark),
-    )) as ExpandedBlockObjectResponse[];
+  if (Array.isArray(data)) return await Promise.all(data.map(findeBookmark)) as ExpandedBlockObjectResponse[];
   if (typeof data !== 'object' || data === null) return data;
   for (const key in data) {
     if (data.type !== 'bookmark') {
       (data as any)[key] = await findeBookmark((data as any)[key]);
       continue;
     }
-    const url = (
-      data as ExpandedBlockObjectResponse & { bookmark: { url: string } }
-    ).bookmark.url;
+    const url = (data as ExpandedBlockObjectResponse & { bookmark: { url: string } }).bookmark.url;
     const ogp = await getOgp(url);
-
+    
     return {
       ...data,
       ogp,
@@ -62,9 +57,7 @@ const findeBookmark = async (
 
 /* NotionBlockObjectのBookmarkにOGP情報を差し込む */
 export const setOgp = async (
-  children: ExpandedBlockObjectResponse[],
+  children: ExpandedBlockObjectResponse[]
 ): Promise<ExpandedBlockObjectResponse[]> => {
-  return (await Promise.all(
-    children.map(findeBookmark),
-  )) as ExpandedBlockObjectResponse[];
+  return (await Promise.all(children.map(findeBookmark))) as ExpandedBlockObjectResponse[];
 };
