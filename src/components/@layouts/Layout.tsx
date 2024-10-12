@@ -13,6 +13,7 @@ import { ScrollTopButton } from '~/components/@layouts/ScrollTopButton';
 import { SearchButton } from '~/components/@layouts/SearchButton';
 import { useTableOfContentsContext } from '~/components/features/notionBlog/TableOfContentsContext';
 import { Breadcrumbs } from '~/layouts/Breadcrumbs';
+import { baloo2, firaCode, notoSansJP } from '~/styles/fontFamilies';
 
 import { NavMenu } from './NavMenu';
 
@@ -38,7 +39,14 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
   const handleClickSearchButton = () => spotlight.openSpotlight();
 
   return (
-    <div className="bg-gray-200">
+    <div
+      className={clsx([
+        notoSansJP.variable,
+        firaCode.variable,
+        baloo2.variable,
+        'bg-gray-200',
+      ])}
+    >
       <div className="flex items-center justify-between bg-gradient-to-b from-gray-200 from-50% via-gray-200 to-transparent sticky-topbar">
         <div className="flex items-center w-fit justify-between">
           <NavMenu />

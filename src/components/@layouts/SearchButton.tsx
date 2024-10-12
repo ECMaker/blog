@@ -2,6 +2,7 @@ import type { FC } from 'react';
 
 import { Kbd } from '@mantine/core';
 
+
 import { SearchIcon } from '~/commons/icons';
 
 type Props = {

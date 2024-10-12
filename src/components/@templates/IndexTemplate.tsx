@@ -48,11 +48,11 @@ export const IndexTemplate: FC<Props> = ({ posts }) => {
             <BsChatText size={20} />
           </h2>
           <p className="px-4 py-2 leading-loose">
-          Knobさんの”noblog”を参考にさせていただき、作成しました。
-          <br />
-          素敵な記事をありがとうございます。この場をお借りして御礼申し上げます。
-          <br />
-          Keywords: Next.js, TypeScript, Tailwind CSS, Notion API ...
+            Knobさんの”noblog”を参考にさせていただき、作成しました。
+            <br />
+            素敵な記事をありがとうございます。この場をお借りして御礼申し上げます。
+            <br />
+            Keywords: Next.js, TypeScript, Tailwind CSS, Notion API ...
           </p>
           <div className="ml-auto w-fit">
             <ReadMoreButton

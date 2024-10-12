@@ -8,7 +8,7 @@ import type {
   RichTextItemResponse,
   BulletedListItemBlockObjectResponse,
   NumberedListItemBlockObjectResponse,
-  ToDoBlockObjectResponse
+  ToDoBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 
 /* Replace */
@@ -59,7 +59,7 @@ export type NotionBlogPropertiesWithCount = {
 
 export type BulletedListBlockObjectResponse = {
   id: string;
-  type: "bulleted_list";
+  type: 'bulleted_list';
   bulleted_list: {
     children: Array<BulletedListItemBlockObjectResponse>;
   };
@@ -67,7 +67,7 @@ export type BulletedListBlockObjectResponse = {
 
 export type NumberedListBlockObjectResponse = {
   id: string;
-  type: "numbered_list";
+  type: 'numbered_list';
   numbered_list: {
     children: Array<NumberedListItemBlockObjectResponse>;
   };
@@ -75,7 +75,7 @@ export type NumberedListBlockObjectResponse = {
 
 export type ToDoListBlockObjectResponse = {
   id: string;
-  type: "to_do_list";
+  type: 'to_do_list';
   to_do_list: {
     children: Array<ToDoBlockObjectResponse>;
   };
