@@ -18,7 +18,7 @@ export const Paragraph: FC<Props> = ({ block }: Props) => {
       {block.children && (
         <div className="ml-4">
           {block.children.map((child) => (
-            <div key={block.id}>{blockToJsx(child)}</div>
+            <div key={child.id}>{blockToJsx(child)}</div>
           ))}
         </div>
       )}
