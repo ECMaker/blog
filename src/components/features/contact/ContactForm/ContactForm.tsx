@@ -81,7 +81,7 @@ export const ContactForm: FC<Props> = ({ onSubmit }) => {
             'origin-[5%_6px] transition duration-500',
             openForm
               ? 'rotate-[100deg] opacity-0'
-              : 'opacity-40 hover:rotate-[2deg]'
+              : 'opacity-40 hover:rotate-[2deg]',
           )}
           onClick={() => {
             startAnimation();

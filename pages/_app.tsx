@@ -70,7 +70,7 @@ export default function App({ Component, pageProps }: AppProps) {
         onTrigger: () => router.push('/sandbox'),
       },
     ],
-    [router]
+    [router],
   );
   const [query, setQuery] = useState('');
   const actions = useSpotlightActions(query);
@@ -120,7 +120,7 @@ export default function App({ Component, pageProps }: AppProps) {
             filter={(q, actions) => {
               const filteredDefaultActions = defaultActions.filter(
                 (action) =>
-                  action.title.toLowerCase().indexOf(q.toLowerCase()) !== -1
+                  action.title.toLowerCase().indexOf(q.toLowerCase()) !== -1,
               );
 
               return [...filteredDefaultActions, ...actions];

@@ -11,7 +11,9 @@ export const Bio: FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <div className="text-xs">Created by</div>
-          <div className="text-xl font-CutiveMono font-bold leading-tight">EC maker</div>
+          <div className="text-xl font-CutiveMono font-bold leading-tight">
+            EC maker
+          </div>
           <div className="mt-2 space-x-2 text-slate-800">
             <a
               className="text-slate-800"

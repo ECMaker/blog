@@ -27,9 +27,7 @@ export const ProfileTemplate: FC<Props> = ({ blocks }) => {
             sizes="160px"
           />
         </div>
-        {blocks?.map((block) => (
-          <div key={block.id}>{blockToJsx(block)}</div>
-        ))}
+        {blocks?.map((block) => <div key={block.id}>{blockToJsx(block)}</div>)}
         <div>
           <br />
           <h2 className="flex items-center gap-1 text-lg font-bold">
