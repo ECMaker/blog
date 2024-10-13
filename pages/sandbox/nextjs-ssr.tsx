@@ -41,7 +41,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      blocks: response.results as NotionBlockObjectResponse[],
+      blocks: response.results as ExpandedBlockObjectResponse[],
     },
   };
 };
