@@ -2,15 +2,13 @@ import type { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next';
 import type {
   ExpandedBlockObjectResponse,
   NotionPageObjectResponse,
-  NotionPost,
+  NotionPostMeta,
   NotionRichTextItemRequest,
 } from '~/types/notion';
 
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 
 import { useComments } from '~/hooks/apiHooks/useComments';
-import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
-import dummy_notion_post from '~/mocks/notion_post.json';
 import { getAllBlocks } from '~/server/notion/getAllBlocks';
 import { getAllPosts } from '~/server/notion/getAllPosts';
 import { getPage } from '~/server/notion/pages';
@@ -22,25 +20,21 @@ import { toMetaDescription, toPostMeta } from '~/utils/meta';
 type Params = {
   slug: string;
 };
-export const getStaticProps = async (context: { params: Params }) => {
-  if (process.env.ENVIRONMENT === 'local') {
-    return {
-      props: {
-        post: dummy_notion_post as NotionPost,
-      },
-    };
-  }
 
-  const allPosts = await getAllPosts();
-  const targetPost = allPosts.find((v) => v.slug === context.params.slug);
+let allPostsCache: NotionPostMeta[] | null = null;
+
+export const getStaticProps = async (context: { params: Params }) => {
+  if (!allPostsCache) {
+    allPostsCache = await getAllPosts();
+  }
+  const targetPost = allPostsCache.find((v) => v.slug === context.params.slug);
+  
   if (!targetPost) return { notFound: true };
   const page_id = targetPost.id;
 
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
 
-  const children = (await /*かなるs方式*/ getAllBlocks( /*のぶs方式 getChildrenAllInBlock( */
-    page_id,
-  )) as ExpandedBlockObjectResponse[];
+  const children = (await getAllBlocks(page_id)) as ExpandedBlockObjectResponse[];
 
   const childrenWithOgp = await setOgp(children);
 
@@ -61,18 +55,10 @@ export const getStaticProps = async (context: { params: Params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  if (process.env.ENVIRONMENT === 'local') {
-    //本番環境はslugに変更したが、local環境はidのまま変更していない。
-    const posts = dummy_notion_pages_array.flat() as NotionPageObjectResponse[];
-    const paths = posts.map(({ id }) => ({ params: { slug: id } }));
-
-    return {
-      paths,
-      fallback: 'blocking', // HTMLを生成しない
-    };
+  if (!allPostsCache) {
+    allPostsCache = await getAllPosts();
   }
-  const posts = await getAllPosts();
-  const paths = posts.map(({ slug }) => ({ params: {slug: slug}}));
+  const paths = allPostsCache.map(({ slug }) => ({ params: {slug: slug}}));
   
   return {
     paths,
