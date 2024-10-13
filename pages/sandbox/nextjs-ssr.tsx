@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import type { NotionBlockObjectResponse } from '~/types/notion';
+import type { ExpandedBlockObjectResponse } from '~/types/notion';
 
 import { Prism } from '@mantine/prism';
 import Head from 'next/head';
@@ -17,12 +17,12 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      blocks: response.results as NotionBlockObjectResponse[],
+      blocks: response.results as ExpandedBlockObjectResponse[],
     },
   };
 };
 
-const NextjsSsr: NextPage<{ blocks: NotionBlockObjectResponse[] }> = ({
+const NextjsSsr: NextPage<{ blocks: ExpandedBlockObjectResponse[] }> = ({
   blocks,
 }) => {
   return (
@@ -40,7 +40,7 @@ const NextjsSsr: NextPage<{ blocks: NotionBlockObjectResponse[] }> = ({
 
   return {
     props: {
-      blocks: response.results as NotionBlockObjectResponse[],
+      blocks: response.results as ExpandedBlockObjectResponse[],
     },
   };
 };`}</Prism>
