@@ -51,7 +51,9 @@ const SandboxIndex: NextPage<Props> = ({ paths }) => {
           label="Select page"
           placeholder="Pick one"
           searchable
-          data={[...paths.pages.map((path) => ({ value: path, label: path }))]}
+          data={[
+            ...paths.pages.map((path) => ({ value: path, label: path })),
+          ]}
           onChange={onChange}
         />
 
@@ -69,6 +71,7 @@ const SandboxIndex: NextPage<Props> = ({ paths }) => {
             ))}
           </div>
         </div>
+
       </div>
     </>
   );

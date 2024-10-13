@@ -1,4 +1,4 @@
-import type { FileBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import type { FileBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { BlockWithChildren } from '~/types/notion';
 
 import Image from 'next/image';

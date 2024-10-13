@@ -1,9 +1,9 @@
 import '~/styles/globals.css';
-import 'react-medium-image-zoom/dist/styles.css';
+import 'react-medium-image-zoom/dist/styles.css'
 
 import type { AppProps } from 'next/app';
 
-import { Notifications } from '@mantine/notifications';
+import { NotificationsProvider } from '@mantine/notifications';
 import { SpotlightProvider } from '@mantine/spotlight';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -28,7 +28,8 @@ import { googleTagManagerId } from '~/types/gtm';
 
 const meta = {
   title: 'EC maker',
-  description: 'Notion API と Next.js / Tailwind CSS による本格ブログ',
+  description:
+    'Notion API と Next.js / Tailwind CSS による本格ブログ',
   url: 'https://blog.ec-maker.com/',
   image: 'https://blog.ec-maker.com/300%5E2_black.gif',
 };
@@ -130,14 +131,21 @@ export default function App({ Component, pageProps }: AppProps) {
             nothingFoundMessage="Nothing found..."
             withinPortal
             highlightQuery
+            overlayOpacity={0.3}
             onQueryChange={(query) => setQuery(query)}
+            styles={{
+              spotlight: {
+                maxHeight: '60vh',
+              },
+            }}
           >
-            <TableOfContentsProvider>
-              <Layout {...pageProps}>
-                <Component {...pageProps} />
-              </Layout>
-            </TableOfContentsProvider>
-            <Notifications position="top-center" />
+            <NotificationsProvider position="top-center">
+              <TableOfContentsProvider>
+                <Layout {...pageProps}>
+                  <Component {...pageProps} />
+                </Layout>
+              </TableOfContentsProvider>
+            </NotificationsProvider>
           </SpotlightProvider>
         </RecoilRoot>
       </SessionProvider>

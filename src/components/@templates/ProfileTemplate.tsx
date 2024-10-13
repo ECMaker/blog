@@ -44,15 +44,15 @@ export const ProfileTemplate: FC<Props> = ({ blocks }) => {
             rel="noreferrer"
             className="relative mx-auto block h-32 w-full cursor-pointer transition-transform duration-300 hover:scale-105 sp:h-20"
           >
-            <Image
-              className="h-full w-full object-contain -mt-4"
-              src="https://github-contributions-api.deno.dev/keit0728.svg?no-legend=true&no-total=true&scheme=green"
-              alt="GitHub Contributions"
-              fill
-              sizes="800px"
-              priority
-              unoptimized
-            />
+          <Image
+            className="h-full w-full object-contain -mt-4"
+            src="https://github-contributions-api.deno.dev/keit0728.svg?no-legend=true&no-total=true&scheme=green"
+            alt="GitHub Contributions"
+            fill
+            sizes="800px"
+            priority
+            unoptimized
+          />
           </Link>
 
           <h2 className="flex items-center gap-1 text-lg font-bold ml-4">
@@ -64,15 +64,15 @@ export const ProfileTemplate: FC<Props> = ({ blocks }) => {
             rel="noreferrer"
             className="relative mx-auto block h-32 w-full cursor-pointer transition-transform duration-300 hover:scale-105 sp:h-20"
           >
-            <Image
-              className="h-full w-full object-contain -mt-4"
-              src="https://github-contributions-api.deno.dev/kei880.svg?no-legend=true&no-total=true&scheme=green"
-              alt="GitHub Contributions"
-              fill
-              sizes="800px"
-              priority
-              unoptimized
-            />
+          <Image
+            className="h-full w-full object-contain -mt-4"
+            src="https://github-contributions-api.deno.dev/kei880.svg?no-legend=true&no-total=true&scheme=green"
+            alt="GitHub Contributions"
+            fill
+            sizes="800px"
+            priority
+            unoptimized
+          />
           </Link>
 
           <h2 className="flex items-center gap-1 text-lg font-bold ml-4">
@@ -84,15 +84,15 @@ export const ProfileTemplate: FC<Props> = ({ blocks }) => {
             rel="noreferrer"
             className="relative mx-auto block h-32 w-full cursor-pointer transition-transform duration-300 hover:scale-105 sp:h-20"
           >
-            <Image
-              className="h-full w-full object-contain -mt-4"
-              src="https://github-contributions-api.deno.dev/taka707.svg?no-legend=true&no-total=true&scheme=green"
-              alt="GitHub Contributions"
-              fill
-              sizes="800px"
-              priority
-              unoptimized
-            />
+          <Image
+            className="h-full w-full object-contain -mt-4"
+            src="https://github-contributions-api.deno.dev/taka707.svg?no-legend=true&no-total=true&scheme=green"
+            alt="GitHub Contributions"
+            fill
+            sizes="800px"
+            priority
+            unoptimized
+          />
           </Link>
 
           <h2 className="flex items-center gap-1 text-lg font-bold ml-4">
@@ -104,15 +104,15 @@ export const ProfileTemplate: FC<Props> = ({ blocks }) => {
             rel="noreferrer"
             className="relative mx-auto block h-32 w-full cursor-pointer transition-transform duration-300 hover:scale-105 sp:h-20"
           >
-            <Image
-              className="h-full w-full object-contain -mt-4"
-              src="https://github-contributions-api.deno.dev/u-ecmaker.svg?no-legend=true&no-total=true&scheme=green"
-              alt="GitHub Contributions"
-              fill
-              sizes="800px"
-              priority
-              unoptimized
-            />
+          <Image
+            className="h-full w-full object-contain -mt-4"
+            src="https://github-contributions-api.deno.dev/u-ecmaker.svg?no-legend=true&no-total=true&scheme=green"
+            alt="GitHub Contributions"
+            fill
+            sizes="800px"
+            priority
+            unoptimized
+          />
           </Link>
         </div>
       </div>

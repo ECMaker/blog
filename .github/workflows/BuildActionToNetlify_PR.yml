@@ -58,9 +58,9 @@ jobs:
       - name: Post Netlify CLI Comment
         run: |
          for i in {1..3}; do
-           curl -X POST \
-                -H "Authorization: token ${GITHUB_TOKEN}" \
-                -d "{\"body\": \"$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\"}" \
+         curl -X POST \
+              -H "Authorization: token ${GITHUB_TOKEN}" \
+              -d "{\"body\": \"$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\"}" \
                 ${URL} && break || echo "Retrying... ($i)"
          done
         env:

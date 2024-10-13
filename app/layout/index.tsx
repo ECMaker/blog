@@ -1,6 +1,7 @@
 'use client';
 
 import { Layout } from './Layout';
+import { NotificationsProvider } from './NotificationsProvider';
 import { SpotlightProvider } from './SpotlightProvider';
 
 export default function RootLayout({
@@ -13,7 +14,9 @@ export default function RootLayout({
       <head />
       <body>
         <SpotlightProvider>
-          <Layout>{children}</Layout>
+          <NotificationsProvider>
+            <Layout>{children}</Layout>
+          </NotificationsProvider>
         </SpotlightProvider>
       </body>
     </html>

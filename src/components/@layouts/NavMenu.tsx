@@ -1,7 +1,8 @@
+import type { FC } from 'react';
+
 import { clsx, Transition } from '@mantine/core';
-import { useHover, useMergedRef } from '@mantine/hooks';
+import { useHover } from '@mantine/hooks';
 import Image from 'next/image';
-import { useState, type FC, useEffect, useRef } from 'react';
 
 import {
   ExperimentIcon,
@@ -15,43 +16,22 @@ import {
   MenuIcon,
 } from '~/commons/icons';
 
+
 import { NavMenuExternalLink } from './NavMenuExternalLink';
 import { NavMenuLink } from './NavMenuLink';
 
-export const EcmakerIcon = '/icon.svg';
 
+export const EcmakerIcon =  '/icon.svg';
+ 
 export const NavMenu: FC = () => {
-  const { hovered, ref: useHoverRef } = useHover();
-  const menuRef = useRef<HTMLDivElement>(null);
-  const ref = useMergedRef(menuRef, useHoverRef);
-  const [focused, setFocused] = useState(false);
-  const mounted = hovered || focused;
-
-  useEffect(() => {
-    const handleFocusOutside = (event: FocusEvent) => {
-      if (!event.target) return;
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setFocused(false);
-      }
-    };
-
-    document.addEventListener('focusin', handleFocusOutside);
-
-    return () => {
-      document.removeEventListener('focusin', handleFocusOutside);
-    };
-  }, [ref, setFocused]);
+  const { hovered, ref } = useHover();
 
   return (
     <nav ref={ref} className="w-fit cursor-pointer p-3 sp:p-0 sp:pl-2">
       <div
-        role="button"
-        tabIndex={0}
-        onFocus={() => setFocused(true)}
-        // onBlur={() => setFocused(false)}
         className={clsx(
           'flex flex-col items-center justify-center transition-colors duration-300',
-          mounted && 'text-white',
+          hovered && 'text-white'
         )}
       >
         <MenuIcon size={36} />
@@ -59,7 +39,7 @@ export const NavMenu: FC = () => {
       </div>
 
       <Transition
-        mounted={mounted}
+        mounted={hovered}
         transition="slide-right"
         timingFunction="ease"
         duration={400}
@@ -67,7 +47,6 @@ export const NavMenu: FC = () => {
         {(styles) => (
           <div
             className="fixed top-0 left-0 -z-10 h-screen space-y-2 bg-slate-800 px-6 pt-28"
-            role="navigation"
             style={styles}
           >
             <NavMenuLink

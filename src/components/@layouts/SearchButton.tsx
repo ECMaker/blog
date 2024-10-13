@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 
 import { Kbd } from '@mantine/core';
-import { useOs } from '@mantine/hooks';
 
 import { SearchIcon } from '~/commons/icons';
 
@@ -9,7 +8,10 @@ type Props = {
   onClick: () => void;
 };
 export const SearchButton: FC<Props> = ({ onClick }) => {
-  const os = useOs();
+
+  const isMac = typeof window !== 'undefined' && navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+
+  const keyLabel = isMac ? '⌘' : 'Ctrl';
 
   return (
     <button
@@ -23,7 +25,7 @@ export const SearchButton: FC<Props> = ({ onClick }) => {
         className="border-gray-400 bg-gray-700 py-0.5 text-xs text-white hidden md:block"
         color="dark"
       >
-        {os === 'windows' ? 'Ctrl' : '⌘'} + K
+        {keyLabel} + K
       </Kbd>
     </button>
   );

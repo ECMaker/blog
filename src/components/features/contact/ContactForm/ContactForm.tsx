@@ -1,20 +1,23 @@
-import { Button, Input, clsx } from '@mantine/core';
+import type { FC } from 'react';
+import type { NotionRichTextItemRequest } from '~/types/notion';
+
+import { Button, clsx, Input } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { Link } from '@mantine/tiptap';
-import { Placeholder } from '@tiptap/extension-placeholder';
+import Placeholder from '@tiptap/extension-placeholder';
 import Underline from '@tiptap/extension-underline';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { useReducer, type FC, useState } from 'react';
+import { useReducer, useState } from 'react';
 
-import { AtIcon, SendIcon, TouchIcon } from '~/components/@commons/icons';
+import { AtIcon, SendIcon, TouchIcon } from '~/commons/icons';
 import { RichTextEditor } from '~/components/@commons/RichTextEditor';
 
 type Props = {
-  // onSubmit: (rich_text: NotionRichTextItemRequest[]) => Promise<void>;
+  onSubmit: (rich_text: NotionRichTextItemRequest[]) => Promise<void>;
 };
 
-export const ContactForm: FC<Props> = () => {
+export const ContactForm: FC<Props> = ({ onSubmit }) => {
   const [openForm, startAnimation] = useReducer(() => true, false);
   const [visibleCover, hiddenCover] = useReducer(() => false, true);
 
@@ -40,7 +43,7 @@ export const ContactForm: FC<Props> = () => {
     const completed = false;
     if (completed) {
       // eslint-disable-next-line no-console
-      // console.log(onSubmit);
+      console.log(onSubmit);
     } else {
       showNotification({
         title: 'フォーム機能は現在準備中です。',
@@ -60,9 +63,6 @@ export const ContactForm: FC<Props> = () => {
           onSubmit={handleSubmit}
         />
         <div className="mt-2 flex items-center justify-end gap-3">
-          <p className="font-bold text-sm">
-            ※ こちらはDEMOです。実際に送信することはできません。
-          </p>
           <Button
             onClick={handleSubmit}
             loading={isLoading}

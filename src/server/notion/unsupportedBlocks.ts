@@ -8,4 +8,5 @@ export const unsupportedBlocks = [
   'table_of_contents',
   'link_to_page',
   'link_preview',
-];
+  ];
+  

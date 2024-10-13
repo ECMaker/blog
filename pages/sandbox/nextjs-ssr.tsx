@@ -32,8 +32,7 @@ const NextjsSsr: NextPage<{ blocks: ExpandedBlockObjectResponse[] }> = ({
       </Head>
       <PageTitle title="Next.js SSR" />
       <p>NotionのページのBlockをgetServerSidePropsで取得するコードを書いた</p>
-      <Prism language="tsx">{`
-export const getServerSideProps = async () => {
+      <Prism language="tsx">{`export const getServerSideProps = async () => {
   const response = await getChildrenInBlock({
     block_id: previewPageId,
     page_size: 5,
@@ -41,11 +40,10 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      blocks: response.results as NotionBlockObjectResponse[],
+      blocks: response.results as ExpandedBlockObjectResponse[],
     },
   };
-};
-      `}</Prism>
+};`}</Prism>
       <p>これがリクエストの度に最新のNotionのデータを取得するかを確認したい</p>
 
       <div className="w-main mx-auto">

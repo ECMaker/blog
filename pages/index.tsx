@@ -9,8 +9,7 @@ export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        posts:
-          dummy_notion_pages_latest as unknown as NotionPageObjectResponse[],
+        posts: dummy_notion_pages_latest as NotionPageObjectResponse[],
       },
     };
   }

@@ -74,7 +74,7 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
       <div className="mx-auto w-fit py-4">
         <Pagination
-          value={pagination.active}
+          page={pagination.active}
           total={totalPage}
           onChange={pagination.setPage}
         />
@@ -103,7 +103,7 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
 
       <div className="mx-auto w-fit py-4">
         <Pagination
-          value={pagination.active}
+          page={pagination.active}
           total={totalPage}
           onChange={pagination.setPage}
         />

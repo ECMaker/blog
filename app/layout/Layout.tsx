@@ -52,7 +52,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
             )}
             onClick={() => router.push('/')}
           >
-          <h1 className="flex gap-3 items-center font-CutiveMono text-5xl leading-none">
+            <h1 className="flex gap-3 items-center font-CutiveMono text-5xl leading-none">
               <Image
                 src="/400^2inside600^2_tomei.gif"
                 alt="site logo"

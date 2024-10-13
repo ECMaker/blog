@@ -15,7 +15,7 @@ export const PostListItem: FC<Props> = ({ post }) => {
   const router = useRouter();
   const meta = useMemo(() => toPostMeta(post), [post]);
   const expandPost = { ...toPostMeta(post) };
-
+ 
   return (
     <div
       className="flex h-24 cursor-pointer items-start gap-5 rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:relative md:h-48"

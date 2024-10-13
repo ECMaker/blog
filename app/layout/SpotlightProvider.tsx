@@ -65,6 +65,12 @@ export const SpotlightProvider = ({ children }: { children: ReactNode }) => {
       nothingFoundMessage="Nothing found..."
       withinPortal
       highlightQuery
+      overlayOpacity={0.3}
+      styles={{
+        spotlight: {
+          maxHeight: '60vh',
+        },
+      }}
     >
       {children}
     </MantineSpotlightProvider>

@@ -1,8 +1,6 @@
 import type {
   PageObjectResponse,
   PartialPageObjectResponse,
-  PartialDatabaseObjectResponse,
-  DatabaseObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 import type { NotionPostMeta } from '~/types/notion';
 
@@ -15,16 +13,11 @@ import { notion } from './client';
  * かなるsからのコピー
  */
 export const getAllPosts = async (): Promise<NotionPostMeta[]> => {
-  const allResults: (
-    | PageObjectResponse
-    | PartialPageObjectResponse
-    | PartialDatabaseObjectResponse
-    | DatabaseObjectResponse
-  )[] = [];
+  const allResults: (PageObjectResponse | PartialPageObjectResponse)[] = [];
   let hasMore = true;
   while (hasMore) {
     const res = await notion.databases.query({
-      database_id: process.env.NOTION_DATABASE || '',
+      database_id: process.env.NOTION_DATABASE,
       filter: {
         property: 'Published',
         checkbox: {
@@ -44,10 +37,6 @@ export const getAllPosts = async (): Promise<NotionPostMeta[]> => {
   }
 
   const allPosts = allResults
-    .filter(
-      (result): result is PageObjectResponse | PartialPageObjectResponse =>
-        result.object === 'page',
-    )
     .map(notionResponseToPost)
     .filter((v): v is NotionPostMeta => Boolean(v));
 

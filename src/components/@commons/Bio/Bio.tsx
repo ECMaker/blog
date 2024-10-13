@@ -53,7 +53,7 @@ export const Bio: FC = () => {
         - Flutter / スマホアプリ 開発中。
         <br />
         - Next.js / TypeScript /
-        <br /> <span className="ml-2">TailwindCSS を学習中。</span>
+         <br /> <span className="ml-2">TailwindCSS を学習中。</span>
       </div>
     </div>
   );

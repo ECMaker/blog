@@ -16,50 +16,50 @@ export const TableOfContents: FC<Props> = ({ blocks, isAll = false }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const inViewHeadingIds = useRecoilValue(inViewHeadingIdsAtom);
 
-  const headingList = useMemo(
-    () =>
-      blocks.flatMap((block) => {
-        if (isAll) {
-          const type = block.type;
-          const title =
-            // @ts-expect-error ignore
-            block[type]?.rich_text
-              ? // @ts-expect-error ignore
-                block[type]?.rich_text[0]?.plain_text
-              : `empty: ${type}`;
+const headingList = useMemo(
+  () =>
+    blocks.flatMap((block) => {
+      if (isAll) {
+        const type = block.type;
+        const title =
+          // @ts-expect-error ignore
+          block[type]?.rich_text
+            ? // @ts-expect-error ignore
+              block[type]?.rich_text[0]?.plain_text
+            : `empty: ${type}`;
 
-          return {
-            id: block.id,
-            type,
-            title,
-          };
-        }
-        if (block.type === 'heading_1') {
-          return {
-            id: block.id,
-            type: block.type,
-            title: block.heading_1.rich_text[0].plain_text,
-          };
-        }
-        if (block.type === 'heading_2') {
-          return {
-            id: block.id,
-            type: block.type,
-            title: /*"└ " +*/ block.heading_2.rich_text[0].plain_text,
-          };
-        }
-        if (block.type === 'heading_3') {
-          return {
-            id: block.id,
-            type: block.type,
-            title: /*" └ " +*/ block.heading_3.rich_text[0].plain_text,
-          };
-        }
+        return {
+          id: block.id,
+          type,
+          title,
+        };
+      }
+      if (block.type === 'heading_1') {
+        return {
+          id: block.id,
+          type: block.type,
+          title: block.heading_1.rich_text[0].plain_text,
+        };
+      }
+      if (block.type === 'heading_2') {
+        return {
+          id: block.id,
+          type: block.type,
+          title: /*"└ " +*/ block.heading_2.rich_text[0].plain_text,
+        };
+      }
+      if (block.type === 'heading_3') {
+        return {
+          id: block.id,
+          type: block.type,
+          title: /*" └ " +*/block.heading_3.rich_text[0].plain_text,
+        };
+      }
 
-        return [];
-      }),
+      return [];
+    }),
     [blocks, isAll],
-  );
+);
 
   useEffect(() => {
     const index = headingList.findIndex((item) =>
@@ -94,7 +94,7 @@ export const TableOfContents: FC<Props> = ({ blocks, isAll = false }) => {
                 item.type === 'heading_1' && 'font-bold',
                 item.type === 'heading_1' && 'underline',
                 item.type === 'heading_1' && 'text-lg',
-                //item.type === 'heading_1' && 'thick-underline',
+              //item.type === 'heading_1' && 'thick-underline',
                 item.type === 'heading_2' && 'pl-0',
                 item.type === 'heading_2' && 'font-bold',
                 item.type === 'heading_2' && 'text-base',
