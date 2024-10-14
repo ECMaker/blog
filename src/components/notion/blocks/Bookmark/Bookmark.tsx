@@ -28,7 +28,7 @@ export const Bookmark: FC<Props> = ({ block }) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="flex max-w-[400px] flex-col justify-center gap-2 overflow-hidden px-6 py-3 sp:px-4 sp:py-2">
+      <div className="flex max-w-[400px] flex-col justify-center gap-2 overflow-hidden px-6 py-3 sp:py-2 sp:px-4">
         <div className="font-bold text-slate-800 line-clamp-2 sp:text-sm">
           {ogp.title}
         </div>
@@ -71,7 +71,7 @@ export const Bookmark: FC<Props> = ({ block }) => {
         <Skeleton height={16} width="80%" mt={10} />
       </div>
 
-      <Skeleton className="h-full w-2/5 rounded-l-none rounded-r-lg" />
+      <Skeleton className="h-full w-2/5 rounded-r-lg rounded-l-none" />
     </a>
   );
 };

@@ -1,23 +1,20 @@
-import type { FC } from 'react';
-import type { NotionRichTextItemRequest } from '~/types/notion';
-
-import { Button, clsx, Input } from '@mantine/core';
+import { Button, Input, clsx } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { Link } from '@mantine/tiptap';
-import Placeholder from '@tiptap/extension-placeholder';
+import { Placeholder } from '@tiptap/extension-placeholder';
 import Underline from '@tiptap/extension-underline';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { useReducer, useState } from 'react';
+import { useReducer, type FC, useState } from 'react';
 
-import { AtIcon, SendIcon, TouchIcon } from '~/commons/icons';
+import { AtIcon, SendIcon, TouchIcon } from '~/components/@commons/icons';
 import { RichTextEditor } from '~/components/@commons/RichTextEditor';
 
 type Props = {
-  onSubmit: (rich_text: NotionRichTextItemRequest[]) => Promise<void>;
+  // onSubmit: (rich_text: NotionRichTextItemRequest[]) => Promise<void>;
 };
 
-export const ContactForm: FC<Props> = ({ onSubmit }) => {
+export const ContactForm: FC<Props> = () => {
   const [openForm, startAnimation] = useReducer(() => true, false);
   const [visibleCover, hiddenCover] = useReducer(() => false, true);
 
@@ -40,7 +37,7 @@ export const ContactForm: FC<Props> = ({ onSubmit }) => {
     const completed = false;
     if (completed) {
       // eslint-disable-next-line no-console
-      console.log(onSubmit);
+      // console.log(onSubmit);
     } else {
       showNotification({
         title: 'フォーム機能は現在準備中です。',
@@ -60,6 +57,9 @@ export const ContactForm: FC<Props> = ({ onSubmit }) => {
           onSubmit={handleSubmit}
         />
         <div className="mt-2 flex items-center justify-end gap-3">
+          <p className="font-bold text-sm">
+            ※ こちらはDEMOです。実際に送信することはできません。
+          </p>
           <Button
             onClick={handleSubmit}
             loading={isLoading}
@@ -78,7 +78,7 @@ export const ContactForm: FC<Props> = ({ onSubmit }) => {
             'origin-[5%_6px] transition duration-500',
             openForm
               ? 'rotate-[100deg] opacity-0'
-              : 'opacity-40 hover:rotate-[2deg]'
+              : 'opacity-40 hover:rotate-[2deg]',
           )}
           onClick={() => {
             startAnimation();

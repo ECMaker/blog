@@ -15,7 +15,7 @@ export const ProfileTemplate: FC<Props> = ({ blocks }) => {
     <div className="space-y-2">
       <PageTitle title="Profile" />
 
-      <div className="w-main mx-auto rounded bg-white px-10 py-6 leading-loose sp:mt-2 sp:px-4">
+      <div className="w-main mx-auto rounded bg-white py-6 px-10 leading-loose sp:mt-2 sp:px-4">
         <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-full border-2 border-solid border-slate-300">
           <Image
             className="object-cover"
@@ -25,9 +25,7 @@ export const ProfileTemplate: FC<Props> = ({ blocks }) => {
             sizes="160px"
           />
         </div>
-        {blocks?.map((block) => (
-          <div key={block.id}>{blockToJsx(block)}</div>
-        ))}
+        {blocks?.map((block) => <div key={block.id}>{blockToJsx(block)}</div>)}
       </div>
     </div>
   );

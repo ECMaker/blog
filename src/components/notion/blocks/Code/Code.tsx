@@ -12,7 +12,7 @@ type Props = {
 
 /* Notion の language を Prism の language に変換 */
 const languageCompiled = (
-  language: string
+  language: string,
 ): Extract<PrismProps['language'], string> => {
   if (language === 'javascript') return 'jsx';
   if (language === 'typescript') return 'tsx';
@@ -29,7 +29,7 @@ export const Code: FC<Props> = ({ block }) => {
 
   return (
     <div className="my-8">
-      <div className="-mb-1 rounded-t-md bg-slate-800 px-4 pb-3 pt-2 text-sm text-slate-200 sp:text-xs">
+      <div className="-mb-1 rounded-t-md bg-slate-800 px-4 pt-2 pb-3 text-sm text-slate-200 sp:text-xs">
         {block.code.language}
       </div>
       <Prism language={language} colorScheme="dark">

@@ -18,7 +18,7 @@ export const PostMeta: FC<Props> = ({ meta, commentCount }) => {
   const { data: likes, trigger, isMutating } = useLikes(meta.id);
 
   return (
-    <div className="space-y-2 bg-white px-6 py-4 text-sm">
+    <div className="space-y-2 bg-white py-4 px-6 text-sm">
       <div className="flex justify-between">
         <div className="space-y-1">
           <div>公開: {meta.date}</div>
@@ -41,7 +41,7 @@ export const PostMeta: FC<Props> = ({ meta, commentCount }) => {
               {},
               {
                 onSuccess: () => setLiked(true),
-              }
+              },
             )
           }
         >
