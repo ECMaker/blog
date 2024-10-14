@@ -1,19 +1,18 @@
 import type { PrismProps } from '@mantine/prism';
 import type { CodeBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
-import type { BlockWithChildren } from '~/types/notion';
 
 import { Prism } from '@mantine/prism';
 
 import { RichText } from '~/components/notion/RichText';
 
 type Props = {
-  block: BlockWithChildren<CodeBlockObjectResponse>;
+  block: CodeBlockObjectResponse;
 };
 
 /* Notion の language を Prism の language に変換 */
 const languageCompiled = (
-  language: string,
+  language: string
 ): Extract<PrismProps['language'], string> => {
   if (language === 'javascript') return 'jsx';
   if (language === 'typescript') return 'tsx';
@@ -22,7 +21,7 @@ const languageCompiled = (
 };
 
 /* type code */
-export const Code: FC<Props> = ({ block }: Props) => {
+export const Code: FC<Props> = ({ block }) => {
   const language = languageCompiled(block.code.language) as Extract<
     PrismProps['language'],
     string
@@ -30,7 +29,7 @@ export const Code: FC<Props> = ({ block }: Props) => {
 
   return (
     <div className="my-8">
-      <div className="-mb-1 rounded-t-md bg-slate-800 px-4 pt-2 pb-3 text-sm text-slate-200 sp:text-xs">
+      <div className="-mb-1 rounded-t-md bg-slate-800 px-4 pb-3 pt-2 text-sm text-slate-200 sp:text-xs">
         {block.code.language}
       </div>
       <Prism language={language} colorScheme="dark">

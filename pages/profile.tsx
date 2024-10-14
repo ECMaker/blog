@@ -1,5 +1,5 @@
 import type { InferGetStaticPropsType, NextPage } from 'next';
-import type { ExpandedBlockObjectResponse } from '~/types/notion';
+import type { NotionBlockObjectResponse } from '~/types/notion';
 
 import notion_profile_blocks from '~/mocks/notion_profile_blocks.json';
 import { getChildrenInBlock } from '~/server/notion/blocks';
@@ -9,7 +9,7 @@ export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        blocks: notion_profile_blocks as ExpandedBlockObjectResponse[],
+        blocks: notion_profile_blocks as NotionBlockObjectResponse[],
       },
     };
   }
@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      blocks: results as ExpandedBlockObjectResponse[],
+      blocks: results as NotionBlockObjectResponse[],
     },
   };
 };

@@ -1,16 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import type { BookmarkBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
-import type { BlockWithChildren } from '~/types/notion';
 import type { Ogp } from '~/types/ogp';
 
 import { Skeleton } from '@mantine/core';
 
 type Props = {
-  block: BlockWithChildren<BookmarkBlockObjectResponse> & { ogp?: Ogp };
+  block: BookmarkBlockObjectResponse & { ogp?: Ogp };
 };
 
-export const Bookmark: FC<Props> = ({ block }: Props) => {
+export const Bookmark: FC<Props> = ({ block }) => {
   const ogp = block.ogp
     ? block.ogp
     : {
@@ -29,7 +28,7 @@ export const Bookmark: FC<Props> = ({ block }: Props) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="flex max-w-[400px] flex-col justify-center gap-2 overflow-hidden px-6 py-3 sp:py-2 sp:px-4">
+      <div className="flex max-w-[400px] flex-col justify-center gap-2 overflow-hidden px-6 py-3 sp:px-4 sp:py-2">
         <div className="font-bold text-slate-800 line-clamp-2 sp:text-sm">
           {ogp.title}
         </div>
@@ -72,7 +71,7 @@ export const Bookmark: FC<Props> = ({ block }: Props) => {
         <Skeleton height={16} width="80%" mt={10} />
       </div>
 
-      <Skeleton className="h-full w-2/5 rounded-r-lg rounded-l-none" />
+      <Skeleton className="h-full w-2/5 rounded-l-none rounded-r-lg" />
     </a>
   );
 };

@@ -15,9 +15,9 @@ const Contact: NextPage = () => {
       <ContactTemplate onSubmit={handleSubmit} />
       {/* meta */}
       <NextSeo
-        title="Contact | EC maker"
+        title="Contact | noblog"
         openGraph={{
-          url: 'https://blog.ec-maker.com/contact/',
+          url: 'https://www.nbr41.com/contact/',
         }}
       />
     </>

@@ -11,7 +11,7 @@ import { PageTitle } from '~/commons/PageTitle';
 const Rive: NextPage = () => {
   /* Masao */
   const { rive, RiveComponent } = useRive({
-    src: '/sandbox/lesson-masao.riv',
+    src: '/lesson-masao.riv',
     stateMachines: 'State Machine 1',
     autoplay: true,
     animations: ['stay'],
@@ -25,7 +25,7 @@ const Rive: NextPage = () => {
 
   /* Slime */
   const { rive: slimeRive, RiveComponent: SlimeRiveComponent } = useRive({
-    src: '/sandbox/slime.riv',
+    src: '/slime.riv',
     stateMachines: 'State Machine',
     autoplay: true,
     animations: ['stay'],

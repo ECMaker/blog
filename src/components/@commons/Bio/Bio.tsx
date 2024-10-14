@@ -4,20 +4,17 @@ import Image from 'next/image';
 
 import { GitHubIcon, TwitterIcon } from '~/commons/icons';
 
-//各記事ページに右上に出てくる著者欄の編集
 export const Bio: FC = () => {
   return (
     <div className="rounded bg-white p-6">
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-xs">Created by</div>
-          <div className="text-xl font-CutiveMono font-bold leading-tight">
-            EC maker
-          </div>
+          <div className="text-xs">Create by</div>
+          <div className="text-lg font-bold leading-tight">nobuyuki.K</div>
           <div className="mt-2 space-x-2 text-slate-800">
             <a
               className="text-slate-800"
-              href="https://twitter.com/u_ecmaker"
+              href="https://twitter.com/Knob_nbr41to"
               target="_blank"
               rel="noreferrer"
             >
@@ -25,7 +22,7 @@ export const Bio: FC = () => {
             </a>
             <a
               className="text-slate-800"
-              href="https://github.com/orgs/ECMaker/people"
+              href="https://github.com/nbr41to"
               target="_blank"
               rel="noreferrer"
             >
@@ -33,10 +30,10 @@ export const Bio: FC = () => {
             </a>
           </div>
         </div>
-        <div className="relative h-24 w-24  rounded-full border">
+        <div className="relative h-14 w-14  rounded-full border border-solid border-slate-400">
           <Image
             className="rounded-full object-cover"
-            src="/400^2inside600^2_tomei.gif"
+            src="/nob_lego_sm.png"
             alt="my icon"
             fill
             sizes="100px"
@@ -46,14 +43,9 @@ export const Bio: FC = () => {
       </div>
 
       <div className="mt-3 text-sm leading-relaxed">
-        電機/自動車メーカ系 エンジニア
+        学校の先生→Web系エンジニア
         <br />
-        → フロントエンド エンジニア
-        <br />
-        - Flutter / スマホアプリ 開発中。
-        <br />
-        - Next.js / TypeScript /
-         <br /> <span className="ml-2">TailwindCSS を学習中。</span>
+        Next.js / TypeScript / TailwindCSS / Notion が好き。
       </div>
     </div>
   );

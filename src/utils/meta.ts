@@ -1,19 +1,18 @@
 import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { NotionPostMeta, ExpandedBlockObjectResponse } from '~/types/notion';
-
-import { richTextToString } from './richTextToString';
+import type { NotionPostMeta, NotionBlockObjectResponse } from '~/types/notion';
 
 /**
  * NotionのPageObjectResponseをPostMetaに変換
  */
 export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
-  const { id, icon, properties, created_time, last_edited_time } = page;
+  const { id, icon, properties, last_edited_time } = page;
 
   if (icon !== null && icon.type !== 'emoji')
     throw new Error('Icon is not emoji');
   if (properties.Title.type !== 'title') throw new Error('Title is not title');
   if (properties.Category.type !== 'select')
     throw new Error('Category is not select');
+  if (properties.Date.type !== 'date') throw new Error('Date is not date');
   if (properties.Tags.type !== 'multi_select')
     throw new Error('Tags is not multi_select');
   if (properties.Likes.type !== 'number')
@@ -25,30 +24,20 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
     name: 'カテゴリなし',
     color: 'default',
   };
-  const createdAt = created_time.substring(0, 10);
+  const date = properties.Date.date?.start || '日付なし';
   const updatedAt = last_edited_time.substring(0, 10);
   const tags = properties.Tags.multi_select;
   const likes = properties.Likes.number || 0;
-  const slug =  properties.Slug?.type === 'rich_text' &&
-                properties.Slug.rich_text.length !== 0
-                 ? richTextToString(properties.Slug.rich_text)
-                 : '0';
-  const image =  properties.Image?.type === 'files' &&
-                 properties.Image.files[0]?.type === 'file'
-                   ? properties.Image.files[0].file.url
-                   : '/900^2_tomei_textBlack.gif';
-  
+
   return {
     id,
     icon: icon?.emoji || '📄',
     title,
     category,
-    createdAt,
+    date,
     updatedAt,
     tags,
     likes,
-    slug,
-    image,
   };
 };
 
@@ -57,7 +46,7 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
  */
 
 export const toMetaDescription = (
-  children: ExpandedBlockObjectResponse[],
+  children: NotionBlockObjectResponse[]
 ): string => {
   let allText = '';
   let i = 0;

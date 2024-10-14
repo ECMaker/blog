@@ -1,31 +1,27 @@
 import type { FC } from 'react';
 
 import { Kbd } from '@mantine/core';
+import { useOs } from '@mantine/hooks';
+import { useSpotlight } from '@mantine/spotlight';
 
 import { SearchIcon } from '~/commons/icons';
 
-type Props = {
-  onClick: () => void;
-};
-export const SearchButton: FC<Props> = ({ onClick }) => {
-
-  const isMac = typeof window !== 'undefined' && navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-
-  const keyLabel = isMac ? '⌘' : 'Ctrl';
+export const SearchButton: FC = () => {
+  const spotlight = useSpotlight();
+  const os = useOs();
 
   return (
     <button
-      className="flex cursor-pointer items-center gap-2 sp:gap-1 rounded-md border-none bg-gray-700 px-2 py-1 md:py-1.5 sp:pr-5 sm:pr-5 md:pr-1 font-Baloo text-base text-white shadow hover:brightness-125"
-      tabIndex={0}
-      onClick={onClick}
+      className="flex cursor-pointer items-center gap-2 rounded-full border-none bg-slate-800 px-4 py-1.5 font-baloo text-base text-white shadow hover:brightness-125"
+      onClick={() => spotlight.openSpotlight()}
     >
       <SearchIcon size={18} />
       Search
       <Kbd
-        className="border-gray-400 bg-gray-700 py-0.5 text-xs text-white hidden md:block"
+        className="border-slate-400 bg-slate-800 py-0.5 text-xs text-white"
         color="dark"
       >
-        {keyLabel} + K
+        {os === 'windows' ? 'Ctrl' : '⌘'} + K
       </Kbd>
     </button>
   );

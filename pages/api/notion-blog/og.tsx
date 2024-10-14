@@ -6,7 +6,7 @@ export const config = {
   runtime: 'edge',
 };
 const fontBallo = fetch(
-  new URL('../../../src/styles/Baloo-Regular.ttf', import.meta.url),
+  new URL('../../../src/styles/Baloo-Regular.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
@@ -19,17 +19,16 @@ export default async function handler(req: NextRequest) {
 
   return new ImageResponse(
     (
-      <div tw="relative flex h-full w-full flex-col flex-wrap items-center justify-center bg-gray-200 text-slate-800">
+      <div tw="relative flex h-full w-full flex-col flex-wrap items-center justify-center bg-orange-100 text-slate-800">
         {title ? (
-          <div tw="absolute top-50 left-15 tw-[1000px] whitespace-pre-wrap text-[72px] font-bold mx-auto">
+          <div tw="w-[1000px] whitespace-pre-wrap text-[72px] font-bold mx-auto">
             {title}
           </div>
         ) : (
-          <div tw="text-[140px]">EC maker</div>
+          <div tw="text-[140px]">noblog</div>
         )}
         {title ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src="https://blog.ec-maker.com/1333x500_yoko_tomei.png" alt="EC Maker Logo" tw="absolute bottom-15 right-25  h-[200px]" />
+          <div tw="absolute bottom-2 right-6 text-[72px]">noblog</div>
         ) : (
           <div tw="h-2 w-60 rounded-full bg-slate-800" />
         )}
@@ -46,6 +45,6 @@ export default async function handler(req: NextRequest) {
           style: 'normal',
         },
       ],
-    },
+    }
   );
 }

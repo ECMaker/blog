@@ -27,10 +27,7 @@ export const ContactForm: FC<Props> = ({ onSubmit }) => {
       StarterKit,
       Underline,
       Link,
-      Placeholder.configure({
-        placeholder:
-          'フォーム機能は現在準備中です。X(twitter)からお願いします。',
-      }), //コメントを入力してください。
+      Placeholder.configure({ placeholder: 'コメントを入力してください。' }),
     ],
     content: '',
   });
@@ -47,7 +44,7 @@ export const ContactForm: FC<Props> = ({ onSubmit }) => {
     } else {
       showNotification({
         title: 'フォーム機能は現在準備中です。',
-        message: '申し訳ありません。X(twitter)からお願いします。',
+        message: 'すんまそん🥹',
       });
     }
     setIsLoading(false);
@@ -81,7 +78,7 @@ export const ContactForm: FC<Props> = ({ onSubmit }) => {
             'origin-[5%_6px] transition duration-500',
             openForm
               ? 'rotate-[100deg] opacity-0'
-              : 'opacity-40 hover:rotate-[2deg]',
+              : 'opacity-40 hover:rotate-[2deg]'
           )}
           onClick={() => {
             startAnimation();

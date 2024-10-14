@@ -1,5 +1,5 @@
 import type { InferGetStaticPropsType, NextPage } from 'next';
-import type { ExpandedBlockObjectResponse } from '~/types/notion';
+import type { NotionBlockObjectResponse } from '~/types/notion';
 
 import Head from 'next/head';
 
@@ -13,7 +13,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      blocks: response as ExpandedBlockObjectResponse[],
+      blocks: response as NotionBlockObjectResponse[],
     },
   };
 };

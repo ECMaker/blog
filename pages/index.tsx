@@ -15,27 +15,37 @@ export const getStaticProps = async () => {
   }
 
   const { results } = await getDatabaseContents({
-    database_id: process.env.NOTION_DATABASE || '',
+    database_id: process.env.NOTION_BLOG_DATABASE_ID || '',
     page_size: 5,
-    filter: {
-      property: 'Published',
-      checkbox: {
-        equals: true,
-      },
-    },
     sorts: [
       {
-        property: 'UpdatedAt',
+        property: 'Date',
         direction: 'descending',
       },
     ],
+    filter: {
+      and: [
+        {
+          property: 'Status',
+          select: {
+            equals: 'PUBLISH',
+          },
+        },
+        {
+          property: 'Date',
+          date: {
+            is_not_empty: true,
+          },
+        },
+      ],
+    },
   });
 
   return {
     props: {
       posts: results as NotionPageObjectResponse[],
     },
-    revalidate: 1, //[s] added ISR.
+    revalidate: 60 * 60 * 24, // 1日
   };
 };
 

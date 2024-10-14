@@ -24,17 +24,10 @@
 }
 @font-face {
   /* 英語の見出しなどに使用 */
-  font-family: 'baloo';
+  font-family: 'Baloo';
   font-weight: 400;
   src: url(./Baloo-Regular.ttf);
   /* https://fonts.google.com/specimen/Baloo+2 */
-}
-@font-face {
-  /* タイトル・ロゴ見出しなどに使用 */
-  font-family: 'CutiveMono';
-  font-weight: 400;
-  src: url(./CutiveMono-Regular.ttf);
-  /* https://fontmeme.com/jfont/cutive-mono-font/ */
 }
 @font-face {
   /* 等幅 Codeに使用 */
@@ -83,7 +76,6 @@ body::before {
     text-decoration: none;
   }
 
-  /* !U ./tailwind.config.js でtext-primaryなどを定義しないと無意味かも */
   .text-primary {
     /* text-orange-400; */
     color: #f97316;
@@ -123,20 +115,5 @@ body::before {
     @apply px-4;
     @apply py-3;
     @apply rounded;
-  }
-  .thick-underline {
-    text-decoration: none;
-    border-bottom: 2px solid currentColor;
-  }
-  .sticky-topbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-}
-
-@media (max-width: 768px) {
-  .responsive-image {
-    display: none;
   }
 }

@@ -78,11 +78,7 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
       />
       {!session ? (
         <div className="sp:px-4">
-          <Button
-            fullWidth
-            onClick={toLoginPage}
-            color = 'dark'
-          >
+          <Button fullWidth onClick={toLoginPage}>
             ログインしてコメントをする
           </Button>
         </div>
@@ -123,7 +119,7 @@ export const CommentForm: FC<Props> = ({ onSubmit }) => {
               transition="pop-top-right"
               transitionDuration={300}
               withArrow
-              color="dark"
+              color="orange"
               label={
                 <div className="space-y-3 p-2 text-center text-sm">
                   <Kbd>{os === 'windows' ? 'Ctrl' : '⌘'} + Enter</Kbd>

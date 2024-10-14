@@ -10,10 +10,9 @@ import {
   BsGrid as GridIcon,
   BsHeartFill as HeartIcon,
   BsListUl as ListIcon,
-  BsTwitterX as TwitterIcon,
+  BsTwitter as TwitterIcon,
   BsYoutube as YouTubeIcon,
   BsChatText as ChatTextIcon,
-  BsMenuButtonWideFill as MenuIcon,
 } from 'react-icons/bs';
 import { CgDanger as DangerIcon } from 'react-icons/cg';
 import {
@@ -28,11 +27,9 @@ import {
   HiMail as MailIcon,
 } from 'react-icons/hi';
 import {
-  ImCircleDown as CircleDownIcon,
   ImCheckboxChecked as CheckedBoxIcon,
   ImCheckboxUnchecked as UnCheckedBoxIcon,
 } from 'react-icons/im';
-import { IoMdCheckboxOutline as OutlineCheckIcon } from 'react-icons/io';
 import {
   IoInformationCircleSharp as InformationIcon,
   IoQrCode as QrCodeIcon,
@@ -43,7 +40,11 @@ import {
   MdTouchApp as TouchIcon,
 } from 'react-icons/md';
 import { RxUpdate as UpdateIcon } from 'react-icons/rx';
-import { SiLine as LineIcon, SiMaildotru as AtIcon } from 'react-icons/si';
+import {
+  SiLine as LineIcon,
+  SiMaildotru as AtIcon,
+  SiZenn as ZennIcon,
+} from 'react-icons/si';
 import {
   TbExternalLink as TbExternalLinkIcon,
   TbLogout as LogoutIcon,
@@ -59,7 +60,6 @@ export {
   CheckedBoxIcon,
   ColorGoogleIcon,
   CowIcon,
-  MenuIcon,
   DangerIcon,
   DummyIcon,
   ExperimentIcon,
@@ -76,11 +76,9 @@ export {
   LogoutIcon,
   MailIcon,
   OutlineBlockIcon,
-  OutlineCheckIcon,
   ProfileIcon,
   QrCodeIcon,
   SearchIcon,
-  CircleDownIcon,
   SendIcon,
   StopIcon,
   TbExternalLinkIcon,
@@ -89,4 +87,5 @@ export {
   UnCheckedBoxIcon,
   UpdateIcon,
   YouTubeIcon,
+  ZennIcon,
 };

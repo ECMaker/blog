@@ -2,7 +2,6 @@ import type { FC } from 'react';
 
 import { clsx, Transition } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
-import Image from 'next/image';
 
 import {
   ExperimentIcon,
@@ -10,19 +9,17 @@ import {
   HomeIcon,
   ProfileIcon,
   TwitterIcon,
+  ZennIcon,
   YouTubeIcon,
+  QrCodeIcon,
   MailIcon,
   BookIcon,
-  MenuIcon,
+  CowIcon,
 } from '~/commons/icons';
-
 
 import { NavMenuExternalLink } from './NavMenuExternalLink';
 import { NavMenuLink } from './NavMenuLink';
 
-
-export const EcmakerIcon =  '/icon.svg';
- 
 export const NavMenu: FC = () => {
   const { hovered, ref } = useHover();
 
@@ -34,8 +31,8 @@ export const NavMenu: FC = () => {
           hovered && 'text-white'
         )}
       >
-        <MenuIcon size={36} />
-        <div className="font-Baloo font-bold sp:text-sm">MENU</div>
+        <CowIcon size={36} />
+        <div className=" font-bold sp:text-sm">MENU</div>
       </div>
 
       <Transition
@@ -46,7 +43,7 @@ export const NavMenu: FC = () => {
       >
         {(styles) => (
           <div
-            className="fixed top-0 left-0 -z-10 h-screen space-y-2 bg-slate-800 px-6 pt-28"
+            className="fixed left-0 top-0 -z-10 h-screen space-y-2 bg-slate-800 px-6 pt-28"
             style={styles}
           >
             <NavMenuLink
@@ -80,34 +77,31 @@ export const NavMenu: FC = () => {
             {/* External */}
             <NavMenuExternalLink
               icon={<TwitterIcon size={18} />}
-              href="https://twitter.com/u_ecmaker"
-              label="X (twitter)"
+              href="https://twitter.com/Knob_nbr41to"
+              label="Twitter"
             />
             <NavMenuExternalLink
               icon={<GitHubOctocatIcon size={18} />}
-              href="https://github.com/orgs/ECMaker/people"
+              href="https://github.com/nbr41to"
               label="GitHub"
             />
             <NavMenuExternalLink
+              icon={<ZennIcon size={18} />}
+              href="https://zenn.dev/nbr41to"
+              label="Zenn"
+            />
+            <NavMenuExternalLink
               icon={<YouTubeIcon size={18} />}
-              href="https://www.youtube.com/channel/hoge"
+              href="https://www.youtube.com/channel/UCPcjWvYIfvqGPP4x30kEkMA"
               label="YouTube"
             />
 
             <div className="pt-8" />
 
             <NavMenuLink
-              leftIcon={
-                <Image
-                  src="/icon.svg"
-                  alt="site logo"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              }
-              href="/900^2_black.gif"
-              label="logo"
+              rightIcon={<QrCodeIcon size={18} />}
+              href="/qrcode.png"
+              label="QR Code"
             />
           </div>
         )}
