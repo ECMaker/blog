@@ -2,6 +2,7 @@ import type { FC, ReactNode } from 'react';
 import type { NotionPost } from '~/types/notion';
 
 import { clsx } from '@mantine/core';
+import { useSpotlight } from '@mantine/spotlight';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
@@ -29,13 +30,18 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
     }
   }, [pageProps]);
 
+  // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx も変更する !U
+
+  const spotlight = useSpotlight();
+  const handleClickSearchButton = () => spotlight.openSpotlight();
+
   return (
     <div className="bg-orange-100">
       <div className="fixed z-50 flex w-fit items-start justify-between">
         <NavMenu />
       </div>
       <div className="fixed right-2 top-2 z-50 hidden w-fit md:block">
-        <SearchButton />
+        <SearchButton onClick={handleClickSearchButton} />
       </div>
 
       <header className="py-1">
