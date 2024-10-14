@@ -23,6 +23,10 @@ type Props = {
 export const Layout: FC<Props> = ({ children, ...pageProps }) => {
   const { setShowTableOfContents } = useTableOfContentsContext();
   const router = useRouter();
+
+  // eslint-disable-next-line no-console
+  console.debug("!U pathname=",router.pathname);
+
   const titleEnum = useMemo(() => {
     if ('post' in pageProps) {
       return {
