@@ -17,26 +17,28 @@ import { Breadcrumbs } from '~/layouts/Breadcrumbs';
 
 type Props = {
   children: ReactNode;
+  post?: NotionPost;
 };
 
 export const Layout: FC<Props> = ({ children, ...pageProps }) => {
   const { setShowTableOfContents } = useTableOfContentsContext();
   const router = useRouter();
+  const post = pageProps.post as NotionPost;
   const pathname = usePathname();
   const titleEnum = useMemo(() => {
-    if ('post' in pageProps) {
+    if (post) {
       return {
-        ['[slug]']: (pageProps.post as NotionPost).title,
+        [post.slug]: post.title,
       };
     } else {
       return undefined;
     }
-  }, [pageProps]);
-
-  // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx も変更する !U
+  }, [post]);
 
   const spotlight = useSpotlight();
   const handleClickSearchButton = () => spotlight.openSpotlight();
+
+  // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx も変更する !U
 
   return (
     <div className="bg-gray-200">

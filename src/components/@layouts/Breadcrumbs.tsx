@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 
 import { Breadcrumbs as MantineBreadcrumbs } from '@mantine/core';
-/*import Link from 'next/link';*/
+import Link from 'next/link';
 import { useMemo } from 'react';
 
 type Props = {
@@ -37,12 +37,13 @@ export const Breadcrumbs: FC<Props> = ({ currentPath, titleEnum = {} }) => {
     <div className="py-4 text-sm">
       <MantineBreadcrumbs>
         {items.map((item) => (
-          <div
+          <Link
             className="font-bold text-slate-800 transition-colors hover:text-slate-500 hover:underline"
             key={item.title}
+            href={item.href}
           >
             {item.title}
-          </div>
+          </Link>
         ))}
       </MantineBreadcrumbs>
     </div>
