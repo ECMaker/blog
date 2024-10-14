@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import type { NotionBlockObjectResponse } from '~/types/notion';
+import type { ExpandedBlockObjectResponse } from '~/types/notion';
 
 import { Prism } from '@mantine/prism';
 import Head from 'next/head';
@@ -17,12 +17,12 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      blocks: response.results as NotionBlockObjectResponse[],
+      blocks: response.results as ExpandedBlockObjectResponse[],
     },
   };
 };
 
-const NextjsSsr: NextPage<{ blocks: NotionBlockObjectResponse[] }> = ({
+const NextjsSsr: NextPage<{ blocks: ExpandedBlockObjectResponse[] }> = ({
   blocks,
 }) => {
   return (
@@ -32,7 +32,8 @@ const NextjsSsr: NextPage<{ blocks: NotionBlockObjectResponse[] }> = ({
       </Head>
       <PageTitle title="Next.js SSR" />
       <p>NotionのページのBlockをgetServerSidePropsで取得するコードを書いた</p>
-      <Prism language="tsx">{`export const getServerSideProps = async () => {
+      <Prism language="tsx">{`
+export const getServerSideProps = async () => {
   const response = await getChildrenInBlock({
     block_id: previewPageId,
     page_size: 5,
@@ -43,7 +44,8 @@ const NextjsSsr: NextPage<{ blocks: NotionBlockObjectResponse[] }> = ({
       blocks: response.results as NotionBlockObjectResponse[],
     },
   };
-};`}</Prism>
+};
+      `}</Prism>
       <p>これがリクエストの度に最新のNotionのデータを取得するかを確認したい</p>
 
       <div className="w-main mx-auto">

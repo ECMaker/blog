@@ -16,8 +16,10 @@ export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
     return {
       props: {
-        postsArray: dummy_notion_pages_array as NotionPageObjectResponse[][],
-        properties: dummy_notion_database_properties as NotionDatabaseProperty,
+        postsArray:
+          dummy_notion_pages_array.flat() as unknown as NotionPageObjectResponse[][],
+        properties:
+          dummy_notion_database_properties as unknown as NotionDatabaseProperty,
       },
     };
   }
@@ -26,28 +28,18 @@ export const getStaticProps = async () => {
   const postsArray = (await getDatabaseContentsAll({
     database_id: blogDatabaseId,
     page_size: 12,
+    filter: {
+      property: 'Published',
+      checkbox: {
+        equals: true,
+      },
+    },
     sorts: [
       {
-        property: 'Date',
+        property: 'UpdatedAt',
         direction: 'descending',
       },
     ],
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          select: {
-            equals: 'PUBLISH',
-          },
-        },
-        {
-          property: 'Date',
-          date: {
-            is_not_empty: true,
-          },
-        },
-      ],
-    },
   })) as NotionPageObjectResponse[][];
 
   return {
@@ -55,7 +47,7 @@ export const getStaticProps = async () => {
       postsArray,
       properties,
     },
-    revalidate: 60 * 60 * 24, // 1日
+    revalidate: 1, //[s] added ISR.
   };
 };
 
@@ -67,16 +59,16 @@ const PostIndex: NextPage<Props> = ({ postsArray, properties }) => {
       <PostsTemplate postsArray={postsArray} properties={properties} />
       {/* meta seo */}
       <NextSeo
-        title="Blog | noblog"
+        title="Blog | EC maker"
         openGraph={{
-          url: 'https://www.nbr41.com/posts/',
+          url: 'https://blog.ec-maker.com/posts/',
         }}
       />
       <ArticleJsonLd
         type="BlogPosting"
-        title="Blog | noblog"
-        url="https://www.nbr41.com/posts/"
-        images={['https://www.nbr41.com/noblog.png']}
+        title="Blog | EC maker"
+        url="https://blog.ec-maker.com/posts/"
+        images={['https://blog.ec-maker.com/300%5E2_black.gif']}
         datePublished="2015-02-05T08:00:00+08:00"
         dateModified={postsArray[0][0].last_edited_time}
         authorName="Nobuyuki Kobayashi"

@@ -1,5 +1,6 @@
 import { clsx, Transition } from '@mantine/core';
 import { useHover, useMergedRef } from '@mantine/hooks';
+import Image from 'next/image';
 import { useState, type FC, useEffect, useRef } from 'react';
 
 import {
@@ -8,16 +9,16 @@ import {
   HomeIcon,
   ProfileIcon,
   TwitterIcon,
-  ZennIcon,
   YouTubeIcon,
-  QrCodeIcon,
   MailIcon,
   BookIcon,
-  CowIcon,
+  MenuIcon,
 } from '~/commons/icons';
 
 import { NavMenuExternalLink } from './NavMenuExternalLink';
 import { NavMenuLink } from './NavMenuLink';
+
+export const EcmakerIcon = '/icon.svg';
 
 export const NavMenu: FC = () => {
   const { hovered, ref: useHoverRef } = useHover();
@@ -53,8 +54,8 @@ export const NavMenu: FC = () => {
           mounted && 'text-white',
         )}
       >
-        <CowIcon size={36} />
-        <div className=" font-bold sp:text-sm">MENU</div>
+        <MenuIcon size={36} />
+        <div className="font-Baloo font-bold sp:text-sm">MENU</div>
       </div>
 
       <Transition
@@ -100,31 +101,34 @@ export const NavMenu: FC = () => {
             {/* External */}
             <NavMenuExternalLink
               icon={<TwitterIcon size={18} />}
-              href="https://twitter.com/Knob_nbr41to"
-              label="Twitter"
+              href="https://twitter.com/u_ecmaker"
+              label="X (twitter)"
             />
             <NavMenuExternalLink
               icon={<GitHubOctocatIcon size={18} />}
-              href="https://github.com/nbr41to"
+              href="https://github.com/orgs/ECMaker/people"
               label="GitHub"
             />
             <NavMenuExternalLink
-              icon={<ZennIcon size={18} />}
-              href="https://zenn.dev/nbr41to"
-              label="Zenn"
-            />
-            <NavMenuExternalLink
               icon={<YouTubeIcon size={18} />}
-              href="https://www.youtube.com/channel/UCPcjWvYIfvqGPP4x30kEkMA"
+              href="https://www.youtube.com/channel/hoge"
               label="YouTube"
             />
 
             <div className="pt-8" />
 
             <NavMenuLink
-              rightIcon={<QrCodeIcon size={18} />}
-              href="/qrcode.png"
-              label="QR Code"
+              leftIcon={
+                <Image
+                  src="/icon.svg"
+                  alt="site logo"
+                  width={18}
+                  height={18}
+                  priority
+                />
+              }
+              href="/900^2_black.gif"
+              label="logo"
             />
           </div>
         )}

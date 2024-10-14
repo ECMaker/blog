@@ -22,7 +22,7 @@ export const Default: StoryObj<typeof Component> = {
 export const WithIcon: StoryObj<typeof Component> = {
   args: {
     href: '/',
-    label: 'Twitter',
+    label: 'X (twitter)',
     icon: <TwitterIcon size={18} />,
   },
 };

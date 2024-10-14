@@ -1,14 +1,15 @@
 import type { ToDoBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
+import type { BlockWithChildren } from '~/types/notion';
 
 import { CheckedBoxIcon, UnCheckedBoxIcon } from '~/commons/icons';
 import { RichText } from '~/components/notion/RichText';
 
 type Props = {
-  block: ToDoBlockObjectResponse;
+  block: BlockWithChildren<ToDoBlockObjectResponse>;
 };
 
-export const ToDo: FC<Props> = ({ block }) => {
+export const ToDo: FC<Props> = ({ block }: Props) => {
   return (
     <li className="flex list-none items-center">
       <input

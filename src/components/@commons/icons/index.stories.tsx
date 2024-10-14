@@ -8,6 +8,7 @@ import {
   CheckedBoxIcon,
   ColorGoogleIcon,
   CowIcon,
+  MenuIcon,
   DangerIcon,
   DummyIcon,
   ExperimentIcon,
@@ -24,6 +25,7 @@ import {
   LogoutIcon,
   MailIcon,
   OutlineBlockIcon,
+  OutlineCheckIcon,
   ProfileIcon,
   QrCodeIcon,
   SearchIcon,
@@ -35,7 +37,6 @@ import {
   UnCheckedBoxIcon,
   UpdateIcon,
   YouTubeIcon,
-  ZennIcon,
 } from '.';
 
 export default {
@@ -62,6 +63,7 @@ export const Default: StoryObj<{ size: number }> = {
       <CheckedBoxIcon size={args.size} />
       <ColorGoogleIcon size={args.size} />
       <CowIcon size={args.size} />
+      <MenuIcon size={args.size} />
       <DangerIcon size={args.size} />
       <DummyIcon size={args.size} />
       <ExperimentIcon size={args.size} />
@@ -78,6 +80,7 @@ export const Default: StoryObj<{ size: number }> = {
       <LogoutIcon size={args.size} />
       <MailIcon size={args.size} />
       <OutlineBlockIcon size={args.size} />
+      <OutlineCheckIcon size={args.size} />
       <ProfileIcon size={args.size} />
       <QrCodeIcon size={args.size} />
       <SearchIcon size={args.size} />
@@ -89,7 +92,6 @@ export const Default: StoryObj<{ size: number }> = {
       <UnCheckedBoxIcon size={args.size} />
       <UpdateIcon size={args.size} />
       <YouTubeIcon size={args.size} />
-      <ZennIcon size={args.size} />
     </div>
   ),
   args: {

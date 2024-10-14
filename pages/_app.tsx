@@ -1,5 +1,5 @@
 import '~/styles/globals.css';
-import '~/styles/body-before.css';
+import 'react-medium-image-zoom/dist/styles.css';
 
 import type { AppProps } from 'next/app';
 
@@ -20,17 +20,17 @@ import {
   ProfileIcon,
   SearchIcon,
 } from '~/commons/icons';
+import { TableOfContentsProvider } from '~/components/features/notionBlog/TableOfContentsContext';
 import { useSpotlightActions } from '~/hooks/apiHooks/useSpotlightActions';
 import { GoogleTagManager } from '~/layouts/GoogleTagManager';
 import { Layout } from '~/layouts/Layout';
 import { googleTagManagerId } from '~/types/gtm';
 
 const meta = {
-  title: 'noblog',
-  description:
-    'Notion API と Next.js / Tailwind CSS で本格ブログを作ってみました。',
-  url: 'https://www.nbr41.com/',
-  image: 'https://www.nbr41.com/noblog.png',
+  title: 'EC maker',
+  description: 'Notion API と Next.js / Tailwind CSS による本格ブログ',
+  url: 'https://blog.ec-maker.com/',
+  image: 'https://blog.ec-maker.com/300%5E2_black.gif',
 };
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -98,8 +98,8 @@ export default function App({ Component, pageProps }: AppProps) {
           ],
         }}
         twitter={{
-          handle: '@Knob_nbr41to',
-          site: '@Knob_nbr41to',
+          handle: '@u_ecmaker',
+          site: '@u_ecmaker',
           cardType: 'summary_large_image',
         }}
       />
@@ -132,9 +132,11 @@ export default function App({ Component, pageProps }: AppProps) {
             highlightQuery
             onQueryChange={(query) => setQuery(query)}
           >
-            <Layout {...pageProps}>
-              <Component {...pageProps} />
-            </Layout>
+            <TableOfContentsProvider>
+              <Layout {...pageProps}>
+                <Component {...pageProps} />
+              </Layout>
+            </TableOfContentsProvider>
             <Notifications position="top-center" />
           </SpotlightProvider>
         </RecoilRoot>

@@ -93,8 +93,9 @@ const ViewTransitionsAPI: NextPage = () => {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="w-60"
-            src="/nob_lego.png"
-            alt="nob_lego image"
+            src="https://blog.ec-maker.com/300^2_black.gif"
+            alt="EC Maker Logo"
+            tw="absolute bottom-15 right-25  h-[200px]"
             style={
               {
                 viewTransitionName: 'photo-example',
