@@ -36,7 +36,7 @@ export type NotionPostMeta = {
   title: string;
   description?: string;
   category: NotionSelectPropertyResponse;
-  date: string;
+  createdAt: string;
   updatedAt: string;
   tags: NotionSelectPropertyResponse[];
   likes: number;

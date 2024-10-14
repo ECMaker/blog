@@ -3279,7 +3279,7 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-italic/-/extension-italic-2.8.0.tgz"
   integrity sha512-PwwSE2LTYiHI47NJnsfhBmPiLE8IXZYqaSoNPU6flPrk1KxEzqvRI1joKZBmD9wuqzmHJ93VFIeZcC+kfwi8ZA==
 
-"@tiptap/extension-link@^2.0.0-beta.202", "@tiptap/extension-link@^2.0.0-beta.209":
+"@tiptap/extension-link@^2.0.0-beta.202", "@tiptap/extension-link@^2.0.4":
   version "2.8.0"
   resolved "https://registry.npmjs.org/@tiptap/extension-link/-/extension-link-2.8.0.tgz"
   integrity sha512-p67hCG/pYCiOK/oCTPZnlkw9Ei7KJ7kCKFaluTcAmr5j8IBdYfDqSMDNCT4vGXBvKFh4X6xD7S7QvOqcH0Gn9A==
@@ -3301,7 +3301,7 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-paragraph/-/extension-paragraph-2.8.0.tgz"
   integrity sha512-XgxxNNbuBF48rAGwv7/s6as92/xjm/lTZIGTq9aG13ClUKFtgdel7C33SpUCcxg3cO2WkEyllXVyKUiauFZw/A==
 
-"@tiptap/extension-placeholder@^2.0.0-beta.209":
+"@tiptap/extension-placeholder@^2.0.4":
   version "2.8.0"
   resolved "https://registry.npmjs.org/@tiptap/extension-placeholder/-/extension-placeholder-2.8.0.tgz"
   integrity sha512-BMqv/C9Tcjd7L1/OphUAJTZhWfpWs0rTQJ0bs3RRGsC8L+K20Fg+li45vw7M0teojpfrw57zwJogJd/m23Zr1Q==
@@ -3321,12 +3321,12 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-text/-/extension-text-2.8.0.tgz"
   integrity sha512-EDAdFFzWOvQfVy7j3qkKhBpOeE5thkJaBemSWfXI93/gMVc0ZCdLi24mDvNNgUHlT+RjlIoQq908jZaaxLKN2A==
 
-"@tiptap/extension-underline@^2.0.0-beta.209":
+"@tiptap/extension-underline@^2.0.4":
   version "2.8.0"
   resolved "https://registry.npmjs.org/@tiptap/extension-underline/-/extension-underline-2.8.0.tgz"
   integrity sha512-1ouuHwZJphT8OosAmp6x8e+Wly3cUd1pNWBiOutJX+6QRGBXJnIKFCzn8YOTlWhg1YQigisG7dNF3YdlyuRNHw==
 
-"@tiptap/pm@^2.7.0", "@tiptap/pm@^2.8.0":
+"@tiptap/pm@^2.0.4", "@tiptap/pm@^2.7.0", "@tiptap/pm@^2.8.0":
   version "2.8.0"
   resolved "https://registry.npmjs.org/@tiptap/pm/-/pm-2.8.0.tgz"
   integrity sha512-eMGpRooUMvKz/vOpnKKppApMSoNM325HxTdAJvTlVAmuHp5bOY5kyY1kfUlePRiVx1t1UlFcXs3kecFwkkBD3Q==
@@ -3350,7 +3350,7 @@
     prosemirror-transform "^1.10.0"
     prosemirror-view "^1.33.10"
 
-"@tiptap/react@^2.0.0-beta.202", "@tiptap/react@^2.0.0-beta.209":
+"@tiptap/react@^2.0.0-beta.202", "@tiptap/react@^2.0.4":
   version "2.8.0"
   resolved "https://registry.npmjs.org/@tiptap/react/-/react-2.8.0.tgz"
   integrity sha512-o/aSCjO5Nu4MsNpTF+N1SzYzVQvvBiclmTOZX2E6usZ8jre5zmKfXHDSZnjGSRTK6z6kw5KW8wpjRQha03f9mg==
@@ -3361,7 +3361,7 @@
     fast-deep-equal "^3"
     use-sync-external-store "^1.2.2"
 
-"@tiptap/starter-kit@^2.0.0-beta.209":
+"@tiptap/starter-kit@^2.0.4":
   version "2.8.0"
   resolved "https://registry.npmjs.org/@tiptap/starter-kit/-/starter-kit-2.8.0.tgz"
   integrity sha512-r7UwaTrECkQoheWVZKFDqtL5tBx07x7IFT+prfgnsVlYFutGWskVVqzCDvD3BDmrg5PzeCWYZrQGlPaLib7tjg==
@@ -9754,7 +9754,7 @@ prosemirror-collab@^1.3.1:
   dependencies:
     prosemirror-state "^1.0.0"
 
-prosemirror-commands@^1.0.0, prosemirror-commands@^1.5.0, prosemirror-commands@^1.6.0:
+prosemirror-commands@^1.0.0, prosemirror-commands@^1.5.2, prosemirror-commands@^1.6.0:
   version "1.6.1"
   resolved "https://registry.npmjs.org/prosemirror-commands/-/prosemirror-commands-1.6.1.tgz"
   integrity sha512-tNy4uaGWzvuUYXDke7B28krndIrdQJhSh0OLpubtwtEwFbjItOj/eoAfPvstBJyyV0S2+b5t4G+4XPXdxar6pg==
@@ -9782,7 +9782,7 @@ prosemirror-gapcursor@^1.3.1, prosemirror-gapcursor@^1.3.2:
     prosemirror-state "^1.0.0"
     prosemirror-view "^1.0.0"
 
-prosemirror-history@^1.0.0, prosemirror-history@^1.3.0, prosemirror-history@^1.4.1:
+prosemirror-history@^1.0.0, prosemirror-history@^1.3.2, prosemirror-history@^1.4.1:
   version "1.4.1"
   resolved "https://registry.npmjs.org/prosemirror-history/-/prosemirror-history-1.4.1.tgz"
   integrity sha512-2JZD8z2JviJrboD9cPuX/Sv/1ChFng+xh2tChQ2X4bB2HeK+rra/bmJ3xGntCcjhOqIzSDG6Id7e8RJ9QPXLEQ==
@@ -9800,7 +9800,7 @@ prosemirror-inputrules@^1.4.0:
     prosemirror-state "^1.0.0"
     prosemirror-transform "^1.0.0"
 
-prosemirror-keymap@^1.0.0, prosemirror-keymap@^1.1.2, prosemirror-keymap@^1.2.0, prosemirror-keymap@^1.2.2:
+prosemirror-keymap@^1.0.0, prosemirror-keymap@^1.1.2, prosemirror-keymap@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npmjs.org/prosemirror-keymap/-/prosemirror-keymap-1.2.2.tgz"
   integrity sha512-EAlXoksqC6Vbocqc0GtzCruZEzYgrn+iiGnNjsJsH4mrnIGex4qbLdWWNza3AW5W36ZRrlBID0eM6bdKH4OStQ==
@@ -9827,7 +9827,7 @@ prosemirror-menu@^1.2.4:
     prosemirror-history "^1.0.0"
     prosemirror-state "^1.0.0"
 
-prosemirror-model@^1.0.0, prosemirror-model@^1.19.0, prosemirror-model@^1.20.0, prosemirror-model@^1.21.0, prosemirror-model@^1.22.1, prosemirror-model@^1.22.3, prosemirror-model@^1.8.1:
+prosemirror-model@^1.0.0, prosemirror-model@^1.19.0, prosemirror-model@^1.19.3, prosemirror-model@^1.20.0, prosemirror-model@^1.21.0, prosemirror-model@^1.22.1, prosemirror-model@^1.22.3, prosemirror-model@^1.8.1:
   version "1.23.0"
   resolved "https://registry.npmjs.org/prosemirror-model/-/prosemirror-model-1.23.0.tgz"
   integrity sha512-Q/fgsgl/dlOAW9ILu4OOhYWQbc7TQd4BwKH/RwmUjyVf8682Be4zj3rOYdLnYEcGzyg8LL9Q5IWYKD8tdToreQ==
@@ -9841,7 +9841,7 @@ prosemirror-schema-basic@^1.2.3:
   dependencies:
     prosemirror-model "^1.19.0"
 
-prosemirror-schema-list@^1.2.2, prosemirror-schema-list@^1.4.1:
+prosemirror-schema-list@^1.3.0, prosemirror-schema-list@^1.4.1:
   version "1.4.1"
   resolved "https://registry.npmjs.org/prosemirror-schema-list/-/prosemirror-schema-list-1.4.1.tgz"
   integrity sha512-jbDyaP/6AFfDfu70VzySsD75Om2t3sXTOdl5+31Wlxlg62td1haUpty/ybajSfJ1pkGadlOfwQq9kgW5IMo1Rg==
@@ -9885,7 +9885,7 @@ prosemirror-transform@^1.0.0, prosemirror-transform@^1.1.0, prosemirror-transfor
   dependencies:
     prosemirror-model "^1.21.0"
 
-prosemirror-view@^1.0.0, prosemirror-view@^1.1.0, prosemirror-view@^1.13.3, prosemirror-view@^1.27.0, prosemirror-view@^1.31.0, prosemirror-view@^1.33.10, prosemirror-view@^1.33.8:
+prosemirror-view@^1.0.0, prosemirror-view@^1.1.0, prosemirror-view@^1.13.3, prosemirror-view@^1.27.0, prosemirror-view@^1.31.0, prosemirror-view@^1.31.6, prosemirror-view@^1.33.10, prosemirror-view@^1.33.8:
   version "1.34.3"
   resolved "https://registry.npmjs.org/prosemirror-view/-/prosemirror-view-1.34.3.tgz"
   integrity sha512-mKZ54PrX19sSaQye+sef+YjBbNu2voNwLS1ivb6aD2IRmxRGW64HU9B644+7OfJStGLyxvOreKqEgfvXa91WIA==

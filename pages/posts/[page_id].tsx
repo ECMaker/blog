@@ -69,18 +69,18 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
   const postsArray = await getDatabaseContentsAll({
     database_id: blogDatabaseId,
+    filter: {
+      property: 'Published',
+      checkbox: {
+        equals: true,
+      },
+    },
     sorts: [
       {
-        property: 'Date',
+        property: 'UpdatedAt',
         direction: 'descending',
       },
     ],
-    filter: {
-      property: 'Status',
-      select: {
-        equals: 'PUBLISH',
-      },
-    },
   });
   const posts = postsArray.flat() as NotionPageObjectResponse[];
   const paths = posts.map(({ id }) => ({ params: { page_id: id } }));

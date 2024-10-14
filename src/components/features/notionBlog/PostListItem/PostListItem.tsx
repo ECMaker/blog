@@ -26,7 +26,7 @@ export const PostListItem: FC<Props> = ({ post }) => {
       <div className="flex w-full justify-between gap-3">
         <h3 className="font-bold line-clamp-2 sp:text-base">{meta.title}</h3>
         <p className="whitespace-nowrap text-sm font-bold sp:absolute sp:right-2 sp:top-1.5 sp:text-xs">
-          {meta.date}
+          {meta.updatedAt}
         </p>
       </div>
     </div>

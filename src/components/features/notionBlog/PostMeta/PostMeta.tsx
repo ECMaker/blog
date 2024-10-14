@@ -21,7 +21,7 @@ export const PostMeta: FC<Props> = ({ meta, commentCount }) => {
     <div className="space-y-2 bg-white px-6 py-4 text-sm">
       <div className="flex justify-between">
         <div className="space-y-1">
-          <div>公開: {meta.date}</div>
+          <div>公開: {meta.createdAt}</div>
           <div>更新: {meta.updatedAt}</div>
         </div>
         <div className="space-y-1 text-right">
