@@ -1,5 +1,6 @@
-import { useEffect } from "react";
-import type { RefObject } from "react";
+import type { RefObject } from 'react';
+
+import { useEffect } from 'react';
 
 type Props<T> = {
   ref: RefObject<T>;
@@ -16,6 +17,7 @@ export const useMutationObserver = <T extends HTMLElement>({
     if (ref.current) {
       const observer = new MutationObserver(callback);
       observer.observe(ref.current, options);
+
       return () => observer.disconnect();
     }
   }, [ref, callback, options]);
