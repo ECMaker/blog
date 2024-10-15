@@ -25,7 +25,7 @@ export const Callout = ({ block }: Props) => {
       return (
         <div className="my-4">
           <SpeechBubble
-            iconImageSrc={isRam ? '/images/ram.png' : '/images/gorilla.png'}
+            iconImageSrc={isRam ? '/blocks-images/ram.png' : '/blocks-images/gorilla.png'}
             isReverse={isGorilla}
           >
             <RichText text={block.callout.rich_text} />
