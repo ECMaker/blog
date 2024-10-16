@@ -22,11 +22,11 @@ const headingList = useMemo(
       if (isAll) {
         const type = block.type;
         const title =
-          // @ts-expect-error ignore
-          block[type]?.rich_text
-            ? // @ts-expect-error ignore
-              block[type]?.rich_text[0]?.plain_text
-            : `empty: ${type}`;
+            // @ts-expect-error ignore
+            block[type]?.rich_text && block[type]?.rich_text.length > 0
+                ? // @ts-expect-error ignore
+                  block[type]?.rich_text[0]?.plain_text
+                : `: ${type}`;
 
         return {
           id: block.id,
@@ -38,21 +38,27 @@ const headingList = useMemo(
         return {
           id: block.id,
           type: block.type,
-          title: block.heading_1.rich_text[0].plain_text,
+          title: block.heading_1.rich_text && block.heading_1.rich_text.length > 0
+            ? block.heading_1.rich_text[0].plain_text
+            : '',
         };
       }
       if (block.type === 'heading_2') {
         return {
           id: block.id,
           type: block.type,
-          title: /*"└ " +*/ block.heading_2.rich_text[0].plain_text,
+          title: block.heading_2.rich_text && block.heading_2.rich_text.length > 0
+            ? block.heading_2.rich_text[0].plain_text
+            : '',
         };
       }
       if (block.type === 'heading_3') {
         return {
           id: block.id,
           type: block.type,
-          title: /*" └ " +*/block.heading_3.rich_text[0].plain_text,
+          title: block.heading_3.rich_text && block.heading_3.rich_text.length > 0
+            ? block.heading_3.rich_text[0].plain_text
+            : '',
         };
       }
 

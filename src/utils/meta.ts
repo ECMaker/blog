@@ -19,7 +19,9 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
   if (properties.Likes.type !== 'number')
     throw new Error('Likes is not number');
 
-  const title = properties.Title.title[0].plain_text;
+  const title = properties.Title.title.length > 0
+                ? properties.Title.title[0].plain_text
+                : '';
   const category = properties.Category.select || {
     id: '',
     name: 'カテゴリなし',
@@ -29,10 +31,10 @@ export const toPostMeta = (page: PageObjectResponse): NotionPostMeta => {
   const updatedAt = last_edited_time.substring(0, 10);
   const tags = properties.Tags.multi_select;
   const likes = properties.Likes.number || 0;
-  const slug =  properties.Slug?.type === 'rich_text' &&
-                properties.Slug.rich_text.length !== 0
-                 ? richTextToString(properties.Slug.rich_text)
-                 : '0';
+  const slug = properties.Slug?.type === 'rich_text' &&
+                properties.Slug.rich_text.length > 0
+                ? richTextToString(properties.Slug.rich_text)
+                : '0';
   const image =  properties.Image?.type === 'files' &&
                  properties.Image.files[0]?.type === 'file'
                    ? properties.Image.files[0].file.url
