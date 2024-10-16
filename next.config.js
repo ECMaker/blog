@@ -14,6 +14,28 @@ const nextConfig = {
   // experimental: {
   //   appDir: true,
   // },
+  async headers() {
+    return [
+      {
+        // 適用するパスを指定
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: `
+              default-src 'self';
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.instagram.com http://www.instagram.com https://*.twitter.com https://*.connect.facebook.net https://*.googletagmanager.com;
+              img-src 'self' data: https://*.instagram.com https://*.twitter.com https://*.connect.facebook.net https://*.google.com https://*.pbs.twimg.com https://t1.gstatic.com https://t3.gstatic.com https://pbs.twimg.com;
+              connect-src 'self' https://www.google-analytics.com;
+              frame-src https://platform.twitter.com https://www.instagram.com;
+              style-src 'self' 'unsafe-inline';
+              upgrade-insecure-requests;
+            `.replace(/\s{2,}/g, ' ').trim(),
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = {
