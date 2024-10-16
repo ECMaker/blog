@@ -3,8 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [
+      'notion-blog.kanaru.jp',
       's3.us-west-2.amazonaws.com',
       'prod-files-secure.s3.us-west-2.amazonaws.com',
+      's3.us-west-2.amazonaws.com',
+      'picsum.photos',
       's3.amazonaws.com',
       'github-production-user-asset-6210df.s3.amazonaws.com',
       'res.cloudinary.com',
@@ -17,6 +20,7 @@ const nextConfig = {
 };
 
 module.exports = {
+  ...nextConfig,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -26,5 +30,4 @@ module.exports = {
 
     return config;
   },
-  ...nextConfig,
 };

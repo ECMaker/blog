@@ -29,7 +29,7 @@ export const File = ({ block }: Props) => {
         className="font-medium text-blue-600 dark:text-blue-500"
       >
         <span className="group flex w-fit items-center gap-2">
-          <Image src="clip-icon.svg" alt="clip-icon" width={16} height={16} />
+          <Image src="/blocks-images/clip-icon.svg" alt="clip-icon" width={16} height={16} />
           <span className="group-hover:underline">
             {lastElementInArray.split('?')[0]}
           </span>

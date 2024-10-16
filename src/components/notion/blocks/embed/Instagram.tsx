@@ -46,7 +46,7 @@ const Skeleton = ({ url }: SkeletonProps) => {
       <div className="absolute top-36 left-1/2 flex -translate-x-1/2 flex-col items-center justify-center gap-4">
         <div className="mx-auto w-[50px]">
           <Image
-            src="/instagram-icon.svg"
+            src="/blocks-images/instagram-icon.svg"
             alt="instagram-icon"
             width={50}
             height={50}

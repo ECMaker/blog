@@ -16,17 +16,16 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Setup Node
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "18"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: npm install and build
+          cache: 'npm'
+
+      - name: Install dependencies and build
         env:
           NEXT_PUBLIC_BASE_URL                   : ${{ secrets.NEXT_PUBLIC_BASE_URL }}
           NEXTAUTH_SECRET                        : ${{ secrets.NEXTAUTH_SECRET }}
@@ -46,13 +45,16 @@ jobs:
         run: |
           npm ci
           npm run build
+
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
-      - name: Deploy to netlify
-        run: | # netlify deployコマンドを最大3回まで試行し、失敗した場合は60秒待機して再試行します。breakステートメントにより、成功した場合はループを抜けます。
+
+      - name: Deploy to Netlify
+        run: |
           for i in {1..3}; do
             netlify deploy --build --prod > cli.txt && break || sleep 60
           done
+          cat cli.txt
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
