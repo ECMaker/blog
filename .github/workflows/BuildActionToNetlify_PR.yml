@@ -41,12 +41,26 @@ jobs:
           GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
           NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
         run: |
+          echo "::group::Install dependencies"
           npm ci
+          echo "::endgroup::"
+          
+          echo "::group::Build project"
           npm run build
+          echo "::endgroup::"
+
       - name: Install Netlify CLI
-        run: npm install -g netlify-cli
+        run: |
+          echo "::group::Install Netlify CLI"
+          npm install -g netlify-cli
+          echo "::endgroup::"
+
       - name: Deploy to netlify
-        run: netlify deploy --build > cli.txt
+        run: |
+          echo "::group::Deploy to Netlify"
+          netlify deploy --build > cli.txt
+          cat cli.txt
+          echo "::endgroup::"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -56,12 +70,13 @@ jobs:
           sed -i -z 's/\n/\\n/g' cli.txt
       - name: Post Netlify CLI Comment
         run: |
-         for i in {1..3}; do
-         curl -X POST \
+          echo "::group::Post Netlify CLI Comment"
+          for i in {1..3}; do
+          curl -X POST \
               -H "Authorization: token ${GITHUB_TOKEN}" \
               -d "{\"body\": \"$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\"}" \
                 ${URL} && break || echo "Retrying... ($i)"
-         done
+          done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.comments_url }}
