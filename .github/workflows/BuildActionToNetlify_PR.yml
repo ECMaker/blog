@@ -59,11 +59,6 @@ jobs:
         run: |
           echo "::group::Deploy to Netlify"
           netlify deploy --build > cli.txt
-          echo "<details><summary>Netlify Build Log</summary>"
-          echo "```"
-          cat cli.txt
-          echo "```"
-          echo "</details>"
           echo "::endgroup::"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -72,10 +67,12 @@ jobs:
       - name: Post Netlify CLI Comment
         run: |
           echo "::group::Post Netlify CLI Comment"
+          COMMENT_BODY=$(<cli.txt)
+          JSON_BODY=$(jq -n --arg body "$COMMENT_BODY" '{"body": $body}')
           for i in {1..3}; do
             curl -X POST \
               -H "Authorization: token ${GITHUB_TOKEN}" \
-              -d "{\"body\": \"<details><summary>Netlify Build Log</summary>\\n\\n\`\`\`\\n$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\\n\`\`\`\\n</details>\"}" \
+              -d "{\"body\": \"<details><summary>Netlify Build Log</summary>\\n\\n\`\`\`\\n$JSON_BODY\\n\`\`\`\\n</details>\"}" \
               ${URL} && break || echo "Retrying... ($i)"
           done
           echo "::endgroup::"
