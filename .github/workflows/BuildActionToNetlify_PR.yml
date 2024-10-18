@@ -59,24 +59,26 @@ jobs:
         run: |
           echo "::group::Deploy to Netlify"
           netlify deploy --build > cli.txt
+          echo "<details><summary>Netlify Build Log</summary>"
+          echo "```"
           cat cli.txt
+          echo "```"
+          echo "</details>"
           echo "::endgroup::"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      - name: Cat cli.txt
-        run: |
-          cat cli.txt
-          sed -i -z 's/\n/\\n/g' cli.txt
+
       - name: Post Netlify CLI Comment
         run: |
           echo "::group::Post Netlify CLI Comment"
           for i in {1..3}; do
-          curl -X POST \
+            curl -X POST \
               -H "Authorization: token ${GITHUB_TOKEN}" \
-              -d "{\"body\": \"$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\"}" \
-                ${URL} && break || echo "Retrying... ($i)"
+              -d "{\"body\": \"<details><summary>Netlify Build Log</summary>\\n\\n\`\`\`\\n$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')\\n\`\`\`\\n</details>\"}" \
+              ${URL} && break || echo "Retrying... ($i)"
           done
+          echo "::endgroup::"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.comments_url }}
