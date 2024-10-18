@@ -18,7 +18,7 @@ export const PostListItem: FC<Props> = ({ post }) => {
  
   return (
     <div
-      className="flex h-24 cursor-pointer items-start gap-5 rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:relative md:h-48"
+      className="flex h-24 cursor-pointer items-start gap-5 rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sm:relative md:h-48"
       onClick={() => router.push(`/posts/${expandPost.slug}`)}
     >
       <Image
@@ -27,7 +27,7 @@ export const PostListItem: FC<Props> = ({ post }) => {
         width={256}
         height={192}
         priority
-        className="h-full w-32 rounded-l-md object-cover md:w-64"
+        className="h-full w-20 rounded-l-md object-cover md:w-64"
       />
       <div
         /*icon+tag+Updated,Categoy+Title*/ className="flex-col justify-between w-full"
@@ -37,9 +37,9 @@ export const PostListItem: FC<Props> = ({ post }) => {
         >
           <div /*icon+tag*/ className="flex items-center">
             <div
-              /*icon*/ className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-white shadow sp:absolute sp:-top-2 sp:-left-2 sp:h-9 sp:w-9"
+              /*icon*/ className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-white shadow sm:absolute sm:-top-2 sm:-left-2 sm:h-9 sm:w-9"
             >
-              <div className="pb-1 text-3xl sp:text-base">{meta.icon}</div>
+              <div className="pb-1 text-3xl sm:text-base">{meta.icon}</div>
             </div>
             <div /*tag*/ className="flex flex-wrap gap-1 ml-3">
               {meta.tags.map((tag, index) => (
@@ -53,13 +53,13 @@ export const PostListItem: FC<Props> = ({ post }) => {
             </div>
           </div>
           <div
-            /*Updated,Category*/ className="whitespace-nowrap text-sm justify-between font-bold sp:absolute sp:top-1.5 sp:right-2 sp:text-xs"
+            /*Updated,Category*/ className="whitespace-nowrap text-sm justify-between font-bold sm:absolute sm:top-1.5 sm:right-2 sm:text-xs"
           >
             <div>{meta.updatedAt}</div>
             <div className="font-bold">{meta.category.name}</div>
           </div>
         </div>
-        <h3 className="font-bold line-clamp-2 sp:text-base mt-4">
+        <h3 className="font-bold line-clamp-2 sm:text-base mt-4">
           {meta.title}
         </h3>
       </div>
