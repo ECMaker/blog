@@ -11,18 +11,18 @@ type Props = {
 
 export const ToDo: FC<Props> = ({ block }: Props) => {
   return (
-    <li className="flex list-none items-center">
+    <li className="flex list-none items-start">
       <input
         className="hidden"
         type="checkbox"
         checked={block.to_do.checked}
         disabled
       />
-      <div className="pt-0.5">
+      <div className="mt-2.5 sp:mt-2">
         {block.to_do.checked ? <CheckedBoxIcon /> : <UnCheckedBoxIcon />}
       </div>
-      <span className="ml-2 sp:text-sm">
-        <RichText text={block.to_do.rich_text} />
+      <span className="mt-2 ml-2 sp:text-sm">
+        <RichText text={block.to_do.rich_text} className="todo-para" />
       </span>
     </li>
   );

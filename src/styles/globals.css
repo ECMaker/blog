@@ -140,3 +140,8 @@ body::before {
     display: none;
   }
 }
+
+/* ToDoリスト内のテキストの行間を狭めるスタイル */
+.todo-para {
+  line-height: 1;
+}
