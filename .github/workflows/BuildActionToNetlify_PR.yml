@@ -71,7 +71,7 @@ jobs:
           URLS=$(sed -n '/Build logs:/,$p' cli.txt)
           # Extract the rest of the log
           LOG=$(sed '/Build logs:/Q' cli.txt)
-          COMMENT_BODY="<details><summary>Netlify Build Log</summary>\n\n\`\`\`\n$LOG\n\`\`\`\n</details>\n\n$URLS"
+          COMMENT_BODY="<details><summary>Netlify Build Log</summary>\n\n\`\`\`\n$LOG\n\`\`\`\n</details>$URLS"
           JSON_BODY=$(jq -n --arg body "$COMMENT_BODY" '{"body": $body}')
           for i in {1..3}; do
             curl -X POST \
