@@ -60,11 +60,16 @@ jobs:
           for i in {1..3}; do
             netlify deploy --build --prod > cli.txt && break || sleep 60
           done
+          # Extract URLs from cli.txt
+          URLS=$(sed -n '/Build logs:/,$p' cli.txt)
+          # Extract the rest of the log
+          LOG=$(sed '/Build logs:/Q' cli.txt)
           echo "<details><summary>Netlify Build Log</summary>"
           echo "```"
-          cat cli.txt
+          echo "$LOG"
           echo "```"
           echo "</details>"
+          echo "$URLS"
           echo "::endgroup::"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
