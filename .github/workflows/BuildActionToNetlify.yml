@@ -43,18 +43,25 @@ jobs:
           GOOGLE_CLIENT_SECRET                   : ${{ secrets.GOOGLE_CLIENT_SECRET }}
           NEXT_PUBLIC_GTM_ID                     : ${{ secrets.NEXT_PUBLIC_GTM_ID }}
         run: |
+          echo "::group::Install dependencies"
           npm ci
+          echo "::endgroup::"
+          
+          echo "::group::Build project"
           npm run build
+          echo "::endgroup::"
 
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
 
       - name: Deploy to Netlify
         run: |
+          echo "::group::Deploy to Netlify"
           for i in {1..3}; do
             netlify deploy --build --prod > cli.txt && break || sleep 60
           done
           cat cli.txt
+          echo "::endgroup::"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
