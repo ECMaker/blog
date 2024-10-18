@@ -63,19 +63,21 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-
+      - name: Install jq
+        run: sudo apt-get install jq
       - name: Post Netlify CLI Comment
         run: |
           echo "::group::Post Netlify CLI Comment"
-          COMMENT_BODY=$(<cli.txt)
+          COMMENT_BODY="$(cat cli.txt | sed 's/"/\\"/g' | tr '\n' '\\n')"
           JSON_BODY=$(jq -n --arg body "$COMMENT_BODY" '{"body": $body}')
           for i in {1..3}; do
             curl -X POST \
               -H "Authorization: token ${GITHUB_TOKEN}" \
-              -d "{\"body\": \"<details><summary>Netlify Build Log</summary>\\n\\n\`\`\`\\n$JSON_BODY\\n\`\`\`\\n</details>\"}" \
-              ${URL} && break || echo "Retrying... ($i)"
+              -d "$JSON_BODY" \
+              "${URL}" && break || echo "Retrying... ($i)"
           done
           echo "::endgroup::"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.comments_url }}
+          
