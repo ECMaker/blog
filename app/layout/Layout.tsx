@@ -37,8 +37,12 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
 
   const spotlight = useSpotlight();
   const handleClickSearchButton = () => spotlight.openSpotlight();
+  
+  const showContentsButton = useMemo(() => {
+    return (pathname === '/posts/');
+  }, [pathname]);
 
-  // ここは変更しても変わらない？ src\components\@layouts\Layout.tsx も変更する !U
+  // ここ app\layout\Layout.tsx は変更しても変わらない？ src\components\@layouts\Layout.tsx も変更する !U
 
   return (
     <div className="bg-gray-200">
@@ -71,9 +75,11 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           <div className="flex items-center mb-2 sb-2 sm:mb-1 sp:mb-1">
             <SearchButton onClick={handleClickSearchButton} />
           </div>
+          {showContentsButton && (
           <div className="md:hidden">
             <ContentsButton onClick={() => setShowTableOfContents(prev => !prev)} />
           </div>
+        )}
         </div>
       </div>
       <main className="relative z-10 mb-40 min-h-[calc(100vh-102px)] w-full bg-gray-200">
