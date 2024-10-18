@@ -67,7 +67,11 @@ jobs:
       - name: Post Netlify CLI Comment
         run: |
           echo "::group::Post Netlify CLI Comment"
-          COMMENT_BODY="<details><summary>Netlify Build Log</summary>\n\n\`\`\`\n$(cat cli.txt)\n\`\`\`\n</details>"
+          # Extract URLs from cli.txt
+          URLS=$(sed -n '/Build logs:/,$p' cli.txt)
+          # Extract the rest of the log
+          LOG=$(sed '/Build logs:/Q' cli.txt)
+          COMMENT_BODY="<details><summary>Netlify Build Log</summary>\n\n\`\`\`\n$LOG\n\`\`\`\n</details>\n\n$URLS"
           JSON_BODY=$(jq -n --arg body "$COMMENT_BODY" '{"body": $body}')
           for i in {1..3}; do
             curl -X POST \
