@@ -133,15 +133,80 @@ body::before {
     top: 0;
     z-index: 100;
   }
+
+  /* ToDoリスト内のテキストの行間を狭めるスタイル */
+  .todo-para {
+    line-height: 1;
+  }
+  
+  /* 箇条書きリストの行間を狭めるスタイル */
+  .compact-list-item {  /* 1段目 */
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+  .compact-list-item ul { /* 箇条書き */
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+  .compact-list-item ol { /* 数字リスト */
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ネストされた番号付きリストのスタイル */
+  ol {
+    list-style-type: decimal; /* 1, 2, 3, ... */
+    margin-left: -0.1rem;
+  }
+  ol ol {
+    list-style-type: lower-alpha; /* a, b, c, ... */
+    margin-left: -0.5rem;
+  }
+  ol ol ol {
+    list-style-type: lower-roman; /* i, ii, iii, ... */
+    margin-left: -0.5rem;
+  }
+  ol ol ol ol {
+    list-style-type: decimal; /* 1, 2, 3, ... */
+    margin-left: -0.5rem;
+  }
+  ol ol ol ol ol {
+    list-style-type: lower-alpha; /* a, b, c, ... */
+    margin-left: -0.5rem;
+  }
+  ol ol ol ol ol ol {
+    list-style-type: lower-roman; /* i, ii, iii, ... */
+    margin-left: -0.5rem;
+  }
+
+  /* ネストされた箇条書きのスタイル */
+  ul {
+    list-style-type: disc; /* 黒丸 */
+  }
+  ul ul {
+    margin-left: -0.5rem;
+    list-style-type: circle; /* 白丸 */
+  }
+  ul ul ul {
+    margin-left: -0.5rem;
+    list-style-type: square; /* 黒四角 */
+  }
+  ul ul ul ul {
+    margin-left: -0.5rem;
+    list-style-type: disc; /* 黒丸 */
+  }
+  ul ul ul ul ul {
+    margin-left: -0.5rem;
+    list-style-type: circle; /* 白丸 */
+  }
+  ul ul ul ul ul ul {
+    margin-left: -0.5rem;
+    list-style-type: square; /* 黒四角 */
+  }
 }
 
 @media (max-width: 768px) {
   .responsive-image {
     display: none;
   }
-}
-
-/* ToDoリスト内のテキストの行間を狭めるスタイル */
-.todo-para {
-  line-height: 1;
 }
