@@ -32,11 +32,11 @@ export const Callout = ({ block }: Props) => {
             iconImageSrc={
                isRam     ? '/blocks-images/ram.png'
               :isGorilla ? '/blocks-images/gorilla.png'
-              :isGear    ? '/400^2_tomei.gif'
-              :isGear2   ? '/400^2_tomei.gif'
+              :isGear    ? '/logos/400^2_tomei.gif'
+              :isGear2   ? '/logos/400^2_tomei.gif'
               :isRobot   ? '/blocks-images/AI-icon.svg'
               :isUnicorn ? '/blocks-images/u-icon-tomei3.png'
-              :/*default*/ '/400^2_tomei.gif'
+              :/*default*/ '/logos/400^2_tomei.gif'
             }
             isReverse={ isGorilla || isRobot }
           >

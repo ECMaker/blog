@@ -63,7 +63,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           >
             <h1 className="flex gap-3 items-center font-CutiveMono text-5xl leading-none">
               <Image
-                src="/400^2inside600^2_tomei.gif"
+                src="/logos/400^2inside600^2_tomei.gif"
                 alt="site logo"
                 width={80}
                 height={80}
@@ -102,7 +102,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
         <div className="mt-6">
           <div className="flex gap-2 items-center">
             <Image
-              src="/400^2inside600^2_tomei.gif"
+              src="/logos/400^2inside600^2_tomei.gif"
               alt="site logo"
               width={100}
               height={100}
