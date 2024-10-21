@@ -21,7 +21,7 @@ export const ProfileTemplate: FC<Props> = ({ blocks }) => {
         <div className="relative mx-auto h-40 w-40 border-2 border-solid border-slate-300">
           <Image
             className="object-cover"
-            src="/900^2_black.gif"
+            src="/logos/900^2_black.gif"
             alt="my icon"
             fill
             sizes="160px"

@@ -11,10 +11,10 @@ type Props = {
 
 export const NumberedListItem: FC<Props> = ({ block }: Props) => {
   return (
-    <li className="pl-2 list-decimal sp:text-sm">
+    <li className="pl-1 sp:text-sm compact-list-item">
       <RichText text={block.numbered_list_item.rich_text} />
       {block.children?.map((child) => (
-        <div key={child.id}>{blockToJsx(child)}</div>
+        <div key={child.id} className="compact-list-item">{blockToJsx(child)}</div>
       ))}
     </li>
   );

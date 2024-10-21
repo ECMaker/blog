@@ -5,7 +5,7 @@ This is the homepage and blog for the ECmaker community.
 
 Home: https://blog.ec-maker.com/
 
-![ECmaker logo](./public/1333x500_yoko_black.gif)
+![ECmaker logo](./public/logos/1333x500_yoko_black.gif)
 
 ## Special Thanks
 This blog is based on Knob's noblog and has been modified and added to.  

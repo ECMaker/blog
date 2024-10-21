@@ -29,7 +29,7 @@ export default async function handler(req: NextRequest) {
         )}
         {title ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src="https://blog.ec-maker.com/1333x500_yoko_tomei.png" alt="EC Maker Logo" tw="absolute bottom-15 right-25  h-[200px]" />
+          <img src="https://blog.ec-maker.com/logos/1333x500_yoko_tomei.png" alt="EC Maker Logo" tw="absolute bottom-15 right-25  h-[200px]" />
         ) : (
           <div tw="h-2 w-60 rounded-full bg-slate-800" />
         )}

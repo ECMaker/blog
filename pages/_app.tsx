@@ -31,7 +31,7 @@ const meta = {
   description:
     'Notion API と Next.js / Tailwind CSS による本格ブログ',
   url: 'https://blog.ec-maker.com/',
-  image: 'https://blog.ec-maker.com/300%5E2_black.gif',
+  image: 'https://blog.ec-maker.com/ECmaker.gif',
 };
 
 export default function App({ Component, pageProps }: AppProps) {

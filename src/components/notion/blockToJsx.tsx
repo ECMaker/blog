@@ -13,6 +13,7 @@ import { Column } from './blocks/Column';
 import { ColumnList } from './blocks/ColumnList';
 import { Divider } from './blocks/Divider';
 import { Embed } from './blocks/Embed';
+import { Equation } from './blocks/Equation';
 import { File } from './blocks/File';
 import { Heading1 } from './blocks/Heading1';
 import { Heading2 } from './blocks/Heading2';
@@ -88,6 +89,8 @@ export const blockToJsx = (block: ExpandedBlockObjectResponse) => {
       return <Toggle block={block} />;
     case 'video':
       return <Video block={block} />;
+    case 'equation':
+      return <Equation block={block} />;
     case 'table_of_contents':
       return null;
     default:

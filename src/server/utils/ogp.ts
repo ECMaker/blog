@@ -15,8 +15,7 @@ export const getOgp = async (url: string): Promise<Ogp> => {
     try {
       await axios.get(faviconUrl);
     } catch (error) {
-
-      faviconUrl= '/EarthIcon.svg'; // favicon取得失敗時、地球にする
+      faviconUrl= '/blocks-images/EarthIcon.svg';
     }
 
     return {
