@@ -33,13 +33,13 @@ export const File = ({ block }: Props) => {
           <span className="group-hover:underline">
             {lastElementInArray.split('?')[0]}
           </span>
-          {caption_file && (
-            <figcaption className="text-xs text-gray-400">
-              {caption_file}
-            </figcaption>
-          )}
         </span>
       </Link>
+      {caption_file && (
+        <figcaption className="text-xs text-gray-400 mt-1 ml-7">
+          {caption_file}
+        </figcaption>
+      )}
     </figure>
   );
 };

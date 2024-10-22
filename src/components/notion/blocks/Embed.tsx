@@ -12,19 +12,26 @@ type Props = {
 
 export const Embed = ({ block }: Props) => {
   const { url } = block.embed;
+  const caption = block.embed.caption.length > 0 ? block.embed.caption[0].plain_text : ''; 
 
-  if (url.includes('instagram.com')) return <Instagram url={url} />;
-  if (url.includes('facebook.com')) return <Facebook url={url} />;
-  if (url.includes('twitter.com')) return <Twitter url={url} />;
-  if (url.includes('tiktok.com')) return <TikTok url={url} />;
+  if (url.includes('instagram.com')) return <Instagram url={url} caption={caption} />;
+  if (url.includes('facebook.com'))  return <Facebook  url={url} caption={caption} />;
+  if (url.includes('twitter.com'))   return <Twitter   url={url} caption={caption} />;
+  if (url.includes('x.com'))         return <Twitter   url={url} caption={caption} />;
+  if (url.includes('tiktok.com'))    return <TikTok    url={url} caption={caption} />;
 
   return (
-    <div className="my-5">
+    <div className="my-5 text-center">
       <iframe
         src={url}
         height={500}
         className="w-full overflow-hidden"
       ></iframe>
+      {caption && (
+        <figcaption className="text-xs text-gray-400 text-center">
+          {caption}
+        </figcaption>
+      )}
     </div>
   );
 };
