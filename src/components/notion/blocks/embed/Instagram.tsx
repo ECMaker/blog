@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
+import { useEffect, useState } from 'react';
 
 type Props = {
   url: string;
@@ -33,6 +34,35 @@ type SkeletonProps = {
 };
 
 const Skeleton = ({ url }: SkeletonProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const checkSkeletonVisibility = () => {
+      setTimeout(() => {
+        const skeletonElement = document.querySelector('.animate-pulse');
+        if (skeletonElement && !isLoaded) {
+          const event = new Event('trigger-reload');
+          // eslint-disable-next-line no-console
+          console.log("!U event", event); // ログを出力
+          window.dispatchEvent(event);
+        }
+      }, 3000);
+    };
+
+    checkSkeletonVisibility();
+
+    const handleLoad = () => {
+      setIsLoaded(true);
+      checkSkeletonVisibility();
+    };
+
+    window.addEventListener('load', handleLoad);
+
+    return () => {
+      window.removeEventListener('load', handleLoad);
+    };
+  }, [isLoaded]);
+
   return (
     <div className="relative w-full bg-white drop-shadow">
       <div className="animate-pulse">
