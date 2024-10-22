@@ -20,7 +20,7 @@ export const YouTube = ({ url, caption }: Props) => {
         className="w-full max-h-[400px] max-w-[550px]"
       ></iframe>
       {caption && (
-        <figcaption className="text-xs text-gray-400 text-center">
+        <figcaption className="text-xs text-gray-400 text-center mt-1">
           {caption}
         </figcaption>
       )}

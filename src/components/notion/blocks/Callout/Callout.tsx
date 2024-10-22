@@ -35,7 +35,7 @@ export const Callout = ({ block }: Props) => {
               :isGear    ? '/logos/400^2_tomei.gif'
               :isGear2   ? '/logos/400^2_tomei.gif'
               :isRobot   ? '/blocks-images/AI-icon.svg'
-              :isUnicorn ? '/blocks-images/u-icon-tomei3.png'
+              :isUnicorn ? '/blocks-images/U-icon.png'
               :/*default*/ '/logos/400^2_tomei.gif'
             }
             isReverse={ isGorilla || isRobot }
