@@ -83,14 +83,14 @@ export default function App({ Component, pageProps }: AppProps) {
         window.location.reload();
       }
     };
-  
+
     const handleRouteChange = () => {
       sessionStorage.removeItem('reloaded');
     };
-  
+
     window.addEventListener('trigger-reload', handleReload);
     router.events.on('routeChangeStart', handleRouteChange);
-  
+
     return () => {
       window.removeEventListener('trigger-reload', handleReload);
       router.events.off('routeChangeStart', handleRouteChange);

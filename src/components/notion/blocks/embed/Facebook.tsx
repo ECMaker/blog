@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Script from 'next/script';
-import { useReducer, useRef } from 'react';
+import { useReducer, useRef, useEffect } from 'react';
 
 import { useMutationObserver } from '~/hooks/useMutationObserver';
 
@@ -40,6 +40,20 @@ export const Facebook = ({ url, caption }: Props) => {
 };
 
 const Skeleton = ({ url }: { url: string }) => {
+  useEffect(() => {
+    const checkSkeletonVisibility = () => {
+      setTimeout(() => {
+        const skeletonElement = document.querySelector('.animate-pulse');
+        if (skeletonElement && !sessionStorage.getItem('reloaded')) {
+          const event = new Event('trigger-reload');
+          window.dispatchEvent(event);
+        }
+      }, 5000);
+    };
+
+    checkSkeletonVisibility();
+  }, []);
+
   return (
     <div className="absolute top-0 w-full min-w-[350px] max-w-[750px] bg-white drop-shadow">
       <div className="animate-pulse">
@@ -55,11 +69,11 @@ const Skeleton = ({ url }: { url: string }) => {
       <div className="absolute top-32 left-1/2 flex -translate-x-1/2 flex-col items-center justify-center gap-4">
         <div className="mx-auto w-[200px]">
           <Link
-              href={url}
-              className="text-center text-sm font-semibold text-blue-600"
-              target="_blank"
-            >
-              View on Facebook
+            href={url}
+            className="text-center text-sm font-semibold text-blue-600"
+            target="_blank"
+          >
+            View on Facebook
           </Link>
         </div>
       </div>

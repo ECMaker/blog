@@ -43,16 +43,30 @@ export const TikTok = ({ url, caption }: Props) => {
 };
 
 const Skeleton = ({ url }: { url: string }) => {
+  useEffect(() => {
+    const checkSkeletonVisibility = () => {
+      setTimeout(() => {
+        const skeletonElement = document.querySelector('.animate-pulse');
+        if (skeletonElement && !sessionStorage.getItem('reloaded')) {
+          const event = new Event('trigger-reload');
+          window.dispatchEvent(event);
+        }
+      }, 5000);
+    };
+
+    checkSkeletonVisibility();
+  }, []);
+
   return (
     <div className="mb-4 relative w-80 left-1/2 transform -translate-x-1/2 flex flex-col items-center bg-white drop-shadow ">
       <div className="animate-pulse">
         <div className="flex items-center gap-2 p-[10px]"></div>
         <div className="h-80 w-60 bg-gray-200"></div>
-          <div className="h-14 p-3">
-            <div className="h-3 w-36 rounded bg-gray-200"></div>
-            <div className="mt-1 h-3 w-28 rounded bg-gray-200"></div>
-          </div>
+        <div className="h-14 p-3">
+          <div className="h-3 w-36 rounded bg-gray-200"></div>
+          <div className="mt-1 h-3 w-28 rounded bg-gray-200"></div>
         </div>
+      </div>
       <div className="absolute top-40 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center gap-4 z-10">
         <div className="mx-auto w-[200px]">
           <Link
