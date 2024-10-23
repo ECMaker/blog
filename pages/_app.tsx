@@ -9,8 +9,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { SessionProvider } from 'next-auth/react';
 import { DefaultSeo } from 'next-seo';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
+
 
 import {
   BookIcon,
@@ -31,7 +32,7 @@ const meta = {
   description:
     'Notion API と Next.js / Tailwind CSS による本格ブログ',
   url: 'https://blog.ec-maker.com/',
-  image: 'https://blog.ec-maker.com/300%5E2_black.gif',
+  image: 'https://blog.ec-maker.com/ECmaker.gif',
 };
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -74,6 +75,27 @@ export default function App({ Component, pageProps }: AppProps) {
   );
   const [query, setQuery] = useState('');
   const actions = useSpotlightActions(query);
+
+  useEffect(() => {
+    const handleReload = () => {
+      if (!sessionStorage.getItem('reloaded')) {
+        sessionStorage.setItem('reloaded', 'true');
+        window.location.reload();
+      }
+    };
+
+    const handleRouteChange = () => {
+      sessionStorage.removeItem('reloaded');
+    };
+
+    window.addEventListener('trigger-reload', handleReload);
+    router.events.on('routeChangeStart', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('trigger-reload', handleReload);
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router]);
 
   return (
     <>

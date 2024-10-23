@@ -8,7 +8,7 @@ import type {
 
 import { Pagination } from '@mantine/core';
 import { usePagination } from '@mantine/hooks';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 
 import { PageTitle } from '~/commons/PageTitle';
 import { PostsViewControl } from '~/components/features/notionBlog/PostsViewControl';
@@ -57,6 +57,26 @@ export const PostsTemplate: FC<Props> = ({ postsArray, properties }) => {
     total: totalPage,
     initialPage: 1,
   });
+
+  const isInitialMount = useRef(true);
+
+  // ページネーションの状態をsessionStorageから復元
+  useEffect(() => {
+    if (isInitialMount.current) {
+      const savedPage = sessionStorage.getItem('currentPage');
+      if (savedPage) {
+        pagination.setPage(Number(savedPage));
+      }
+      isInitialMount.current = false;
+    }
+  }, [pagination]);
+
+  // ページネーションの状態をsessionStorageに保存
+  useEffect(() => {
+    if (!isInitialMount.current) {
+      sessionStorage.setItem('currentPage', String(pagination.active));
+    }
+  }, [pagination.active]);
 
   const controlledCurrentPosts = useMemo(
     () => controlledPostsArray[pagination.active - 1],

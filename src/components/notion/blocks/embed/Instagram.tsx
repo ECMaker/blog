@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
+import { useEffect } from 'react';
 
 type Props = {
   url: string;
+  caption?: string;
 };
 
-export const Instagram = ({ url }: Props) => {
+export const Instagram = ({ url, caption }: Props) => {
   return (
-    <div className="my-5">
+    <div className="my-5 text-center mx-auto max-w-[360px]">
       <blockquote
         className="instagram-media w-full rounded border-2 border-gray-100 bg-white drop-shadow-md"
         data-instgrm-captioned
@@ -18,6 +20,11 @@ export const Instagram = ({ url }: Props) => {
         <Skeleton url={url} />
       </blockquote>
       <Script async defer src="//www.instagram.com/embed.js" />
+      {caption && (
+        <figcaption className="text-xs text-gray-400 text-center mt-1">
+          {caption}
+        </figcaption>
+      )}
     </div>
   );
 };
@@ -27,6 +34,20 @@ type SkeletonProps = {
 };
 
 const Skeleton = ({ url }: SkeletonProps) => {
+  useEffect(() => {
+    const checkSkeletonVisibility = () => {
+      setTimeout(() => {
+        const skeletonElement = document.querySelector('.animate-pulse');
+        if (skeletonElement && !sessionStorage.getItem('reloaded')) {
+          const event = new Event('trigger-reload');
+          window.dispatchEvent(event);
+        }
+      }, 5000);
+    };
+
+    checkSkeletonVisibility();
+  }, []);
+
   return (
     <div className="relative w-full bg-white drop-shadow">
       <div className="animate-pulse">

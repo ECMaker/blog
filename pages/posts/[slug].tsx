@@ -83,7 +83,7 @@ const Post: NextPage<Props> = ({ post }) => {
   };
 
   let imageUrl;
-  if (post.image === '/900^2_tomei_textBlack.gif') {
+  if (post.image === '/logos/900^2_tomei_textBlack.gif') {
     imageUrl = `https://blog.ec-maker.com/api/notion-blog/og?title=${post.title}`;
   } else {
     imageUrl = post.image;

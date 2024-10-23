@@ -1,32 +1,38 @@
 import Link from 'next/link';
 import Script from 'next/script';
-import { useReducer, useRef } from 'react';
+import { useReducer, useRef, useEffect } from 'react';
 
 import { useMutationObserver } from '~/hooks/useMutationObserver';
 
 type Props = {
   url: string;
+  caption?: string;
 };
 
-export const Twitter = ({ url }: Props) => {
+export const Twitter = ({ url, caption }: Props) => {
   const isTweet = url.includes('/status/');
-  if (isTweet) return <Tweet url={url} />;
+  if (isTweet) return <Tweet url={url} caption={caption} />;
 
-  return <Timeline url={url} />;
+  return <Timeline url={url} caption={caption} />;
 };
 
-const Tweet = ({ url }: Props) => {
+const Tweet = ({ url, caption }: Props) => {
   return (
-    <div className="my-4">
+    <div className="my-4 text-center flex flex-col items-center">
       <blockquote className="twitter-tweet" data-lang="ja">
         <Skeleton url={url} />
       </blockquote>
       <Script async defer src="https://platform.twitter.com/widgets.js" />
+      {caption && (
+        <figcaption className="-mt-1 text-xs text-gray-400 text-center">
+          {caption}
+        </figcaption>
+      )}
     </div>
   );
 };
 
-const Timeline = ({ url }: Props) => {
+const Timeline = ({ url, caption }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isLoading, onLoaded] = useReducer(() => false, true);
   useMutationObserver({
@@ -39,7 +45,7 @@ const Timeline = ({ url }: Props) => {
   });
 
   return (
-    <div className="my-4 min-h-[600px]" ref={ref}>
+    <div className="my-4 min-h-[600px] text-center" ref={ref}>
       {isLoading && <Skeleton url={url} />}
       <Link
         href={url}
@@ -48,13 +54,32 @@ const Timeline = ({ url }: Props) => {
         target="_blank"
       ></Link>
       <Script async defer src="https://platform.twitter.com/widgets.js" />
+      {caption && (
+        <figcaption className="text-xs text-gray-400 text-center mt-1">
+          {caption}
+        </figcaption>
+      )}
     </div>
   );
 };
 
 const Skeleton = ({ url }: Props) => {
+  useEffect(() => {
+    const checkSkeletonVisibility = () => {
+      setTimeout(() => {
+        const skeletonElement = document.querySelector('.animate-pulse');
+        if (skeletonElement && !sessionStorage.getItem('reloaded')) {
+          const event = new Event('trigger-reload');
+          window.dispatchEvent(event);
+        }
+      }, 5000);
+    };
+
+    checkSkeletonVisibility();
+  }, []);
+
   return (
-    <div className="relative rounded-lg bg-white drop-shadow ">
+    <div className="mb-2 relative rounded-lg bg-white drop-shadow ">
       <div className="flex h-[600px] animate-pulse flex-col justify-between px-4 pb-4 pt-3">
         <div>
           <div className="flex items-center gap-1">
@@ -86,7 +111,7 @@ const Skeleton = ({ url }: Props) => {
           className="text-center text-sm font-semibold text-blue-600"
           target="_blank"
         >
-          View on Twitter
+          View on X
         </Link>
       </div>
     </div>

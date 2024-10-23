@@ -36,7 +36,7 @@ export const Bio: FC = () => {
         <div className="relative h-24 w-24  rounded-full border">
           <Image
             className="rounded-full object-cover"
-            src="/400^2inside600^2_tomei.gif"
+            src="/logos/400^2inside600^2_tomei.gif"
             alt="my icon"
             fill
             sizes="100px"

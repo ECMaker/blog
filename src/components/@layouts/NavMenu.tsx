@@ -106,7 +106,7 @@ export const NavMenu: FC = () => {
                   priority
                 />
               }
-              href="/900^2_black.gif"
+              href="/logos/900^2_black.gif"
               label="logo"
             />
           </div>

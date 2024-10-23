@@ -45,7 +45,7 @@ export const notionResponseToPost = (
   const image =  properties.Image?.type === 'files' &&
                  properties.Image.files[0]?.type === 'file'
                    ? properties.Image.files[0].file.url
-                   : '/900^2_tomei_textBlack.gif';
+                   : '/logos/900^2_tomei_textBlack.gif';
   
   return {
     id,
