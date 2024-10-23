@@ -16,6 +16,13 @@ export const PostGridItem: FC<Props> = ({ post }) => {
   const meta = useMemo(() => toPostMeta(post), [post]);
   const expandPost = {...toPostMeta(post)};
 
+  const handleImageError = () => {
+    if (!sessionStorage.getItem('reloaded')) {
+      const event = new Event('trigger-reload');
+      window.dispatchEvent(event);
+    }
+  };
+
   return (
     <div
     className="flex flex-col h-auto w-64 cursor-pointer rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-80 justify-between"
@@ -54,7 +61,8 @@ export const PostGridItem: FC<Props> = ({ post }) => {
         width={256}
         height={192}
         priority
-        className="h-hull w-full rounded-l-md object-cover"
+        className="h-full w-full rounded-l-md object-cover"
+        onError={handleImageError}
       />
     </div>
   );

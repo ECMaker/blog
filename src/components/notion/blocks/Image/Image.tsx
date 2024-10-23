@@ -5,7 +5,7 @@ import type { BlockWithChildren } from '~/types/notion';
 
 import { Button } from '@mantine/core';
 import NextImage from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MediumZoom from 'react-medium-image-zoom'; // Import react-medium-image-zoom
 
 import { DangerIcon, UpdateIcon } from '~/commons/icons';
@@ -28,6 +28,14 @@ export const Image: FC<Props> = ({ block }: Props) => {
   // !U 画像の縦横比を管理するための状態を定義 画像の縦横比に基づいて適切なクラス名を決定する
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);     
   const imageClassName = aspectRatio && aspectRatio > 1 ? "object-contain h-auto w-full" : "object-contain h-auto w-auto";
+
+  useEffect(() => {
+    if (isError && !sessionStorage.getItem('reloaded')) {
+      const event = new Event('trigger-reload');
+      console.log("!U event", event); // ログを出力
+      window.dispatchEvent(event);
+    }
+  }, [isError]);
 
   return (
     <div className="relative mx-auto mt-4 mb-4 flex flex-col items-center">
