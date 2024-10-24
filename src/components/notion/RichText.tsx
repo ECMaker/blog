@@ -11,6 +11,28 @@ type Props = {
 const codeAnnotationClasses =
   'bg-slate-900 rounded px-2 py-1 mx-2 font-mono text-teal-400';
 
+const colorClasses = {
+  gray: 'text-gray-500',
+  brown: 'text-brown-500',
+  orange: 'text-orange-500',
+  yellow: 'text-yellow-500',
+  green: 'text-green-500',
+  blue: 'text-blue-500',
+  purple: 'text-purple-500',
+  pink: 'text-pink-500',
+  red: 'text-red-500',
+  default: 'text-black',
+  gray_background: 'bg-gray-100',
+  brown_background: 'bg-brown-100',
+  orange_background: 'bg-orange-100',
+  yellow_background: 'bg-yellow-100',
+  green_background: 'bg-green-100',
+  blue_background: 'bg-blue-100',
+  purple_background: 'bg-purple-100',
+  pink_background: 'bg-pink-100',
+  red_background: 'bg-red-100',
+};
+
 /* Notion の Block Object内のrich_textの配列をいい感じに変換する */
 export const RichText: FC<Props> = ({ text, className }) => {
   return (
@@ -29,7 +51,7 @@ export const RichText: FC<Props> = ({ text, className }) => {
                 annotations[param as keyof typeof annotations] === true,
             );
             const key = `${index}`;
-
+            const colorClass = colorClasses[color] || colorClasses.default;
             if (href)
               return (
                 <a
@@ -39,7 +61,7 @@ export const RichText: FC<Props> = ({ text, className }) => {
                   rel="noopener noreferrer"
                   className={clsx(
                     'transition-opacity hover:opacity-50',
-                    color !== 'default' && `notion-${color}`,
+                    colorClass,
                     annotationClasses.includes('bold') && 'font-bold',
                     annotationClasses.includes('italic') && 'font-italic',
                     annotationClasses.includes('underline') && 'underline',
@@ -57,8 +79,7 @@ export const RichText: FC<Props> = ({ text, className }) => {
                 <span
                   key={key}
                   className={clsx(
-                    '',
-                    color !== 'default' && `notion-${color}`,
+                    colorClass,
                     annotationClasses.includes('bold') && 'font-bold',
                     annotationClasses.includes('italic') && 'font-italic',
                     annotationClasses.includes('underline') && 'underline',
@@ -71,7 +92,7 @@ export const RichText: FC<Props> = ({ text, className }) => {
                 </span>
               );
 
-            return textItem.plain_text;
+            return <span key={key} className={colorClass}>{textItem.plain_text}</span>;
           })}
         </>
       )}

@@ -12,7 +12,6 @@ import { DefaultSeo } from 'next-seo';
 import { useMemo, useState, useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
 
-
 import {
   BookIcon,
   ExperimentIcon,
