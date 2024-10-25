@@ -43,9 +43,9 @@ export const RichText: FC<Props> = ({ text, className }) => {
       ) : (
         <>
           {text.map((textItem, index: number) => {
-            const { annotations } = textItem; // アノテーションを取得
-            const { color } = textItem.annotations; // アノテーションの色を取得
-            const { href } = textItem; // リンクを取得
+            const { annotations } = textItem;
+            const { color } = textItem.annotations;
+            const { href } = textItem;
             const annotationClasses = Object.keys(annotations).filter(
               (param) =>
                 annotations[param as keyof typeof annotations] === true,
@@ -62,6 +62,7 @@ export const RichText: FC<Props> = ({ text, className }) => {
                   className={clsx(
                     'transition-opacity hover:opacity-50',
                     colorClass,
+                    className,
                     annotationClasses.includes('bold') && 'font-bold',
                     annotationClasses.includes('italic') && 'font-italic',
                     annotationClasses.includes('underline') && 'underline',
@@ -80,6 +81,7 @@ export const RichText: FC<Props> = ({ text, className }) => {
                   key={key}
                   className={clsx(
                     colorClass,
+                    className,
                     annotationClasses.includes('bold') && 'font-bold',
                     annotationClasses.includes('italic') && 'font-italic',
                     annotationClasses.includes('underline') && 'underline',
@@ -92,7 +94,7 @@ export const RichText: FC<Props> = ({ text, className }) => {
                 </span>
               );
 
-            return <span key={key} className={colorClass}>{textItem.plain_text}</span>;
+            return <span key={key} className={clsx(colorClass, className)}>{textItem.plain_text}</span>;
           })}
         </>
       )}
