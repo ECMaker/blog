@@ -38,7 +38,7 @@ export const Code: FC<Props> = ({ block }: Props) => {
       </Prism>
       {block.code.caption.length > 0 && (
         <div className="-mt-1 rounded-b-md bg-slate-800 px-4 pb-2 pt-3 text-xs text-slate-200">
-          <RichText text={block.code.caption} />
+          <RichText text={block.code.caption} className="text-slate-200" />
         </div>
       )}
     </div>
