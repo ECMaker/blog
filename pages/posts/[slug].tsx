@@ -9,6 +9,7 @@ import type {
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 
 import { useComments } from '~/hooks/apiHooks/useComments';
+import { useExpiredImg } from '~/hooks/apiHooks/useExpiredImg';
 import { getAllBlocks } from '~/server/notion/getAllBlocks';
 import { getAllPosts } from '~/server/notion/getAllPosts';
 import { getPage } from '~/server/notion/pages';
@@ -69,22 +70,24 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => {
-  const { data: comments, trigger } = useComments(post.id);
+  const { data: postImgUpdated } = useExpiredImg(post);
+
+  const { data: comments, trigger } = useComments(postImgUpdated.id);
 
   const handleCommentSubmit = async (
     rich_text: NotionRichTextItemRequest[],
   ) => {
     await trigger({
       parent: {
-        page_id: post.id,
+        page_id: postImgUpdated.id,
       },
       rich_text,
     });
   };
 
   let imageUrl;
-  if (post.image === '/logos/900^2_tomei_textBlack.gif') {
-    imageUrl = `https://blog.ec-maker.com/api/notion-blog/og?title=${post.title}`;
+  if (postImgUpdated.image === '/logos/900^2_tomei_textBlack.gif') {
+    imageUrl = `https://blog.ec-maker.com/api/notion-blog/og?title=${postImgUpdated.title}`;
   } else {
     imageUrl = post.image;
   }
@@ -92,19 +95,19 @@ const Post: NextPage<Props> = ({ post }) => {
   return (
     <>
       <PostDetailTemplate
-        post={post}
+        post={postImgUpdated}
         comments={comments}
         onSubmit={handleCommentSubmit}
       />
 
       {/* meta seo */}
       <NextSeo
-        title={`${post.title} | EC maker`}
-        description={post.description}
+        title={`${postImgUpdated.title} | EC maker`}
+        description={postImgUpdated.description}
         openGraph={{
-          url: `https://blog.ec-maker.com/posts/${post.slug}`,
-          title: `${post.title} | EC maker`,
-          description: post.description,
+          url: `https://blog.ec-maker.com/posts/${postImgUpdated.slug}`,
+          title: `${postImgUpdated.title} | EC maker`,
+          description: postImgUpdated.description,
           images: [
             {
               url: imageUrl,
@@ -118,18 +121,18 @@ const Post: NextPage<Props> = ({ post }) => {
       />
       <ArticleJsonLd
         type="BlogPosting"
-        url={`https://blog.ec-maker.com/posts/${post.slug}`}
-        title={`${post.title} | EC maker`}
+        url={`https://blog.ec-maker.com/posts/${postImgUpdated.slug}`}
+        title={`${postImgUpdated.title} | EC maker`}
         images={[imageUrl]}
         datePublished="2015-02-05T08:00:00+08:00"
-        dateModified={post.updatedAt}
+        dateModified={postImgUpdated.updatedAt}
         authorName={[
           {
             name: 'EC maker',
             url: 'https://blog.ec-maker.com',
           },
         ]}
-        description={post?.description || ''}
+        description={postImgUpdated?.description || ''}
         isAccessibleForFree={true}
       />
     </>

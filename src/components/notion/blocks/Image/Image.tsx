@@ -40,24 +40,25 @@ export const Image: FC<Props> = ({ block }: Props) => {
   return (
     <div className="relative mx-auto mt-4 mb-4 flex flex-col items-center">
       <MediumZoom zoomMargin={40}>
-          <NextImage
-            className={imageClassName} // !U className を動的に変更
-            src={url}
-            alt={caption || ''}
-            width={3840}
-            height={2160}
-            title={caption}
-            priority
-            onError={(e) => {
-              console.error(e);
-              setIsError(true);
-            }}
-            // !U 画像の読み込み完了時に縦横比を計算
-            onLoadingComplete={({naturalWidth, naturalHeight}) => {
-              setAspectRatio(naturalWidth / naturalHeight);
-            }}
-          />
-        </MediumZoom>
+        <NextImage
+          className={imageClassName} // !U className を動的に変更
+          src={url}
+          alt={caption || ''}
+          width={3840}
+          height={2160}
+          title={caption}
+          priority
+          onError={(e) => {
+            console.error(e);
+            setIsError(true);
+          }}
+          // !U 画像の読み込み完了時に縦横比を計算
+          onLoadingComplete={({naturalWidth, naturalHeight}) => {
+            setAspectRatio(naturalWidth / naturalHeight);
+          }}
+          unoptimized={true} //Vercelの無料プランにおける next/image コンポーネントの画像最適化機能の制限（月1000件まで)最適化をスキップ。
+        />
+      </MediumZoom>
       {caption && (
         <figcaption className="text-xs text-gray-400 text-center">
           {caption}
