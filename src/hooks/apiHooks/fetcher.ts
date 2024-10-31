@@ -28,9 +28,12 @@ axios.interceptors.request.use(
 );
 
 export const getFetcher = async (url: string) => {
-  const response = await axios.get(url);
-
-  return response.data;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  
+  return response.json();
 };
 
 type PostFetcher = <T, U>(

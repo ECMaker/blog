@@ -10,6 +10,7 @@ import type {
   NumberedListItemBlockObjectResponse,
   ToDoBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
+import type { ParsedUrlQuery } from 'querystring';
 
 /* Replace */
 export type NotionDatabaseObjectResponse = DatabaseObjectResponse;
@@ -92,3 +93,24 @@ export type ExpandedBlockObjectResponse =
 export type BlockWithChildren<P = unknown> = P & {
   children?: ExpandedBlockObjectResponse[];
 };
+
+export type Params = ParsedUrlQuery & {
+  slug?: string;
+  tag?: string;
+  category?: string;
+  page?: string;
+};
+
+export type PageType = {
+  id: string;
+  cover: FileType | null;
+  // properties: Record<string, any>;
+  properties: NotionPostMeta;
+};
+
+export type FileType = {
+  type?: string
+  file?: { url: string,  expiry_time: string};
+  external?: { url: string };
+};
+ 

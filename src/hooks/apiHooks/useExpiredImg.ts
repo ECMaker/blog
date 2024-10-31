@@ -6,7 +6,7 @@ import useSWR from 'swr';
 
 const fetchArticleParts = async (slug: string): Promise<NotionPost> => {
   try {
-    const { data: articleParts } = await axios.get(`/api/article?slug=${slug}`)
+    const { data: articleParts } = await axios.get(`/api/notion-blog/article?slug=${slug}`)
 
     return articleParts as NotionPost
   } catch (error) {
