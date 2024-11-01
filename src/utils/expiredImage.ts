@@ -16,16 +16,16 @@ export const fetchPages = async ({
 }) => {
     const and: any = [
         {
-          property: "isPublic",
+          property: "Published",
           checkbox: {
             equals: true,
           },
         },
         {
-          property: "slug",
-          rich_text: {
-            is_not_empty: true,
-          },
+            property: "slug",
+            rich_text: {
+              is_not_empty: true,
+            },
         },
     ];
 
@@ -56,18 +56,30 @@ export const fetchPages = async ({
         });
     }
 
-    return await notion.databases.query({
-        database_id: process.env.NOTION_DATABASE || '',
-        filter: {
-            and: and,
-        },
-        sorts: [
-            {
-            property: "published",
-            direction: "descending",
-            },
-        ],
-    });
+    try {
+        const response = await notion.databases.query({
+                database_id: process.env.NOTION_DATABASE,
+                filter: {
+                    property: 'Published',
+                    checkbox: {
+                      equals: true,
+                    },
+                },
+                sorts: [
+                    {
+                  property: 'UpdatedAt',
+                    direction: "descending",
+                    },
+                ],
+            });
+        console.log("Pages response:", JSON.stringify(response));
+
+        return response;
+    } catch (error) {
+        console.error("Error fetching pages:", error);
+
+        return { results: [] };
+    }
 };
 
 export const fetchBlocksByPageId = async (pageId: string) => {
