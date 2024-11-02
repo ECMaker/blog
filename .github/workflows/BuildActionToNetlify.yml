@@ -61,15 +61,12 @@ jobs:
             netlify deploy --build --prod > cli.txt && break || sleep 60
           done
           # Extract URLs from cli.txt
-          URLS=$(sed -n '/Build logs:/,$p' cli.txt)
-          # Extract the rest of the log
-          LOG=$(sed '/Build logs:/Q' cli.txt)
+          URLS=$(sed -n '/Build logs:/,$p' cli.txt | sed 's|^\(.*\)|- [\1](\1)|') # Markdown形式でリンクに変換
+          # Extract the rest of the log and limit its size
+          LOG=$(sed '/Build logs:/Q' cli.txt | head -c 1000 | sed 's/$/<br>/' | tr '\n' ' ') # 改行を <br> に変換
           echo "<details><summary>Netlify Build Log</summary>"
-          echo "```"
           echo "$LOG"
-          echo "```"
-          echo "</details>"
-          echo "$URLS"
+          echo "</details><br>$URLS"
           echo "::endgroup::"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
