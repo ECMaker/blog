@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import type { FC } from 'react';
 import type { BlockWithChildren } from '~/types/notion';
@@ -6,7 +5,7 @@ import type { BlockWithChildren } from '~/types/notion';
 import { Button } from '@mantine/core';
 import NextImage from 'next/image';
 import { useState, useEffect } from 'react';
-import MediumZoom from 'react-medium-image-zoom'; // Import react-medium-image-zoom
+import MediumZoom from 'react-medium-image-zoom';
 
 import { DangerIcon, UpdateIcon } from '~/commons/icons';
 import { richTextToString } from '~/utils/richTextToString';
@@ -30,13 +29,15 @@ export const Image: FC<Props> = ({ block }: Props) => {
   useEffect(() => {
     if (isError && !sessionStorage.getItem('reloaded')) {
       const event = new Event('trigger-reload');
-      console.log("!U event", event); // ログを出力
+      // eslint-disable-next-line no-console
+      console.log("!U event", event);
       window.dispatchEvent(event);
     }
   }, [isError]);
 
   const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    console.error('Image load error:', e);
+    // eslint-disable-next-line no-console
+    console.log('!U Image load error:', e);
     setIsError(true);
   };
 

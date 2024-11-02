@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import type { PageType } from "~/types/notion"
 
 import axios from "axios"
@@ -71,12 +70,12 @@ export const fetchPages = async ({
                     direction: "descending",
                     },
                 ],
-            });
-        console.log("Pages response:", JSON.stringify(response));
+        });
 
         return response;
     } catch (error) {
-        console.error("Error fetching pages:", error);
+        // eslint-disable-next-line no-console
+        console.log("!U Error fetching pages:", error);
 
         return { results: [] };
     }
@@ -103,7 +102,9 @@ export const reFetchPage = async (slug: string): Promise<PageType> => {
 
       return page as PageType
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log("fetechPage")
+      // eslint-disable-next-line no-console
       console.log(error)
 
       return {} as PageType
@@ -116,7 +117,9 @@ export const reFetchPages = async (): Promise<PageType[]> => {
 
       return pages as PageType[]
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log("reFetechPages error!")
+      // eslint-disable-next-line no-console
       console.log(error)
 
       return [] as PageType[]
@@ -124,6 +127,7 @@ export const reFetchPages = async (): Promise<PageType[]> => {
 }
 export const includeExpiredFeaturedImages = (pages: PageType[]): boolean => {
     const now = Date.now()
+    // eslint-disable-next-line no-console
     console.log("アイキャッチ画像の有効期限チェック！")
     
     return pages.some((page) => {
@@ -131,9 +135,11 @@ export const includeExpiredFeaturedImages = (pages: PageType[]): boolean => {
             if (page.cover.type === 'file') {
                 const image = page.cover
                 if(image.file) {
+                    // eslint-disable-next-line no-console
                     console.log(image.file.expiry_time);
                 }            
                 if (image.file && image.file.expiry_time && Date.parse(image.file.expiry_time) < now) {
+                    // eslint-disable-next-line no-console
                     console.log("有効期限切れ アイキャッチ画像更新！")
     
                     return true

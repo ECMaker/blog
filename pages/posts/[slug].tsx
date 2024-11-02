@@ -20,7 +20,7 @@ import { getPage } from '~/server/notion/pages';
 import { saveToAlgolia } from '~/server/utils/algolia';
 import { setOgp } from '~/server/utils/ogp';
 import { PostDetailTemplate } from '~/templates/PostDetailTemplate';
-import { toMetaDescription, toPostMeta } from '~/utils/meta';
+import { toPostMeta, toMetaDescription } from '~/utils/meta';
 
 type Params = {
   slug: string;
@@ -48,7 +48,6 @@ export const getStaticProps = async (context: { params: Params }) => {
   const page_id = targetPost.id;
 
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
-
   const children = (await getAllBlocks(page_id)) as ExpandedBlockObjectResponse[];
 
   const childrenWithOgp = await setOgp(children);
@@ -95,10 +94,14 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => {
+
+  // eslint-disable-next-line no-console
+  console.log("!U post", post);
   const { data: postImgUpdated } = useExpiredImg(post);
-
+  // eslint-disable-next-line no-console
+  console.log("!U postImgUpdated", postImgUpdated);
+  
   const { data: comments, trigger } = useComments(postImgUpdated.id);
-
   const handleCommentSubmit = async (
     rich_text: NotionRichTextItemRequest[],
   ) => {

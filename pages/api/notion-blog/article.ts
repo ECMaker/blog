@@ -17,12 +17,6 @@ const ApiArticle = async function(req: NextApiRequest, res: NextApiResponse) {
 
   const { slug } = req.query as Params;
 
-  if (!slug) {
-    res.status(400).json({ error: "Slug is required" });
-
-    return;
-  }
-
   try {
     const post = await fetchPages({ slug: slug });
     if (!post.results || post.results.length === 0) {
@@ -32,7 +26,6 @@ const ApiArticle = async function(req: NextApiRequest, res: NextApiResponse) {
     }
     const page = post.results[0];
     const { results: blocks } = await fetchBlocksByPageId(page.id);
-
     const articleParts = { page, blocks };
 
     res.status(200).json(articleParts);
