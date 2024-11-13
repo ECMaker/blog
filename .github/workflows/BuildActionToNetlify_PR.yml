@@ -69,9 +69,9 @@ jobs:
           echo "::group::Post Netlify CLI Comment"
           # Extract URLs from cli.txt
           URLS=$(sed -n '/Build logs:/,$p' cli.txt)
-          # Extract the rest of the log and limit its size
-          LOG=$(sed '/Build logs:/Q' cli.txt | head -c 10000 | sed 's/$/<br>/' | tr '\n' ' ') # 改行を <br> に変換
-          COMMENT_BODY="<details><summary>Netlify Build Log</summary>$LOG</details><br>$URLS"
+          # Extract the rest of the log
+          LOG=$(sed '/Build logs:/Q' cli.txt)
+          COMMENT_BODY="<details><summary>Netlify Build Log</summary>$LOG</details>$URLS"
           JSON_BODY=$(jq -n --arg body "$COMMENT_BODY" '{"body": $body}')
           for i in {1..3}; do
             curl -X POST \
