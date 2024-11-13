@@ -67,8 +67,8 @@ jobs:
       - name: Post Netlify CLI Comment
         run: |
           echo "::group::Post Netlify CLI Comment"
-          # Extract URLs from cli.txt and convert to Markdown links
-          URLS=$(sed -n '/Build logs:/,$p' cli.txt | sed 's|^\(.*\)|- [\1](\1)|') # Markdown形式でリンクに変換
+          # Extract URLs from cli.txt
+          URLS=$(sed -n '/Build logs:/,$p' cli.txt)
           # Extract the rest of the log and limit its size
           LOG=$(sed '/Build logs:/Q' cli.txt | head -c 10000 | sed 's/$/<br>/' | tr '\n' ' ') # 改行を <br> に変換
           COMMENT_BODY="<details><summary>Netlify Build Log</summary>$LOG</details><br>$URLS"
