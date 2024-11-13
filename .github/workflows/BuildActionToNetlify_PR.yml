@@ -68,7 +68,7 @@ jobs:
         run: |
           echo "::group::Post Netlify CLI Comment"
           # Extract URLs from cli.txt
-          URLS=$(sed -n '/Build logs:/,$p' cli.txt)
+          URLS=$(sed -n '/Build logs:/,$p' cli.txt | sed 's|http\(s\)\?://\([a-zA-Z0-9./?=_-]*\)|[Link](http\1://\2)|g')
           # Extract the rest of the log
           LOG=$(sed '/Build logs:/Q' cli.txt)
           # Check if the log is too long and truncate if necessary
