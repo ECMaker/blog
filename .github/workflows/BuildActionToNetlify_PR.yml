@@ -71,6 +71,11 @@ jobs:
           URLS=$(sed -n '/Build logs:/,$p' cli.txt)
           # Extract the rest of the log
           LOG=$(sed '/Build logs:/Q' cli.txt)
+          # Check if the log is too long and truncate if necessary
+          MAX_LENGTH=4000
+          if [ ${#LOG} -gt $MAX_LENGTH ]; then
+            LOG="${LOG:0:$MAX_LENGTH}... (Log truncated due to length)"
+          fi
           COMMENT_BODY="<details><summary>Netlify Build Log</summary>$LOG</details>$URLS"
           JSON_BODY=$(jq -n --arg body "$COMMENT_BODY" '{"body": $body}')
           for i in {1..3}; do
