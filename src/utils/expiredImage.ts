@@ -21,7 +21,7 @@ export const fetchPages = async ({
           },
         },
         {
-            property: "slug",
+            property: "Slug",
             rich_text: {
               is_not_empty: true,
             },
@@ -30,7 +30,7 @@ export const fetchPages = async ({
 
     if (slug) {
         and.push({
-            property: "slug",
+            property: "Slug",
             rich_text: {
             equals: slug,
             },
@@ -39,7 +39,7 @@ export const fetchPages = async ({
 
     if (tag) {
         and.push({
-            property: "tags",
+            property: "Tags",
             multi_select: {
             contains: tag,
             },
@@ -48,7 +48,7 @@ export const fetchPages = async ({
 
     if (category) {
         and.push({
-            property: "categories",
+            property: "Categories",
             select: {
             equals: category,
             },
@@ -59,15 +59,12 @@ export const fetchPages = async ({
         const response = await notion.databases.query({
                 database_id: process.env.NOTION_DATABASE,
                 filter: {
-                    property: 'Published',
-                    checkbox: {
-                      equals: true,
-                    },
+                    and: and,
                 },
                 sorts: [
                     {
-                  property: 'UpdatedAt',
-                    direction: "descending",
+                        property: "Published",
+                        direction: "descending",
                     },
                 ],
         });
