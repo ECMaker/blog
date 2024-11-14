@@ -2,12 +2,10 @@ import type { ImageBlockObjectResponse } from '@notionhq/client/build/src/api-en
 import type { FC } from 'react';
 import type { BlockWithChildren } from '~/types/notion';
 
-import { Button } from '@mantine/core';
 import NextImage from 'next/image';
 import { useState, useEffect } from 'react';
 import MediumZoom from 'react-medium-image-zoom';
 
-import { DangerIcon, UpdateIcon } from '~/commons/icons';
 import { richTextToString } from '~/utils/richTextToString';
 
 type Props = {
