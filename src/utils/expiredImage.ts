@@ -1,4 +1,4 @@
-import type { PageType } from "~/types/notion"
+import type { NotionPageObjectResponse } from "~/types/notion"
 
 import axios from "axios"
 
@@ -93,58 +93,43 @@ export const fetchBlocksByPageId = async (pageId: string) => {
     
     return { results: data };
 }
-export const reFetchPage = async (slug: string): Promise<PageType> => {
+
+export const reFetchPages = async (): Promise<NotionPageObjectResponse[]> => {
     try {
-      const { data: page } = await axios.get(`/api/page?slug=${slug}`)
+      const { data: pages } = await axios.get("/api/notion-blog/pages")
 
-      return page as PageType
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log("fetechPage")
-      // eslint-disable-next-line no-console
-      console.log(error)
-
-      return {} as PageType
-    }
-}
-
-export const reFetchPages = async (): Promise<PageType[]> => {
-    try {
-      const { data: pages } = await axios.get("/api/pages")
-
-      return pages as PageType[]
+      return pages as NotionPageObjectResponse[]
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log("reFetechPages error!")
       // eslint-disable-next-line no-console
       console.log(error)
 
-      return [] as PageType[]
+      return [] as NotionPageObjectResponse[]
     }
 }
-export const includeExpiredFeaturedImages = (pages: PageType[]): boolean => {
-    const now = Date.now()
+export const includeExpiredFeaturedImages = (posts: NotionPageObjectResponse[]): boolean => {
+    const now = Date.now();
     // eslint-disable-next-line no-console
-    console.log("アイキャッチ画像の有効期限チェック！")
+    console.log("アイキャッチ画像の有効期限チェック！");
     
-    return pages.some((page) => {
-        if (page.cover) {
-            if (page.cover.type === 'file') {
-                const image = page.cover
-                if(image.file) {
+    return posts.some((page) => {
+        if (page.properties.Image && page.properties.Image.type === 'files') {
+            const files = page.properties.Image.files;
+
+            return files.some((file) => {
+                if (file.type === 'file' && file.file && file.file.expiry_time && Date.parse(file.file.expiry_time) < now) {
                     // eslint-disable-next-line no-console
-                    console.log(image.file.expiry_time);
-                }            
-                if (image.file && image.file.expiry_time && Date.parse(image.file.expiry_time) < now) {
-                    // eslint-disable-next-line no-console
-                    console.log("有効期限切れ アイキャッチ画像更新！")
-    
-                    return true
+                    console.log("有効期限切れ アイキャッチ画像更新！");
+
+                    return true;
                 }
-            }
+
+                return false;
+            });
         }
-    
-        return false
-    })
+
+        return false;
+    });
 }
   
