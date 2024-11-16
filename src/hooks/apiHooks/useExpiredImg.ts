@@ -105,17 +105,20 @@ export const useExpiredImg = (post: NotionPost) => {
       image: postImg.image
     };
 
+    // eslint-disable-next-line no-console
+    console.log("!U postImg", postImg);
+
     const updatedImages = postImg.children.filter(
-      (block: any) => block.type === "image"
+      (block: any) => block.type === "image" || block.type === "file" || block.type === "audio" || block.type === "video" || block.type === "pdf"
     );
 
     const mergedChildren = post.children.map((block) => {
-      if (block.type === "image") {
-        const updatedImage = updatedImages.find(
+      if (["image", "file", "audio", "video", "pdf"].includes(block.type)) {
+        const updatedBlock = updatedImages.find(
           (updatedBlock) => updatedBlock.id === block.id
         );
 
-        return updatedImage || block;
+        return updatedBlock || block;
       }
 
       return block;
