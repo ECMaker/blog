@@ -101,7 +101,42 @@ const includeExpiredImage = (post: NotionPost): boolean => {
 }
 
 export const useExpiredImg = (post: NotionPost) => {
-  const { data: postImg, error } = useSWR(includeExpiredImage(post) && post.slug, fetchArticleParts, { fallbackData: post });
+  const { data: postImg , error} = useSWR(includeExpiredImage(post) && post.slug, fetchArticleParts,{ fallbackData: post });
+
+  // eslint-disable-next-line no-console
+  console.log("!U postImg", postImg);
+
+  if (postImg) {
+    const newPost = {
+      ...post,
+      image: postImg.image
+    };
+
+    // postImgの中のimageブロックだけを抽出
+    const updatedImages = postImg.children.filter(
+      (block: any) => block.type === "image"
+    );
+
+    // postのchildrenを更新
+    const mergedChildren = post.children.map((block) => {
+      if (block.type === "image") {
+        // 同じIDのimageブロックを探して置き換える
+        const updatedImage = updatedImages.find(
+          (updatedBlock) => updatedBlock.id === block.id
+        );
+
+        return updatedImage || block; // 更新されたimageがあれば置き換え、なければそのまま
+      }
+
+      return block; // image以外のブロックはそのまま
+    });
+
+    // eslint-disable-next-line no-console
+    console.log("!U return", { data: { ...post, children: mergedChildren }, error });
+
+    // postにマージしたchildrenを設定
+    return { data: { ...newPost, children: mergedChildren }, error };
+  }
 
   return { data: postImg, error };
 };
