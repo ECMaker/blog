@@ -5,12 +5,14 @@ import type {
 } from '~/types/notion';
 
 import { ArticleJsonLd, NextSeo } from 'next-seo';
+import useSWR from 'swr';
 
 import dummy_notion_database_properties from '~/mocks/notion_database_properties.json';
 import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
 import { getDatabase, getDatabaseContentsAll } from '~/server/notion/databases';
 import { blogDatabaseId } from '~/server/notion/ids';
 import { PostsTemplate } from '~/templates/PostsTemplate';
+import { includeExpiredArrayImages, reFetchArrayPages } from '~/utils/expiredImage';
 
 export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
@@ -52,9 +54,15 @@ export const getStaticProps = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const PostIndex: NextPage<Props> = ({ postsArray, properties }) => {
+  // eslint-disable-next-line no-console
+  console.log("!U postsArray", postsArray)
+  const { data: postImgUpdArray} = useSWR(includeExpiredArrayImages(postsArray) && postsArray, reFetchArrayPages, { fallbackData: postsArray })
+  // eslint-disable-next-line no-console
+  console.log("!U postImgUpdArray", postImgUpdArray)
+
   return (
     <>
-      <PostsTemplate postsArray={postsArray} properties={properties} />
+      <PostsTemplate postsArray={postImgUpdArray} properties={properties} />
       {/* meta seo */}
       <NextSeo
         title="Blog | EC maker"
@@ -68,7 +76,7 @@ const PostIndex: NextPage<Props> = ({ postsArray, properties }) => {
         url="https://blog.ec-maker.com/posts/"
         images={['https://blog.ec-maker.com/ECmaker.gif']}
         datePublished="2015-02-05T08:00:00+08:00"
-        dateModified={postsArray[0][0].last_edited_time}
+        dateModified={postImgUpdArray[0][0].last_edited_time}
         authorName="Nobuyuki Kobayashi"
         description="Notionに追加した記事一覧"
       />

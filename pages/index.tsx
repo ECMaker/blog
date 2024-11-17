@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import { IndexTemplate } from '~/components/@templates/IndexTemplate';
 import dummy_notion_pages_latest from '~/mocks/notion_pages_latest.json';
 import { getDatabaseContents } from '~/server/notion/databases';
-import { includeExpiredFeaturedImages, reFetchPages } from '~/utils/expiredImage';
+import { includeExpiredIndexImages, reFetchIndexPages } from '~/utils/expiredImage';
 
 export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
@@ -47,7 +47,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const Home: NextPage<Props> = ({ posts }) => {
   // eslint-disable-next-line no-console
   console.log("!U posts", posts)
-  const { data: postImgUpdated } = useSWR(includeExpiredFeaturedImages(posts) && posts, reFetchPages, { fallbackData: posts })
+  const { data: postImgUpdated } = useSWR(includeExpiredIndexImages(posts) && posts, reFetchIndexPages, { fallbackData: posts })
   // eslint-disable-next-line no-console
   console.log("!U postImgUpdated", postImgUpdated)
 

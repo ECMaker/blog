@@ -3,6 +3,8 @@ import type { NotionPageObjectResponse } from "~/types/notion"
 import axios from "axios"
 
 import { notion } from "~/server/notion/client";
+import { getDatabaseContentsAll } from "~/server/notion/databases";
+import { blogDatabaseId } from "~/server/notion/ids";
 
 export const fetchPages = async ({
     slug,
@@ -63,7 +65,7 @@ export const fetchPages = async ({
                 },
                 sorts: [
                     {
-                        property: "Published",
+                        property: 'UpdatedAt',
                         direction: "descending",
                     },
                 ],
@@ -77,6 +79,27 @@ export const fetchPages = async ({
         return { results: [] };
     }
 };
+
+export const fetchArrayPages = async () => {
+    const pages = await getDatabaseContentsAll({
+        database_id: blogDatabaseId,
+        page_size: 12,
+        filter: {
+            property: 'Published',
+            checkbox: {
+                equals: true,
+            },
+        },
+        sorts: [
+            {
+                property: 'UpdatedAt',
+                direction: 'descending',
+            },
+        ],
+    });
+
+    return pages as unknown as NotionPageObjectResponse[][];
+}
 
 export const fetchBlocksByPageId = async (pageId: string) => {
     const data = [];
@@ -94,9 +117,9 @@ export const fetchBlocksByPageId = async (pageId: string) => {
     return { results: data };
 }
 
-export const reFetchPages = async (): Promise<NotionPageObjectResponse[]> => {
+export const reFetchIndexPages = async (): Promise<NotionPageObjectResponse[]> => {
     try {
-      const { data: pages } = await axios.get("/api/notion-blog/pages")
+      const { data: pages } = await axios.get("/api/notion-blog/indexPages")
 
       return pages as NotionPageObjectResponse[]
     } catch (error) {
@@ -108,7 +131,23 @@ export const reFetchPages = async (): Promise<NotionPageObjectResponse[]> => {
       return [] as NotionPageObjectResponse[]
     }
 }
-export const includeExpiredFeaturedImages = (posts: NotionPageObjectResponse[]): boolean => {
+
+export const reFetchArrayPages = async (): Promise<NotionPageObjectResponse[][]> => {
+    try {
+      const { data: pages } = await axios.get("/api/notion-blog/arrayPages")
+
+      return pages as NotionPageObjectResponse[][]
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log("reFetechPages error!")
+      // eslint-disable-next-line no-console
+      console.log(error)
+
+      return [] as NotionPageObjectResponse[][]
+    }
+}
+
+export const includeExpiredIndexImages = (posts: NotionPageObjectResponse[]): boolean => {
     const now = Date.now();
     // eslint-disable-next-line no-console
     console.log("アイキャッチ画像の有効期限チェック！");
@@ -132,4 +171,29 @@ export const includeExpiredFeaturedImages = (posts: NotionPageObjectResponse[]):
         return false;
     });
 }
-  
+export const includeExpiredArrayImages = (postsArray: NotionPageObjectResponse[][]): boolean => {
+    const now = Date.now();
+    // eslint-disable-next-line no-console
+    console.log("アイキャッチ画像の有効期限チェック！");
+    
+    return postsArray.some((pages) => {
+        return pages.some((page) => {
+            if (page.properties.Image && page.properties.Image.type === 'files') {
+                const files = page.properties.Image.files;
+
+                return files.some((file) => {
+                    if (file.type === 'file' && file.file && file.file.expiry_time && Date.parse(file.file.expiry_time) < now) {
+                        // eslint-disable-next-line no-console
+                        console.log("有効期限切れ アイキャッチ画像更新！");
+
+                        return true;
+                    }
+
+                    return false;
+                });
+            }
+
+            return false;
+        });
+    });
+}
