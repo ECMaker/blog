@@ -30,7 +30,7 @@ let allPostsCache: NotionPostMeta[] | null = null;
 
 export const getStaticProps = async (context: { params: Params }) => {
   if (process.env.ENVIRONMENT === 'local') {
-    const debugPost = true; // true: normal, false: blockPreview
+    const debugPost = false; // true: normal, false: blockPreview
 
     return {
       props: {
@@ -64,7 +64,7 @@ export const getStaticProps = async (context: { params: Params }) => {
     props: {
       post,
     },
-    revalidate: 60, //[s] added ISR.
+    revalidate: 1, //[s] added ISR.
   };
 };
 

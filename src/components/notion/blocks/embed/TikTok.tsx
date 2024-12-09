@@ -43,20 +43,6 @@ export const TikTok = ({ url, caption }: Props) => {
 };
 
 const Skeleton = ({ url }: { url: string }) => {
-  useEffect(() => {
-    const checkSkeletonVisibility = () => {
-      setTimeout(() => {
-        const skeletonElement = document.querySelector('.animate-pulse');
-        if (skeletonElement && !sessionStorage.getItem('reloaded')) {
-          const event = new Event('trigger-reload');
-          window.dispatchEvent(event);
-        }
-      }, 5000);
-    };
-
-    checkSkeletonVisibility();
-  }, []);
-
   return (
     <div className="mb-4 relative w-80 left-1/2 transform -translate-x-1/2 flex flex-col items-center bg-white drop-shadow ">
       <div className="animate-pulse">

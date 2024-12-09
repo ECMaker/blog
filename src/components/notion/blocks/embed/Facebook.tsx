@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Script from 'next/script';
-import { useReducer, useRef, useEffect } from 'react';
+import { useReducer, useRef } from 'react';
 
 import { useMutationObserver } from '~/hooks/useMutationObserver';
 
@@ -40,20 +40,6 @@ export const Facebook = ({ url, caption }: Props) => {
 };
 
 const Skeleton = ({ url }: { url: string }) => {
-  useEffect(() => {
-    const checkSkeletonVisibility = () => {
-      setTimeout(() => {
-        const skeletonElement = document.querySelector('.animate-pulse');
-        if (skeletonElement && !sessionStorage.getItem('reloaded')) {
-          const event = new Event('trigger-reload');
-          window.dispatchEvent(event);
-        }
-      }, 5000);
-    };
-
-    checkSkeletonVisibility();
-  }, []);
-
   return (
     <div className="absolute top-0 w-full min-w-[350px] max-w-[750px] bg-white drop-shadow">
       <div className="animate-pulse">

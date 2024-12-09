@@ -16,13 +16,6 @@ export const PostListItem: FC<Props> = ({ post }) => {
   const meta = useMemo(() => toPostMeta(post), [post]);
   const expandPost = { ...toPostMeta(post) };
  
-  const handleImageError = () => {
-    if (!sessionStorage.getItem('reloaded')) {
-      const event = new Event('trigger-reload');
-      window.dispatchEvent(event);
-    }
-  };
-
   return (
     <div
       className="flex h-24 cursor-pointer items-start gap-5 rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sm:relative md:h-48"
@@ -35,7 +28,6 @@ export const PostListItem: FC<Props> = ({ post }) => {
         height={192}
         priority
         className="h-full w-20 rounded-l-md object-cover md:w-64"
-        onError={handleImageError}
       />
       <div
         /*icon+tag+Updated,Categoy+Title*/ className="flex-col justify-between w-full"
