@@ -3,6 +3,7 @@ import type { NotionPost } from '~/types/notion';
 import axios from 'axios';
 import useSWR from 'swr';
 
+import { setOgp } from '~/server/utils/ogp';
 import { toMetaDescription, toPostMeta } from '~/utils/meta';
 
 const fetchArticleParts = async (slug: string): Promise<NotionPost> => {
@@ -58,10 +59,12 @@ const fetchArticleParts = async (slug: string): Promise<NotionPost> => {
       return acc;
     }, []);
 
+    const childrenWithOgp = await setOgp(formattedBlocks);
+
     const post: NotionPost = {
       ...toPostMeta(page),
       description: toMetaDescription(formattedBlocks),
-      children: formattedBlocks,
+      children: childrenWithOgp,
     };
 
     return post;
@@ -80,18 +83,19 @@ const includeExpiredImage = (post: NotionPost): boolean => {
   const blocks = post.children;
 
   return blocks.some(block => {
-    if (block.type === 'image' && block.image.type === 'file') {
-      const image = block.image.file;
-      if (image && image.expiry_time && Date.parse(image.expiry_time) < now) {
+    const fileTypes = ["image", "file", "audio", "video", "pdf"];
+    if (fileTypes.includes(block.type)) {
+      const file = (block as any)[block.type]?.file;
+      if (file && file.expiry_time && Date.parse(file.expiry_time) < now) {
         // eslint-disable-next-line no-console
-        console.log(image.expiry_time);
+        console.log(file.expiry_time);
         // eslint-disable-next-line no-console
-        console.log("有効期限切れ 記事画像更新！");
+        console.log("有効期限切れ 記事ファイル更新！");
 
         return true;
       }
     }
-
+    
     return false;
   });
 }
@@ -109,7 +113,7 @@ export const useExpiredImg = (post: NotionPost) => {
     console.log("!U postImg", postImg);
 
     const updatedImages = postImg.children.filter(
-      (block: any) => block.type === "image" || block.type === "file" || block.type === "audio" || block.type === "video" || block.type === "pdf"
+      (block) => block.type === "image" || block.type === "file" || block.type === "audio" || block.type === "video" || block.type === "pdf"
     );
 
     const mergedChildren = post.children.map((block) => {
