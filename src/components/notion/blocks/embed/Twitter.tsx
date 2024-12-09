@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Script from 'next/script';
-import { useReducer, useRef } from 'react';
+import { useReducer, useRef, useEffect } from 'react';
 
 import { useMutationObserver } from '~/hooks/useMutationObserver';
 
@@ -64,6 +64,20 @@ const Timeline = ({ url, caption }: Props) => {
 };
 
 const Skeleton = ({ url }: Props) => {
+  useEffect(() => {
+    const checkSkeletonVisibility = () => {
+      setTimeout(() => {
+        const skeletonElement = document.querySelector('.animate-pulse');
+        if (skeletonElement && !sessionStorage.getItem('reloaded')) {
+          const event = new Event('trigger-reload');
+          window.dispatchEvent(event);
+        }
+      }, 5000);
+    };
+
+    checkSkeletonVisibility();
+  }, []);
+
   return (
     <div className="mb-2 relative rounded-lg bg-white drop-shadow ">
       <div className="flex h-[600px] animate-pulse flex-col justify-between px-4 pb-4 pt-3">

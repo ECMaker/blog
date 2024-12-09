@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
+import { useEffect } from 'react';
 
 type Props = {
   url: string;
@@ -33,6 +34,20 @@ type SkeletonProps = {
 };
 
 const Skeleton = ({ url }: SkeletonProps) => {
+  useEffect(() => {
+    const checkSkeletonVisibility = () => {
+      setTimeout(() => {
+        const skeletonElement = document.querySelector('.animate-pulse');
+        if (skeletonElement && !sessionStorage.getItem('reloaded')) {
+          const event = new Event('trigger-reload');
+          window.dispatchEvent(event);
+        }
+      }, 5000);
+    };
+
+    checkSkeletonVisibility();
+  }, []);
+
   return (
     <div className="relative w-full bg-white drop-shadow">
       <div className="animate-pulse">
