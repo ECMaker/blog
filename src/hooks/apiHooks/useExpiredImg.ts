@@ -3,7 +3,7 @@ import type { NotionPost } from '~/types/notion';
 import axios from 'axios';
 import useSWR from 'swr';
 
-import { setOgp } from '~/server/utils/ogp';
+// import { setOgp } from '~/server/utils/ogp';
 import { toMetaDescription, toPostMeta } from '~/utils/meta';
 
 const fetchArticleParts = async (slug: string): Promise<NotionPost> => {
@@ -59,12 +59,12 @@ const fetchArticleParts = async (slug: string): Promise<NotionPost> => {
       return acc;
     }, []);
 
-    const childrenWithOgp = await setOgp(formattedBlocks);
+    // const childrenWithOgp = await setOgp(formattedBlocks);
 
     const post: NotionPost = {
       ...toPostMeta(page),
       description: toMetaDescription(formattedBlocks),
-      children: childrenWithOgp,
+      children: formattedBlocks,
     };
 
     return post;

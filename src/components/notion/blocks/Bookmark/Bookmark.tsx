@@ -5,21 +5,37 @@ import type { BlockWithChildren } from '~/types/notion';
 import type { Ogp } from '~/types/ogp';
 
 import { Skeleton } from '@mantine/core';
+import { useState, useEffect } from 'react';
+
+import { useGetOgp } from '~/hooks/apiHooks/useGetOgp';
 
 type Props = {
   block: BlockWithChildren<BookmarkBlockObjectResponse> & { ogp?: Ogp };
 };
 
 export const Bookmark: FC<Props> = ({ block }: Props) => {
-  const ogp = block.ogp
-    ? block.ogp
-    : {
-        url: block.bookmark.url,
-        title: '',
-        description: '',
-        imageUrl: '',
-        faviconUrl: '',
-      };
+  const { data: ogpData, error } = useGetOgp(block.bookmark.url);
+  const [ogp, setOgp] = useState(() => ({
+    url: block.bookmark.url,
+    title: '',
+    description: '',
+    imageUrl: '',
+    faviconUrl: '',
+  }));
+
+  useEffect(() => {
+    if (ogpData) {
+      setOgp(ogpData);
+    }
+    if (error) {
+      // eslint-disable-next-line no-console
+      console.log('Error fetching OGP data:', error);
+    }
+  }, [ogpData, error]);
+
+  // eslint-disable-next-line no-console
+  console.log('OGP Image URL:', ogp.imageUrl);
+
   const noOgp = !ogp.title && !ogp.description && !ogp.imageUrl;
 
   return !noOgp ? (
