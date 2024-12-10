@@ -62,7 +62,7 @@ body::before {
   top: 0;
   left: 0;
   z-index: -10;
-  background-color: #ffedd5;
+  background-color: #e5e7eb; /* bg-gray-200 */
 }
 
 @layer base {
@@ -85,20 +85,20 @@ body::before {
 
   /* !U ./tailwind.config.js でtext-primaryなどを定義しないと無意味かも */
   .text-primary {
-    /* text-orange-400; */
-    color: #f97316;
+    /* text-gray-500; */
+    color: #6b7280;
   }
   .text-secondary {
     /* text-slate-800; */
-    color: #1e293b;
+    color: #1E293B;
   }
   .bg-primary {
-    /* text-orange-100; */
-    background-color: #ffedd5;
+    /* text-gray-100; */
+    background-color: #f1f5f9;
   }
   .bg-secondary {
-    /* text-orange-50; */
-    background-color: #fff7ed;
+    /* text-gray-50; */
+    background-color: #f9fafb;
   }
 }
 @layer utilities {
