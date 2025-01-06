@@ -19,7 +19,7 @@ export const Image: FC<Props> = ({ block }: Props) => {
       : block.image.file.url;
   const caption =
     block.image.caption.length > 0 ? richTextToString(block.image.caption) : '';
-  const [isError, setIsError] = useState(false);
+  const [isError] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
   const imageClassName = aspectRatio && aspectRatio > 1 ? "object-contain h-auto w-full" : "object-contain h-auto w-auto";
@@ -32,12 +32,6 @@ export const Image: FC<Props> = ({ block }: Props) => {
       window.dispatchEvent(event);
     }
   }, [isError]);
-
-  const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    // eslint-disable-next-line no-console
-    console.log('!U Image load error:', e);
-    setIsError(true);
-  };
 
   const handleLoad = () => {
     setLoaded(true);
@@ -54,7 +48,9 @@ export const Image: FC<Props> = ({ block }: Props) => {
           height={2160}
           title={caption}
           priority
-          onError={handleError}
+          onError={(e) => {
+            e.currentTarget.src = '/logos/900^2_tomei_textBlack.gif';
+          }}
           onLoadingComplete={({ naturalWidth, naturalHeight }) => {
             setAspectRatio(naturalWidth / naturalHeight);
             handleLoad();
