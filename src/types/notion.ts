@@ -113,4 +113,5 @@ export type FileType = {
   file?: { url: string,  expiry_time: string};
   external?: { url: string };
 };
- 
+
+export type MediaBlockTypes = 'image' | 'file' | 'audio' | 'video' | 'pdf';

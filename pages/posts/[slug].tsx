@@ -10,7 +10,7 @@ import type {
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 
 import { useComments } from '~/hooks/apiHooks/useComments';
-import { useExpiredImg } from '~/hooks/apiHooks/useExpiredImg';
+import { useExpiredFile } from '~/hooks/apiHooks/useExpiredFile';
 import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
 import dummy_notion_post from '~/mocks/notion_post.json';
 import dummy_notion_post_blockPreview from '~/mocks/notion_post_previewBlocks.json';
@@ -97,7 +97,7 @@ const Post: NextPage<Props> = ({ post }) => {
 
   // eslint-disable-next-line no-console
   console.log("!U post", post);
-  const { data: postImgUpdated } = useExpiredImg(post);
+  const { data: postImgUpdated } = useExpiredFile(post);
   // eslint-disable-next-line no-console
   console.log("!U postImgUpdated", postImgUpdated);
   
