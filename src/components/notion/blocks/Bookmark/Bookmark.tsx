@@ -14,20 +14,28 @@ type Props = {
 };
 
 export const Bookmark: FC<Props> = ({ block }: Props) => {
+  // 初期 OGP データを設定（block.ogp が存在する場合はそれを使用）
+  const initialOgp = block.ogp
+    ? block.ogp
+    : {
+        url: block.bookmark.url,
+        title: '',
+        description: '',
+        imageUrl: '',
+        faviconUrl: '',
+      };
+  
+  const [ogp, setOgp] = useState<Ogp>(initialOgp);
+
+  // 最新の OGP データを取得
   const { data: ogpData, error } = useGetOgp(block.bookmark.url);
-  const [ogp, setOgp] = useState(() => ({
-    url: block.bookmark.url,
-    title: '',
-    description: '',
-    imageUrl: '',
-    faviconUrl: '',
-  }));
 
   useEffect(() => {
     if (ogpData) {
       setOgp(ogpData);
     }
     if (error) {
+      // エラーハンドリング（必要に応じてユーザーへの通知などを追加）
       // eslint-disable-next-line no-console
       console.log('Error fetching OGP data:', error);
     }
@@ -53,11 +61,15 @@ export const Bookmark: FC<Props> = ({ block }: Props) => {
           {ogp.description}
         </div>
         <div className="flex items-center gap-2">
-          <img
-            src={ogp.faviconUrl}
-            className="h-4 w-4"
-            alt="bookmark favicon image"
-          />
+          {ogp.faviconUrl ? (
+            <img
+              src={ogp.faviconUrl}
+              className="h-4 w-4"
+              alt="bookmark favicon image"
+            />
+          ) : (
+            <Skeleton className="h-4 w-4" />
+          )}
           <div className="text-xs line-clamp-1">{ogp?.url}</div>
         </div>
       </div>

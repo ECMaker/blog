@@ -301,7 +301,7 @@
                 "url": "https://blog.ec-maker.com/posts/icon",
                 "title": "二次元プロフ画像作成 アイコン作成 | EC maker",
                 "description": "1. 自撮り撮影2. アプリで3D写真から2D画像を生成— 以下 additional option —3. さらに変換　表情のバリエーションを作る...",
-                "imageUrl": "https://prod-files-secure.s3.us-west-2.amazonaws.com/33aab3b9-f114-454a-9e23-ed5a17aea264/d5163111-c312-42c6-8775-372129be089b/6_20230330_123922_0005_-_%E3%82%B3%E3%83%94%E3%83%BC.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45GO43JXI4%2F20241031%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20241031T072042Z&X-Amz-Expires=3600&X-Amz-Signature=af8a19c025b45bc8375a90b57ccd89e97a79e8eb0d62065a2eb7eb073da8f38f&X-Amz-SignedHeaders=host&x-id=GetObject",
+                "imageUrl": "https://prod-files-secure.s3.us-west-2.amazonaws.com/33aab3b9-f114-454a-9e23-ed5a17aea264/d5163111-c312-42c6-8775-372129be089b/6_20230330_123922_0005_-_%E3%82%B3%E3%83%94%E3%83%BC.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45FSPPWI6X%2F20250106%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250106T054000Z&X-Amz-Expires=3600&X-Amz-Signature=96e2701aa435b70edc6323ae108ffd395e1ad06f85411638c386924350dcbbdd&X-Amz-SignedHeaders=host&x-id=GetObject",
                 "faviconUrl": "https://www.google.com/s2/favicons?domain=https://blog.ec-maker.com/posts/icon"
             }
         },
@@ -351,7 +351,7 @@
             }
         },
         {
-            "id": "0.4390269555647892",
+            "id": "0.9799241575280087",
             "type": "bulleted_list",
             "bulleted_list": {
                 "children": [
@@ -400,7 +400,7 @@
                         },
                         "children": [
                             {
-                                "id": "0.09230898148304156",
+                                "id": "0.3733904109670072",
                                 "type": "bulleted_list",
                                 "bulleted_list": {
                                     "children": [
@@ -449,7 +449,7 @@
                                             },
                                             "children": [
                                                 {
-                                                    "id": "0.716790243298711",
+                                                    "id": "0.02283783861793287",
                                                     "type": "bulleted_list",
                                                     "bulleted_list": {
                                                         "children": [
@@ -511,7 +511,7 @@
             }
         },
         {
-            "id": "0.8434075764293238",
+            "id": "0.18661040559377784",
             "type": "numbered_list",
             "numbered_list": {
                 "children": [
@@ -560,7 +560,7 @@
                         },
                         "children": [
                             {
-                                "id": "0.33218207739371186",
+                                "id": "0.22933008570990343",
                                 "type": "numbered_list",
                                 "numbered_list": {
                                     "children": [
@@ -609,7 +609,7 @@
                                             },
                                             "children": [
                                                 {
-                                                    "id": "0.015574392842508056",
+                                                    "id": "0.45859164056017954",
                                                     "type": "numbered_list",
                                                     "numbered_list": {
                                                         "children": [
@@ -710,7 +710,7 @@
                                 }
                             },
                             {
-                                "id": "0.17758983164800024",
+                                "id": "0.576436979816856",
                                 "type": "bulleted_list",
                                 "bulleted_list": {
                                     "children": [
@@ -759,7 +759,7 @@
                                             },
                                             "children": [
                                                 {
-                                                    "id": "0.42837414772591087",
+                                                    "id": "0.49556477733811555",
                                                     "type": "bulleted_list",
                                                     "bulleted_list": {
                                                         "children": [
@@ -1606,7 +1606,7 @@
             "ogp": {
                 "url": "https://www.instagram.com/p/C-5w4V0yAAQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
                 "title": "Notion | Make with Notion, Notion窶冱 first ever in-person conference, is happening on Thursday, October 24, at Pier 27 in San Francisco!... | Instagram",
-                "description": "1,566 likes, 20 comments - notionhq on August 20, 2024: \"Make with Notion, Notion’s first ever in-person conference, is happening on Thursday, October 24, at Pier 27 in San Francisco! 🔷 makewithnotion.com | #makewithnotion\n\nFor a limited time, secure your spot for 10% off with code [MWN10] → Or register to join us virtually for free, from anywhere in the world.\". ",
+                "description": "1,572 likes, 20 comments - notionhq on August 20, 2024: \"Make with Notion, Notion’s first ever in-person conference, is happening on Thursday, October 24, at Pier 27 in San Francisco! 🔷 makewithnotion.com | #makewithnotion\n\nFor a limited time, secure your spot for 10% off with code [MWN10] → Or register to join us virtually for free, from anywhere in the world.\". ",
                 "imageUrl": "",
                 "faviconUrl": "https://www.google.com/s2/favicons?domain=https://www.instagram.com/p/C-5w4V0yAAQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
             }
@@ -2203,9 +2203,9 @@
             },
             "ogp": {
                 "url": "https://www.notion.so/ja/product?utm_source=google&utm_campaign=14877655427&utm_medium=125922091617&utm_content=552465064290&utm_term=notion&targetid=aud-1053779029641:kwd-312974742&gclid=Cj0KCQiAgP6PBhDmARIsAPWMq6m0YYFXJUqD5SDIQNsjZiPHi8-mo3H4ZJb7K16oV-vhkiz_ziztHgsaAoeSEALw_wcB",
-                "title": "Wiki、ドキュメント、プロジェクトがつながるコネクテッドワークスペース | Notion (ノーション)",
-                "description": "1人でもチームでも使える、オールインワンのワークスペース。毎日使うアプリケーションを、ひとつにまとめます。",
-                "imageUrl": "https://www.notion.so/front-static/meta/default.png",
+                "title": "Wiki、ドキュメント、プロジェクト機能をすべてつなげたワークスペース | Notion (ノーション)",
+                "description": "1人でもチームでも使���る、オールインワンのワークスペース。毎日使うアプリケーションを、ひとつにまとめます。",
+                "imageUrl": "https://www.notion.com/front-static/meta/default.png",
                 "faviconUrl": "https://www.google.com/s2/favicons?domain=https://www.notion.so/ja/product?utm_source=google&utm_campaign=14877655427&utm_medium=125922091617&utm_content=552465064290&utm_term=notion&targetid=aud-1053779029641:kwd-312974742&gclid=Cj0KCQiAgP6PBhDmARIsAPWMq6m0YYFXJUqD5SDIQNsjZiPHi8-mo3H4ZJb7K16oV-vhkiz_ziztHgsaAoeSEALw_wcB"
             }
         },
@@ -3071,7 +3071,7 @@
             ]
         },
         {
-            "id": "0.0917662013966063",
+            "id": "0.11787674352806654",
             "type": "to_do_list",
             "to_do_list": {
                 "children": [
@@ -4746,7 +4746,7 @@
                         "url": "https://x.com/NotionHQ/status/1615789775520432129",
                         "title": "",
                         "description": "We just hit 1 MILLION MEMBERS across community-led Notion groups, representing all of these countries (wow!):\n\n🇵🇱🇷🇺🇹🇼🇺🇦🇪🇬🇵🇸🇫🇷🇯🇵🇨🇦🇮🇳🇧🇷🇳🇱🇨🇭🇵🇭🇰🇷🇵🇹🇸🇬🇺🇸🇬🇧🇲🇽🇪🇸🇨🇳🇩🇪🇮🇩🇬🇭🇲🇾🇧🇪🇿🇦🇦🇺🇸🇾🇵🇰🇵🇪🇹🇭🇦🇷🇹🇷🇨🇴🇬🇷🇮🇹🇻🇳🇨🇱🇦🇼🇱🇰🏴󠁧󠁢󠁳󠁣󠁴󠁿🇻🇪🇯🇲🇸🇻🇫🇮🇲🇳🇲🇲🇲🇦🇭🇲🇩🇰🇹🇹🇵🇦🇷🇴🇧🇩🇭🇺🇰🇬🇸🇬🇮🇪🇦🇿🇨🇿🇮🇱🇳🇬🇵🇱🇸🇪🇦🇹🇸🇰🇪🇪🇸🇻🇯🇴🇸🇦🇪🇬🇹🇳🇦🇪🇮🇸🇱🇹🇭🇰🇵🇫🇰🇿",
-                        "imageUrl": "https://pbs.twimg.com/profile_images/1843300967082508288/QnIhb2jI_200x200.jpg",
+                        "imageUrl": "https://pbs.twimg.com/profile_images/1868804221120004096/ZVikmixp_200x200.jpg",
                         "faviconUrl": "https://www.google.com/s2/favicons?domain=https://x.com/NotionHQ/status/1615789775520432129"
                     }
                 }
@@ -4824,7 +4824,7 @@
             }
         },
         {
-            "id": "0.04383311219265562",
+            "id": "0.6711564782170374",
             "type": "numbered_list",
             "numbered_list": {
                 "children": [
