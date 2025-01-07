@@ -1,11 +1,9 @@
-import type { NotionPost, ExpandedBlockObjectResponse, NotionPageObjectResponse, MediaBlockTypes } from '~/types/notion';
+import type { NotionPost, ExpandedBlockObjectResponse, NotionPageObjectResponse } from '~/types/notion';
 
 import axios from 'axios';
 import useSWR from 'swr';
 
 import { toMetaDescription, toPostMeta } from '~/utils/meta';
-
-const mediaTypes: MediaBlockTypes[] = ['image', 'file', 'audio', 'video', 'pdf'];
 
 /**
  * ブロックから file 情報を取り出すヘルパー
@@ -91,35 +89,35 @@ const fetchArticleParts = async (slug: string): Promise<NotionPost> => {
   try {
     const response = await axios.get(`/api/notion-blog/article?slug=${slug}`);
     if (!response.data) {
-
       // eslint-disable-next-line no-console
-      console.log("!U No data received from API");
+      console.error('No data received from API');
 
       return {} as NotionPost;
     }
 
     const { page, blocks } = response.data as {
-      page: NotionPageObjectResponse; // ここは適宜 PageType としてもOK
+      page: NotionPageObjectResponse;
       blocks: ExpandedBlockObjectResponse[];
     };
-
-    // getAllBlocks.ts と同様のグルーピング
-    const formattedBlocks = groupListBlocks(blocks);
-
+    // eslint-disable-next-line no-console
+    console.log('!U blocks', response, blocks);
+    const expandedBlocks = groupListBlocks(blocks); // getAllBlocks.ts と同様にListsをグルーピング
+    // eslint-disable-next-line no-console
+    console.log('!U expandedBlocks', expandedBlocks);
     const post: NotionPost = {
       ...toPostMeta(page),
-      description: toMetaDescription(formattedBlocks),
-      children: formattedBlocks,
+      description: toMetaDescription(expandedBlocks),
+      children: expandedBlocks,
     };
 
     return post;
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.log("fetchArticleParts Error!", error);
-
+    console.error('fetchArticleParts Error!', error);
+    
     return {} as NotionPost;
   }
-}
+};
 
 const includeExpiredFile = (post: NotionPost): boolean => {
   const now = Date.now();
@@ -142,40 +140,13 @@ const includeExpiredFile = (post: NotionPost): boolean => {
 export const useExpiredFile = (post: NotionPost) => {
   // includeExpiredImage(post) が true => 再取得
   // そのときキー = post.slug
-  const { data: postImg, error } = useSWR(
+  const { data: fetchPost, error } = useSWR(
     includeExpiredFile(post) && post.slug,
     fetchArticleParts,
     { fallbackData: post }
   );
+   // eslint-disable-next-line no-console
+   console.log("!U postImg", fetchPost);
 
-  if (postImg) {
-    const newPost = {
-      ...post,
-      image: postImg.image,
-    };
-
-    // eslint-disable-next-line no-console
-    console.log("!U postImg", postImg);
-
-    // 更新されたメディアブロックのみを抽出
-    const updatedMediaBlocks = postImg.children.filter(
-      (block) =>
-        mediaTypes.includes(block.type as MediaBlockTypes)
-    );
-
-    // 既存のブロックと更新されたブロックをマージ
-    const mergedChildren = post.children.map((block) => {
-      if (mediaTypes.includes(block.type as MediaBlockTypes)) {
-        const updated = updatedMediaBlocks.find((b) => b.id === block.id);
-
-        return updated || block;
-      }
-
-      return block;
-    });
-
-    return { data: { ...newPost, children: mergedChildren }, error };
-  }
-
-  return { data: postImg, error };
+  return { data: fetchPost, error };
 };

@@ -13,6 +13,9 @@ export const getAllBlocks = async (
 ): Promise<ExpandedBlockObjectResponse[]> => {
   const allResults: (BlockObjectResponse | PartialBlockObjectResponse)[] = [];
 
+  // eslint-disable-next-line no-console
+  console.log("!U allResults", allResults);
+
   let hasMore = true;
   while (hasMore) {
     const res = await notion.blocks.children.list({

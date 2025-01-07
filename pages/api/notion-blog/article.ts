@@ -1,10 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Params } from "~/types/notion";
 
-import {
-  fetchPages,
-  fetchBlocksByPageId,
-} from '~/utils/expiredImage'
+import { getAllBlocks } from '~/server/notion/getAllBlocks';
+import { fetchPages } from '~/utils/expiredImage';
 
 const ApiArticle = async function(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader('Content-Type', 'application/json')
@@ -25,7 +23,8 @@ const ApiArticle = async function(req: NextApiRequest, res: NextApiResponse) {
       return;
     }
     const page = post.results[0];
-    const { results: blocks } = await fetchBlocksByPageId(page.id);
+    const page_id = page.id;
+    const blocks = await getAllBlocks(page_id);
     const articleParts = { page, blocks };
 
     res.status(200).json(articleParts);

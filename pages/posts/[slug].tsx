@@ -49,6 +49,9 @@ export const getStaticProps = async (context: { params: Params }) => {
 
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
   const children = (await getAllBlocks(page_id)) as ExpandedBlockObjectResponse[];
+  
+  // eslint-disable-next-line no-console
+  console.log("!U children", children);
 
   const childrenWithOgp = await setOgp(children);
 
@@ -94,48 +97,47 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => {
-
   // eslint-disable-next-line no-console
-  console.log("!U post", post);
-  const { data: postImgUpdated } = useExpiredFile(post);
+  console.log('!U post', post);
+  const { data: postMediaUpdated } = useExpiredFile(post);
   // eslint-disable-next-line no-console
-  console.log("!U postImgUpdated", postImgUpdated);
+  console.log('!U postMediaUpdated', postMediaUpdated);
   
-  const { data: comments, trigger } = useComments(postImgUpdated.id);
+  const { data: comments, trigger } = useComments(postMediaUpdated.id);
   const handleCommentSubmit = async (
     rich_text: NotionRichTextItemRequest[],
   ) => {
     await trigger({
       parent: {
-        page_id: postImgUpdated.id,
+        page_id: postMediaUpdated.id,
       },
       rich_text,
     });
   };
 
   let imageUrl;
-  if (postImgUpdated.image === '/logos/900^2_tomei_textBlack.gif') {
-    imageUrl = `https://blog.ec-maker.com/api/notion-blog/og?title=${postImgUpdated.title}`;
+  if (postMediaUpdated.image === '/logos/900^2_tomei_textBlack.gif') {
+    imageUrl = `https://blog.ec-maker.com/api/notion-blog/og?title=${postMediaUpdated.title}`;
   } else {
-    imageUrl = postImgUpdated.image;
+    imageUrl = postMediaUpdated.image;
   }
 
   return (
     <>
       <PostDetailTemplate
-        post={postImgUpdated}
+        post={postMediaUpdated}
         comments={comments}
         onSubmit={handleCommentSubmit}
       />
 
       {/* meta seo */}
       <NextSeo
-        title={`${postImgUpdated.title} | EC maker`}
-        description={postImgUpdated.description}
+        title={`${postMediaUpdated.title} | EC maker`}
+        description={postMediaUpdated.description}
         openGraph={{
-          url: `https://blog.ec-maker.com/posts/${postImgUpdated.slug}`,
-          title: `${postImgUpdated.title} | EC maker`,
-          description: postImgUpdated.description,
+          url: `https://blog.ec-maker.com/posts/${postMediaUpdated.slug}`,
+          title: `${postMediaUpdated.title} | EC maker`,
+          description: postMediaUpdated.description,
           images: [
             {
               url: imageUrl,
@@ -149,18 +151,18 @@ const Post: NextPage<Props> = ({ post }) => {
       />
       <ArticleJsonLd
         type="BlogPosting"
-        url={`https://blog.ec-maker.com/posts/${postImgUpdated.slug}`}
-        title={`${postImgUpdated.title} | EC maker`}
+        url={`https://blog.ec-maker.com/posts/${postMediaUpdated.slug}`}
+        title={`${postMediaUpdated.title} | EC maker`}
         images={[imageUrl]}
         datePublished="2015-02-05T08:00:00+08:00"
-        dateModified={postImgUpdated.updatedAt}
+        dateModified={postMediaUpdated.updatedAt}
         authorName={[
           {
             name: 'EC maker',
             url: 'https://blog.ec-maker.com',
           },
         ]}
-        description={postImgUpdated?.description || ''}
+        description={postMediaUpdated?.description || ''}
         isAccessibleForFree={true}
       />
     </>
