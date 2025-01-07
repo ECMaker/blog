@@ -49,7 +49,7 @@ export const Image: FC<Props> = ({ block }: Props) => {
           title={caption}
           priority
           onError={(e) => {
-            e.currentTarget.src = '/logos/900^2_tomei_textBlack.gif';
+            e.currentTarget.src = '/logos/300^2_tomei_textBlack_loading.gif';
           }}
           onLoadingComplete={({ naturalWidth, naturalHeight }) => {
             setAspectRatio(naturalWidth / naturalHeight);

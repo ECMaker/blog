@@ -56,7 +56,7 @@ export const PostGridItem: FC<Props> = ({ post }) => {
         priority
         className="h-full w-full rounded-l-md object-cover"
         onError={(e) => {
-          e.currentTarget.src = '/logos/900^2_tomei_textBlack.gif';
+          e.currentTarget.src = '/logos/300^2_tomei_textBlack_loading.gif';
         }}
         unoptimized={true} //Vercelの無料プランにおける next/image コンポーネントの画像最適化機能の制限（月1000件まで)最適化をスキップ。
       />
