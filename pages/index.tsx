@@ -1,9 +1,12 @@
 import type { InferGetStaticPropsType, NextPage } from 'next';
 import type { NotionPageObjectResponse } from '~/types/notion';
 
+import useSWR from 'swr';
+
 import { IndexTemplate } from '~/components/@templates/IndexTemplate';
 import dummy_notion_pages_latest from '~/mocks/notion_pages_latest.json';
 import { getDatabaseContents } from '~/server/notion/databases';
+import { includeExpiredIndexImages, reFetchIndexPages } from '~/utils/expiredImage';
 
 export const getStaticProps = async () => {
   if (process.env.ENVIRONMENT === 'local') {
@@ -35,16 +38,18 @@ export const getStaticProps = async () => {
     props: {
       posts: results as NotionPageObjectResponse[],
     },
-    revalidate: 1, //[s] added ISR.
+    revalidate: 60, //[s] added ISR.
   };
 };
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: NextPage<Props> = ({ posts }) => {
+  const { data: postImgUpdated } = useSWR(includeExpiredIndexImages(posts) && posts, reFetchIndexPages, { fallbackData: posts })
+
   return (
     <>
-      <IndexTemplate posts={posts} />
+      <IndexTemplate posts={postImgUpdated} />
     </>
   );
 };

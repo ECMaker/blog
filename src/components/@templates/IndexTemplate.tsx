@@ -14,15 +14,6 @@ type Props = {
 export const IndexTemplate: FC<Props> = ({ posts }) => {
   return (
     <div>
-      {/* <div className="mt-2 w-full bg-slate-800 py-8 text-orange-100">
-        <div className="mx-auto w-fit text-right">
-          <div className="font-sans text-4xl font-bold sp:text-3xl">
-            sub title
-          </div>
-          <div className="mt-1 font-sans text-sm">sub sub title</div>
-        </div>
-      </div>*/}
-
       <div className="w-main mx-auto mt-4 space-y-4 px-4 pb-10">
         <div>
           <h2 className="flex items-center gap-1 text-lg font-bold">
@@ -36,11 +27,6 @@ export const IndexTemplate: FC<Props> = ({ posts }) => {
             <ReadMoreButton href="/posts" />
           </div>
         </div>
-
-        {/* <div>
-          <h2 className="text-base font-bold">今年の抱負</h2>
-          <div></div>
-        </div> */}
 
         <div>
           <h2 className="flex items-center gap-1 text-lg font-bold">

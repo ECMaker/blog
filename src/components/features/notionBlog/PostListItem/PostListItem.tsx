@@ -15,13 +15,6 @@ export const PostListItem: FC<Props> = ({ post }) => {
   const router = useRouter();
   const meta = useMemo(() => toPostMeta(post), [post]);
   const expandPost = { ...toPostMeta(post) };
- 
-  const handleImageError = () => {
-    if (!sessionStorage.getItem('reloaded')) {
-      const event = new Event('trigger-reload');
-      window.dispatchEvent(event);
-    }
-  };
 
   return (
     <div
@@ -35,8 +28,11 @@ export const PostListItem: FC<Props> = ({ post }) => {
         height={192}
         priority
         className="h-full w-20 rounded-l-md object-cover md:w-64"
-        onError={handleImageError}
-      />
+        onError={(e) => {
+          e.currentTarget.src = '/logos/300^2_tomei_textBlack_loading.gif';
+        }}
+        unoptimized={true} //Vercelの無料プランにおける next/image コンポーネントの画像最適化機能の制限（月1000件まで)最適化をスキップ。
+        />
       <div
         /*icon+tag+Updated,Categoy+Title*/ className="flex-col justify-between w-full"
       >

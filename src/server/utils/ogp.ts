@@ -29,7 +29,7 @@ export const getOgp = async (url: string): Promise<Ogp> => {
   
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error(url, 'OPGの取得に失敗しました');
+    console.error(url, 'fail get ogp.');
 
     return {
       url: url,

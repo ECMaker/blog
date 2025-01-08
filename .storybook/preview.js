@@ -4,12 +4,12 @@ import { SessionProvider } from 'next-auth/react';
 
 export const parameters = {
   backgrounds: {
-    default: 'orange',
+    default: 'gray',
     values: [
-      { name: 'orange', value: '#ffedd5' },
-      { name: 'slate', value: '#1e293b' },
-      { name: 'white', value: '#ffffff' },
-      { name: 'black', value: '#000000' },
+      { name: 'gray', value: '#e5e7eb' }, /* bg-gray-200 */
+      { name: 'slate', value: '#1e293b' }, /* text-slate-800 */
+      { name: 'white', value: '#ffffff' }, /* bg-white */
+      { name: 'black', value: '#000000' }, /* bg-black */
     ],
   },
   actions: { argTypesRegex: '^on[A-Z].*' },
