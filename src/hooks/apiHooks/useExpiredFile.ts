@@ -99,11 +99,7 @@ const fetchArticleParts = async (slug: string): Promise<NotionPost> => {
       page: NotionPageObjectResponse;
       blocks: ExpandedBlockObjectResponse[];
     };
-    // eslint-disable-next-line no-console
-    console.log('!U blocks', response, blocks);
     const expandedBlocks = groupListBlocks(blocks); // getAllBlocks.ts と同様にListsをグルーピング
-    // eslint-disable-next-line no-console
-    console.log('!U expandedBlocks', expandedBlocks);
     const post: NotionPost = {
       ...toPostMeta(page),
       description: toMetaDescription(expandedBlocks),
@@ -175,8 +171,6 @@ export const useExpiredFile = (post: NotionPost) => {
     fetchArticleParts,
     { fallbackData: post }
   );
-  // eslint-disable-next-line no-console
-  console.log('!U postImg', fetchPost);
 
   return { data: fetchPost, error };
 };

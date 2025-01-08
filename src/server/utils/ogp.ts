@@ -7,10 +7,6 @@ import ogpParser from 'ogp-parser';
 
 /* OGPを取得する（Node.jsで使用を想定） */
 export const getOgp = async (url: string): Promise<Ogp> => {
-  // eslint-disable-next-line no-console
-  console.log('!U ogp url', url);
-  // eslint-disable-next-line no-console
-  console.log('!U ogp favicon url', `https://www.google.com/s2/favicons?domain=${url}`);
   try {
     const encodeURL = encodeURI(url);
     const { title, ogp } = await ogpParser(encodeURL);
@@ -33,7 +29,7 @@ export const getOgp = async (url: string): Promise<Ogp> => {
   
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.log(url, 'fail get ogp.');
+    console.error(url, 'fail get ogp.');
 
     return {
       url: url,

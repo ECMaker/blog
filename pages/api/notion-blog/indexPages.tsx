@@ -25,7 +25,7 @@ const ApiIndexPages = async function(req: NextApiRequest, res: NextApiResponse) 
     res.end()
   } catch (e) {
     // eslint-disable-next-line no-console
-    console.log(e)
+    console.error(e)
     res.statusCode = 500
     res.end()
   }

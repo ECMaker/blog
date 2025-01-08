@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { Params } from "~/types/notion";
+import type { ArticleRequestParams } from "~/types/notion";
 
 import { getAllBlocks } from '~/server/notion/getAllBlocks';
 import { fetchPages } from '~/utils/expiredImage';
@@ -13,7 +13,7 @@ const ApiArticle = async function(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
-  const { slug } = req.query as Params;
+  const { slug } = req.query as ArticleRequestParams;
 
   try {
     const post = await fetchPages({ slug: slug });

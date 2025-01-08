@@ -94,7 +94,7 @@ export type BlockWithChildren<P = unknown> = P & {
   children?: ExpandedBlockObjectResponse[];
 };
 
-export type Params = ParsedUrlQuery & {
+export type ArticleRequestParams = ParsedUrlQuery & {
   slug?: string;
   tag?: string;
   category?: string;
@@ -104,7 +104,6 @@ export type Params = ParsedUrlQuery & {
 export type PageType = {
   id: string;
   cover: FileType | null;
-  // properties: Record<string, any>;
   properties: NotionPostMeta;
 };
 

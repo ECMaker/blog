@@ -54,11 +54,7 @@ export const getStaticProps = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const PostIndex: NextPage<Props> = ({ postsArray, properties }) => {
-  // eslint-disable-next-line no-console
-  console.log("!U postsArray", postsArray)
   const { data: postImgUpdArray} = useSWR(includeExpiredArrayImages(postsArray) && postsArray, reFetchArrayPages, { fallbackData: postsArray })
-  // eslint-disable-next-line no-console
-  console.log("!U postImgUpdArray", postImgUpdArray)
 
   return (
     <>

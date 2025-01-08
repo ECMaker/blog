@@ -1,8 +1,5 @@
 import type {
   QueryDatabaseParameters,
-  ListBlockChildrenResponse,
-  BlockObjectResponse,
-  PartialBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 import type {
   NotionPageObjectResponse,
@@ -17,6 +14,7 @@ import { blogDatabaseId } from '~/server/notion/ids';
 type NotionFilter = Exclude<QueryDatabaseParameters['filter'], undefined>;
 type FilterWithAnd = Extract<NotionFilter, { and: unknown }>;
 type NotionFilterArray = FilterWithAnd['and'];
+
 
 export const fetchPages = async ({
   slug,
@@ -98,10 +96,6 @@ export const fetchPages = async ({
  * NotionPageObjectResponse[][] にアサート
  */
 export const fetchArrayPages = async (): Promise<NotionPageObjectResponse[][]> => {
-  /**
-   * getDatabaseContentsAll の中身がどう実装されているか次第ですが、
-   * ここでは「必ず NotionPageObjectResponse[][] になる」想定で書きます。
-   */
   const pages = await getDatabaseContentsAll({
     database_id: blogDatabaseId,
     page_size: 12,
@@ -119,34 +113,7 @@ export const fetchArrayPages = async (): Promise<NotionPageObjectResponse[][]> =
     ],
   });
 
-  // 「pages が実際に 2次元配列で返る」想定の場合
   return pages as NotionPageObjectResponse[][];
-};
-
-/**
- * fetchBlocksByPageId: notion.blocks.children.list が返す型を正しく受け取る
- */
-export const fetchBlocksByPageId = async (pageId: string) => {
-  // ListBlockChildrenResponse に含まれる results
-  const data: (BlockObjectResponse | PartialBlockObjectResponse)[] = [];
-
-  // next_cursor は string | null
-  let cursor: string | null | undefined = undefined;
-
-  while (true) {
-    // notion.blocks.children.list の戻り値を型アサーション
-    const { results, next_cursor } = (await notion.blocks.children.list({
-      block_id: pageId,
-      start_cursor: cursor,
-    })) as ListBlockChildrenResponse;
-
-    data.push(...results);
-
-    if (!next_cursor) break;
-    cursor = next_cursor;
-  }
-
-  return { results: data };
 };
 
 /**
@@ -159,9 +126,9 @@ export const reFetchIndexPages = async (): Promise<NotionPageObjectResponse[]> =
     return pages as NotionPageObjectResponse[];
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.log('reFetechPages error!');
+    console.error('reFetechPages error!');
     // eslint-disable-next-line no-console
-    console.log(error);
+    console.error(error);
 
     return [];
   }
@@ -177,9 +144,9 @@ export const reFetchArrayPages = async (): Promise<NotionPageObjectResponse[][]>
     return pages as NotionPageObjectResponse[][];
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.log('reFetechPages error!');
+    console.error('reFetechPages error!');
     // eslint-disable-next-line no-console
-    console.log(error);
+    console.error(error);
 
     return [];
   }
@@ -192,8 +159,6 @@ export const includeExpiredIndexImages = (
   posts: NotionPageObjectResponse[],
 ): boolean => {
   const now = Date.now();
-  // eslint-disable-next-line no-console
-  console.log('アイキャッチ画像の有効期限チェック！');
 
   return posts.some((page) => {
     if (page.properties.Image && page.properties.Image.type === 'files') {
@@ -207,7 +172,7 @@ export const includeExpiredIndexImages = (
           Date.parse(file.file.expiry_time) < now
         ) {
           // eslint-disable-next-line no-console
-          console.log('有効期限切れ アイキャッチ画像更新！');
+          // console.log('Expired cover image updated.');
 
           return true;
         }
@@ -227,8 +192,6 @@ export const includeExpiredArrayImages = (
   postsArray: NotionPageObjectResponse[][],
 ): boolean => {
   const now = Date.now();
-  // eslint-disable-next-line no-console
-  console.log('アイキャッチ画像の有効期限チェック！');
 
   return postsArray.some((pages) => {
     return pages.some((page) => {
@@ -243,7 +206,7 @@ export const includeExpiredArrayImages = (
             Date.parse(file.file.expiry_time) < now
           ) {
             // eslint-disable-next-line no-console
-            console.log('有効期限切れ アイキャッチ画像更新！');
+            // console.log('Expired cover image updated.');
 
             return true;
           }

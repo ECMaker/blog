@@ -35,14 +35,10 @@ export const Bookmark: FC<Props> = ({ block }: Props) => {
       setOgp(ogpData);
     }
     if (error) {
-      // エラーハンドリング（必要に応じてユーザーへの通知などを追加）
       // eslint-disable-next-line no-console
-      console.log('Error fetching OGP data:', error);
+      console.error('Error fetching OGP data:', error);
     }
   }, [ogpData, error]);
-
-  // eslint-disable-next-line no-console
-  console.log('OGP Image URL:', ogp.imageUrl);
 
   const noOgp = !ogp.title && !ogp.description && !ogp.imageUrl;
 

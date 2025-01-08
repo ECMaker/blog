@@ -46,13 +46,8 @@ export const getStaticProps = async (context: { params: Params }) => {
   
   if (!targetPost) return { notFound: true };
   const page_id = targetPost.id;
-
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
   const children = (await getAllBlocks(page_id)) as ExpandedBlockObjectResponse[];
-  
-  // eslint-disable-next-line no-console
-  console.log("!U children", children);
-
   const childrenWithOgp = await setOgp(children);
 
   const post = {
@@ -97,13 +92,9 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => {
-  // eslint-disable-next-line no-console
-  console.log('!U post', post);
-  const { data: postMediaUpdated } = useExpiredFile(post);
-  // eslint-disable-next-line no-console
-  console.log('!U postMediaUpdated', postMediaUpdated);
-  
+  const { data: postMediaUpdated } = useExpiredFile(post);  
   const { data: comments, trigger } = useComments(postMediaUpdated.id);
+
   const handleCommentSubmit = async (
     rich_text: NotionRichTextItemRequest[],
   ) => {

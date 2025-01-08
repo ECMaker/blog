@@ -21,6 +21,7 @@ export const Image: FC<Props> = ({ block }: Props) => {
     block.image.caption.length > 0 ? richTextToString(block.image.caption) : '';
   const [isError] = useState(false);
   const [loaded, setLoaded] = useState(false);
+    // 画像の縦横比を管理するための状態を定義 画像の縦横比に基づいて適切なクラス名を決定する
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
   const imageClassName = aspectRatio && aspectRatio > 1 ? "object-contain h-auto w-full" : "object-contain h-auto w-auto";
 
@@ -28,7 +29,7 @@ export const Image: FC<Props> = ({ block }: Props) => {
     if (isError && !sessionStorage.getItem('reloaded')) {
       const event = new Event('trigger-reload');
       // eslint-disable-next-line no-console
-      console.log("!U event", event);
+      console.error("!U event", event);
       window.dispatchEvent(event);
     }
   }, [isError]);
@@ -41,7 +42,7 @@ export const Image: FC<Props> = ({ block }: Props) => {
     <div className="relative mx-auto mt-4 mb-4 flex flex-col items-center">
       <MediumZoom zoomMargin={40}>
         <NextImage
-          className={imageClassName} // !U className を動的に変更
+          className={imageClassName} // className を動的に変更
           src={url}
           alt={caption || ''}
           width={3840}

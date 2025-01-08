@@ -45,11 +45,7 @@ export const getStaticProps = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: NextPage<Props> = ({ posts }) => {
-  // eslint-disable-next-line no-console
-  console.log("!U posts", posts)
   const { data: postImgUpdated } = useSWR(includeExpiredIndexImages(posts) && posts, reFetchIndexPages, { fallbackData: posts })
-  // eslint-disable-next-line no-console
-  console.log("!U postImgUpdated", postImgUpdated)
 
   return (
     <>
