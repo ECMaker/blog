@@ -172,7 +172,7 @@ export const includeExpiredIndexImages = (
           Date.parse(file.file.expiry_time) < now
         ) {
           // eslint-disable-next-line no-console
-          // console.log('Expired cover image updated.');
+          // console.log('Updating expired cover image.');
 
           return true;
         }
@@ -206,7 +206,7 @@ export const includeExpiredArrayImages = (
             Date.parse(file.file.expiry_time) < now
           ) {
             // eslint-disable-next-line no-console
-            // console.log('Expired cover image updated.');
+            // console.log('Updating expired cover image.');
 
             return true;
           }

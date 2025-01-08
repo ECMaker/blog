@@ -125,7 +125,10 @@ function checkExpiredFileInBlock(
   // まず、現在のブロックのファイルをチェック
   const file = getExpiredBlockFile(block);
   if (file?.expiry_time && Date.parse(file.expiry_time) < now) {
-    return true;
+      // eslint-disable-next-line no-console
+      console.log('Updating expired file.'); 
+    
+      return true;
   }
 
   // 次に、ブロックタイプに応じて子ブロックをチェック

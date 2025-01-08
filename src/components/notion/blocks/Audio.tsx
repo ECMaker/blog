@@ -23,9 +23,6 @@ export const Audio = ({ block: { audio } }: Props) => {
     setLoaded(true);
   };
 
-  // eslint-disable-next-line no-console
-  console.log('!U Audio url', audioUrl);
-
   return (
     <div className="my-4 flex flex-col items-center">
       {!loaded && <div className="text-gray-500">Loading audio...</div>}

@@ -29,7 +29,7 @@ export const Image: FC<Props> = ({ block }: Props) => {
     if (isError && !sessionStorage.getItem('reloaded')) {
       const event = new Event('trigger-reload');
       // eslint-disable-next-line no-console
-      console.error("!U event", event);
+      console.error("event", event);
       window.dispatchEvent(event);
     }
   }, [isError]);

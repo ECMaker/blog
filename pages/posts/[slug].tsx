@@ -30,7 +30,7 @@ let allPostsCache: NotionPostMeta[] | null = null;
 
 export const getStaticProps = async (context: { params: Params }) => {
   if (process.env.ENVIRONMENT === 'local') {
-    const debugPost = true; // true: normal, false: blockPreview
+    const debugPost = false; // true: debugPage, false: blockPreview (default)
 
     return {
       props: {
