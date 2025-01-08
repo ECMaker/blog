@@ -119,34 +119,64 @@ const fetchArticleParts = async (slug: string): Promise<NotionPost> => {
   }
 };
 
+/**
+ * ブロックとその子ブロックから有効期限切れのファイルを再帰的にチェック
+ */
+function checkExpiredFileInBlock(
+  block: ExpandedBlockObjectResponse,
+  now: number
+): boolean {
+  // まず、現在のブロックのファイルをチェック
+  const file = getExpiredBlockFile(block);
+  if (file?.expiry_time && Date.parse(file.expiry_time) < now) {
+    return true;
+  }
+
+  // 次に、ブロックタイプに応じて子ブロックをチェック
+  switch (block.type) {
+    case 'bulleted_list':
+      return block.bulleted_list.children?.some(child => 
+        checkExpiredFileInBlock(child, now)
+      ) ?? false;
+    
+    case 'numbered_list':
+      return block.numbered_list.children?.some(child => 
+        checkExpiredFileInBlock(child, now)
+      ) ?? false;
+    
+    case 'to_do_list':
+      return block.to_do_list.children?.some(child => 
+        checkExpiredFileInBlock(child, now)
+      ) ?? false;
+
+    // bulleted_list_item などで children を持つ場合
+    default:
+      if ('children' in block && Array.isArray(block.children)) {
+        return block.children.some(child => 
+          checkExpiredFileInBlock(child, now)
+        );
+      }
+      
+      return false;
+  }
+}
+
 const includeExpiredFile = (post: NotionPost): boolean => {
   const now = Date.now();
 
   return post.children.some((block) => {
-    const file = getExpiredBlockFile(block);
-    if (file && file.expiry_time && Date.parse(file.expiry_time) < now) {
-      // eslint-disable-next-line no-console
-      console.log(file.expiry_time);
-      // eslint-disable-next-line no-console
-      console.log("有効期限切れ 記事ファイル更新！");
-
-      return true;
-    }
-
-    return false;
+    return checkExpiredFileInBlock(block, now);
   });
 }
 
 export const useExpiredFile = (post: NotionPost) => {
-  // includeExpiredImage(post) が true => 再取得
-  // そのときキー = post.slug
   const { data: fetchPost, error } = useSWR(
     includeExpiredFile(post) && post.slug,
     fetchArticleParts,
     { fallbackData: post }
   );
-   // eslint-disable-next-line no-console
-   console.log("!U postImg", fetchPost);
+  // eslint-disable-next-line no-console
+  console.log('!U postImg', fetchPost);
 
   return { data: fetchPost, error };
 };
