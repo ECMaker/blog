@@ -5,7 +5,13 @@ import { googleTagManagerId } from '~/types/gtm';
 export default function Document() {
   return (
     <Html lang="ja-JP" className="scroll-smooth">
-      <Head />
+      <Head>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
+          crossOrigin="anonymous"
+        />
+      </Head>
       <body>
         {/* Google Tag Manager (noscript) */}
         <noscript
