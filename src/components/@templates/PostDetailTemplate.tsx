@@ -6,6 +6,7 @@ import type {
 } from '~/types/notion';
 
 import { Bio } from '~/commons/Bio';
+import { AdSense } from '~/components/features/adsense/AdSense';
 import { useTableOfContentsContext } from '~/components/features/notionBlog/TableOfContentsContext';
 import { CommentForm } from '~/features/notionBlog/CommentForm';
 import { Comments } from '~/features/notionBlog/Comments';
@@ -40,6 +41,19 @@ export const PostDetailTemplate: FC<Props> = ({ post, comments, onSubmit }) => {
 
         <div className="w-aside">
           <div className="sticky top-[112px] space-y-4">
+            {/* スクエア広告の<!-- サイドバー -->部分 */}
+            <div className="bg-white p-2 rounded-lg shadow">
+              <AdSense
+                slot="7515574692"
+                testMode={process.env.NODE_ENV === 'development'}
+                style={{
+                  display: 'block',
+                  width: '300px',
+                  height: '250px',
+                  margin: '0 auto',
+                }}
+              />
+            </div>
             <TableOfContents blocks={post.children} />
             <PostMeta meta={post} commentCount={comments.length} />
             <Bio />
