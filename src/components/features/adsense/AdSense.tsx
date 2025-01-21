@@ -1,8 +1,9 @@
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 declare global {
   interface Window {
-    adsbygoogle: any[];
+    adsbygoogle: unknown[];
   }
 }
 
@@ -16,11 +17,12 @@ type Props = {
 
 export const AdSense: React.FC<Props> = ({
   slot,
-  style = { display: 'block', width: '300px', height: '250px' },
+  style = { display: 'block', /*width: '300px', height: '300px' */},
   format = 'auto',
   responsive = true,
-  testMode = false,
 }) => {
+  const { asPath } = useRouter();
+
   useEffect(() => {
     try {
       const pushAd = () => {
@@ -38,10 +40,10 @@ export const AdSense: React.FC<Props> = ({
       // eslint-disable-next-line no-console
       console.error('AdSense error:', err);
     }
-  }, []);
+  }, [asPath]);
 
   return (
-    <div className="min-h-[250px]">
+    <div className="min-h-[250px]" key={asPath}>
       <ins
         className="adsbygoogle"
         style={style}
@@ -49,7 +51,6 @@ export const AdSense: React.FC<Props> = ({
         data-ad-slot={slot}
         data-ad-format={format}
         data-full-width-responsive={responsive}
-        data-ad-test={testMode ? 'on' : undefined}
       />
     </div>
   );

@@ -7,8 +7,12 @@ export default function Document() {
     <Html lang="ja-JP" className="scroll-smooth">
       <Head>
         {/* Google AdSense メタタグの追加 */}
-        <meta name="google-adsense-account" content={process.env.NEXT_PUBLIC_ADSENSE_ID} />
+          <meta name="google-adsense-account" content={process.env.NEXT_PUBLIC_ADSENSE_ID} />
         {/* メタタグのここまで */}
+        {/* Google AdSense スクリプトの追加 */}
+          <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
+          crossOrigin="anonymous"></script>
+        {/* スクリプトのここまで */}
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}
@@ -26,10 +30,6 @@ export default function Document() {
         {/* End Google Tag Manager (noscript) */}
         <Main />
         <NextScript />
-        {/* Google AdSense スクリプトの追加 */}
-        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
-          crossOrigin="anonymous"></script>
-        {/* スクリプトのここまで */}
       </body>
     </Html>
   );
