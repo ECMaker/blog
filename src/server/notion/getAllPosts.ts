@@ -12,12 +12,13 @@ import { notion } from './client';
  * slug取得用
  * かなるsからのコピー
  */
-export const getAllPosts = async (): Promise<NotionPostMeta[]> => {
+export const getAllPosts = async (databaseId?: string): Promise<NotionPostMeta[]> => {
+  const id = databaseId ?? (process.env.NOTION_DATABASE || '');
   const allResults: (PageObjectResponse | PartialPageObjectResponse)[] = [];
   let hasMore = true;
   while (hasMore) {
     const res = await notion.databases.query({
-      database_id: process.env.NOTION_DATABASE,
+      database_id: id,
       filter: {
         property: 'Published',
         checkbox: {

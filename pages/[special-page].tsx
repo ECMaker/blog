@@ -1,49 +1,39 @@
 import type { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next';
-import type {
-  ExpandedBlockObjectResponse,
-  NotionPageObjectResponse,
-  NotionPost,
-  NotionPostMeta,
-  NotionRichTextItemRequest,
-} from '~/types/notion';
+import type { ExpandedBlockObjectResponse, NotionPageObjectResponse, NotionPost, NotionPostMeta } from '~/types/notion';
 
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 
-import { useComments } from '~/hooks/apiHooks/useComments';
 import { useExpiredFile } from '~/hooks/apiHooks/useExpiredFile';
-import dummy_notion_pages_array from '~/mocks/notion_pages_array.json';
-import dummy_notion_post from '~/mocks/notion_post.json';
-import dummy_notion_post_blockPreview from '~/mocks/notion_post_previewBlocks.json';
+import dummy_notion_about_post from '~/mocks/notion_about_post.json';
+import dummy_notion_special_pages_array from '~/mocks/notion_special-pages_array.json';
 import { getAllBlocks } from '~/server/notion/getAllBlocks';
 import { getAllPosts } from '~/server/notion/getAllPosts';
 import { getPage } from '~/server/notion/pages';
 import { saveToAlgolia } from '~/server/utils/algolia';
 import { setOgp } from '~/server/utils/ogp';
-import { PostDetailTemplate } from '~/templates/PostDetailTemplate';
+import { ProfileTemplate } from '~/templates/ProfileTemplate';
 import { toPostMeta, toMetaDescription } from '~/utils/meta';
 
 type Params = {
-  slug: string;
+  'special-page': string;
 };
 
 let allPostsCache: NotionPostMeta[] | null = null;
-
 export const getStaticProps = async (context: { params: Params }) => {
   if (process.env.ENVIRONMENT === 'local') {
-    const debugPost = false; // true: debugPage, false: blockPreview (default)
-
     return {
       props: {
-        post: debugPost ? dummy_notion_post as NotionPost : dummy_notion_post_blockPreview as NotionPost,
+        post: dummy_notion_about_post as NotionPost,
       },
     };
   }
 
+  const specialPageId = process.env.NOTION_PROFILE_PAGE_ID || '';
+
   if (!allPostsCache) {
-    allPostsCache = await getAllPosts();
+    allPostsCache = await getAllPosts(specialPageId);
   }
-  const targetPost = allPostsCache.find((v) => v.slug === context.params.slug);
-  
+  const targetPost = allPostsCache.find((v) => v.slug === context.params['special-page']);
   if (!targetPost) return { notFound: true };
   const page_id = targetPost.id;
   const page = (await getPage(page_id)) as NotionPageObjectResponse;
@@ -55,7 +45,7 @@ export const getStaticProps = async (context: { params: Params }) => {
     description: toMetaDescription(children),
     children: childrenWithOgp,
   };
-  
+
   await saveToAlgolia(post);
 
   return {
@@ -68,24 +58,25 @@ export const getStaticProps = async (context: { params: Params }) => {
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   if (process.env.ENVIRONMENT === 'local') {
-    const posts = dummy_notion_pages_array.flat() as unknown as NotionPostMeta[];
-    const paths = posts.map(({ slug }) => ({ params: { slug: slug } }));
-    const validPaths = paths.filter(path => typeof path.params.slug === 'string');
+    const posts = dummy_notion_special_pages_array.flat() as unknown as NotionPostMeta[];
+    const paths = posts.map(({ slug }) => ({ params: { 'special-page': slug } }));
+    const validPaths = paths.filter(path => typeof path.params['special-page'] === 'string');
 
     return {
       paths: validPaths,
       fallback: 'blocking', // HTMLを生成しない
     };
   }
+  const specialPageId = process.env.NOTION_PROFILE_PAGE_ID || '';
 
   if (!allPostsCache) {
-    allPostsCache = await getAllPosts();
+    allPostsCache = await getAllPosts(specialPageId);
   }
-  const paths = allPostsCache.map(({ slug }) => ({ params: {slug: slug}}));
-  
+  const paths = allPostsCache.map(({ slug }) => ({ params: { 'special-page': slug } }));
+
   return {
     paths,
-    fallback: 'blocking', // HTMLを生成しない
+    fallback: 'blocking',
   };
 };
 
@@ -93,18 +84,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Post: NextPage<Props> = ({ post }) => {
   const { data: postMediaUpdated } = useExpiredFile(post);  
-  const { data: comments, trigger } = useComments(postMediaUpdated.id);
-
-  const handleCommentSubmit = async (
-    rich_text: NotionRichTextItemRequest[],
-  ) => {
-    await trigger({
-      parent: {
-        page_id: postMediaUpdated.id,
-      },
-      rich_text,
-    });
-  };
 
   let imageUrl;
   if (postMediaUpdated.image === '/logos/900^2_tomei_textBlack.gif') {
@@ -115,18 +94,14 @@ const Post: NextPage<Props> = ({ post }) => {
 
   return (
     <>
-      <PostDetailTemplate
-        post={postMediaUpdated}
-        comments={comments}
-        onSubmit={handleCommentSubmit}
-      />
+      <ProfileTemplate post={post} />
 
       {/* meta seo */}
       <NextSeo
         title={`${postMediaUpdated.title} | EC maker`}
         description={postMediaUpdated.description}
         openGraph={{
-          url: `https://blog.ec-maker.com/posts/${postMediaUpdated.slug}`,
+          url: `https://blog.ec-maker.com/${postMediaUpdated.slug}`,
           title: `${postMediaUpdated.title} | EC maker`,
           description: postMediaUpdated.description,
           images: [
@@ -142,7 +117,7 @@ const Post: NextPage<Props> = ({ post }) => {
       />
       <ArticleJsonLd
         type="BlogPosting"
-        url={`https://blog.ec-maker.com/posts/${postMediaUpdated.slug}`}
+        url={`https://blog.ec-maker.com/${postMediaUpdated.slug}`}
         title={`${postMediaUpdated.title} | EC maker`}
         images={[imageUrl]}
         datePublished={postMediaUpdated.createdAt}
