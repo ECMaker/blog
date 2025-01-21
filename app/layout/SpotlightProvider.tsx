@@ -13,6 +13,8 @@ import {
   MailIcon,
   ProfileIcon,
   SearchIcon,
+  PrivacyIcon,
+  TermsIcon,
 } from '~/components/@commons/icons';
 
 export const SpotlightProvider = ({ children }: { children: ReactNode }) => {
@@ -34,10 +36,16 @@ export const SpotlightProvider = ({ children }: { children: ReactNode }) => {
         onTrigger: () => router.push('/posts'),
       },
       {
-        title: 'Profile',
-        description: 'サイト作成者のプロフィール詳細ページに移動します。',
+        title: 'Sandbox',
+        description: 'サイト作成者が好き勝手遊んでいる実験用のページ',
+        icon: <ExperimentIcon size={28} />,
+        onTrigger: () => router.push('/sandbox'),
+      },
+      {
+        title: 'About',
+        description: 'サイト作成者の詳細ページに移動します。',
         icon: <ProfileIcon size={28} />,
-        onTrigger: () => router.push('/profile'),
+        onTrigger: () => router.push('/about'),
       },
       {
         title: 'Contact',
@@ -46,10 +54,16 @@ export const SpotlightProvider = ({ children }: { children: ReactNode }) => {
         onTrigger: () => router.push('/contact'),
       },
       {
-        title: 'Sandbox',
-        description: 'サイト作成者が好き勝手遊んでいる実験用のページ',
-        icon: <ExperimentIcon size={28} />,
-        onTrigger: () => router.push('/sandbox'),
+        title: 'Privacy',
+        description: 'プライバシーポリシーに関するページ',
+        icon: <PrivacyIcon size={28} />,
+        onTrigger: () => router.push('/privacy-policy'),
+      },
+      {
+        title: 'Terms',
+        description: '利用規約に関するページ',
+        icon: <TermsIcon size={28} />,
+        onTrigger: () => router.push('/terms'),
       },
     ],
     [router],

@@ -112,6 +112,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           <nav className="flex justify-center gap-8 mt-4 mb-4 items-center text-slate-200">
             <Link href="/" className="text-slate-200 hover:text-white">Home</Link>
             <Link href="/about" className="text-slate-200 hover:text-white">About</Link>
+            <Link href="/contact" className="text-slate-200 hover:text-white">Contact</Link>
             <Link href="/privacy-policy" className="text-slate-200 hover:text-white">プライバシーポリシー</Link>
             <Link href="/terms" className="text-slate-200 hover:text-white">利用規約</Link>
           </nav>

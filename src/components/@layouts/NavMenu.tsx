@@ -10,10 +10,12 @@ import {
   HomeIcon,
   ProfileIcon,
   TwitterIcon,
-  YouTubeIcon,
+  // YouTubeIcon,
   MailIcon,
   BookIcon,
   MenuIcon,
+  PrivacyIcon,
+  TermsIcon,
 } from '~/commons/icons';
 
 
@@ -64,51 +66,67 @@ export const NavMenu: FC = () => {
               href="/sandbox"
               label="Sandbox"
             />
-            <NavMenuLink
-              leftIcon={<ProfileIcon size={20} />}
-              href="/profile"
-              label="Profile"
-            />
-            <NavMenuLink
-              leftIcon={<MailIcon size={20} />}
-              href="/contact"
-              label="Contact"
-            />
 
-            <div className="pt-8" />
 
-            {/* External */}
-            <NavMenuExternalLink
-              icon={<TwitterIcon size={18} />}
-              href="https://twitter.com/u_ecmaker"
-              label="X (twitter)"
-            />
-            <NavMenuExternalLink
-              icon={<GitHubOctocatIcon size={18} />}
-              href="https://github.com/orgs/ECMaker/people"
-              label="GitHub"
-            />
-            <NavMenuExternalLink
-              icon={<YouTubeIcon size={18} />}
-              href="https://www.youtube.com/channel/hoge"
-              label="YouTube"
-            />
+            {/* External Links */}
+            <div className="pt-8 space-y-2 border-t border-slate-700">
+              <NavMenuLink
+                leftIcon={<ProfileIcon size={20} />}
+                href="/about"
+                label="About"
+              />
+              <NavMenuLink
+                leftIcon={<MailIcon size={20} />}
+                href="/contact"
+                label="Contact"
+              />
+              <NavMenuExternalLink
+                icon={<TwitterIcon size={18} />}
+                href="https://twitter.com/u_ecmaker"
+                label="X (twitter)"
+              />
+              <NavMenuExternalLink
+                icon={<GitHubOctocatIcon size={18} />}
+                href="https://github.com/orgs/ECMaker/people"
+                label="GitHub"
+              />
+              {/* <NavMenuExternalLink */}
+                {/* icon={<YouTubeIcon size={18} />} */}
+                {/* href="https://www.youtube.com/channel/hoge" */}
+                {/* label="YouTube" */}
+              {/* /> */}
+            </div>
 
-            <div className="pt-8" />
+            {/* Legal Links */}
+            <div className="pt-8 space-y-2 border-t border-slate-700">
+              <NavMenuLink
+                leftIcon={<PrivacyIcon size={18} />}
+                href="/privacy-policy"
+                label="Privacy"
+              />
+              <NavMenuLink
+                leftIcon={<TermsIcon size={18} />}
+                href="/terms"
+                label="Terms"
+              />
+            </div>
 
-            <NavMenuLink
-              leftIcon={
-                <Image
-                  src="/icon.svg"
-                  alt="site logo"
-                  width={18}
-                  height={18}
-                  priority
-                />
-              }
-              href="/logos/900^2_black.gif"
-              label="logo"
-            />
+            {/* Logo */}
+            <div className="pt-8">
+              <NavMenuLink
+                leftIcon={
+                  <Image
+                    src="/icon.svg"
+                    alt="site logo"
+                    width={18}
+                    height={18}
+                    priority
+                  />
+                }
+                href="/logos/900^2_black.gif"
+                label="logo"
+              />
+            </div>
           </div>
         )}
       </Transition>
