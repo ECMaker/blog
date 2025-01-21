@@ -28,7 +28,7 @@ export const getStaticProps = async (context: { params: Params }) => {
     };
   }
 
-  const specialPageId = process.env.NOTION_PROFILE_PAGE_ID || '';
+  const specialPageId = process.env.NOTION_SPECIAL_PAGE_ID || '';
 
   if (!allPostsCache) {
     allPostsCache = await getAllPosts(specialPageId);
@@ -67,7 +67,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
       fallback: 'blocking', // HTMLを生成しない
     };
   }
-  const specialPageId = process.env.NOTION_PROFILE_PAGE_ID || '';
+  const specialPageId = process.env.NOTION_SPECIAL_PAGE_ID || '';
 
   if (!allPostsCache) {
     allPostsCache = await getAllPosts(specialPageId);
