@@ -17,19 +17,19 @@ export const Bio: FC = () => {
           <div className="mt-2 space-x-2 text-slate-800">
             <a
               className="text-slate-800"
-              href="https://twitter.com/u_ecmaker"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <TwitterIcon size={24} />
-            </a>
-            <a
-              className="text-slate-800"
               href="https://github.com/orgs/ECMaker/people"
               target="_blank"
               rel="noreferrer"
             >
               <GitHubIcon size={24} />
+            </a>
+            <a
+              className="text-slate-800"
+              href="https://twitter.com/u_ecmaker"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <TwitterIcon size={24} />
             </a>
           </div>
         </div>
