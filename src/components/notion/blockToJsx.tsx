@@ -30,7 +30,11 @@ import { ToDoList } from './blocks/ToDoList';
 import { Toggle } from './blocks/Toggle';
 import { Video } from './blocks/Video';
 
-export const blockToJsx = (block: ExpandedBlockObjectResponse) => {
+type BlockToJsxOptions = {
+  isNested?: boolean;
+};
+
+export const blockToJsx = (block: ExpandedBlockObjectResponse, options: BlockToJsxOptions = {}) => {
   const blockType = block.type;
 
   switch (blockType) {
@@ -55,11 +59,11 @@ export const blockToJsx = (block: ExpandedBlockObjectResponse) => {
     case 'file':
       return <File block={block} />;
     case 'bulleted_list':
-      return <BulletedList block={block} />;
+      return <BulletedList block={block} isNested={options.isNested} />;
     case 'bulleted_list_item':
       return <BulletedListItem block={block} />;
     case 'numbered_list':
-      return <NumberedList block={block} />;
+      return <NumberedList block={block} isNested={options.isNested} />;
     case 'numbered_list_item':
       return <NumberedListItem block={block} />;
     case 'to_do':

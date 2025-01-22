@@ -29,7 +29,7 @@ export const Code: FC<Props> = ({ block }: Props) => {
   >;
 
   return (
-    <div className="my-8">
+    <div className="p-4 mb-4">
       <div className="-mb-1 rounded-t-md bg-slate-800 px-4 pt-2 pb-3 text-sm text-slate-200 sp:text-xs">
         {block.code.language}
       </div>

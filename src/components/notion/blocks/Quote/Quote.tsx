@@ -12,6 +12,7 @@ type Props = {
 
 export const Quote: FC<Props> = ({ block }: Props) => {
   return (
+    <div className="pl-4 p-[1px]">
     <blockquote
       className={clsx(
         /*囲い*/'relative rounded my-4 bg-slate-100 px-6 py-2 text-sm text-slate-600 sp:text-base',
@@ -20,5 +21,6 @@ export const Quote: FC<Props> = ({ block }: Props) => {
     >
       <RichText text={block.quote.rich_text} />
     </blockquote>
+    </div>
   );
 };

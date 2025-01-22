@@ -9,7 +9,7 @@ type Props = {
 };
 
 const codeAnnotationClasses =
-  'bg-slate-900 rounded px-2 py-1 mx-2 font-mono text-teal-400';
+  'bg-slate-900 rounded px-2 py-1 mx-1 font-mono text-teal-400';
 
 const colorClasses = {
   gray: 'text-gray-500',

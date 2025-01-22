@@ -24,7 +24,7 @@ export const Audio = ({ block: { audio } }: Props) => {
   };
 
   return (
-    <div className="my-4 flex flex-col items-center">
+    <div className="p-4 flex flex-col items-center">
       {!loaded && <div className="text-gray-500">Loading audio...</div>}
       <audio
         key={audioUrl} // URLが変わったときにaudio要素を再レンダリング

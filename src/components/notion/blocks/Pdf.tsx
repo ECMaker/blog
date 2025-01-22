@@ -28,7 +28,7 @@ export const Pdf = ({ block: { pdf } }: Props) => {
   };
 
   return (
-    <div className="my-4 leading-8 flex flex-col items-center">
+    <div className="p-8 leading-8 flex flex-col items-center">
       {!loaded && <div className="text-gray-500">Loading PDF...</div>}
       <object
         key={pdfUrl} // URLが変わったときにobject要素を再レンダリング
