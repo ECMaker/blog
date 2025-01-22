@@ -1,0 +1,1163 @@
+{
+  "id": "baaaafb0-28a9-409d-b752-e4de97639b78",
+  "icon": "👥",
+  "title": "About",
+  "category": {
+      "id": "",
+      "name": "カテゴリなし",
+      "color": "default"
+  },
+  "createdAt": "2023-07-18",
+  "updatedAt": "2025-01-19",
+  "tags": [],
+  "likes": 0,
+  "slug": "about",
+  "image": "/logos/900^2_tomei_textBlack.gif",
+  "description": "EC maker についてTDU OB・OG によるコミュニティ電機・自動車メーカ系 エンジニア → フロントエンド エンジニア- Flutter / スマホアプリ 開発中。\n- Next.js / TypeScript / TailwindCSS / Notion を学習中。...",
+  "children": [
+      {
+          "object": "block",
+          "id": "18083811-5c88-801e-900a-e7c782542331",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:28:00.000Z",
+          "last_edited_time": "2025-01-19T06:29:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "image",
+          "image": {
+              "caption": [],
+              "type": "file",
+              "file": {
+                  "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/33aab3b9-f114-454a-9e23-ed5a17aea264/4daa28d2-6866-4522-9881-6a5c791a459d/3002_black.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45FSPPWI6X%2F20250119%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250119T140209Z&X-Amz-Expires=3600&X-Amz-Signature=c3cda4d7b321dead53a20ffdfe998ad2c6fbb4b806cdcf49f4a01fdca0748ee5&X-Amz-SignedHeaders=host&x-id=GetObject",
+                  "expiry_time": "2025-01-19T15:02:09.885Z"
+              }
+          }
+      },
+      {
+          "object": "block",
+          "id": "f324555d-72f4-474f-b803-d293bfa6a8d8",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2023-07-18T10:13:00.000Z",
+          "last_edited_time": "2025-01-19T06:14:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "a77106c5-a562-456a-9b47-255677e64984"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "heading_2",
+          "heading_2": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "EC maker について",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "EC maker について",
+                      "href": null
+                  }
+              ],
+              "is_toggleable": false,
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "9e6a3beb-c9f2-4b3b-a4ad-2ada522f5866",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2023-07-18T10:13:00.000Z",
+          "last_edited_time": "2023-07-18T10:14:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "a77106c5-a562-456a-9b47-255677e64984"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "a77106c5-a562-456a-9b47-255677e64984"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "TDU OB・OG によるコミュニティ",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "TDU OB・OG によるコミュニティ",
+                      "href": null
+                  }
+              ],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "369dd842-2b02-40b5-b473-28390638eca8",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2024-01-30T05:31:00.000Z",
+          "last_edited_time": "2024-01-30T05:31:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "a77106c5-a562-456a-9b47-255677e64984"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "a77106c5-a562-456a-9b47-255677e64984"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "電機・自動車メーカ系 エンジニア → フロントエンド エンジニア",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "電機・自動車メーカ系 エンジニア → フロントエンド エンジニア",
+                      "href": null
+                  }
+              ],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "9e4cadf6-2085-4cf9-97fd-9e2f186a5cb5",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2024-01-30T05:31:00.000Z",
+          "last_edited_time": "2024-01-30T09:22:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "a77106c5-a562-456a-9b47-255677e64984"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "a77106c5-a562-456a-9b47-255677e64984"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "- Flutter / スマホアプリ 開発中。\n- Next.js / TypeScript / TailwindCSS / Notion を学習中。",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "- Flutter / スマホアプリ 開発中。\n- Next.js / TypeScript / TailwindCSS / Notion を学習中。",
+                      "href": null
+                  }
+              ],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "374bb4d6-28cf-4817-9ca9-fc71eeceaa3a",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2023-07-18T10:14:00.000Z",
+          "last_edited_time": "2025-01-19T06:01:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "a77106c5-a562-456a-9b47-255677e64984"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-806a-9335-d0ad201647f1",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T05:29:00.000Z",
+          "last_edited_time": "2025-01-19T06:14:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "heading_2",
+          "heading_2": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "この Blog について",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": true,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "この Blog について",
+                      "href": null
+                  }
+              ],
+              "is_toggleable": false,
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-80cc-962c-c9ad25a21f7a",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T05:29:00.000Z",
+          "last_edited_time": "2025-01-19T05:29:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "Knobさんの”noblog”を参考にさせていただき、作成しました。",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "Knobさんの”noblog”を参考にさせていただき、作成しました。",
+                      "href": null
+                  }
+              ],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-8050-9a26-c3aff042d611",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T05:29:00.000Z",
+          "last_edited_time": "2025-01-19T05:29:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "素敵な記事をありがとうございます。この場をお借りして御礼申し上げます。",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "素敵な記事をありがとうございます。この場をお借りして御礼申し上げます。",
+                      "href": null
+                  }
+              ],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-8003-8eec-d5c9cfe8c7b4",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T05:29:00.000Z",
+          "last_edited_time": "2025-01-19T05:33:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "Keywords: Next.js, TypeScript, Tailwind CSS, Notion API ...",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "Keywords: Next.js, TypeScript, Tailwind CSS, Notion API ...",
+                      "href": null
+                  }
+              ],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-8089-928b-f36f9d840a81",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:00:00.000Z",
+          "last_edited_time": "2025-01-19T06:00:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "▼こちらで解説しています。",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "▼こちらで解説しています。",
+                      "href": null
+                  }
+              ],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-8080-bec7-c7d4633f4ae4",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:00:00.000Z",
+          "last_edited_time": "2025-01-19T06:00:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bookmark",
+          "bookmark": {
+              "caption": [],
+              "url": "https://blog.ec-maker.com/posts/notion-blog_getting-started"
+          },
+          "ogp": {
+              "url": "https://blog.ec-maker.com/posts/notion-blog_getting-started",
+              "title": "notion-blogをはじめる | EC maker",
+              "description": "notion-blog の種類一大ムーブメント　みなさｍ色々やられています。 GitHub Topics as \"notion-blog\"notion-blog-nextjs (始祖1)(shinさんの解説つき)...",
+              "imageUrl": "https://blog.ec-maker.com/api/notion-blog/og?title=notion-blogをはじめる",
+              "faviconUrl": "https://www.google.com/s2/favicons?domain=https://blog.ec-maker.com/posts/notion-blog_getting-started"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-8071-9432-cb4521de968e",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T05:33:00.000Z",
+          "last_edited_time": "2025-01-19T06:01:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "本家様  github ▶ ",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "本家様  github ▶ ",
+                      "href": null
+                  },
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "nbr41to",
+                          "link": {
+                              "url": "https://github.com/nbr41to"
+                          }
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "nbr41to",
+                      "href": "https://github.com/nbr41to"
+                  },
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": " / ",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": " / ",
+                      "href": null
+                  },
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "noblog",
+                          "link": {
+                              "url": "https://github.com/nbr41to/noblog"
+                          }
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "noblog",
+                      "href": "https://github.com/nbr41to/noblog"
+                  }
+              ],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-8014-883c-cd939391e07e",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:01:00.000Z",
+          "last_edited_time": "2025-01-19T06:01:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [],
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-8072-ad44-f84380ad0e24",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:01:00.000Z",
+          "last_edited_time": "2025-01-19T06:14:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "heading_2",
+          "heading_2": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "Members",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "Members",
+                      "href": null
+                  }
+              ],
+              "is_toggleable": false,
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-807e-b67d-c68d38d02235",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:26:00.000Z",
+          "last_edited_time": "2025-01-19T06:26:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bookmark",
+          "bookmark": {
+              "caption": [],
+              "url": "https://github.com/orgs/ECMaker/people"
+          },
+          "ogp": {
+              "url": "https://github.com/orgs/ECMaker/people",
+              "title": "Members · People · ECMaker · GitHub",
+              "description": "ECmaker has 7 repositories available. Follow their code on GitHub.",
+              "imageUrl": "https://avatars.githubusercontent.com/u/78650599?s=280&v=4",
+              "faviconUrl": "https://www.google.com/s2/favicons?domain=https://github.com/orgs/ECMaker/people"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-80f3-98d7-f06340fae2fe",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:01:00.000Z",
+          "last_edited_time": "2025-01-19T06:17:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "heading_3",
+          "heading_3": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "keit",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "keit",
+                      "href": null
+                  }
+              ],
+              "is_toggleable": false,
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-8090-8304-f592125b3774",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:22:00.000Z",
+          "last_edited_time": "2025-01-19T06:22:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bookmark",
+          "bookmark": {
+              "caption": [],
+              "url": "https://github.com/keit0728"
+          },
+          "ogp": {
+              "url": "https://github.com/keit0728",
+              "title": "keit0728 (keit) · GitHub",
+              "description": "keit0728 has 34 repositories available. Follow their code on GitHub.",
+              "imageUrl": "https://avatars.githubusercontent.com/u/18537520?v=4?s=400",
+              "faviconUrl": "https://www.google.com/s2/favicons?domain=https://github.com/keit0728"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-809b-ac8c-e61957690c7a",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:21:00.000Z",
+          "last_edited_time": "2025-01-19T06:21:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "image",
+          "image": {
+              "caption": [],
+              "type": "external",
+              "external": {
+                  "url": "https://github-contributions-api.deno.dev/keit0728.svg?no-legend=true&no-total=true&scheme=green"
+              }
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-80b6-94df-c8d2f343e1d6",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:01:00.000Z",
+          "last_edited_time": "2025-01-19T06:21:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "heading_3",
+          "heading_3": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "K",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "K",
+                      "href": null
+                  }
+              ],
+              "is_toggleable": false,
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-8095-8206-dc85e786a9df",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:23:00.000Z",
+          "last_edited_time": "2025-01-19T06:23:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bookmark",
+          "bookmark": {
+              "caption": [],
+              "url": "https://github.com/kei880"
+          },
+          "ogp": {
+              "url": "https://github.com/kei880",
+              "title": "kei880 (Kay) · GitHub",
+              "description": "GitHub is where kei880 builds software.",
+              "imageUrl": "https://avatars.githubusercontent.com/u/20079402?v=4?s=400",
+              "faviconUrl": "https://www.google.com/s2/favicons?domain=https://github.com/kei880"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-80e6-a3a3-fe5979a38d92",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:21:00.000Z",
+          "last_edited_time": "2025-01-19T06:21:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "image",
+          "image": {
+              "caption": [],
+              "type": "external",
+              "external": {
+                  "url": "https://github-contributions-api.deno.dev/kei880.svg?no-legend=true&no-total=true&scheme=green"
+              }
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-801e-88ea-e310fb03f6ba",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:01:00.000Z",
+          "last_edited_time": "2025-01-19T06:17:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "heading_3",
+          "heading_3": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "栗きんとん",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "栗きんとん",
+                      "href": null
+                  }
+              ],
+              "is_toggleable": false,
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-807c-b7f5-ea942fc57591",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:23:00.000Z",
+          "last_edited_time": "2025-01-19T06:23:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bookmark",
+          "bookmark": {
+              "caption": [],
+              "url": "https://github.com/taka707"
+          },
+          "ogp": {
+              "url": "https://github.com/taka707",
+              "title": "taka707 · GitHub",
+              "description": "taka707 has 2 repositories available. Follow their code on GitHub.",
+              "imageUrl": "https://avatars.githubusercontent.com/u/64677213?v=4?s=400",
+              "faviconUrl": "https://www.google.com/s2/favicons?domain=https://github.com/taka707"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-805e-b391-ff21b7150bef",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:20:00.000Z",
+          "last_edited_time": "2025-01-19T06:20:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "image",
+          "image": {
+              "caption": [],
+              "type": "external",
+              "external": {
+                  "url": "https://github-contributions-api.deno.dev/taka707.svg?no-legend=true&no-total=true&scheme=green"
+              }
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-80b7-8bb0-fa39bbbb7f5d",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:01:00.000Z",
+          "last_edited_time": "2025-01-19T06:21:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "heading_3",
+          "heading_3": {
+              "rich_text": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "U",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "U",
+                      "href": null
+                  }
+              ],
+              "is_toggleable": false,
+              "color": "default"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-80dd-bb98-cc52a3f8b81b",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:23:00.000Z",
+          "last_edited_time": "2025-01-19T06:23:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bookmark",
+          "bookmark": {
+              "caption": [],
+              "url": "https://github.com/u-ecmaker"
+          },
+          "ogp": {
+              "url": "https://github.com/u-ecmaker",
+              "title": "u-ecmaker (u-ecmaker) · GitHub",
+              "description": "こんにちは、ECmakerのUです。/ Hello, I'm U of ECmaker.   \n// EC maker について：TDU発のコミュニティ。電機・自動車メーカ系 エンジニア → フロントエンド エンジニア - u-ecmaker",
+              "imageUrl": "https://avatars.githubusercontent.com/u/97171717?v=4?s=400",
+              "faviconUrl": "https://www.google.com/s2/favicons?domain=https://github.com/u-ecmaker"
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-80ec-bd78-f3bfece413ca",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:19:00.000Z",
+          "last_edited_time": "2025-01-19T06:19:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "image",
+          "image": {
+              "caption": [],
+              "type": "external",
+              "external": {
+                  "url": "https://github-contributions-api.deno.dev/u-ecmaker.svg?no-legend=true&no-total=true&scheme=green"
+              }
+          }
+      },
+      {
+          "object": "block",
+          "id": "18083811-5c88-80cb-b0cf-cd34955b8670",
+          "parent": {
+              "type": "page_id",
+              "page_id": "baaaafb0-28a9-409d-b752-e4de97639b78"
+          },
+          "created_time": "2025-01-19T06:21:00.000Z",
+          "last_edited_time": "2025-01-19T06:21:00.000Z",
+          "created_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "last_edited_by": {
+              "object": "user",
+              "id": "c04915d3-b13f-4c06-a6d4-b210d7d0bd30"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "paragraph",
+          "paragraph": {
+              "rich_text": [],
+              "color": "default"
+          }
+      }
+  ]
+}

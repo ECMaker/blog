@@ -41,22 +41,16 @@ export const PostDetailTemplate: FC<Props> = ({ post, comments, onSubmit }) => {
 
         <div className="w-aside">
           <div className="sticky top-[112px] space-y-4">
-            {/* スクエア広告の<!-- サイドバー -->部分 */}
-            <div className="bg-white p-2 rounded-lg shadow">
-              <AdSense
-                slot="7515574692"
-                testMode={process.env.NODE_ENV === 'development'}
-                style={{
-                  display: 'block',
-                  width: '300px',
-                  height: '250px',
-                  margin: '0 auto',
-                }}
-              />
-            </div>
             <TableOfContents blocks={post.children} />
             <PostMeta meta={post} commentCount={comments.length} />
             <Bio />
+            <div>
+              {/* スクエア広告の<!-- サイドバー -->部分 */}
+              {process.env.NODE_ENV === 'production'
+                ? <AdSense slot="7515574692"/>
+                : <p> (広告予定置) </p>
+              }
+            </div>
           </div>
         </div>
       </div>

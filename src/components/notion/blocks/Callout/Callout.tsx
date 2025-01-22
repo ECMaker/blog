@@ -27,32 +27,36 @@ export const Callout = ({ block }: Props) => {
     const isUnicorn = block.callout.icon.emoji === '🦄';
     if (isRam || isGorilla || isGear || isGear2 || isRobot || isUnicorn)
       return (
-        <div className="my-4">
-          <SpeechBubble
-            iconImageSrc={
-               isRam     ? '/blocks-images/ram.png'
-              :isGorilla ? '/blocks-images/gorilla.png'
-              :isGear    ? '/logos/400^2_tomei.gif'
-              :isGear2   ? '/logos/400^2_tomei.gif'
-              :isRobot   ? '/blocks-images/AI-icon.svg'
-              :isUnicorn ? '/blocks-images/U-icon.png'
-              :/*default*/ '/logos/400^2_tomei.gif'
-            }
-            isReverse={ isGorilla || isRobot }
-          >
-            <RichText text={block.callout.rich_text} />
-          </SpeechBubble>
+        <div className="pl-4 p-[1px]">
+          <div className="my-4">
+            <SpeechBubble
+              iconImageSrc={
+                  isRam    ? '/blocks-images/ram.png'
+                :isGorilla ? '/blocks-images/gorilla.png'
+                :isGear    ? '/logos/400^2_tomei.gif'
+                :isGear2   ? '/logos/400^2_tomei.gif'
+                :isRobot   ? '/blocks-images/AI-icon.svg'
+                :isUnicorn ? '/blocks-images/U-icon.png'
+                :/*default*/ '/logos/400^2_tomei.gif'
+              }
+              isReverse={ isGorilla || isRobot }
+            >
+              <RichText text={block.callout.rich_text} />
+            </SpeechBubble>
+          </div>
         </div>
       );
   }
 
   return (
-    <div className="flex my-4 items-center gap-4 rounded border border-solid border-slate-300 p-4 shadow">
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-200">
-        {emoji}
-      </div>
-      <div className="sp:text-sm">
-        <RichText text={block.callout.rich_text} />
+    <div className="pl-4 p-[1px]">
+      <div className="flex my-3 items-center gap-4 rounded border border-solid border-slate-300 p-2 shadow">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-200">
+          {emoji}
+        </div>
+        <div className="sp:text-sm">
+          <RichText text={block.callout.rich_text} />
+        </div>
       </div>
     </div>
   );

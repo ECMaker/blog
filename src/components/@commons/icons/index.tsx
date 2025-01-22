@@ -19,6 +19,8 @@ import { CgDanger as DangerIcon } from 'react-icons/cg';
 import {
   FaBook as BookIcon,
   FaTheaterMasks as DummyIcon,
+  FaUserShield as PrivacyIcon,
+  FaBalanceScale as TermsIcon,
 } from 'react-icons/fa';
 import { FcGoogle as ColorGoogleIcon } from 'react-icons/fc';
 import { FiSearch as SearchIcon } from 'react-icons/fi';
@@ -89,4 +91,6 @@ export {
   UnCheckedBoxIcon,
   UpdateIcon,
   YouTubeIcon,
+  PrivacyIcon,
+  TermsIcon,
 };

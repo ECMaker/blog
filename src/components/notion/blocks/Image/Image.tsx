@@ -39,7 +39,7 @@ export const Image: FC<Props> = ({ block }: Props) => {
   };
 
   return (
-    <div className="relative mx-auto mt-4 mb-4 flex flex-col items-center">
+    <div className="relative mx-auto p-6 flex flex-col items-center">
       <MediumZoom zoomMargin={40}>
         <NextImage
           className={imageClassName} // className を動的に変更

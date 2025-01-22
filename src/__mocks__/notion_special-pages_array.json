@@ -1,0 +1,38 @@
+[
+    {
+      "id": "baaaafb0-28a9-409d-b752-e4de97639b78",
+      "icon": "👥",
+      "title": "About",
+      "category": { "id": "", "name": "カテゴリなし", "color": "default" },
+      "createdAt": "2023-07-18",
+      "updatedAt": "2025-01-19",
+      "tags": [],
+      "likes": 0,
+      "slug": "about",
+      "image": "/logos/900^2_tomei_textBlack.gif"
+    },
+    {
+      "id": "18083811-5c88-80ac-b5d8-d11a42b41469",
+      "icon": "📄",
+      "title": "プライバシーポリシー",
+      "category": { "id": "", "name": "カテゴリなし", "color": "default" },
+      "createdAt": "2025-01-19",
+      "updatedAt": "2025-01-19",
+      "tags": [],
+      "likes": 0,
+      "slug": "privacy-policy",
+      "image": "/logos/900^2_tomei_textBlack.gif"
+    },
+    {
+      "id": "12083811-5c88-80fb-aebf-d9ec106be932",
+      "icon": "📄",
+      "title": "利用規約",
+      "category": { "id": "", "name": "カテゴリなし", "color": "default" },
+      "createdAt": "2024-10-15",
+      "updatedAt": "2025-01-19",
+      "tags": [],
+      "likes": 0,
+      "slug": "terms",
+      "image": "/logos/900^2_tomei_textBlack.gif"
+    }
+  ]

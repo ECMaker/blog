@@ -1,9 +1,8 @@
 import type { FC } from 'react';
 import type { NotionPageObjectResponse } from '~/types/notion';
 
-import { BsChatText } from 'react-icons/bs';
 
-import { BookIcon, GitHubIcon } from '~/commons/icons';
+import { BookIcon } from '~/commons/icons';
 import { ReadMoreButton } from '~/commons/ReadMoreButton';
 import { PostList } from '~/features/notionBlog/PostList';
 
@@ -25,27 +24,6 @@ export const IndexTemplate: FC<Props> = ({ posts }) => {
           </div>
           <div className="ml-auto mt-4 w-fit">
             <ReadMoreButton href="/posts" />
-          </div>
-        </div>
-
-        <div>
-          <h2 className="flex items-center gap-1 text-lg font-bold">
-            この Blog について
-            <BsChatText size={20} />
-          </h2>
-          <p className="px-4 py-2 leading-loose">
-          Knobさんの”noblog”を参考にさせていただき、作成しました。
-          <br />
-          素敵な記事をありがとうございます。この場をお借りして御礼申し上げます。
-          <br />
-          Keywords: Next.js, TypeScript, Tailwind CSS, Notion API ...
-          </p>
-          <div className="ml-auto w-fit">
-            <ReadMoreButton
-              href="https://github.com/nbr41to/noblog"
-              blank
-              rightIcon={<GitHubIcon size={20} />}
-            />
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ export const Video = ({ block }: Props) => {
 
   if (block.video.type === 'file') {
     return (
-      <div className="my-5 flex flex-col text-center justify-center items-center">
+      <div className="p-4 flex flex-col text-center justify-center items-center">
         {!loaded && <div className="text-gray-500">Loading video...</div>}
         <video
           key={videoUrl} // URLが変わったときにvideo要素を再レンダリング
@@ -60,7 +60,7 @@ export const Video = ({ block }: Props) => {
     }
 
     return (
-      <div className="my-5 flex flex-col text-center justify-center items-center">
+      <div className="p-4 flex flex-col text-center justify-center items-center">
         {!loaded && <div className="text-gray-500">Loading video...</div>}
         <video
           key={videoUrl} // URLが変わったときにvideo要素を再レンダリング
