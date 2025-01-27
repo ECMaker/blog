@@ -161,3 +161,12 @@ const Post: NextPage<Props> = ({ post }) => {
 };
 
 export default Post;
+
+export async function revalidate(slug: string) {
+  await Promise.all([
+    // 通常のISR
+    fetch(`/api/revalidate?slug=${slug}`),
+    // サイトマップの更新
+    fetch('/api/revalidate-sitemap', { method: 'POST' })
+  ])
+}

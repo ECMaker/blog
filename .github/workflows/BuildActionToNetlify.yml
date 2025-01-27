@@ -60,6 +60,11 @@ jobs:
           for i in {1..3}; do
             netlify deploy --build --prod > cli.txt && break || sleep 60
           done
+          # サイトマップの更新を実行
+          curl -X POST "${{ secrets.NEXT_PUBLIC_BASE_URL }}/api/revalidate-sitemap" || {
+            echo "Sitemap update failed, but continuing deployment"
+            # エラーが発生してもワークフローを続行
+          }
           # Extract URLs from cli.txt
           URLS=$(sed -n '/Build logs:/,$p' cli.txt)
           # Extract the rest of the log
