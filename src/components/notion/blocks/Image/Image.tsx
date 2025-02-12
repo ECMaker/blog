@@ -23,7 +23,19 @@ export const Image: FC<Props> = ({ block }: Props) => {
   const [loaded, setLoaded] = useState(false);
     // 画像の縦横比を管理するための状態を定義 画像の縦横比に基づいて適切なクラス名を決定する
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
-  const imageClassName = aspectRatio && aspectRatio > 1 ? "object-contain h-auto w-full" : "object-contain h-auto w-auto";
+  const [imageWidth, setImageWidth] = useState<number | null>(null);
+  const getImageClassName = (width: number | null, ratio: number | null) => {
+    if (!width || !ratio) return "object-contain h-auto w-auto";
+    
+    // 縦長画像（ratio < 1）の場合
+    if (ratio < 1) {
+      // 実際の画像幅がコンテナより大きい場合はw-full
+      return width > 350 ? "object-contain h-auto w-full" : "object-contain h-auto w-auto";
+    }
+
+    // 横長画像の場合は常にw-full
+    return "object-contain h-auto w-full";
+  };
 
   useEffect(() => {
     if (isError && !sessionStorage.getItem('reloaded')) {
@@ -42,7 +54,7 @@ export const Image: FC<Props> = ({ block }: Props) => {
     <div className="relative mx-auto p-6 flex flex-col items-center">
       <MediumZoom zoomMargin={40}>
         <NextImage
-          className={imageClassName} // className を動的に変更
+          className={getImageClassName(imageWidth, aspectRatio)}
           src={url}
           alt={caption || ''}
           width={3840}
@@ -53,7 +65,9 @@ export const Image: FC<Props> = ({ block }: Props) => {
             e.currentTarget.src = '/logos/300^2_tomei_textBlack_loading.gif';
           }}
           onLoadingComplete={({ naturalWidth, naturalHeight }) => {
-            setAspectRatio(naturalWidth / naturalHeight);
+            const ratio = naturalWidth / naturalHeight;
+            setAspectRatio(ratio);
+            setImageWidth(naturalWidth);
             handleLoad();
           }}
           unoptimized={true} //Vercelの無料プランにおける next/image コンポーネントの画像最適化機能の制限（月1000件まで)最適化をスキップ。
