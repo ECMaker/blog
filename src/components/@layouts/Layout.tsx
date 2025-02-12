@@ -52,7 +52,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
         <div className="flex items-center w-fit justify-between">
           <NavMenu />
         </div>
-        <header className="py-1">
+        <header className="py-1 sp:py-5">
           <Link
             href="/"
             tabIndex={0}
@@ -61,7 +61,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
               'hover:title-drop-shadow transition duration-1000 ease-in hover:text-white',
             )}
           >
-            <h1 className="flex gap-3 items-center font-CutiveMono text-5xl leading-none">
+            <h1 className="flex gap-3 items-center font-CutiveMono leading-none text-5xl sp:text-4xl">
               <Image
                 src="/logos/400^2inside600^2_tomei.gif"
                 alt="site logo"
