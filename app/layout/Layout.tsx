@@ -93,7 +93,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           <ScrollTopButton />
         </div>
       </main>
-      <footer className="fixed bottom-0 left-0 flex w-full flex-col bg-slate-800 px-8 text-white sp:py-4">
+      <footer className="fixed bottom-0 left-0 flex w-full flex-col bg-slate-800 px-8 text-white sp:py-4 sp:px-4">
         <div className="mt-10">
           <div className="flex gap-2 items-center">
             <Image
@@ -105,7 +105,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
               priority
               className="-mt-1"
             />
-            <Link href="/" className="font-CutiveMono text-4xl text-slate-200">
+            <Link href="/" className="font-CutiveMono text-4xl text-slate-200 sp:text-3xl">
               EC maker
             </Link>
           </div>
