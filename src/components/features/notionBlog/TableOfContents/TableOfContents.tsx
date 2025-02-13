@@ -81,7 +81,7 @@ const headingList = useMemo(
         - Contents -
       </div>
       <div className="mx-auto mt-0.5 h-0.5 w-20 rounded-full bg-slate-800" />
-      <div className="mt-4 max-h-[456px] overflow-y-scroll">
+      <div className="mt-4 max-h-[456px] sp:max-w-[200px] overflow-y-scroll">
         <div
           className={clsx(
             'relative flex flex-col gap-2 py-2 pl-6 text-sm',

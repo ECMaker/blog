@@ -31,6 +31,7 @@ import {
 } from 'react-icons/hi';
 import {
   ImCircleDown as CircleDownIcon,
+  ImCircleUp as CircleUpIcon,
   ImCheckboxChecked as CheckedBoxIcon,
   ImCheckboxUnchecked as UnCheckedBoxIcon,
 } from 'react-icons/im';
@@ -83,6 +84,7 @@ export {
   QrCodeIcon,
   SearchIcon,
   CircleDownIcon,
+  CircleUpIcon,
   SendIcon,
   StopIcon,
   TbExternalLinkIcon,
