@@ -43,7 +43,7 @@ export const Bookmark: FC<Props> = ({ block }: Props) => {
   const noOgp = !ogp.title && !ogp.description && !ogp.imageUrl;
 
   return !noOgp ? (
-    <div className="pl-4 pr-4 p-[1px]">
+    <div className="pl-4 pr-4">
       <a
         className="my-6 flex min-h-[120px] cursor-pointer justify-between rounded-lg border border-solid border-slate-400 bg-slate-50 hover:bg-slate-100 sp:flex-col"
         href={ogp.url}
@@ -85,7 +85,7 @@ export const Bookmark: FC<Props> = ({ block }: Props) => {
     </div>
   ) : (
     /* Loading Skeleton */
-    <div className="pl-4 p-[1px]">
+    <div className="pl-4">
       <a
         className="my-6 flex min-h-[120px] w-full max-h-[150px] cursor-pointer justify-between rounded-lg border border-solid border-slate-400 bg-slate-50 hover:bg-slate-100"
         href={ogp.url}

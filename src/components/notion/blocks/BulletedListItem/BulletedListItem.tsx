@@ -15,7 +15,7 @@ export const BulletedListItem: FC<Props> = ({ block }: Props) => {
   );
 
   return (
-    <li className="sp:text-sm compact-list-item">
+    <li className="pt-1 pr-4 sp:text-sm compact-list-item">
       <RichText text={block.bulleted_list_item.rich_text} />
       {block.children?.map((child) => (
         <div key={child.id} className="compact-list-item">
