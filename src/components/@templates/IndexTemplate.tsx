@@ -13,7 +13,7 @@ type Props = {
 export const IndexTemplate: FC<Props> = ({ posts }) => {
   return (
     <div>
-      <div className="w-main mx-auto mt-4 space-y-4 px-4 pb-10">
+      <div className="w-main mx-auto mt-4 space-y-4 px-4 pb-4">
         <div>
           <h2 className="flex items-center gap-1 text-lg font-bold">
             最近の記事
@@ -22,7 +22,7 @@ export const IndexTemplate: FC<Props> = ({ posts }) => {
           <div className="mt-3">
             <PostList posts={posts} />
           </div>
-          <div className="ml-auto mt-4 w-fit">
+          <div className="ml-auto mt-4 w-fit sp:mr-10">
             <ReadMoreButton href="/posts" />
           </div>
         </div>

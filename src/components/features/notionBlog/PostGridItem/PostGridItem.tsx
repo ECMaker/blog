@@ -18,22 +18,22 @@ export const PostGridItem: FC<Props> = ({ post }) => {
 
   return (
     <div
-    className="flex flex-col h-auto w-64 cursor-pointer rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-80 justify-between"
+    className="flex flex-col h-auto w-64 cursor-pointer rounded bg-gray-50 px-5 py-3 shadow transition-transform hover:scale-105 sp:w-60 sp:px-3 sp:py-2 justify-between"
     onClick={() => router.push(`/posts/${expandPost.slug}`)}
     >
-      <div className="space-y-3">
+      <div className="space-y-3 sp:space-y-2">
         <div className="flex justify-between">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-4xl shadow">
-            <div className="pb-1 text-3xl">{meta.icon}</div>
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-4xl shadow sp:h-12 sp:w-12 sp:text-3xl">
+            <div className="pb-1 text-3xl sp:text-2xl">{meta.icon}</div>
           </div>
-          <div className="text-right text-sm">
+          <div className="text-right text-sm sp:text-xs">
             <div>{meta.updatedAt}</div>
             <div className="font-bold">{meta.category.name}</div>
           </div>
         </div>
 
         <div className="flex items-center">
-          <h3 className="overflow-hidden font-bold line-clamp-3">
+          <h3 className="overflow-hidden font-bold line-clamp-3 sp:text-base">
             {meta.title}
           </h3>
         </div>

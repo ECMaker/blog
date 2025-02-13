@@ -5,6 +5,7 @@ import { clsx } from '@mantine/core';
 import { useState, useEffect, useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
 
+import { useTableOfContentsContext } from '~/components/features/notionBlog/TableOfContentsContext';
 import { inViewHeadingIdsAtom } from '~/recoil/atoms';
 
 type Props = {
@@ -15,6 +16,7 @@ type Props = {
 export const TableOfContents: FC<Props> = ({ blocks, isAll = false }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const inViewHeadingIds = useRecoilValue(inViewHeadingIdsAtom);
+  const { setShowTableOfContents } = useTableOfContentsContext();
 
 const headingList = useMemo(
   () =>
@@ -81,7 +83,7 @@ const headingList = useMemo(
         - Contents -
       </div>
       <div className="mx-auto mt-0.5 h-0.5 w-20 rounded-full bg-slate-800" />
-      <div className="mt-4 max-h-[456px] overflow-y-scroll">
+      <div className="mt-4 max-h-[456px] sp:max-w-[200px] overflow-y-scroll">
         <div
           className={clsx(
             'relative flex flex-col gap-2 py-2 pl-6 text-sm',
@@ -92,6 +94,7 @@ const headingList = useMemo(
             <a
               key={item.id}
               href={`#${item.id}`}
+              onClick={() => setShowTableOfContents(false)}
               className={clsx(
                 'text relative transition-colors duration-150 hover:text-slate-400',
                 activeIndex === index
@@ -100,7 +103,7 @@ const headingList = useMemo(
                 item.type === 'heading_1' && 'font-bold',
                 item.type === 'heading_1' && 'underline',
                 item.type === 'heading_1' && 'text-lg',
-              //item.type === 'heading_1' && 'thick-underline',
+                //item.type === 'heading_1' && 'thick-underline',
                 item.type === 'heading_2' && 'pl-0',
                 item.type === 'heading_2' && 'font-bold',
                 item.type === 'heading_2' && 'text-base',

@@ -48,11 +48,11 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
 
   return (
     <div className="bg-gray-200">
-      <div className="flex items-center justify-between bg-gradient-to-b from-gray-200 from-50% via-gray-200 to-transparent sticky-topbar">
+      <div className="flex items-center justify-between bg-gradient-to-b from-gray-200 from-50% via-gray-200 to-transparent sticky-topbar pb-4 sp:pb-6">
         <div className="flex items-center w-fit justify-between">
           <NavMenu />
         </div>
-        <header className="py-1">
+        <header className="py-1 sp:py-5">
           <Link
             href="/"
             tabIndex={0}
@@ -61,7 +61,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
               'hover:title-drop-shadow transition duration-1000 ease-in hover:text-white',
             )}
           >
-            <h1 className="flex gap-3 items-center font-CutiveMono text-5xl leading-none">
+            <h1 className="flex gap-3 items-center font-CutiveMono leading-none text-5xl sp:text-4xl">
               <Image
                 src="/logos/400^2inside600^2_tomei.gif"
                 alt="site logo"
@@ -98,7 +98,7 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
           <ScrollTopButton />
         </div>
       </main>
-      <footer className="fixed bottom-0 left-0 flex w-full flex-col bg-slate-800 px-8 text-white">
+      <footer className="fixed bottom-0 left-0 flex w-full flex-col bg-slate-800 px-8 text-white sp:py-4 sp:px-4">
         <div className="mt-10">
           <div className="flex gap-2 items-center">
             <Image
@@ -110,16 +110,16 @@ export const Layout: FC<Props> = ({ children, ...pageProps }) => {
               priority
               className="-mt-1"
             />
-            <Link href="/" className="font-CutiveMono text-4xl text-slate-200">
+            <Link href="/" className="font-CutiveMono text-4xl text-slate-200 sp:text-3xl">
               EC maker
             </Link>
           </div>
-          <nav className="flex justify-center gap-8 mt-4 mb-4 items-center text-slate-200">
+          <nav className="flex justify-center gap-8 sp:gap-4 mt-4 mb-4 items-center text-slate-200 sp:text-sm">
             <Link href="/" className="text-slate-200 hover:text-white">Home</Link>
             <Link href="/about" className="text-slate-200 hover:text-white">About</Link>
             <Link href="/contact" className="text-slate-200 hover:text-white">Contact</Link>
-            <Link href="/privacy-policy" className="text-slate-200 hover:text-white">プライバシーポリシー</Link>
-            <Link href="/terms" className="text-slate-200 hover:text-white">利用規約</Link>
+            <Link href="/privacy-policy" className="text-slate-200 hover:text-white">Privacy Policy</Link>
+            <Link href="/terms" className="text-slate-200 hover:text-white">Terms of Service</Link>
           </nav>
         </div>
         <div className="py-2 mt-4 text-center text-xs text-slate-400">

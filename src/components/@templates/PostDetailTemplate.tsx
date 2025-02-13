@@ -54,7 +54,7 @@ export const PostDetailTemplate: FC<Props> = ({ post, comments, onSubmit }) => {
           </div>
         </div>
       </div>
-      <div className="md:hidden fixed top-[114px] right-2 rounded-md border-solid border-2  border-gray-700 ">
+      <div className="md:hidden fixed top-[114px] sp:top-[92px] right-2 rounded-md border-solid border-2  border-gray-700 ">
         {showTableOfContents && <TableOfContents blocks={post.children} />}
       </div>
     </div>
