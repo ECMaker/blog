@@ -33,7 +33,7 @@ export const Heading3: FC<Props> = ({ block }: Props) => {
   return (
     <h3
       id={block.id}
-      className="scroll-mt-[90px] my-4 flex items-center gap-2 px-3 border-0 border-b border-solid border-slate-500 pl-2 text-lg font-bold sp:border-slate-500 sp:text-base"
+      className="scroll-mt-[98px] my-4 flex items-center gap-2 px-3 border-0 border-b border-solid border-slate-500 pl-2 text-lg font-bold sp:border-slate-500 sp:text-base"
       ref={ref}
     >
       {/*<OutlineCheckIcon size={22} />*/}

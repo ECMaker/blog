@@ -34,7 +34,7 @@ export const Heading1: FC<Props> = ({ block }: Props) => {
   return (
     <h1 
       id={block.id}
-      className="scroll-mt-[90px] my-6 flex items-center gap-2 px-3 text-2xl shadow-[-1px_-1px_6px_#ccc,4px_4px_1px_#1E293B] sp:text-lg"
+      className="scroll-mt-[98px] my-6 flex items-center gap-2 px-3 text-2xl shadow-[-1px_-1px_6px_#ccc,4px_4px_1px_#1E293B] sp:text-lg"
       ref={ref}
     >
       <OutlineBlockIcon size={28} />
